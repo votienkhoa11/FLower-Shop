@@ -4,8 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 //import {Provider} from 'react-redux';
 
 //import screens
-import Login from './screens/Login';
-import SignUp from './screens/Signup';
+import Home from './screens/HomeScreen';
 
 //import store from './app/store';
 
@@ -15,8 +14,7 @@ function App() {
   return (
       <NavigationContainer>
         <Stack.Navigator screenOptions={{headerShown: false}}>
-          <Stack.Screen name="login" component = {Login} />
-          <Stack.Screen name="signup" component = {SignUp} />
+          <Stack.Screen name="home" component = {Home} />
         </Stack.Navigator>
       </NavigationContainer>
   );

@@ -1,18 +1,28 @@
 /* eslint-disable react-native/no-inline-styles */
-import { View, Text, ImageBackground, StatusBar } from 'react-native';
-import React from 'react';
+import { View, Text, ImageBackground, StatusBar, FlatList, ScrollView,
+    TextInput, Image, Animated } from 'react-native';
+import React, { useState } from 'react';
 
 //import styles
 import style from './style';
-import { ScrollView, TextInput } from 'react-native-gesture-handler';
+import { width } from '../../styles';
+import { color } from '../../styles';
 
 //import icon
 import Octicons from 'react-native-vector-icons/Octicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import { color } from '../../styles';
+
+//import data
+import label from './label';
+import { user } from '../../database/MockData';
+import { data } from '../../database/MockData';
+
+//import components
+import FlatListEvents from './events';
 
 const Home = () => {
+
   return (
     <View style={style.container}>
         <StatusBar translucent backgroundColor="transparent" barStyle="dark-content" />
@@ -21,12 +31,12 @@ const Home = () => {
                 <View style={{padding: 16}}>
                     <View style={style.header}>
                         <View>
-                            <Text style={style.headerText}>Giao hàng tới</Text>
+                            <Text style={style.headerText}>{label.addressLabel}</Text>
                             <View style={style.frame8}>
                                 <View style={style.avt}>
                                     <Octicons name="location" style={style.icon24px}/>
                                 </View>
-                                <Text style={style.address}>03, Sông Thao, phường 2, Quận Tân Bình</Text>
+                                <Text style={style.address}>{user.address}</Text>
                             </View>
                         </View>
                         <View style={style.iconView}>
@@ -44,6 +54,7 @@ const Home = () => {
                         </View>
                     </View>
                 </View>
+                <FlatListEvents />
             </ImageBackground>
         </ScrollView>
     </View>

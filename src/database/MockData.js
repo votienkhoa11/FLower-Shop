@@ -97,3 +97,42 @@ export const events = [
     },
 ];
 
+export const categories = [
+    {
+        id: 1,
+        name: 'Hoa Hồng',
+        image: require('../styles/imgs/categories/rose.png'),
+    },
+
+    {
+        id: 2,
+        name: 'Hoa Hồng Trắng',
+        image: require('../styles/imgs/categories/whiterose.jpg'),
+    },
+    {
+        id: 3,
+        name: 'Hoa Cúc',
+        image: require('../styles/imgs/categories/hoacuc.jpg'),
+    },
+    {
+        id: 4,
+        name: 'Hoa Hướng Dương',
+        image: require('../styles/imgs/categories/sunflower.jpg'),
+    },
+    {
+        id: 5,
+        name: 'Hoa Lan',
+        image: require('../styles/imgs/categories/hoalan.jpg'),
+    },
+    {
+        id: 6,
+        name: 'Giỏ Hoa',
+        image: require('../styles/imgs/categories/giohoa.jpg'),
+    },
+
+    {
+        id: 7,
+        name: 'Bó Hoa',
+        image: require('../styles/imgs/categories/bohoa.png'),
+    },
+];

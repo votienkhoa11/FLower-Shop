@@ -2,6 +2,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react-native/no-inline-styles */
 import { View, FlatList, Image, Animated } from 'react-native';
+import React, { useState, useRef } from 'react';
 
 //import styles
 import style from './style';
@@ -13,7 +14,7 @@ import { events } from '../../database/MockData';
 const FlatListEvents = () => {
 
     //animated values
-    const scrollX = new Animated.Value(0);
+    const scrollX = useRef(new Animated.Value(0)).current;
     const position = Animated.divide(scrollX, width);
 
     //render events
@@ -25,20 +26,36 @@ const FlatListEvents = () => {
         );
     };
 
-    const handleScroll = () => {
+    const handleScroll = event => {
         Animated.event(
             [{nativeEvent: {contentOffset: {x:scrollX}}}],
             {useNativeDriver: false},
-        );
+        )(event);
     };
 
      //render dots Indicators
+     //BUG: Warning: Each child in a list should have a unique "key" prop.
      const renderDotsIndicators = () => {
-        
+        return events.map((dot, index) => {
+            const dotWidth = position.interpolate({
+                inputRange: [index - 1, index, index + 1],
+                outputRange: [8, 16, 8],
+                extrapolate: 'clamp',
+            });
+            const opacity = position.interpolate({
+                inputRange: [index - 1, index, index + 1],
+                outputRange: [0.2, 1, 0.2],
+                extrapolate: 'clamp',
+            });
+
+            return (
+                <Animated.View style={[style.dotIndicators, {width: dotWidth, opacity}]} />
+            );
+        })
     };
 
     return (
-        <View style={{marginVertical: 24}}>
+        <View style={{paddingLeft: 16}}>
             {/*Event page
             check if there is an event, show the event, if not, do not show anything*/}
             <FlatList
@@ -47,32 +64,15 @@ const FlatListEvents = () => {
                 renderItem={renderEvents}
                 keyExtractor={(item, index) => {return item.id;}}
                 showsHorizontalScrollIndicator={false}
-                decelerationRate={0.2}
+                decelerationRate={0.5}
                 snapToInterval={width}
                 bounces={true}
                 pagingEnabled={true}
-
                 onScroll={handleScroll}
+
             />
             <View style={style.dotView}>
-                {events.map((dot, index) => {
-                    let opacity = position.interpolate({
-                        inputRange: [index - 1, index, index + 1],
-                        outputRange: [0.2, 1, 0.2],
-                        extrapolate: 'clamp',
-                    });
-
-                    return (
-                        <Animated.View style={{
-                            backgroundColor: color.greenLight,
-                            width: 8,
-                            height: 8,
-                            borderRadius: 5,
-                            marginHorizontal: 2,
-                            opacity,
-                        }} />
-                    );
-                })}
+                {renderDotsIndicators()}
             </View>
         </View>
     );

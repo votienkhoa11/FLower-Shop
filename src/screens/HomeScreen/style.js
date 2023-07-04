@@ -310,4 +310,66 @@ export default StyleSheet.create({
         color: color.bgMedium,
         flexWrap: 'wrap',
     },
+
+    watchMoreButton: {
+        height: 40,
+        marginVertical: 8,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderColor: '#36a46d',
+        borderWidth: 1,
+        borderRadius: 24,
+    },
+
+    watchMoreLabel: {
+        fontSize: 16,
+        color: '#36a46d',
+        fontWeight: '600',
+    },
+
+    buttonCart: {
+        position: 'absolute',
+        width: 52,
+        height: 52,
+        backgroundColor: color.bgWhite,
+        justifyContent: 'center',
+        alignItems: 'center',
+        bottom: 20,
+        right: 20,
+        borderRadius: 180,
+        shadowColor: color.black,
+        shadowOffset: {
+            width: 8,
+            height: 24,
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 8,
+        elevation: 4,
+    },
+
+    cartIcon: {
+        flex: 1,
+        fontSize: 18,
+        color: color.black,
+        alignContent: 'center',
+        paddingVertical: 16,
+    },
+
+    numberCart: {
+        position: 'absolute',
+        width: 15,
+        height: 15,
+        backgroundColor: '#36a46d',
+        borderRadius: 180,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 8,
+        marginLeft: 8,
+    },
+
+    number: {
+        fontSize: 10,
+        fontWeight: '500',
+    },
 });

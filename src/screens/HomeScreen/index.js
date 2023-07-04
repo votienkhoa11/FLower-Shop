@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import { View, Text, ImageBackground, StatusBar, ScrollView,
+import { View, Text, ImageBackground, StatusBar, ScrollView, TouchableOpacity,
     TextInput, Image, Animated } from 'react-native';
 import React, { useEffect, useState } from 'react';
 
@@ -12,6 +12,7 @@ import { color } from '../../styles';
 import Octicons from 'react-native-vector-icons/Octicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 //import data
 import label from './label';
@@ -26,7 +27,7 @@ import PopularCard from './PopularCard';
 import BroughtAgainCard from './BroughtAgainCard';
 import ProductCard from './ProductCard';
 
-const Home = ({navigation}) => {
+const HomeScreen = ({navigation}) => {
     //set data
     const [popularProduct, setPopularProduct] = useState([]);
     const [broughtProducts, setBroughtProduct] = useState([]);
@@ -109,19 +110,19 @@ const Home = ({navigation}) => {
                     </View>
                 </View>
                 <View style={style.popular}>
-                        <Text style={style.label}>{label.popularLabel}</Text>
-                        <ScrollView
-                            horizontal
-                            showsHorizontalScrollIndicator={false}
-                        >
-                            <View style={style.horizonalView}>
-                            {
-                                popularProduct.map(popularData => {
-                                    return <PopularCard data={popularData} key={popularData.id} />;
-                                })
-                            }
-                            </View>
-                        </ScrollView>
+                    <Text style={style.label}>{label.popularLabel}</Text>
+                    <ScrollView
+                        horizontal
+                        showsHorizontalScrollIndicator={false}
+                    >
+                        <View style={style.horizonalView}>
+                        {
+                            popularProduct.map(popularData => {
+                                return <PopularCard data={popularData} key={popularData.id} />;
+                            })
+                        }
+                        </View>
+                    </ScrollView>
                 </View>
             </ImageBackground>
             <View>
@@ -148,10 +149,23 @@ const Home = ({navigation}) => {
                         })
                     }
                 </View>
+                <TouchableOpacity>
+                    <View style={style.watchMoreButton}>
+                        <Text style={style.watchMoreLabel}>{label.watchMore}</Text>
+                    </View>
+                </TouchableOpacity>
             </View>
         </ScrollView>
+            <View style={style.buttonCart}>
+                <TouchableOpacity>
+                    <Entypo name="shopping-cart" style={style.cartIcon} />
+                    <View style={style.numberCart}>
+                        <Text style={style.number}>1</Text>
+                    </View>
+                </TouchableOpacity>
+            </View>
     </View>
   );
 };
 
-export default Home;
+export default HomeScreen;

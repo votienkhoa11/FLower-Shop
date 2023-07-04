@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 
 //import styles
@@ -7,7 +7,8 @@ import style from './style';
 
 const ProductCard = ({data}) => {
   return (
-    <View style={style.productCard}>
+    <TouchableOpacity>
+      <View style={style.productCard}>
         <Image source={data.image} style={style.productImage} />
         <View style={style.information} >
             <View style={style.informationCard}>
@@ -19,7 +20,8 @@ const ProductCard = ({data}) => {
                 <Text style={style.description}>Giảm đến 135k cho đơn hàng</Text>
             </View>
         </View>
-    </View>
+      </View>
+    </TouchableOpacity>
   );
 };
 

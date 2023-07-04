@@ -3,4 +3,5 @@ export default {
     popularLabel: 'Sản phẩm nổi bật',
     recommendLabel: 'Gợi ý cho bạn',
     buyAgainLabel: 'Đặt lại sản phẩm gần đây',
+    watchMore: 'Xem thêm',
 };

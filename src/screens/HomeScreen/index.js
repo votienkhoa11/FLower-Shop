@@ -23,13 +23,17 @@ import { categories } from '../../database/MockData';
 import FlatListEvents from './events';
 import CategoryCard from './CategoryCard';
 import PopularCard from './PopularCard';
+import BroughtAgainCard from './BroughtAgainCard';
+import ProductCard from './ProductCard';
 
 const Home = ({navigation}) => {
     //set data
     const [popularProduct, setPopularProduct] = useState([]);
+    const [broughtProducts, setBroughtProduct] = useState([]);
 
-    //get popular products
-    const getPopularProduct = () => {
+    //get data from the database
+    const getDatafromDB = () => {
+        //get popular products
         let popularProductList = [];
 
         for (let index = 0; index < data.length; index++) {
@@ -37,13 +41,24 @@ const Home = ({navigation}) => {
                 popularProductList.push(data[index]);
             }
         }
-
         setPopularProduct(popularProductList);
+
+        //get products that the users has brought before to ask them to buy again
+        let broughtProductList = [];
+
+        for (let broughtIndex = 0; broughtIndex < user.broughtProducts.length; broughtIndex++) {
+            for (let itemIndex = 0; itemIndex < data.length; itemIndex++) {
+                if (data[itemIndex].id === user.broughtProducts[broughtIndex]) {
+                    broughtProductList.push(data[itemIndex]);
+                }
+            }
+        }
+        setBroughtProduct(broughtProductList);
     };
 
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
-            getPopularProduct();
+            getDatafromDB();
         });
 
         return unsubscribe;
@@ -53,7 +68,10 @@ const Home = ({navigation}) => {
     <View style={style.container}>
         <StatusBar translucent backgroundColor="transparent" barStyle="dark-content" />
         <ScrollView>
-            <ImageBackground source={require('../../styles/imgs/greenBlurBG.png')} >
+            <ImageBackground
+                source={require('../../styles/imgs/greenBlurBG.png')}
+                resizeMode="cover"
+            >
                 <View style={{padding: 16}}>
                     <View style={style.header}>
                         <View>
@@ -92,8 +110,11 @@ const Home = ({navigation}) => {
                 </View>
                 <View style={style.popular}>
                         <Text style={style.label}>{label.popularLabel}</Text>
-                        <ScrollView horizontal >
-                            <View style={{flexDirection: 'row'}}>
+                        <ScrollView
+                            horizontal
+                            showsHorizontalScrollIndicator={false}
+                        >
+                            <View style={style.horizonalView}>
                             {
                                 popularProduct.map(popularData => {
                                     return <PopularCard data={popularData} key={popularData.id} />;
@@ -102,10 +123,32 @@ const Home = ({navigation}) => {
                             </View>
                         </ScrollView>
                 </View>
-                <View>
-                    <Text style={style.label}>{label.buyAgainLabel}</Text>
-                </View>
             </ImageBackground>
+            <View>
+                <Text style={style.label}>{label.buyAgainLabel}</Text>
+                <ScrollView
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                >
+                    <View style={style.horizonalView}>
+                        {
+                            broughtProducts.map(broughtData => {
+                                return <BroughtAgainCard data={broughtData} key={broughtData.id} />;
+                            })
+                        }
+                    </View>
+                </ScrollView>
+            </View>
+            <View style={style.recommendContainer}>
+                <Text style={[style.label, {paddingHorizontal: 0}]}>{label.recommendLabel}</Text>
+                <View>
+                    {
+                        data.map(productData => {
+                            return <ProductCard data={productData} key={data.id}/>;
+                        })
+                    }
+                </View>
+            </View>
         </ScrollView>
     </View>
   );

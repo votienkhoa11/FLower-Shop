@@ -7,7 +7,7 @@ export const data = [
         isSale: true,
         salePercentage: 15,
         isPopular: true,
-        image: require('../styles/imgs/whiterose.jpg'),
+        image: require('../styles/imgs/products/whiterosebracket.jpg'),
     },
 
     {
@@ -18,7 +18,7 @@ export const data = [
         isSale: true,
         salePercentage: 15,
         isPopular: false,
-        image: require('../styles/imgs/flowerbracket.jpg'),
+        image: require('../styles/imgs/products/flowerbracket.jpg'),
     },
 
     {
@@ -29,7 +29,7 @@ export const data = [
         isSale: false,
         salePercentage: 0,
         isPopular: true,
-        image: require('../styles/imgs/flowerbox.jpg'),
+        image: require('../styles/imgs/products/flowerbox.jpg'),
     },
 
     {
@@ -40,7 +40,7 @@ export const data = [
         isSale: false,
         salePercentage: 0,
         isPopular: true,
-        image: require('../styles/imgs/rose.png'),
+        image: require('../styles/imgs/products/bohoahong.png'),
     },
 
     {
@@ -51,7 +51,7 @@ export const data = [
         isSale: true,
         salePercentage: 10,
         isPopular: true,
-        image: require('../styles/imgs/flowerJar.jpg'),
+        image: require('../styles/imgs/products/flowerJar.jpg'),
     },
 
     {
@@ -62,7 +62,7 @@ export const data = [
         isSale: false,
         salePercentage: 0,
         isPopular: false,
-        image: require('../styles/imgs/sunflower.jpg'),
+        image: require('../styles/imgs/products/sunflowerbracket.jpg'),
     },
 
     {
@@ -73,7 +73,7 @@ export const data = [
         isSale: true,
         salePercentage: 10,
         isPopular: true,
-        image: require('../styles/imgs/hoaLan.jpg'),
+        image: require('../styles/imgs/products/chauhoalan.jpg'),
     },
 ];
 
@@ -81,6 +81,7 @@ export const user = {
     id: 1,
     username: 'Võ Tiến Khoa',
     address: '03, Sông Thao, phường 2, Quận Tân Bình',
+    broughtProducts: [6, 3, 2, 5],
 };
 
 export const events = [

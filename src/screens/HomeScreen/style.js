@@ -5,6 +5,7 @@ import { width } from '../../styles';
 import { color } from '../../styles';
 
 export default StyleSheet.create({
+    //container of home screen
     container: {
         width: '100%',
         height: '100%',
@@ -13,6 +14,7 @@ export default StyleSheet.create({
         backgroundColor: color.bgWhite,
     },
 
+    //address
     header: {
         width: '100%',
         flexDirection: 'row',
@@ -42,7 +44,7 @@ export default StyleSheet.create({
     address: {
         fontSize: 14,
         letterSpacing: 0.16,
-        color: '#525252',
+        color: color.bgMedium,
         flexShrink: 1,
         padding: 1,
         opacity: 0.7,
@@ -55,6 +57,7 @@ export default StyleSheet.create({
         marginVertical: 0,
     },
 
+    //search
     search: {
         flexDirection: 'row',
         padding: 1,
@@ -68,6 +71,7 @@ export default StyleSheet.create({
         paddingRight: 4,
     },
 
+    //event page view
     eventView: {
         width: width,
         height: 210,
@@ -97,10 +101,9 @@ export default StyleSheet.create({
         marginHorizontal: 2,
     },
 
+    //categories view
     category: {
         flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
         flexWrap: 'wrap',
         gap: 8,
     },
@@ -114,8 +117,8 @@ export default StyleSheet.create({
     },
 
     categoryImage: {
-        width: 75,
-        height: 75,
+        width: 70,
+        height: 70,
         resizeMode: 'cover',
         borderRadius: 10,
     },
@@ -129,6 +132,7 @@ export default StyleSheet.create({
         textAlign: 'center',
     },
 
+    //popular view
     popular: {
         paddingLeft: 0,
         paddingVertical: 10,
@@ -141,6 +145,10 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         paddingHorizontal: 16,
         paddingBottom: 8,
+    },
+
+    horizonalView: {
+        flexDirection: 'row',
     },
 
     popularCard: {
@@ -158,7 +166,7 @@ export default StyleSheet.create({
 
     popularImage: {
         height: 122.8,
-        width: 116,
+        width: 112,
         resizeMode: 'cover',
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10,
@@ -172,9 +180,134 @@ export default StyleSheet.create({
     },
 
     titleText: {
-        fontSize: 11,
+        fontSize: 12,
         fontWeight: '500',
         color: color.black,
-        letterSpacing: 0.16,
+    },
+
+    //brought items view
+    broughtCard: {
+        backgroundColor: color.bgWhite,
+        borderRadius: 10,
+        shadowColor: color.black,
+        shadowOffset: {
+            width: 20,
+            height: 24,
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 8,
+        elevation: 4,
+    },
+
+    broughtImage: {
+        width: 164,
+        height: 122,
+        resizeMode: 'cover',
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+    },
+
+    sale: {
+        position: 'absolute',
+        alignItems: 'center',
+        paddingVertical: 15,
+        paddingLeft: 8,
+        width: 70,
+        height: 25,
+    },
+
+    saleIcon: {
+        resizeMode: 'stretch',
+        width: 70,
+        height: 25,
+    },
+
+    sale2: {
+        position: 'absolute',
+        paddingTop: 17,
+        alignItems: 'center',
+        alignContent: 'center',
+    },
+
+    saleText: {
+        fontSize: 10,
+        fontWeight: '500',
+        color: color.bgWhite,
+    },
+
+    broughtTitle: {
+        width: 130,
+        paddingVertical: 12,
+        flexWrap: 'wrap',
+    },
+
+    price: {
+        paddingTop: 2,
+        fontSize: 10,
+        fontWeight: '500',
+        color: color.bgMedium,
+    },
+
+    addIcon: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    //recommendation view
+    recommendContainer: {
+        margin: 16,
+    },
+
+    productCard: {
+        flexDirection: 'row',
+        backgroundColor: color.bgWhite,
+        gap: 8,
+        marginBottom: 16,
+        borderRadius: 8,
+        shadowColor: color.black,
+        shadowOffset: {
+            width: 20,
+            height: 24,
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 8,
+        elevation: 4,
+    },
+
+    productImage: {
+        width: 107,
+        height: 107,
+        margin: 4,
+        resizeMode: 'cover',
+        borderRadius: 8,
+    },
+
+    information: {
+        flex: 1,
+        margin: 8,
+        gap: 8,
+    },
+
+    informationCard: {
+        width: '100%',
+        flex: 1,
+        gap: 4,
+        borderBottomColor: color.bgLight,
+        borderBottomWidth: 1,
+    },
+
+    productName: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: color.black,
+        flexWrap: 'wrap',
+    },
+
+    description: {
+        fontSize: 12,
+        letterSpacing: 0.32,
+        color: color.bgMedium,
+        flexWrap: 'wrap',
     },
 });

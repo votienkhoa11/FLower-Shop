@@ -1,13 +1,12 @@
-/* eslint-disable react/no-unstable-nested-components */
-/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable react/no-unstable-nested-components*/
+/* eslint-disable react/react-in-jsx-scope*/
 /* eslint-disable react-native/no-inline-styles */
 import { View, FlatList, Image, Animated } from 'react-native';
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 
 //import styles
 import style from './style';
 import { width } from '../../styles';
-import { color } from '../../styles';
 
 import { events } from '../../database/MockData';
 
@@ -51,13 +50,12 @@ const FlatListEvents = () => {
             return (
                 <Animated.View style={[style.dotIndicators, {width: dotWidth, opacity}]} />
             );
-        })
+        });
     };
 
     return (
         <View style={{paddingLeft: 16}}>
-            {/*Event page
-            check if there is an event, show the event, if not, do not show anything*/}
+            {/*Event page*/}
             <FlatList
                 data={events ? events : null}
                 horizontal

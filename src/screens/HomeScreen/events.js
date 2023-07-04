@@ -20,7 +20,7 @@ const FlatListEvents = () => {
     const renderEvents = ({item, index}) => {
         return (
             <View style={style.eventView}>
-                <Image source={item.page} style={style.imageEvent} />
+                <Image source={item.image} style={style.imageEvent} />
             </View>
         );
     };
@@ -46,9 +46,11 @@ const FlatListEvents = () => {
                 outputRange: [0.2, 1, 0.2],
                 extrapolate: 'clamp',
             });
-
             return (
-                <Animated.View style={[style.dotIndicators, {width: dotWidth, opacity}]} />
+                <Animated.View
+                    key={index}
+                    style={[style.dotIndicators, {width: dotWidth, opacity}]}
+                />
             );
         });
     };
@@ -57,17 +59,15 @@ const FlatListEvents = () => {
         <View style={{paddingLeft: 16}}>
             {/*Event page*/}
             <FlatList
-                data={events ? events : null}
+                data={events}
                 horizontal
                 renderItem={renderEvents}
-                keyExtractor={(item, index) => {return item.id;}}
                 showsHorizontalScrollIndicator={false}
                 decelerationRate={0.5}
                 snapToInterval={width}
                 bounces={true}
                 pagingEnabled={true}
                 onScroll={handleScroll}
-
             />
             <View style={style.dotView}>
                 {renderDotsIndicators()}

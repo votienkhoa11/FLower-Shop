@@ -26,7 +26,7 @@ const BroughtAgainCard = ({data}) => {
             </View>
         </View>
         {
-            data.isSale ? (
+            data.salePercentage > 0 ? (
                 <View style={style.sale} >
                     <Image source={require('../../styles/imgs/saleLabel.png')} style={style.saleIcon} />
                     <View style={style.sale2} >

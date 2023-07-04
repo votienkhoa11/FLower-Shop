@@ -1,11 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
 import { View, Text, ImageBackground, StatusBar, ScrollView, TouchableOpacity,
-    TextInput, Image, Animated } from 'react-native';
+    TextInput } from 'react-native';
 import React, { useEffect, useState } from 'react';
 
 //import styles
 import style from './style';
-import { width } from '../../styles';
 import { color } from '../../styles';
 
 //import icon
@@ -29,19 +28,41 @@ import ProductCard from './ProductCard';
 
 const HomeScreen = ({navigation}) => {
     //set data
+    const [product, setProduct] = useState([]);
     const [popularProduct, setPopularProduct] = useState([]);
     const [broughtProducts, setBroughtProduct] = useState([]);
 
     //get data from the database
     const getDatafromDB = () => {
+        //get product
+        let productList = [];
+
+        for (let index = 0; index < 5; index++) {
+            productList.push(data[index]);
+        }
+
+        setProduct(productList);
         //get popular products
         let popularProductList = [];
 
+        //get the like values of each product
+        let likeList = [];
         for (let index = 0; index < data.length; index++) {
-            if (data[index].isPopular) {
-                popularProductList.push(data[index]);
-            }
+                likeList.push(data[index].like);
         }
+
+        //sort the like from largest to smallest and get 5 of them
+        likeList.sort(((x, y) => y - x));
+        likeList = likeList.slice(0, 5);
+
+        //get the product that has the most like
+        for (let dataIndex = 0; dataIndex < data.length; dataIndex++) {
+            for (let likeIndex = 0; likeIndex < likeList.length; likeIndex++) {
+                if (data[dataIndex].like === likeList[likeIndex]) {
+                    popularProductList.push(data[dataIndex]);
+                }
+            }
+    }
         setPopularProduct(popularProductList);
 
         //get products that the users has brought before to ask them to buy again
@@ -54,6 +75,7 @@ const HomeScreen = ({navigation}) => {
                 }
             }
         }
+        broughtProductList = broughtProductList.slice(0, 5);
         setBroughtProduct(broughtProductList);
     };
 
@@ -99,7 +121,9 @@ const HomeScreen = ({navigation}) => {
                         </View>
                     </View>
                 </View>
+
                 <FlatListEvents />
+
                 <View style={{padding: 8}} >
                     <View style={style.category}>
                         {
@@ -144,8 +168,8 @@ const HomeScreen = ({navigation}) => {
                 <Text style={[style.label, {paddingHorizontal: 0}]}>{label.recommendLabel}</Text>
                 <View>
                     {
-                        data.map(productData => {
-                            return <ProductCard data={productData} key={data.id}/>;
+                        product.map(productData => {
+                            return <ProductCard data={productData} key={productData.id}/>;
                         })
                     }
                 </View>

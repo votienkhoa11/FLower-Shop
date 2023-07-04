@@ -6,6 +6,7 @@ import React from 'react';
 import style from './style';
 
 const ProductCard = ({data}) => {
+
   return (
     <TouchableOpacity>
       <View style={style.productCard}>

@@ -3,7 +3,6 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
 //import {Provider} from 'react-redux';
 
@@ -38,7 +37,7 @@ function TabNavigators () {
         tabBarInactiveTintColor: color.black,
         tabBarStyle: {
           height: 70,
-          paddingBottom: 16,
+          paddingBottom: 8,
         },
       }}
     >

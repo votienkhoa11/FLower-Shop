@@ -6,7 +6,7 @@ export const data = [
         price: 200000,
         isSale: true,
         salePercentage: 15,
-        isPopular: true,
+        like: 347,
         image: require('../styles/imgs/products/whiterosebracket.jpg'),
     },
 
@@ -17,7 +17,7 @@ export const data = [
         price: 300000,
         isSale: true,
         salePercentage: 15,
-        isPopular: false,
+        like: 106,
         image: require('../styles/imgs/products/flowerbracket.jpg'),
     },
 
@@ -28,7 +28,7 @@ export const data = [
         price: 150000,
         isSale: false,
         salePercentage: 0,
-        isPopular: true,
+        like: 63,
         image: require('../styles/imgs/products/flowerbox.jpg'),
     },
 
@@ -39,7 +39,7 @@ export const data = [
         price: 150000,
         isSale: false,
         salePercentage: 0,
-        isPopular: true,
+        like: 246,
         image: require('../styles/imgs/products/bohoahong.png'),
     },
 
@@ -50,7 +50,7 @@ export const data = [
         price: 100000,
         isSale: true,
         salePercentage: 10,
-        isPopular: true,
+        like: 286,
         image: require('../styles/imgs/products/flowerJar.jpg'),
     },
 
@@ -61,7 +61,7 @@ export const data = [
         price: 400000,
         isSale: false,
         salePercentage: 0,
-        isPopular: false,
+        like: 422,
         image: require('../styles/imgs/products/sunflowerbracket.jpg'),
     },
 
@@ -72,7 +72,7 @@ export const data = [
         price: 300000,
         isSale: true,
         salePercentage: 10,
-        isPopular: true,
+        like: 126,
         image: require('../styles/imgs/products/chauhoalan.jpg'),
     },
 ];
@@ -88,13 +88,13 @@ export const events = [
     {
         id: 1,
         event: 'spring sale',
-        page: require('../styles/imgs/saleSpring.png'),
+        image: require('../styles/imgs/saleSpring.png'),
     },
 
     {
         id: 2,
         event: 'summer sale',
-        page: require('../styles/imgs/salesummer.png'),
+        image: require('../styles/imgs/salesummer.png'),
     },
 ];
 

@@ -5,6 +5,10 @@ import React from 'react';
 //import styles
 import style from './style';
 
+//import components
+import SaleComponent from './saleComponent';
+import { DataTable } from 'react-native-paper';
+
 const ProductCard = ({data}) => {
 
   return (
@@ -21,6 +25,11 @@ const ProductCard = ({data}) => {
                 <Text style={style.description}>Giảm đến 135k cho đơn hàng</Text>
             </View>
         </View>
+        {
+          data.salePercentage > 0 ? (
+            <SaleComponent data={data} saleStyle={style.saleRecommend} />
+          ) : null
+        }
       </View>
     </TouchableOpacity>
   );

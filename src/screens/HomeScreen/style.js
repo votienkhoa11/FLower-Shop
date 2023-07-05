@@ -1,6 +1,6 @@
 import { StyleSheet, StatusBar } from 'react-native';
-
 import { width } from '../../styles';
+
 //color
 import { color } from '../../styles';
 
@@ -51,6 +51,7 @@ export default StyleSheet.create({
     },
 
     iconView: {
+        flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
         marginLeft: 38,
@@ -210,8 +211,8 @@ export default StyleSheet.create({
     sale: {
         position: 'absolute',
         alignItems: 'center',
-        paddingVertical: 15,
-        paddingLeft: 8,
+        marginVertical: 15,
+        marginLeft: 4,
         width: 70,
         height: 25,
     },
@@ -223,8 +224,10 @@ export default StyleSheet.create({
     },
 
     sale2: {
+        flex: 1,
         position: 'absolute',
-        paddingTop: 17,
+        paddingTop: 2,
+        paddingRight: 6,
         alignItems: 'center',
         alignContent: 'center',
     },
@@ -311,6 +314,16 @@ export default StyleSheet.create({
         flexWrap: 'wrap',
     },
 
+    saleRecommend: {
+        flex: 1,
+        position: 'absolute',
+        alignItems: 'center',
+        marginVertical: 6,
+        width: 70,
+        height: 25,
+    },
+
+    //xem them button
     watchMoreButton: {
         height: 40,
         marginVertical: 8,
@@ -328,6 +341,7 @@ export default StyleSheet.create({
         fontWeight: '600',
     },
 
+    //cart button
     buttonCart: {
         position: 'absolute',
         width: 52,

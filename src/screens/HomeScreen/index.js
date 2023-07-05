@@ -1,7 +1,9 @@
+/* eslint-disable curly */
 /* eslint-disable react-native/no-inline-styles */
 import { View, Text, ImageBackground, StatusBar, ScrollView, TouchableOpacity,
     TextInput } from 'react-native';
 import React, { useEffect, useState } from 'react';
+import Toast from 'react-native-root-toast';
 
 //import styles
 import style from './style';
@@ -32,42 +34,50 @@ const HomeScreen = ({navigation}) => {
     const [popularProduct, setPopularProduct] = useState([]);
     const [broughtProducts, setBroughtProduct] = useState([]);
 
+    const [favorite, setFavorite] = useState(false);
+
+    const callToast = (msg) => {
+        Toast.show(msg, {
+          duration: Toast.durations.LONG,
+          position: Toast.positions.BOTTOM,
+          shadow: true,
+          animation: true,
+          hideOnPress: true,
+          delay: 0,
+          backgroundColor: '#fff',
+          textColor: '#000',
+      });
+    };
+
     //get data from the database
     const getDatafromDB = () => {
         //get product
         let productList = [];
 
-        for (let index = 0; index < 5; index++) {
+        for (let index = 0; index < data.length; index++) {
             productList.push(data[index]);
         }
+        productList = productList.sort(() => 0.5 - Math.random());
+        setProduct(productList.slice(0, 5));
 
-        setProduct(productList);
-        //get popular products
-        let popularProductList = [];
-
-        //get the like values of each product
-        let likeList = [];
-        for (let index = 0; index < data.length; index++) {
-                likeList.push(data[index].like);
-        }
-
-        //sort the like from largest to smallest and get 5 of them
-        likeList.sort(((x, y) => y - x));
-        likeList = likeList.slice(0, 5);
-
-        //get the product that has the most like
-        for (let dataIndex = 0; dataIndex < data.length; dataIndex++) {
-            for (let likeIndex = 0; likeIndex < likeList.length; likeIndex++) {
-                if (data[dataIndex].like === likeList[likeIndex]) {
-                    popularProductList.push(data[dataIndex]);
-                }
-            }
-    }
-        setPopularProduct(popularProductList);
+        //get popular products by sorting productList
+        //the idea is use the sort function to sort based on comapring like products
+        let popularProductList = productList.sort(function(a, b) {
+            let keyA = a.like;
+            let keyB = b.like;
+            //compare the 2 like of the products
+            if (keyA < keyB) return 1;
+            if (keyA > keyB) return -1;
+            return 0;
+        });
+        //set the popular product with top 5 item
+        setPopularProduct(popularProductList.slice(0, 5));
 
         //get products that the users has brought before to ask them to buy again
         let broughtProductList = [];
 
+        //use for loop to check the products that user had brought before to recommend
+        //the user to buy again.
         for (let broughtIndex = 0; broughtIndex < user.broughtProducts.length; broughtIndex++) {
             for (let itemIndex = 0; itemIndex < data.length; itemIndex++) {
                 if (data[itemIndex].id === user.broughtProducts[broughtIndex]) {
@@ -75,8 +85,8 @@ const HomeScreen = ({navigation}) => {
                 }
             }
         }
-        broughtProductList = broughtProductList.slice(0, 5);
-        setBroughtProduct(broughtProductList);
+        //set 5 brought products
+        setBroughtProduct(broughtProductList.slice(0, 5));
     };
 
     useEffect(() => {
@@ -107,7 +117,24 @@ const HomeScreen = ({navigation}) => {
                             </View>
                         </View>
                         <View style={style.iconView}>
-                            <MaterialIcons name="favorite" style={style.icon24px} />
+                        {
+                            favorite ?
+                            <TouchableOpacity
+                                onPress={() => {
+                                    setFavorite(false);
+                                    callToast('Unfavoite');
+                                    }}>
+                                <MaterialIcons name="favorite" style={style.icon24px} />
+                            </TouchableOpacity>
+
+                            : <TouchableOpacity
+                                onPress={() => {
+                                    setFavorite(true);
+                                    callToast('Favorite');
+                                }}>
+                                <MaterialIcons name="favorite-border" style={style.icon24px} />
+                            </TouchableOpacity>
+                        }
                         </View>
                     </View>
                     <View style={style.search}>

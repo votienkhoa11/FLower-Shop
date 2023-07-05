@@ -5,6 +5,7 @@ import style from './style';
 
 //import icon
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import SaleComponent from './saleComponent';
 
 const BroughtAgainCard = ({data}) => {
   return (
@@ -27,12 +28,7 @@ const BroughtAgainCard = ({data}) => {
         </View>
         {
             data.salePercentage > 0 ? (
-                <View style={style.sale} >
-                    <Image source={require('../../styles/imgs/saleLabel.png')} style={style.saleIcon} />
-                    <View style={style.sale2} >
-                        <Text style={style.saleText} >Giảm {data.salePercentage}%</Text>
-                    </View>
-                </View>
+                <SaleComponent data={data} saleStyle={style.sale} />
             ) : null
         }
     </View>

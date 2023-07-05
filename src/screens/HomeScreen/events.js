@@ -1,5 +1,3 @@
-/* eslint-disable react/no-unstable-nested-components*/
-/* eslint-disable react/react-in-jsx-scope*/
 /* eslint-disable react-native/no-inline-styles */
 import { View, FlatList, Image, Animated } from 'react-native';
 import React, { useRef } from 'react';
@@ -15,6 +13,8 @@ const FlatListEvents = () => {
     //animated values
     const scrollX = useRef(new Animated.Value(0)).current;
     const position = Animated.divide(scrollX, width);
+
+    //flatlist value
 
     //render events
     const renderEvents = ({item, index}) => {
@@ -33,7 +33,6 @@ const FlatListEvents = () => {
     };
 
      //render dots Indicators
-     //BUG: Warning: Each child in a list should have a unique "key" prop.
      const renderDotsIndicators = () => {
         return events.map((dot, index) => {
             const dotWidth = position.interpolate({

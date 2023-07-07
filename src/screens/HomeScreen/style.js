@@ -52,9 +52,9 @@ export default StyleSheet.create({
 
     iconView: {
         flex: 1,
-        flexDirection: 'row',
         alignItems: 'center',
-        marginLeft: 38,
+        justifyContent: 'center',
+        marginLeft: 40,
         marginVertical: 0,
     },
 

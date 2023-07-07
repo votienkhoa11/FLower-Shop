@@ -52,39 +52,27 @@ const HomeScreen = ({navigation}) => {
     //get data from the database
     const getDatafromDB = () => {
         //get product
-        let productList = [];
+        const productList = [...data];
 
-        for (let index = 0; index < data.length; index++) {
-            productList.push(data[index]);
-        }
-        productList = productList.sort(() => 0.5 - Math.random());
+        productList.sort(() => 0.5 - Math.random());
         setProduct(productList.slice(0, 5));
 
         //get popular products by sorting productList
         //the idea is use the sort function to sort based on comapring like products
-        let popularProductList = productList.sort(function(a, b) {
-            let keyA = a.like;
-            let keyB = b.like;
+        const popularProductList = productList.sort(function(a, b) {
+            const keyA = a.like || 0;
+            const keyB = b.like || 0;
             //compare the 2 like of the products
-            if (keyA < keyB) return 1;
-            if (keyA > keyB) return -1;
-            return 0;
+            return keyB - keyA;
         });
+
         //set the popular product with top 5 item
         setPopularProduct(popularProductList.slice(0, 5));
 
         //get products that the users has brought before to ask them to buy again
-        let broughtProductList = [];
+        const broughtProductList = data.filter((productItem) =>
+            user.broughtProducts.includes(productItem.id));
 
-        //use for loop to check the products that user had brought before to recommend
-        //the user to buy again.
-        for (let broughtIndex = 0; broughtIndex < user.broughtProducts.length; broughtIndex++) {
-            for (let itemIndex = 0; itemIndex < data.length; itemIndex++) {
-                if (data[itemIndex].id === user.broughtProducts[broughtIndex]) {
-                    broughtProductList.push(data[itemIndex]);
-                }
-            }
-        }
         //set 5 brought products
         setBroughtProduct(broughtProductList.slice(0, 5));
     };
@@ -154,8 +142,8 @@ const HomeScreen = ({navigation}) => {
                 <View style={{padding: 8}} >
                     <View style={style.category}>
                         {
-                            categories.map(cateData => {
-                                return <CategoryCard data={cateData} key={cateData.id} />;
+                            (categories || []).map(categoryData => {
+                                return <CategoryCard data={categoryData} key={categoryData.id} />;
                             })
                         }
                     </View>
@@ -168,8 +156,8 @@ const HomeScreen = ({navigation}) => {
                     >
                         <View style={style.horizonalView}>
                         {
-                            popularProduct.map(popularData => {
-                                return <PopularCard data={popularData} key={popularData.id} />;
+                            (popularProduct || []).map(popularProductData => {
+                                return <PopularCard data={popularProductData} key={popularProductData.id} />;
                             })
                         }
                         </View>
@@ -184,8 +172,8 @@ const HomeScreen = ({navigation}) => {
                 >
                     <View style={style.horizonalView}>
                         {
-                            broughtProducts.map(broughtData => {
-                                return <BroughtAgainCard data={broughtData} key={broughtData.id} />;
+                            (broughtProducts || []).map(broughtProductData => {
+                                return <BroughtAgainCard data={broughtProductData} key={broughtProductData.id} />;
                             })
                         }
                     </View>
@@ -195,7 +183,7 @@ const HomeScreen = ({navigation}) => {
                 <Text style={[style.label, {paddingHorizontal: 0}]}>{label.recommendLabel}</Text>
                 <View>
                     {
-                        product.map(productData => {
+                        (product || []).map(productData => {
                             return <ProductCard data={productData} key={productData.id}/>;
                         })
                     }

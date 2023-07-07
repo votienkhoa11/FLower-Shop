@@ -7,31 +7,33 @@ import style from './style';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import SaleComponent from './saleComponent';
 
-const BroughtAgainCard = ({data}) => {
+const BroughtAgainCard = ({data = {}}) => {
   return (
-    <View style={{padding: 8}}>
-        <View style={style.broughtCard}>
-            <TouchableOpacity>
-                    <Image source={data.image} style={style.broughtImage} />
-            </TouchableOpacity>
-            <View style={{flexDirection: 'row', paddingHorizontal: 8}}>
-                <View style={style.broughtTitle}>
-                    <Text style={style.titleText}>{data.name}</Text>
-                    <Text style={style.price}>{data.price}</Text>
-                </View>
+    data !== {} ? (
+        <View style={{padding: 8}}>
+            <View style={style.broughtCard}>
                 <TouchableOpacity>
-                    <View style={style.addIcon}>
-                        <AntDesign name="pluscircleo" size={16} />
-                    </View>
+                        <Image source={data.image} style={style.broughtImage} />
                 </TouchableOpacity>
+                <View style={{flexDirection: 'row', paddingHorizontal: 8}}>
+                    <View style={style.broughtTitle}>
+                        <Text style={style.titleText}>{data.name}</Text>
+                        <Text style={style.price}>{data.price}</Text>
+                    </View>
+                    <TouchableOpacity>
+                        <View style={style.addIcon}>
+                            <AntDesign name="pluscircleo" size={16} />
+                        </View>
+                    </TouchableOpacity>
+                </View>
             </View>
+            {
+                data.salePercentage > 0 ? (
+                    <SaleComponent data={data} saleStyle={style.sale} />
+                ) : null
+            }
         </View>
-        {
-            data.salePercentage > 0 ? (
-                <SaleComponent data={data} saleStyle={style.sale} />
-            ) : null
-        }
-    </View>
+        ) : null
   );
 };
 

@@ -82,6 +82,8 @@ export const user = {
     username: 'Võ Tiến Khoa',
     address: '03, Sông Thao, phường 2, Quận Tân Bình',
     broughtProducts: [6, 3, 2, 5],
+    delivery: 'Giao hàng trong 25 phút',
+    promotion: 'Giảm đến 135k cho đơn hàng',
 };
 
 export const events = [

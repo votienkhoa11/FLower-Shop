@@ -34,20 +34,20 @@ const FlatListEvents = () => {
 
      //render dots Indicators
      const renderDotsIndicators = () => {
-        return events.map((dot, index) => {
+        return events.map((dot, dotIndicatorsIndex) => {
             const dotWidth = position.interpolate({
-                inputRange: [index - 1, index, index + 1],
+                inputRange: [dotIndicatorsIndex - 1, dotIndicatorsIndex, dotIndicatorsIndex + 1],
                 outputRange: [8, 16, 8],
                 extrapolate: 'clamp',
             });
             const opacity = position.interpolate({
-                inputRange: [index - 1, index, index + 1],
+                inputRange: [dotIndicatorsIndex - 1, dotIndicatorsIndex, dotIndicatorsIndex + 1],
                 outputRange: [0.2, 1, 0.2],
                 extrapolate: 'clamp',
             });
             return (
                 <Animated.View
-                    key={index}
+                    key={dotIndicatorsIndex}
                     style={[style.dotIndicators, {width: dotWidth, opacity}]}
                 />
             );

@@ -16,7 +16,6 @@ const DropDownInput = ({
     placeholder,
     labelName,
     error,
-    defaultValue,
 }) => {
   return (
     <View style={{paddingVertical: 8}}>
@@ -30,7 +29,7 @@ const DropDownInput = ({
                 dropdownOverlayColor="rgba(0,0,0,0)"
                 buttonStyle={[
                     styles.input,
-                    {borderColor: error ? color.red : color.lightDark,},
+                    {borderColor: error ? color.red : color.lightDark},
                 ]}
                 dropdownStyle={styles.dropDown}
                 buttonTextStyle={styles.buttonText}

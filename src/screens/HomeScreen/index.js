@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import { View, Text, ImageBackground, StatusBar, ScrollView, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import Toast from 'react-native-root-toast';
+import { callToast } from '../Components/Toast';
 
 //import styless
 import defaultStyles from '../../DefaultStyles';
@@ -36,19 +36,6 @@ const HomeScreen = ({navigation}) => {
 
     const [loading, setLoading] = useState(true);
     const [favorite, setFavorite] = useState(false);
-
-    const callToast = (msg) => {
-        Toast.show(msg, {
-          duration: Toast.durations.LONG,
-          position: Toast.positions.BOTTOM,
-          shadow: true,
-          animation: true,
-          hideOnPress: true,
-          delay: 0,
-          backgroundColor: '#fff',
-          textColor: '#000',
-      });
-    };
 
     //get data from the database
     const getDatafromDB = () => {
@@ -121,7 +108,7 @@ const HomeScreen = ({navigation}) => {
                                         <TouchableOpacity
                                             onPress={() => {
                                                 setFavorite(false);
-                                                callToast('Unfavoite');
+                                                callToast('Unfavorite');
                                                 }}>
                                             <MaterialIcons name="favorite" style={styles.icon24px} />
                                         </TouchableOpacity>

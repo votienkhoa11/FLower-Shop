@@ -86,7 +86,7 @@ export const user = {
     gender: 'Nam',
     birthday: '03/09/1999',
     member: 'sliver',
-    avatar: '../DefaultStyles/imgs/user/avatar.jpg',
+    avatar: '',
     broughtProducts: [6, 3, 2, 5],
     delivery: 'Giao hàng trong 25 phút',
     promotion: 'Giảm đến 135k cho đơn hàng',

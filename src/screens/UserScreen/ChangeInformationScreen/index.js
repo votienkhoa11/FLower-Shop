@@ -4,6 +4,7 @@ import { View, Text, StatusBar, TouchableOpacity, ScrollView,
 import React, { useState, useEffect } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { callToast } from '../../Components/Toast';
 
 //import styles
 import defaultStyles from '../../../DefaultStyles';
@@ -82,6 +83,8 @@ const ChangeInformationScreen = ({navigation}) => {
         const choiceGender = selectedGender;
 
         setGender(choiceGender);
+        setForm({...form, ['gender']: formatDate(choiceGender)});
+
         setError((previous) => {
             return {...previous, gender: null};
         });
@@ -172,11 +175,14 @@ const ChangeInformationScreen = ({navigation}) => {
             Object.values(form).every((item) => item.trim().length > 0) &&
             Object.values(error).every((item) => !item)
         ) {
+            //merge form with user data, then save it to storage
             const mergeData = {
                 ...user, ...form,
             };
-            console.log(mergeData);
-            //await AsyncStorage.setItem('user', JSON.stringify(form));
+
+            callToast('Your information is successfully updated!');
+            await AsyncStorage.setItem('user', JSON.stringify(mergeData));
+            navigation.navigate('usermenu');
         }
     };
 

@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { callToast } from '../../Components/Toast';
+import * as ImagePicker from 'react-native-image-picker';
 
 //import styles
 import defaultStyles from '../../../DefaultStyles';
@@ -30,6 +31,26 @@ const ChangeInformationScreen = ({navigation}) => {
     //form of user information
     const [form, setForm] = useState({});
     const [user, setUser] = useState({});
+
+    //set avatar
+    const [avatar, setAvatar] = useState(null);
+
+    //get avatar
+    const getAvatar = async () => {
+        const options = {
+            selectionLimit: 0,
+            mediaType: 'photo',
+            includeBase64: true,
+            includeExtra: true,
+        };
+
+        const result = await ImagePicker.launchImageLibrary(options);
+
+        if (result) {
+            setAvatar(result);
+            console.log(avatar);
+        }
+    };
 
     //set date and picker
     const [date, setDate] = useState(new Date());
@@ -215,13 +236,13 @@ const ChangeInformationScreen = ({navigation}) => {
                         </View>
                     </TouchableOpacity>
                     <View style={styles.avatarView}>
-                        <Avatar />
+                        <Avatar sourceImg={avatar} />
                     </View>
                     {/*Change ava button */}
                     <View style={styles.changeButtonContainer}>
                         <TouchableOpacity
-                            onPress={async () => {
-                                 console.log( await userData());
+                            onPress={ () => {
+                                getAvatar();
                             }}>
                             <Entypo name="edit" style={styles.changeIcon} />
                         </TouchableOpacity>

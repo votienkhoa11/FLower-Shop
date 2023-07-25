@@ -7,7 +7,7 @@ export const data = [
         isSale: true,
         salePercentage: 15,
         like: 347,
-        image: require('../styles/imgs/products/whiterosebracket.jpg'),
+        image: require('../DefaultStyles/imgs/products/whiterosebracket.jpg'),
     },
 
     {
@@ -18,7 +18,7 @@ export const data = [
         isSale: true,
         salePercentage: 15,
         like: 106,
-        image: require('../styles/imgs/products/flowerbracket.jpg'),
+        image: require('../DefaultStyles/imgs/products/flowerbracket.jpg'),
     },
 
     {
@@ -29,7 +29,7 @@ export const data = [
         isSale: false,
         salePercentage: 0,
         like: 63,
-        image: require('../styles/imgs/products/flowerbox.jpg'),
+        image: require('../DefaultStyles/imgs/products/flowerbox.jpg'),
     },
 
     {
@@ -40,7 +40,7 @@ export const data = [
         isSale: false,
         salePercentage: 0,
         like: 246,
-        image: require('../styles/imgs/products/bohoahong.png'),
+        image: require('../DefaultStyles/imgs/products/bohoahong.png'),
     },
 
     {
@@ -51,7 +51,7 @@ export const data = [
         isSale: true,
         salePercentage: 10,
         like: 286,
-        image: require('../styles/imgs/products/flowerJar.jpg'),
+        image: require('../DefaultStyles/imgs/products/flowerJar.jpg'),
     },
 
     {
@@ -62,7 +62,7 @@ export const data = [
         isSale: false,
         salePercentage: 0,
         like: 422,
-        image: require('../styles/imgs/products/sunflowerbracket.jpg'),
+        image: require('../DefaultStyles/imgs/products/sunflowerbracket.jpg'),
     },
 
     {
@@ -73,14 +73,20 @@ export const data = [
         isSale: true,
         salePercentage: 10,
         like: 126,
-        image: require('../styles/imgs/products/chauhoalan.jpg'),
+        image: require('../DefaultStyles/imgs/products/chauhoalan.jpg'),
     },
 ];
 
 export const user = {
     id: 1,
-    username: 'Võ Tiến Khoa',
-    address: '03, Sông Thao, phường 2, Quận Tân Bình',
+    name: 'Võ Tiến Khoa',
+    address: '81, Dã Tượng, phường 9, Quận 8, Hồ Chí Minh',
+    phone: '+84869115716',
+    email: 'votienkhoa16vl@gmail.com',
+    gender: 'Nam',
+    birthday: '03/09/1999',
+    member: 'sliver',
+    avatar: '../DefaultStyles/imgs/user/avatar.jpg',
     broughtProducts: [6, 3, 2, 5],
     delivery: 'Giao hàng trong 25 phút',
     promotion: 'Giảm đến 135k cho đơn hàng',
@@ -90,13 +96,13 @@ export const events = [
     {
         id: 1,
         event: 'spring sale',
-        image: require('../styles/imgs/saleSpring.png'),
+        image: require('../DefaultStyles/imgs/events/saleSpring.png'),
     },
 
     {
         id: 2,
         event: 'summer sale',
-        image: require('../styles/imgs/salesummer.png'),
+        image: require('../DefaultStyles/imgs/events/salesummer.png'),
     },
 ];
 
@@ -104,38 +110,130 @@ export const categories = [
     {
         id: 1,
         name: 'Hoa Hồng',
-        image: require('../styles/imgs/categories/rose.png'),
+        image: require('../DefaultStyles/imgs/categories/rose.png'),
     },
 
     {
         id: 2,
         name: 'Hoa Hồng Trắng',
-        image: require('../styles/imgs/categories/whiterose.jpg'),
+        image: require('../DefaultStyles/imgs/categories/whiterose.jpg'),
     },
     {
         id: 3,
         name: 'Hoa Cúc',
-        image: require('../styles/imgs/categories/hoacuc.jpg'),
+        image: require('../DefaultStyles/imgs/categories/hoacuc.jpg'),
     },
     {
         id: 4,
         name: 'Hoa Hướng Dương',
-        image: require('../styles/imgs/categories/sunflower.jpg'),
+        image: require('../DefaultStyles/imgs/categories/sunflower.jpg'),
     },
     {
         id: 5,
         name: 'Hoa Lan',
-        image: require('../styles/imgs/categories/hoalan.jpg'),
+        image: require('../DefaultStyles/imgs/categories/hoalan.jpg'),
     },
     {
         id: 6,
         name: 'Giỏ Hoa',
-        image: require('../styles/imgs/categories/giohoa.jpg'),
+        image: require('../DefaultStyles/imgs/categories/giohoa.jpg'),
     },
 
     {
         id: 7,
         name: 'Bó Hoa',
-        image: require('../styles/imgs/categories/bohoa.png'),
+        image: require('../DefaultStyles/imgs/categories/bohoa.png'),
+    },
+];
+
+export const searchResult = [
+    {
+        id : 1,
+        search: 'Giỏ hoa',
+        searchTime: 13,
+    },
+
+    {
+        id : 2,
+        search: 'Hoa hồng',
+        searchTime: 311,
+    },
+
+    {
+        id : 3,
+        search: 'Hoa Hướng Dương',
+        searchTime: 169,
+    },
+
+    {
+        id : 4,
+        search: 'Giỏ hoa',
+        searchTime: 13,
+    },
+
+    {
+        id : 5,
+        search: 'Hoa Ly Ly',
+        searchTime: 54,
+    },
+
+    {
+        id : 6,
+        search: 'Bó hoa',
+        searchTime: 250,
+    },
+
+    {
+        id : 7,
+        search: 'Giỏ hoa đẹp',
+        searchTime: 62,
+    },
+
+    {
+        id : 8,
+        search: 'Hoa hồng trắng',
+        searchTime: 201,
+    },
+
+    {
+        id : 9,
+        search: 'Chậu hoa',
+        searchTime: 269,
+    },
+
+    {
+        id : 10,
+        search: 'Hoa Lan',
+        searchTime: 171,
+    },
+
+    {
+        id : 11,
+        search: 'Chậu hoa Lan',
+        searchTime: 14,
+    },
+
+    {
+        id : 12,
+        search: 'Giỏ hoa hồng',
+        searchTime: 211,
+    },
+
+    {
+        id : 13,
+        search: 'Hộp hoa',
+        searchTime: 234,
+    },
+
+    {
+        id : 14,
+        search: 'Bó hoa hồng trắng',
+        searchTime: 100,
+    },
+
+    {
+        id : 15,
+        search: 'Hoa tươi',
+        searchTime: 81,
     },
 ];

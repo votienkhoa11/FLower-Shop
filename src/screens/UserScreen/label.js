@@ -1,0 +1,17 @@
+export default {
+    member: 'Thành viên ',
+    account: 'Tài khoản',
+    order: 'Đơn hàng',
+    deal: 'Khuyến mãi',
+    paymentMethod: 'Phương thức thanh toán',
+    notification: 'Thông báo',
+    helpCenter: 'Trợ giúp & yêu cầu hỗ trợ',
+    accountManagement: 'Quản lý tài khoản',
+    accountSecurity: 'Bảo mật tài khoản',
+    logOut: 'Đăng xuất',
+    deleteAccount: 'Xóa tài khoản',
+    gold: 'vàng',
+    sliver: 'bạc',
+    brown: 'đồng',
+    diamond: 'kim cương',
+};

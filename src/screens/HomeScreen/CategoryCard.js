@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import React from 'react';
-import style from './style';
+import style from './styles';
 
 const CategoryCard = ({data = {}}) => {
   return (

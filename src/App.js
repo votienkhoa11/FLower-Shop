@@ -1,8 +1,10 @@
 /* eslint-disable react/no-unstable-nested-components */
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //import {Provider} from 'react-redux';
 
@@ -11,69 +13,107 @@ import HomeScreen from './screens/HomeScreen/';
 import SearchScreen from './screens/SearchScreen';
 import VoucherScreen from './screens/VoucherScreen';
 import OrderScreen from './screens/OrderScreen';
+//user stack screen
 import UserScreen from './screens/UserScreen';
+import ChangeInformationScreen from './screens/UserScreen/ChangeInformationScreen';
+import PaymentMethodScreen from './screens/PaymentMethodScreen';
+import NotificationScreen from './screens/NotificationScreen';
+import HelpCenterScreen from './screens/HelpCenterScreen';
+import AccountSecurityScreen from './screens/AccountSecurityScreen';
 
 //import label
 import label from './label';
 //import style
-import { color } from './styles';
+import { color } from './DefaultStyles';
 
 //import icon
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
+//import user
+import {user} from './database/MockData';
+
 //import store from './app/store';
 
 const Stack = createStackNavigator();
 const BottomTab = createBottomTabNavigator();
+const UserStack = createNativeStackNavigator();
+
+const saveUser = async () => {
+  const userJSON = await AsyncStorage.getItem('user');
+
+  if (userJSON === null) {
+    await AsyncStorage.setItem('user', JSON.stringify(user));
+  }
+};
+
+function UserNavigators () {
+
+  return (
+    <UserStack.Navigator screenOptions={{headerShown: false}}>
+      <UserStack.Screen name="usermenu" component={UserScreen} />
+      <UserStack.Screen name="payment" component={PaymentMethodScreen} />
+      <UserStack.Screen name="notification" component={NotificationScreen} />
+      <UserStack.Screen name="support" component={HelpCenterScreen} />
+      <UserStack.Screen name="security" component={AccountSecurityScreen} />
+      <UserStack.Screen name="change" component={ChangeInformationScreen} />
+    </UserStack.Navigator>
+  );
+}
 
 function TabNavigators () {
   return (
     <BottomTab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: '#36a46d',
+        tabBarActiveTintColor: color.green,
         tabBarInactiveTintColor: color.black,
         tabBarStyle: {
           height: 70,
           paddingBottom: 8,
         },
+        tabBarHideOnKeyboard: true,
       }}
     >
-      <BottomTab.Screen name = {label.home} component={HomeScreen}
+      <BottomTab.Screen name = "home" component={HomeScreen}
         options={{
           tabBarIcon: ({}) => (
             <Ionicons name="compass" size={24} />
           ),
+          tabBarLabel: label.home,
         }}
       />
-      <BottomTab.Screen name = {label.search} component={SearchScreen}
+      <BottomTab.Screen name = "search" component={SearchScreen}
         options={{
           tabBarIcon: ({}) => (
             <Ionicons name="search" size={24} />
           ),
+          tabBarLabel: label.search,
         }}
       />
-      <BottomTab.Screen name = {label.vouncher} component={VoucherScreen}
+      <BottomTab.Screen name = "vouncher" component={VoucherScreen}
         options={{
           tabBarIcon: ({}) => (
             <Ionicons name="gift" size={24} />
           ),
+          tabBarLabel: label.vouncher,
         }}
       />
-      <BottomTab.Screen name = {label.order} component={OrderScreen}
+      <BottomTab.Screen name = "order" component={OrderScreen}
         options={{
           tabBarIcon: ({}) => (
             <MaterialCommunityIcons name="clipboard-list" size={24} />
           ),
+          tabBarLabel: label.order,
         }}
       />
-      <BottomTab.Screen name = {label.user} component={UserScreen}
+      <BottomTab.Screen name = "user" component={UserNavigators}
         options={{
           tabBarIcon: ({}) => (
             <FontAwesome name="user" size={24} />
           ),
+          tabBarLabel: label.user,
         }}
       />
     </BottomTab.Navigator>
@@ -81,6 +121,11 @@ function TabNavigators () {
 }
 
 function App() {
+
+  useEffect(() => {
+    saveUser();
+}, []);
+
   return (
       <NavigationContainer>
         <Stack.Navigator screenOptions={{headerShown: false}}>

@@ -1,19 +1,17 @@
-/* eslint-disable curly */
 /* eslint-disable react-native/no-inline-styles */
-import { View, Text, ImageBackground, StatusBar, ScrollView, TouchableOpacity,
-    TextInput } from 'react-native';
+import { View, Text, ImageBackground, StatusBar, ScrollView, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import Toast from 'react-native-root-toast';
 
-//import styles
-import style from './style';
-import { color } from '../../styles';
+//import styless
+import defaultStyles from '../../DefaultStyles';
+import styles from './styles';
+import { color } from '../../DefaultStyles';
 
 //import icon
 import Octicons from 'react-native-vector-icons/Octicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import Entypo from 'react-native-vector-icons/Entypo';
 
 //import data
 import label from './label';
@@ -22,11 +20,13 @@ import { data } from '../../database/MockData';
 import { categories } from '../../database/MockData';
 
 //import components
+import LoadingScreen from '../Components/LoadingScreen';
 import FlatListEvents from './events';
 import CategoryCard from './CategoryCard';
 import PopularCard from './PopularCard';
 import BroughtAgainCard from './BroughtAgainCard';
 import ProductCard from './ProductCard';
+import CartButton from '../Components/CartButton';
 
 const HomeScreen = ({navigation}) => {
     //set data
@@ -34,6 +34,7 @@ const HomeScreen = ({navigation}) => {
     const [popularProduct, setPopularProduct] = useState([]);
     const [broughtProducts, setBroughtProduct] = useState([]);
 
+    const [loading, setLoading] = useState(true);
     const [favorite, setFavorite] = useState(false);
 
     const callToast = (msg) => {
@@ -57,8 +58,8 @@ const HomeScreen = ({navigation}) => {
         productList.sort(() => 0.5 - Math.random());
         setProduct(productList.slice(0, 5));
 
-        //get popular products by sorting productList
-        //the idea is use the sort function to sort based on comapring like products
+        //get popular products by sorting productList's like
+        //the idea is use the sort function to sort based on comapring like products from (from highest to lowest)
         const popularProductList = productList.sort(function(a, b) {
             const keyA = a.like || 0;
             const keyB = b.like || 0;
@@ -75,6 +76,9 @@ const HomeScreen = ({navigation}) => {
 
         //set 5 brought products
         setBroughtProduct(broughtProductList.slice(0, 5));
+
+        //set loading to false when the app finised loading data
+        setLoading(false);
     };
 
     useEffect(() => {
@@ -86,123 +90,134 @@ const HomeScreen = ({navigation}) => {
     }, [navigation]);
 
   return (
-    <View style={style.container}>
-        <StatusBar translucent backgroundColor="transparent" barStyle="dark-content" />
-        <ScrollView>
-            <ImageBackground
-                source={require('../../styles/imgs/greenBlurBG.png')}
-                resizeMode="cover"
-            >
-                <View style={{padding: 16}}>
-                    <View style={style.header}>
-                        <View>
-                            <Text style={style.addressLabel}>{label.addressLabel}</Text>
-                            <View style={style.frame8}>
-                                <View style={style.avt}>
-                                    <Octicons name="location" style={style.icon24px}/>
+    <View style={defaultStyles.container}>
+        <StatusBar translucent backgroundColor="transparent" barstyles="dark-content" />
+        {
+            loading ? (
+                <LoadingScreen />
+            ) : (
+                <View style={{flex: 1}}>
+                    <ScrollView>
+                        <ImageBackground
+                            source={require('../../DefaultStyles/imgs/greenBlurBG.png')}
+                            resizeMode="cover"
+                        >
+                            {/*Address View*/}
+                            <View style={defaultStyles.padding16}>
+                                <View style={styles.header}>
+                                    <View>
+                                        <Text style={styles.addressLabel}>{label.addressLabel}</Text>
+                                        <View style={styles.frame8}>
+                                            <View style={styles.avt}>
+                                                <Octicons name="location" style={styles.icon24px}/>
+                                            </View>
+                                            <Text style={styles.address}>{user.address}</Text>
+                                        </View>
+                                    </View>
+                                    {/*Favorite icon View*/}
+                                    <View style={styles.iconView}>
+                                    {
+                                        favorite ?
+                                        <TouchableOpacity
+                                            onPress={() => {
+                                                setFavorite(false);
+                                                callToast('Unfavoite');
+                                                }}>
+                                            <MaterialIcons name="favorite" style={styles.icon24px} />
+                                        </TouchableOpacity>
+
+                                        : <TouchableOpacity
+                                            onPress={() => {
+                                                setFavorite(true);
+                                                callToast('Favorite');
+                                            }}>
+                                            <MaterialIcons name="favorite-border" style={styles.icon24px} />
+                                        </TouchableOpacity>
+                                    }
+                                    </View>
                                 </View>
-                                <Text style={style.address}>{user.address}</Text>
+                                {/*Search View*/}
+                                <TouchableOpacity
+                                    onPress={() => {
+                                        navigation.navigate('search');
+                                    }}
+                                    activeOpacity={1}
+                                >
+                                    <View style={styles.search}>
+                                        <Text style={styles.searchText}>Tìm kiếm</Text>
+                                            <View style={styles.searchIcon}>
+                                                <AntDesign name="search1" size={24} color={color.lightDark} />
+                                            </View>
+                                    </View>
+                                </TouchableOpacity>
                             </View>
+                            {/*Sale Events View*/}
+                            <FlatListEvents />
+                            {/*Categories View*/}
+                            <View style={{padding: 8}} >
+                                <View style={styles.category}>
+                                    {
+                                        (categories || []).map(categoryData => {
+                                            return <CategoryCard data={categoryData} key={categoryData.id} />;
+                                        })
+                                    }
+                                </View>
+                            </View>
+                            {/*Popular Products View*/}
+                            <View style={styles.popular}>
+                                <Text style={styles.label}>{label.popularLabel}</Text>
+                                <ScrollView
+                                    horizontal
+                                    showsHorizontalScrollIndicator={false}
+                                >
+                                    <View style={styles.horizonalView}>
+                                    {
+                                        (popularProduct || []).map(popularProductData => {
+                                            return <PopularCard data={popularProductData} key={popularProductData.id} />;
+                                        })
+                                    }
+                                    </View>
+                                </ScrollView>
+                            </View>
+                        </ImageBackground>
+                        {/*Buy again recommend View*/}
+                        <View>
+                            <Text style={styles.label}>{label.buyAgainLabel}</Text>
+                            <ScrollView
+                                horizontal
+                                showsHorizontalScrollIndicator={false}
+                            >
+                                <View style={styles.horizonalView}>
+                                    {
+                                        (broughtProducts || []).map(broughtProductData => {
+                                            return <BroughtAgainCard data={broughtProductData} key={broughtProductData.id} />;
+                                        })
+                                    }
+                                </View>
+                            </ScrollView>
                         </View>
-                        <View style={style.iconView}>
-                        {
-                            favorite ?
-                            <TouchableOpacity
-                                onPress={() => {
-                                    setFavorite(false);
-                                    callToast('Unfavoite');
-                                    }}>
-                                <MaterialIcons name="favorite" style={style.icon24px} />
+                        {/*recommend View*/}
+                        <View style={styles.recommendContainer}>
+                            <Text style={[styles.label, {paddingHorizontal: 0}]}>{label.recommendLabel}</Text>
+                            <View>
+                                {
+                                    (product || []).map(productData => {
+                                        return <ProductCard data={productData} key={productData.id}/>;
+                                    })
+                                }
+                            </View>
+                            <TouchableOpacity>
+                                <View style={styles.watchMoreButton}>
+                                    <Text style={styles.watchMoreLabel}>{label.watchMore}</Text>
+                                </View>
                             </TouchableOpacity>
-
-                            : <TouchableOpacity
-                                onPress={() => {
-                                    setFavorite(true);
-                                    callToast('Favorite');
-                                }}>
-                                <MaterialIcons name="favorite-border" style={style.icon24px} />
-                            </TouchableOpacity>
-                        }
-                        </View>
-                    </View>
-                    <View style={style.search}>
-                        <TextInput
-                            placeholder="Tìm kiếm                                                                    "
-                            autoCapitalize="none"
-                            style={{padding: 8}}
-                        />
-                        <View style={style.searchIcon}>
-                            <AntDesign name="search1" size={24} color={color.bgLight} />
-                        </View>
-                    </View>
-                </View>
-
-                <FlatListEvents />
-
-                <View style={{padding: 8}} >
-                    <View style={style.category}>
-                        {
-                            (categories || []).map(categoryData => {
-                                return <CategoryCard data={categoryData} key={categoryData.id} />;
-                            })
-                        }
-                    </View>
-                </View>
-                <View style={style.popular}>
-                    <Text style={style.label}>{label.popularLabel}</Text>
-                    <ScrollView
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                    >
-                        <View style={style.horizonalView}>
-                        {
-                            (popularProduct || []).map(popularProductData => {
-                                return <PopularCard data={popularProductData} key={popularProductData.id} />;
-                            })
-                        }
                         </View>
                     </ScrollView>
+                    {/*Button View*/}
+                    <CartButton />
                 </View>
-            </ImageBackground>
-            <View>
-                <Text style={style.label}>{label.buyAgainLabel}</Text>
-                <ScrollView
-                    horizontal
-                    showsHorizontalScrollIndicator={false}
-                >
-                    <View style={style.horizonalView}>
-                        {
-                            (broughtProducts || []).map(broughtProductData => {
-                                return <BroughtAgainCard data={broughtProductData} key={broughtProductData.id} />;
-                            })
-                        }
-                    </View>
-                </ScrollView>
-            </View>
-            <View style={style.recommendContainer}>
-                <Text style={[style.label, {paddingHorizontal: 0}]}>{label.recommendLabel}</Text>
-                <View>
-                    {
-                        (product || []).map(productData => {
-                            return <ProductCard data={productData} key={productData.id}/>;
-                        })
-                    }
-                </View>
-                <TouchableOpacity>
-                    <View style={style.watchMoreButton}>
-                        <Text style={style.watchMoreLabel}>{label.watchMore}</Text>
-                    </View>
-                </TouchableOpacity>
-            </View>
-        </ScrollView>
-            <View style={style.buttonCart}>
-                <TouchableOpacity>
-                    <Entypo name="shopping-cart" style={style.cartIcon} />
-                    <View style={style.numberCart}>
-                        <Text style={style.number}>1</Text>
-                    </View>
-                </TouchableOpacity>
-            </View>
+            )
+        }
     </View>
   );
 };

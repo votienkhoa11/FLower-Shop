@@ -3,8 +3,8 @@ import { View, FlatList, Image, Animated } from 'react-native';
 import React, { useRef } from 'react';
 
 //import styles
-import style from './style';
-import { width } from '../../styles';
+import style from './styles';
+import { width } from '../../DefaultStyles';
 
 import { events } from '../../database/MockData';
 

@@ -3,7 +3,7 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 
 //import styles
-import style from './style';
+import style from './styles';
 
 //import components
 import SaleComponent from './saleComponent';
@@ -16,7 +16,7 @@ const ProductCard = ({data = {}}) => {
 
   return (
     data !== {} ? (
-      <TouchableOpacity>
+      <TouchableOpacity activeOpacity={1}>
         <View style={style.productCard}>
           <Image source={data.image} style={style.productImage} />
           <View style={style.information} >

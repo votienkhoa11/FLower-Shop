@@ -1,6 +1,6 @@
 /* eslint-disable no-useless-escape */
 import { View, Text, StatusBar, TouchableOpacity, ScrollView,
-    KeyboardAvoidingView, Image } from 'react-native';
+    KeyboardAvoidingView } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -40,7 +40,6 @@ const ChangeInformationScreen = ({navigation}) => {
             const mergeData = {
                 ...user, ...change,
             };
-            console.log(mergeData);
             await AsyncStorage.setItem('user', JSON.stringify(mergeData));
         }
     };

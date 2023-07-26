@@ -1,8 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
-import { Text, View, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, View, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
     import React, { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 
 //import style
 import defaultStyles from '../../DefaultStyles';
@@ -45,7 +44,6 @@ const UserScreen = ({navigation}) => {
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
             getUserData();
-
             setLoading(false);
         });
 
@@ -58,6 +56,7 @@ const UserScreen = ({navigation}) => {
                     <LoadingScreen />
                 ) : (
                     <View style={defaultStyles.safeView}>
+                        <StatusBar translucent backgroundColor="transparent" barstyles="dark-content" />
                         <ScrollView>
                             {/*User profile */}
                             <View style={styles.userProfile}>

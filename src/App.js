@@ -74,12 +74,13 @@ function TabNavigators () {
           paddingBottom: 8,
         },
         tabBarHideOnKeyboard: true,
+        unmountOnBlur: true,
       }}
     >
       <BottomTab.Screen name = "home" component={HomeScreen}
         options={{
           tabBarIcon: ({}) => (
-            <Ionicons name="compass" size={24} />
+            <Ionicons name="compass" size={24} color={color.mediumBlack} />
           ),
           tabBarLabel: label.home,
         }}
@@ -87,7 +88,7 @@ function TabNavigators () {
       <BottomTab.Screen name = "search" component={SearchScreen}
         options={{
           tabBarIcon: ({}) => (
-            <Ionicons name="search" size={24} />
+            <Ionicons name="search" size={24} color={color.mediumBlack} />
           ),
           tabBarLabel: label.search,
         }}
@@ -95,7 +96,7 @@ function TabNavigators () {
       <BottomTab.Screen name = "vouncher" component={VoucherScreen}
         options={{
           tabBarIcon: ({}) => (
-            <Ionicons name="gift" size={24} />
+            <Ionicons name="gift" size={24} color={color.mediumBlack} />
           ),
           tabBarLabel: label.vouncher,
         }}
@@ -103,7 +104,7 @@ function TabNavigators () {
       <BottomTab.Screen name = "order" component={OrderScreen}
         options={{
           tabBarIcon: ({}) => (
-            <MaterialCommunityIcons name="clipboard-list" size={24} />
+            <MaterialCommunityIcons name="clipboard-list" size={24} color={color.mediumBlack} />
           ),
           tabBarLabel: label.order,
         }}
@@ -111,7 +112,7 @@ function TabNavigators () {
       <BottomTab.Screen name = "user" component={UserNavigators}
         options={{
           tabBarIcon: ({}) => (
-            <FontAwesome name="user" size={24} />
+            <FontAwesome name="user" size={24} color={color.mediumBlack} />
           ),
           tabBarLabel: label.user,
         }}

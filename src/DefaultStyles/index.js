@@ -8,6 +8,7 @@ const color = {
   bgLight: '#f2f4f8',
   lightDark: '#a8a8a8',
   mediumDark: '#525252',
+  gray: '#343a3f',
   blue: '#006bff',
   red: '#ff0033',
   black: '#161616',
@@ -49,8 +50,8 @@ export default StyleSheet.create({
 
   buttonCart: {
     position: 'absolute',
-    width: 52,
-    height: 52,
+    width: 51,
+    height: 51,
     backgroundColor: color.bgWhite,
     justifyContent: 'center',
     alignItems: 'center',
@@ -69,7 +70,7 @@ export default StyleSheet.create({
 
   cartIcon: {
     flex: 1,
-    fontSize: 18,
+    fontSize: 16,
     color: color.black,
     alignContent: 'center',
     paddingVertical: 16,

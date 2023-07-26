@@ -16,6 +16,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 //import data
 import label from './label';
 import { user } from '../../database/MockData';
+import { userData } from '../../api/userData';
 import { data } from '../../database/MockData';
 import { categories } from '../../database/MockData';
 
@@ -33,12 +34,15 @@ const HomeScreen = ({navigation}) => {
     const [product, setProduct] = useState([]);
     const [popularProduct, setPopularProduct] = useState([]);
     const [broughtProducts, setBroughtProduct] = useState([]);
+    const [userInfo, setUser] = useState([]);
 
     const [loading, setLoading] = useState(true);
     const [favorite, setFavorite] = useState(false);
 
     //get data from the database
-    const getDatafromDB = () => {
+    const getDatafromDB = async () => {
+        //get user
+        setUser(await userData());
         //get product
         const productList = [...data];
 
@@ -63,14 +67,14 @@ const HomeScreen = ({navigation}) => {
 
         //set 5 brought products
         setBroughtProduct(broughtProductList.slice(0, 5));
-
-        //set loading to false when the app finised loading data
-        setLoading(false);
     };
 
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
             getDatafromDB();
+
+            //set loading to false when the app finised loading data
+            setLoading(false);
         });
 
         return unsubscribe;
@@ -98,7 +102,7 @@ const HomeScreen = ({navigation}) => {
                                             <View style={styles.avt}>
                                                 <Octicons name="location" style={styles.icon24px}/>
                                             </View>
-                                            <Text style={styles.address}>{user.address}</Text>
+                                            <Text style={styles.address}>{userInfo.address}</Text>
                                         </View>
                                     </View>
                                     {/*Favorite icon View*/}

@@ -71,21 +71,21 @@ const ButtonMenu = ({name}) => {
                 {
                     //insert icon for each buttons
                     name === label.order ?
-                        <MaterialCommunityIcons name="clipboard-list" size={16} color={color.mediumBlack} />
+                        <MaterialCommunityIcons name="clipboard-list" size={16} color={color.gray} />
                     : name === label.deal ?
-                        <MaterialCommunityIcons name="gift" size={16} color={color.mediumBlack} />
+                        <MaterialCommunityIcons name="gift" size={16} color={color.gray} />
                     : name === label.paymentMethod ?
-                        <Entypo name="credit-card" size={16} color={color.mediumBlack} />
+                        <Entypo name="credit-card" size={16} color={color.gray} />
                     : name === label.notification ?
-                        <Ionicons name="notifications" size={16} color={color.mediumBlack} />
+                        <Ionicons name="notifications" size={16} color={color.gray} />
                     : name === label.helpCenter ?
-                        <SimpleLineIcons name="question" size={16} color={color.mediumBlack} />
+                        <SimpleLineIcons name="question" size={16} color={color.gray} />
                     : name === label.accountSecurity ?
-                        <MaterialCommunityIcons name="security" size={16} color={color.mediumBlack} />
+                        <MaterialCommunityIcons name="security" size={16} color={color.gray} />
                     : name === label.logOut ?
-                        <Entypo name="log-out" size={16} color={color.mediumBlack} />
+                        <Entypo name="log-out" size={16} color={color.gray} />
                     : name === label.deleteAccount ?
-                        <Ionicons name="trash-sharp" size={16} color={color.mediumBlack} />
+                        <Ionicons name="trash-sharp" size={16} color={color.gray} />
                     : null
                 }
                 <Text style={styles.labelButton}>{name}</Text>

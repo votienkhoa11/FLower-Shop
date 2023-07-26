@@ -97,7 +97,7 @@ export default StyleSheet.create({
 
     labelButton: {
         fontSize: 14,
-        color: color.mediumDark,
+        color: color.gray,
         paddingBottom: 2,
     },
 });

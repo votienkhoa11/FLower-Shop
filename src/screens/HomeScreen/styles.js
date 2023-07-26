@@ -30,6 +30,7 @@ export default StyleSheet.create({
     icon24px: {
         fontSize: 26,
         padding: 8,
+        color: color.mediumDark,
     },
 
     address: {

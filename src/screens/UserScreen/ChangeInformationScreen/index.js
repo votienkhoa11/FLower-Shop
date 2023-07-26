@@ -1,5 +1,5 @@
 /* eslint-disable no-useless-escape */
-import { View, Text, StatusBar, TouchableOpacity, ScrollView,
+import { View, Text, StatusBar, TouchableOpacity, ScrollView, Platform,
     KeyboardAvoidingView } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -33,7 +33,7 @@ const ChangeInformationScreen = ({navigation}) => {
     const [form, setForm] = useState({});
     const [user, setUser] = useState({});
 
-    //save userr information to async storage
+    //save user information to async storage
     const saveUser = async (change) => {
         //if there is change, merge data and save it to storage
         if (change) {
@@ -81,25 +81,28 @@ const ChangeInformationScreen = ({navigation}) => {
 
         let year = formatedDate.getFullYear();
 
-        let month = date.getMonth() + 1;
+        let month = formatedDate.getMonth() + 1;
         month = month < 10 ? `0${month}` : month;
 
-        let day = date.getDate();
+        let day = formatedDate.getDate();
         day = day < 10 ? `0${day}` : day;
 
         return `${day}/${month}/${year}`;
     };
 
     const onChangeDate = (event, selectedDate) => {
-        const currentDate = selectedDate;
-
+        const currentDate = selectedDate || new Date();
         setDate(currentDate);
-        setDateString(formatDate(currentDate));
-        setForm({...form, ['birthday']: formatDate(currentDate)});
 
+        //format date
+        const formatedDate = formatDate(currentDate);
+        setDateString(formatedDate);
+
+        setForm({...form, ['birthday']: formatedDate});
+        //set error.birthday to null when the form.birthday has selected value
         setError((previous) => {
             return {...previous, birthday: null};
-        });
+            });
 
         toggleDatePicker();
     };
@@ -303,7 +306,7 @@ const ChangeInformationScreen = ({navigation}) => {
                         { showDatePicker ? (
                             <DateTimePicker
                                 mode="date"
-                                display="spinner"
+                                display="calendar"
                                 value={date}
                                 onChange={onChangeDate}
                             />

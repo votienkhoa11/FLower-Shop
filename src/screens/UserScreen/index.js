@@ -21,13 +21,12 @@ import LoadingScreen from '../Components/LoadingScreen';
 import label from './label';
 import ButtonMenu from './ButtonMenu';
 import Avatar from './Avatar';
+import { uriHeader } from './Avatar';
 
 const UserScreen = ({navigation}) => {
     const [loading, setLoading] = useState(true);
 
     const [userInfo, setUser] = useState({});
-
-    const defaultAvatar = require('../../DefaultStyles/imgs/user/avatar.jpg');
 
     //get user data
     const getUserData = async () => {
@@ -39,11 +38,12 @@ const UserScreen = ({navigation}) => {
             const savedUser = JSON.parse(userJSON);
             setUser(savedUser);
         }
+
     };
 
     useEffect(() => {
-        const unsubscribe = navigation.addListener('focus', () => {
-            getUserData();
+        const unsubscribe = navigation.addListener('focus', async () => {
+            await getUserData();
             setLoading(false);
         });
 
@@ -59,7 +59,7 @@ const UserScreen = ({navigation}) => {
                         <ScrollView>
                             {/*User profile */}
                             <View style={styles.userProfile}>
-                                <Avatar source={defaultAvatar} />
+                                <Avatar source={uriHeader + userInfo.avatar} />
                                 <Text style={styles.name}>{userInfo.name}</Text>
                                 <View style={styles.memberView}>
                                     <MaterialCommunityIcons

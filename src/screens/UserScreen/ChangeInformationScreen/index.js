@@ -1,6 +1,6 @@
 /* eslint-disable no-useless-escape */
 import { View, Text, StatusBar, TouchableOpacity, ScrollView,
-    KeyboardAvoidingView } from 'react-native';
+    KeyboardAvoidingView, Image } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -22,6 +22,7 @@ import { userData } from '../../../api/userData';
 
 //import components
 import Avatar from '../Avatar';
+import { uriHeader } from '../Avatar';
 import Input from './Input';
 import NumberInput from './NumberInput';
 import DropDownInput from './DropDownInput';
@@ -32,24 +33,37 @@ const ChangeInformationScreen = ({navigation}) => {
     const [form, setForm] = useState({});
     const [user, setUser] = useState({});
 
-    //set avatar
-    const [avatar, setAvatar] = useState(null);
+    //save userr information to async storage
+    const saveUser = async (change) => {
+        //if there is change, merge data and save it to storage
+        if (change) {
+            const mergeData = {
+                ...user, ...change,
+            };
+            console.log(mergeData);
+            await AsyncStorage.setItem('user', JSON.stringify(mergeData));
+        }
+    };
 
     //get avatar
     const getAvatar = async () => {
         const options = {
-            selectionLimit: 0,
             mediaType: 'photo',
+            maxWidth: 250,
+            maxHeight: 250,
             includeBase64: true,
-            includeExtra: true,
+            quality: 1,
         };
 
-        const result = await ImagePicker.launchImageLibrary(options);
+        await ImagePicker.launchImageLibrary(options, async (result) => {
+            if (result) {
+                const avatarUri = {'avatar': uriHeader + result.assets[0].base64};
+                setUser({...user, ['avatar']: avatarUri.avatar});
+                await saveUser(avatarUri);
+                callToast('Your avatar is successfully updated!');
+            }
+        });
 
-        if (result) {
-            setAvatar(result);
-            console.log(avatar);
-        }
     };
 
     //set date and picker
@@ -217,7 +231,7 @@ const ChangeInformationScreen = ({navigation}) => {
         });
 
         return unsubscribe;
-    }, [navigation]);
+    }, [navigation, user]);
 
   return (
     <View style={[defaultStyles.container, {marginTop: StatusBar.currentHeight}]}>
@@ -236,7 +250,7 @@ const ChangeInformationScreen = ({navigation}) => {
                         </View>
                     </TouchableOpacity>
                     <View style={styles.avatarView}>
-                        <Avatar sourceImg={avatar} />
+                        <Avatar sourceImg={user.avatar} />
                     </View>
                     {/*Change ava button */}
                     <View style={styles.changeButtonContainer}>

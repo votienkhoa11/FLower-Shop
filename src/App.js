@@ -68,7 +68,7 @@ function TabNavigators () {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: color.green,
-        tabBarInactiveTintColor: color.black,
+        tabBarInactiveTintColor: color.mediumBlack,
         tabBarStyle: {
           height: 70,
           paddingBottom: 8,

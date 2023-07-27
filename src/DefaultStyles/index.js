@@ -19,6 +19,7 @@ const color = {
   gold: '#CFCF00',
   brown: '#D49162',
   diamond: '#D7FEFF',
+  opacity0Color: 'rgba(0,0,0,0)',
 };
 
 export {color};

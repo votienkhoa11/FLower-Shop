@@ -39,12 +39,13 @@ const UserScreen = ({navigation}) => {
             const uriAvatar = savedUser.avatar;
             setAvatar(uriAvatar);
         }
+
+        setLoading(false);
     };
 
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
             getUserData();
-            setLoading(false);
         });
 
         return unsubscribe;

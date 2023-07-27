@@ -71,21 +71,21 @@ const ButtonMenu = ({name}) => {
                 {
                     //insert icon for each buttons
                     name === label.order ?
-                        <MaterialCommunityIcons name="clipboard-list" size={16} color={color.gray} />
+                        <MaterialCommunityIcons name="clipboard-list" style={styles.buttonIcon} />
                     : name === label.deal ?
-                        <MaterialCommunityIcons name="gift" size={16} color={color.gray} />
+                        <MaterialCommunityIcons name="gift" style={styles.buttonIcon} />
                     : name === label.paymentMethod ?
-                        <Entypo name="credit-card" size={16} color={color.gray} />
+                        <Entypo name="credit-card" style={styles.buttonIcon} />
                     : name === label.notification ?
-                        <Ionicons name="notifications" size={16} color={color.gray} />
+                        <Ionicons name="notifications" style={styles.buttonIcon} />
                     : name === label.helpCenter ?
-                        <SimpleLineIcons name="question" size={16} color={color.gray} />
+                        <SimpleLineIcons name="question" style={styles.buttonIcon} />
                     : name === label.accountSecurity ?
-                        <MaterialCommunityIcons name="security" size={16} color={color.gray} />
+                        <MaterialCommunityIcons name="security" style={styles.buttonIcon} />
                     : name === label.logOut ?
-                        <Entypo name="log-out" size={16} color={color.gray} />
+                        <Entypo name="log-out" style={styles.buttonIcon} />
                     : name === label.deleteAccount ?
-                        <Ionicons name="trash-sharp" size={16} color={color.gray} />
+                        <Ionicons name="trash-sharp" style={styles.buttonIcon} />
                     : null
                 }
                 <Text style={styles.labelButton}>{name}</Text>

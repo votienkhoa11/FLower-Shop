@@ -67,14 +67,14 @@ const HomeScreen = ({navigation}) => {
 
         //set 5 brought products
         setBroughtProduct(broughtProductList.slice(0, 5));
+
+        //set loading to false when the app finised loading data
+        setLoading(false);
     };
 
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
             getDatafromDB();
-
-            //set loading to false when the app finised loading data
-            setLoading(false);
         });
 
         return unsubscribe;

@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
-import { Text, View, ScrollView, TouchableOpacity, TextInput, Pressable,
-    TouchableHighlight, Keyboard } from 'react-native';
+import { Text, View, ScrollView, TouchableOpacity, TextInput, Pressable, StatusBar,
+    TouchableHighlight } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Toast from 'react-native-root-toast';
@@ -73,9 +73,6 @@ const SearchScreen = ({navigation}) => {
         const productList = [...data];
         productList.sort(() => 0.5 - Math.random());
         setProduct(productList.slice(0, 6));
-
-        //set loading to false when getting data is completed
-        setLoading(false);
     };
 
     //save search
@@ -108,6 +105,9 @@ const SearchScreen = ({navigation}) => {
             historySearchList.reverse();
             setHisorySearch(historySearchList);
         }
+
+        //set loading to false when getting data is completed
+        setLoading(false);
     };
 
     //on change text function
@@ -201,6 +201,7 @@ const SearchScreen = ({navigation}) => {
                 <LoadingScreen />
             ) : (
                 <View style={defaultStyles.safeView}>
+                    <StatusBar translucent backgroundColor="transparent" barstyles="dark-content" />
                     <ScrollView
                         keyboardShouldPersistTaps="handled"
                     >

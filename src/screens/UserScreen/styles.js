@@ -95,6 +95,11 @@ export default StyleSheet.create({
         gap: 8,
     },
 
+    buttonIcon: {
+        fontSize: 16,
+        color: color.gray,
+    },
+
     labelButton: {
         fontSize: 14,
         color: color.gray,

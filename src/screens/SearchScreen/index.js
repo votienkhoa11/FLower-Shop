@@ -19,8 +19,8 @@ import { data } from '../../database/MockData';
 import { searchResult } from '../../database/MockData';
 
 //import components
-import LoadingScreen from '../Components/LoadingScreen';
-import CartButton from '../Components/CartButton';
+import LoadingScreen from '../../Components/LoadingScreen';
+import CartButton from '../../Components/CartButton';
 import SearchCard from './SearchCard';
 import SuggestionCard from './SuggestionCard';
 import ResultSearch from './ResultSearch';

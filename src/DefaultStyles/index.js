@@ -25,6 +25,21 @@ const color = {
 export {color};
 
 export default StyleSheet.create({
+  tabBarItemView: {
+    height: 70,
+    width: 72,
+    paddingTop: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 8,
+    borderColor: color.green,
+  },
+
+  tabLabel: {
+    fontSize: 10,
+    fontWeight: 600,
+  },
+
   container: {
     width: '100%',
     height: '100%',

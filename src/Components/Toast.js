@@ -1,5 +1,5 @@
 import Toast from 'react-native-root-toast';
-import { color } from '../../DefaultStyles';
+import { color } from '../DefaultStyles';
 
 export const callToast = (msg) => {
     Toast.show(msg, {

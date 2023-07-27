@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import { View, Text, ImageBackground, StatusBar, ScrollView, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import { callToast } from '../Components/Toast';
+import { callToast } from '../../Components/Toast';
 
 //import styless
 import defaultStyles from '../../DefaultStyles';
@@ -21,13 +21,13 @@ import { data } from '../../database/MockData';
 import { categories } from '../../database/MockData';
 
 //import components
-import LoadingScreen from '../Components/LoadingScreen';
+import LoadingScreen from '../../Components/LoadingScreen';
 import FlatListEvents from './events';
 import CategoryCard from './CategoryCard';
 import PopularCard from './PopularCard';
 import BroughtAgainCard from './BroughtAgainCard';
 import ProductCard from './ProductCard';
-import CartButton from '../Components/CartButton';
+import CartButton from '../../Components/CartButton';
 
 const HomeScreen = ({navigation}) => {
     //set data

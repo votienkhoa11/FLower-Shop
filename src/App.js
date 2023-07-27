@@ -1,4 +1,6 @@
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/no-unstable-nested-components */
+import { View, Text } from 'react-native';
 import React, { useEffect } from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -24,7 +26,7 @@ import AccountSecurityScreen from './screens/AccountSecurityScreen';
 //import label
 import label from './label';
 //import style
-import { color } from './DefaultStyles';
+import defaultStyles, { color } from './DefaultStyles';
 
 //import icon
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -68,53 +70,113 @@ function TabNavigators () {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: color.green,
-        tabBarInactiveTintColor: color.mediumBlack,
+        tabBarInactiveTintColor: color.me,
         tabBarStyle: {
           height: 70,
-          paddingBottom: 8,
         },
         tabBarHideOnKeyboard: true,
         unmountOnBlur: true,
+        tabBarShowLabel: false,
       }}
     >
       <BottomTab.Screen name = "home" component={HomeScreen}
         options={{
-          tabBarIcon: ({}) => (
-            <Ionicons name="compass" size={24} color={color.mediumBlack} />
+          tabBarIcon: ({focused}) => (
+            <View
+              style={[
+                defaultStyles.tabBarItemView,
+                focused ? {borderTopWidth: 2, paddingTop: 0} : null,
+              ]}
+            >
+              <Ionicons name="compass" size={24} color={focused ? color.green : color.mediumBlack} />
+              <Text
+                style={[
+                  defaultStyles.tabLabel,
+                  focused ? {color: color.green} : {color: color.mediumBlack},
+                ]}
+                >{label.home}</Text>
+            </View>
           ),
-          tabBarLabel: label.home,
         }}
       />
       <BottomTab.Screen name = "search" component={SearchScreen}
         options={{
-          tabBarIcon: ({}) => (
-            <Ionicons name="search" size={24} color={color.mediumBlack} />
+          tabBarIcon: ({focused}) => (
+            <View
+              style={[
+                defaultStyles.tabBarItemView,
+                focused ? {borderTopWidth: 2, paddingTop: 0} : null,
+              ]}
+            >
+              <Ionicons name="search" size={24} color={focused ? color.green : color.mediumBlack} />
+              <Text
+                style={[
+                  defaultStyles.tabLabel,
+                  focused ? {color: color.green} : {color: color.mediumBlack},
+                ]}
+                >{label.search}</Text>
+            </View>
           ),
-          tabBarLabel: label.search,
         }}
       />
       <BottomTab.Screen name = "vouncher" component={VoucherScreen}
         options={{
-          tabBarIcon: ({}) => (
-            <Ionicons name="gift" size={24} color={color.mediumBlack} />
+          tabBarIcon: ({focused}) => (
+            <View
+              style={[
+                defaultStyles.tabBarItemView,
+                focused ? {borderTopWidth: 2, paddingTop: 0} : null,
+              ]}
+            >
+              <Ionicons name="gift" size={24} color={focused ? color.green : color.mediumBlack} />
+              <Text
+                style={[
+                  defaultStyles.tabLabel,
+                  focused ? {color: color.green} : {color: color.mediumBlack},
+                ]}
+                >{label.vouncher}</Text>
+            </View>
           ),
-          tabBarLabel: label.vouncher,
         }}
       />
       <BottomTab.Screen name = "order" component={OrderScreen}
         options={{
-          tabBarIcon: ({}) => (
-            <MaterialCommunityIcons name="clipboard-list" size={24} color={color.mediumBlack} />
+          tabBarIcon: ({focused}) => (
+            <View
+              style={[
+                defaultStyles.tabBarItemView,
+                focused ? {borderTopWidth: 2, paddingTop: 0} : null,
+              ]}
+            >
+              <MaterialCommunityIcons name="clipboard-list" size={24} color={focused ? color.green : color.mediumBlack} />
+              <Text
+                style={[
+                  defaultStyles.tabLabel,
+                  focused ? {color: color.green} : {color: color.mediumBlack},
+                ]}
+                >{label.order}</Text>
+            </View>
           ),
-          tabBarLabel: label.order,
         }}
       />
       <BottomTab.Screen name = "user" component={UserNavigators}
         options={{
-          tabBarIcon: ({}) => (
-            <FontAwesome name="user" size={24} color={color.mediumBlack} />
+          tabBarIcon: ({focused}) => (
+            <View
+              style={[
+                defaultStyles.tabBarItemView,
+                focused ? {borderTopWidth: 2, paddingTop: 0} : null,
+              ]}
+            >
+              <FontAwesome name="user" size={24} color={focused ? color.green : color.mediumBlack} />
+              <Text
+                style={[
+                  defaultStyles.tabLabel,
+                  focused ? {color: color.green} : {color: color.mediumBlack},
+                ]}
+                >{label.user}</Text>
+            </View>
           ),
-          tabBarLabel: label.user,
         }}
       />
     </BottomTab.Navigator>

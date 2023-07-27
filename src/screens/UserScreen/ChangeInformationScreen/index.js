@@ -4,7 +4,7 @@ import { View, Text, StatusBar, TouchableOpacity, ScrollView,
 import React, { useState, useEffect } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { callToast } from '../../Components/Toast';
+import { callToast } from '../../../Components/Toast';
 import * as ImagePicker from 'react-native-image-picker';
 
 //import styles
@@ -26,7 +26,7 @@ import { uriHeader } from '../Avatar';
 import Input from './Input';
 import NumberInput from './NumberInput';
 import DropDownInput from './DropDownInput';
-import LoadingScreen from '../../Components/LoadingScreen';
+import LoadingScreen from '../../../Components/LoadingScreen';
 
 const ChangeInformationScreen = ({navigation}) => {
     const [loading, setLoading] = useState(true);

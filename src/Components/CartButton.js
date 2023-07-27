@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 
 //import styles
-import defaultStyles from '../../DefaultStyles';
+import defaultStyles from '../DefaultStyles';
 //import icon
 import Entypo from 'react-native-vector-icons/Entypo';
 

@@ -16,7 +16,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { user } from '../../database/MockData';
 
 //import components
-import LoadingScreen from '../Components/LoadingScreen';
+import LoadingScreen from '../../Components/LoadingScreen';
 import label from './label';
 import ButtonMenu from './ButtonMenu';
 import Avatar from './Avatar';

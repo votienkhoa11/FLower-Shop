@@ -2,8 +2,8 @@ import { View, ActivityIndicator, StatusBar } from 'react-native';
 import React from 'react';
 
 //import styles
-import defaultStyles from '../../DefaultStyles';
-import { color } from '../../DefaultStyles';
+import defaultStyles from '../DefaultStyles';
+import { color } from '../DefaultStyles';
 
 const LoadingScreen = () => {
   return (

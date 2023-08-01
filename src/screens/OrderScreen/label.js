@@ -5,5 +5,6 @@ export default {
     processing: 'Đang xử lý',
     delivered: 'Đã giao',
     canceled: 'Đã hủy',
-    product: 'Sản phẩm',
+    product: 'sản phẩm',
+    orderAgain: 'Đặt lại',
 };

@@ -1,4 +1,4 @@
-import { StyleSheet, StatusBar } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { color } from '../../../DefaultStyles';
 
 import { width } from '../../../DefaultStyles';
@@ -84,21 +84,25 @@ export default StyleSheet.create({
     },
 
     codePhoneContainer: {
-        height: 20,
-        width: 50,
-        marginTop: 1,
-        marginRight: 4,
-        justifyContent: 'center',
-        alignItems: 'center',
+        position: 'absolute',
+        marginTop: 21,
+        marginLeft: 20,
+        padding: 2,
         borderWidth: 1,
-        borderRadius: 4,
         borderColor: color.bgMedium,
+        borderRadius: 4,
+    },
+
+    textIconContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        gap: 2,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 
     codePhoneText: {
-        margin: 0,
         fontSize: 12,
-        flex: 0,
         fontWeight: 'normal',
         color: color.mediumBlack,
     },
@@ -107,6 +111,23 @@ export default StyleSheet.create({
         backgroundColor: color.bgWhite,
         paddingVertical: 0,
         paddingLeft: 0,
+    },
+
+    countryPickerModal: {
+        modal: {
+            height: 500,
+            width: 300,
+            justifyContent: 'center',
+            alignSelf: 'center',
+        },
+
+        backdrop: {
+            backgroundColor: color.opacity0Color,
+        },
+
+        countryButtonStyles: {
+            height: 40,
+        },
     },
 
     buttonText: {

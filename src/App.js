@@ -42,14 +42,6 @@ const Stack = createStackNavigator();
 const BottomTab = createBottomTabNavigator();
 const UserStack = createNativeStackNavigator();
 
-const saveUser = async () => {
-  const userJSON = await AsyncStorage.getItem('user');
-
-  if (userJSON === null) {
-    await AsyncStorage.setItem('user', JSON.stringify(user));
-  }
-};
-
 function UserNavigators () {
 
   return (
@@ -69,8 +61,6 @@ function TabNavigators () {
     <BottomTab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: color.green,
-        tabBarInactiveTintColor: color.me,
         tabBarStyle: {
           height: 70,
         },
@@ -89,12 +79,7 @@ function TabNavigators () {
               ]}
             >
               <Ionicons name="compass" size={24} color={focused ? color.green : color.mediumBlack} />
-              <Text
-                style={[
-                  defaultStyles.tabLabel,
-                  focused ? {color: color.green} : {color: color.mediumBlack},
-                ]}
-                >{label.home}</Text>
+              <Text style={defaultStyles.tabLabel}>{label.home}</Text>
             </View>
           ),
         }}
@@ -109,12 +94,7 @@ function TabNavigators () {
               ]}
             >
               <Ionicons name="search" size={24} color={focused ? color.green : color.mediumBlack} />
-              <Text
-                style={[
-                  defaultStyles.tabLabel,
-                  focused ? {color: color.green} : {color: color.mediumBlack},
-                ]}
-                >{label.search}</Text>
+              <Text style={defaultStyles.tabLabel}>{label.search}</Text>
             </View>
           ),
         }}
@@ -129,12 +109,7 @@ function TabNavigators () {
               ]}
             >
               <Ionicons name="gift" size={24} color={focused ? color.green : color.mediumBlack} />
-              <Text
-                style={[
-                  defaultStyles.tabLabel,
-                  focused ? {color: color.green} : {color: color.mediumBlack},
-                ]}
-                >{label.vouncher}</Text>
+              <Text style={defaultStyles.tabLabel}>{label.vouncher}</Text>
             </View>
           ),
         }}
@@ -149,12 +124,7 @@ function TabNavigators () {
               ]}
             >
               <MaterialCommunityIcons name="clipboard-list" size={24} color={focused ? color.green : color.mediumBlack} />
-              <Text
-                style={[
-                  defaultStyles.tabLabel,
-                  focused ? {color: color.green} : {color: color.mediumBlack},
-                ]}
-                >{label.order}</Text>
+              <Text style={defaultStyles.tabLabel}>{label.order}</Text>
             </View>
           ),
         }}
@@ -169,12 +139,7 @@ function TabNavigators () {
               ]}
             >
               <FontAwesome name="user" size={24} color={focused ? color.green : color.mediumBlack} />
-              <Text
-                style={[
-                  defaultStyles.tabLabel,
-                  focused ? {color: color.green} : {color: color.mediumBlack},
-                ]}
-                >{label.user}</Text>
+              <Text style={defaultStyles.tabLabel}>{label.user}</Text>
             </View>
           ),
         }}
@@ -184,6 +149,13 @@ function TabNavigators () {
 }
 
 function App() {
+    const saveUser = async () => {
+        const userJSON = await AsyncStorage.getItem('user');
+
+        if (userJSON === null) {
+          await AsyncStorage.setItem('user', JSON.stringify(user));
+        }
+    };
 
   useEffect(() => {
     saveUser();

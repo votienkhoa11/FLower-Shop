@@ -18,6 +18,7 @@ const Input = ({
     editable,
     autoCapitalize,
     keyboardType,
+    style,
 }) => {
   return (
     <View style={{padding: 8}}>
@@ -32,7 +33,7 @@ const Input = ({
                 editable={editable}
                 autoCapitalize={autoCapitalize}
                 keyboardType={keyboardType}
-                style={{width: '95%', color: color.black}}
+                style={[{width: '95%', color: color.black}, style]}
             />
             {   labelName === 'Ngày sinh' ?
                     <Entypo name="calendar" style={styles.inputIcon} />

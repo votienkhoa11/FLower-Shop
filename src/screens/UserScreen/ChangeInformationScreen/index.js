@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-useless-escape */
 import { View, Text, StatusBar, TouchableOpacity, ScrollView,
     KeyboardAvoidingView } from 'react-native';
@@ -5,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { callToast } from '../../../Components/Toast';
+import { CountryPicker } from 'react-native-country-codes-picker';
 import * as ImagePicker from 'react-native-image-picker';
 
 //import styles
@@ -24,7 +26,6 @@ import { userData } from '../../../api/userData';
 import Avatar from '../Avatar';
 import { uriHeader } from '../Avatar';
 import Input from './Input';
-import NumberInput from './NumberInput';
 import DropDownInput from './DropDownInput';
 import LoadingScreen from '../../../Components/LoadingScreen';
 
@@ -66,6 +67,10 @@ const ChangeInformationScreen = ({navigation}) => {
         });
 
     };
+
+    //set phone number picker
+    const [show, setShow] = useState(false);
+    const [countryCode, setCountryCode] = useState('+84');
 
     //set date and picker
     const [date, setDate] = useState(new Date());
@@ -242,7 +247,7 @@ const ChangeInformationScreen = ({navigation}) => {
     <View style={[defaultStyles.container, {marginTop: StatusBar.currentHeight}]}>
         {loading ? (<LoadingScreen />) : (
             <View>
-                <StatusBar translucent={true} backgroundColor={color.opacity0Color} barstyles="dark-content" />
+                <StatusBar translucent={true} backgroundColor="transparent" barstyles="dark-content" />
                 <ScrollView keyboardShouldPersistTaps="always" >
                     <KeyboardAvoidingView>
                         {/*Header bar */}
@@ -288,14 +293,42 @@ const ChangeInformationScreen = ({navigation}) => {
                                 error={error.name ? error.name : ''}
                             />
                             {/*Phone number input */}
-                            <NumberInput
-                                onChangeText={(value) => {
-                                    onChange({key: 'phone', value});
-                                }}
-                                placeholder={user.phone}
-                                label={label.phoneNumber}
-                                error={error.phone ? error.phone : ''}
-                            />
+                            <View>
+                                <Input
+                                    onChangeText={(value) => {
+                                        const fullPhone = value ? (countryCode + value) : '';
+                                        onChange({key: 'phone', fullPhone});
+                                    }}
+                                    placeholder={user.phone}
+                                    labelName={label.phoneNumber}
+                                    keyboardType="numeric"
+                                    error={error.phone ? error.phone : ''}
+                                    style={{marginLeft: 46}}
+                                />
+                                <View style={styles.codePhoneContainer}>
+                                    <TouchableOpacity
+                                        activeOpacity={1}
+                                        onPress={() => setShow(true)}
+                                    >
+                                        <View style={styles.textIconContainer}>
+                                            <Text style={styles.codePhoneText}>{countryCode}</Text>
+                                            <Entypo name="chevron-small-down" size={14} color={color.bgMedium} />
+                                        </View>
+                                    </TouchableOpacity>
+                                </View>
+                                <CountryPicker
+                                    show={show}
+                                    pickerButtonOnPress={(countryCodeItem) => {
+                                        setCountryCode(countryCodeItem.dial_code);
+                                        setShow(false);
+                                    }}
+                                    onBackdropPress={() => {
+                                        setShow(false);
+                                    }}
+                                    showOnly={['vn']}
+                                    style={styles.countryPickerModal}
+                                />
+                            </View>
                             {/*Email input */}
                             <Input
                                 onChangeText={(value) => {

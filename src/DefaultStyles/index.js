@@ -37,7 +37,7 @@ export default StyleSheet.create({
 
   tabLabel: {
     fontSize: 10,
-    fontWeight: 600,
+    fontWeight: '600',
   },
 
   container: {

@@ -2,6 +2,7 @@
 import { View, Text, TouchableOpacity, StatusBar, ScrollView } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { TabView, SceneMap } from 'react-native-tab-view';
 
 //import style
 import defaultStyles from '../../DefaultStyles';
@@ -46,6 +47,7 @@ const OrderScreen = ({navigation}) => {
                             </View>
                     </View>
                     <View>
+                        <Text>All</Text>
                     </View>
                 </ScrollView>
             </View>

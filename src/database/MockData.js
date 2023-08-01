@@ -237,3 +237,121 @@ export const searchResult = [
         searchTime: 81,
     },
 ];
+
+export const order = [
+    {
+        id: 1,
+        customerAddress: user.address,
+        customerPhone: user.phone,
+        productID: 3,
+        quantity: 2,
+        price: priceCalculator(3, 2),
+        datePurchase: new Date(2023, 1, 17, 12, 0),
+        orderStatus: 'delivered',
+        currency: 'VND',
+    },
+
+    {
+        id: 2,
+        customerAddress: user.address,
+        customerPhone: user.phone,
+        productID: 2,
+        quantity: 4,
+        price: priceCalculator(2, 4),
+        datePurchase: new Date(2023, 2, 10, 14, 54),
+        orderStatus: 'delivered',
+        currency: 'VND',
+    },
+
+    {
+        id: 3,
+        customerAddress: user.address,
+        customerPhone: user.phone,
+        productID: 5,
+        quantity: 1,
+        price: priceCalculator(5, 1),
+        datePurchase: new Date(2023, 2, 29, 17, 59),
+        orderStatus: 'delivered',
+        currency: 'VND',
+    },
+
+    {
+        id: 4,
+        customerAddress: user.address,
+        customerPhone: user.phone,
+        productID: 6,
+        quantity: 7,
+        price: priceCalculator(6, 7),
+        datePurchase: new Date(2023, 3, 9, 13, 9),
+        orderStatus: 'canceled',
+        currency: 'VND',
+    },
+
+    {
+        id: 5,
+        customerAddress: user.address,
+        customerPhone: user.phone,
+        productID: 7,
+        quantity: 5,
+        price: priceCalculator(7, 5),
+        datePurchase: new Date(2023, 5, 10, 9, 57),
+        orderStatus: 'delivering',
+        currency: 'VND',
+    },
+
+    {
+        id: 6,
+        customerAddress: user.address,
+        customerPhone: user.phone,
+        productID: 4,
+        quantity: 2,
+        price: priceCalculator(4, 2),
+        datePurchase: new Date(2023, 6, 12, 16, 13),
+        orderStatus: 'delivering',
+        currency: 'VND',
+    },
+
+    {
+        id: 7,
+        customerAddress: user.address,
+        customerPhone: user.phone,
+        productID: 5,
+        quantity: 1,
+        price: priceCalculator(5, 1),
+        datePurchase: new Date(2023, 6, 27, 15, 8),
+        orderStatus: 'delivering',
+        currency: 'VND',
+    },
+
+    {
+        id: 8,
+        customerAddress: user.address,
+        customerPhone: user.phone,
+        productID: 3,
+        quantity: 4,
+        price: priceCalculator(3, 4),
+        datePurchase: new Date(2023, 7, 1, 6, 10),
+        orderStatus: 'canceled',
+        currency: 'VND',
+    },
+
+    {
+        id: 9,
+        customerAddress: user.address,
+        customerPhone: user.phone,
+        productID: 2,
+        quantity: 2,
+        price: priceCalculator(2, 2),
+        datePurchase: new Date(2023, 7, 1, 10, 36),
+        orderStatus: 'processing',
+        currency: 'VND',
+    },
+];
+
+function priceCalculator(productID, quantity) {
+    for (let productIndex = 0; productIndex < data.length; productIndex++) {
+        if (data[productIndex].id === productID) {
+            return data[productIndex].price * quantity;
+        }
+    }
+}

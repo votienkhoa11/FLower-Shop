@@ -1,8 +1,6 @@
 import { StyleSheet, StatusBar } from 'react-native';
 import { color } from '../../DefaultStyles';
 
-import { width } from '../../DefaultStyles';
-
 export default StyleSheet.create({
     header: {
         marginTop: StatusBar.currentHeight,
@@ -80,7 +78,7 @@ export default StyleSheet.create({
     },
 
     footer: {
-        height: 220,
+        height: 20,
         opacity: 0,
     },
 
@@ -127,5 +125,18 @@ export default StyleSheet.create({
         fontSize: 12,
         fontWeight: 'bold',
         color: color.greenDark,
+    },
+
+    emptyView: {
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    emptyText: {
+        fontSize: 16,
+        fontWeight: '600',
+        color: color.lightDark,
     },
 });

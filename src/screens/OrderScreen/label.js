@@ -8,4 +8,5 @@ export default {
     product: 'sản phẩm',
     orderAgain: 'Đặt lại',
     chat: 'Chat',
+    empty: 'Bạn không có đơn hàng nào',
 };

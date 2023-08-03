@@ -1,10 +1,12 @@
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import React from 'react';
+
+import OrderList from './OrderList';
 
 const Processing = () => {
   return (
     <View>
-      <Text>processing</Text>
+        <OrderList status={'processing'} />
     </View>
   );
 };

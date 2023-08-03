@@ -15,6 +15,7 @@ import Processing from './Components/Processing';
 import Delivering from './Components/Delivering';
 import Delivered from './Components/Delivered';
 import Canceled from './Components/Canceled';
+import LoadingScreen from '../../Components/LoadingScreen';
 
 const Navigations = () => {
 
@@ -66,6 +67,8 @@ const Navigations = () => {
         );
     };
 
+    const renderLazyHolder = () => <LoadingScreen style={{backgroundColor: color.opacity0Color}} />;
+
     const renderScence = SceneMap({
         all: All,
         process: Processing,
@@ -77,6 +80,8 @@ const Navigations = () => {
   return (
     <View style={{flex: 1}}>
         <TabView
+            lazy
+            renderLazyPlaceholder={renderLazyHolder}
             navigationState={{index, routes}}
             renderTabBar={renderTabBar}
             renderScene={renderScence}

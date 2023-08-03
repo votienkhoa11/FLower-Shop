@@ -5,9 +5,9 @@ import React from 'react';
 import defaultStyles from '../DefaultStyles';
 import { color } from '../DefaultStyles';
 
-const LoadingScreen = () => {
+const LoadingScreen = ({style}) => {
   return (
-    <View style={defaultStyles.loadingContainer}>
+    <View style={[defaultStyles.loadingContainer, style]}>
       <StatusBar translucent backgroundColor="transparent" barstyles="dark-content" />
       <ActivityIndicator size={'large'} color={color.green} />
     </View>

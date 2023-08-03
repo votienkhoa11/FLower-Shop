@@ -6,7 +6,7 @@ import OrderList from './OrderList';
 const All = () => {
   return (
     <View>
-        <OrderList/>
+        <OrderList />
     </View>
   );
 };

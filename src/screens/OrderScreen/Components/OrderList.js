@@ -11,7 +11,9 @@ import { order } from '../../../database/MockData';
 import { data } from '../../../database/MockData';
 
 
-const OrderList = () => {
+const OrderList = ({status}) => {
+    //filter the object
+    const orderFilter = order.filter((orderItem) => orderItem.orderStatus === status);
 
     const getProduct = (productID) => {
         for (let productIndex = 0; productIndex < data.length; productIndex++) {
@@ -54,7 +56,7 @@ const OrderList = () => {
                         <Text style={styles.price}>{item.price}đ</Text>
                     </View>
                     <Text style={styles.price}>{item.quantity < 10 ? '0' + item.quantity : item.quantity} {label.product}</Text>
-                    <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',}}>
+                    <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
                         <View>
                             <Text style={[styles.status, {color: item.orderStatus === 'canceled' ? color.red : color.gray}]}>
                                 {
@@ -92,17 +94,30 @@ const OrderList = () => {
         );
     };
 
-  return (
-    <View>
-      <FlatList
-        data={order}
-        renderItem={orderItem}
-        keyExtractor={item => item.id}
-        ListFooterComponent={
+    const listFooter = () => {
+        return (
             <View style={styles.footer}>
                 <Text>------------------------------------------------</Text>
             </View>
-        }
+        );
+    };
+
+    const listEmptyComponent = () => {
+        return (
+            <View style={styles.emptyView}>
+                <Text style={styles.emptyText}>{label.empty}</Text>
+            </View>
+        );
+    };
+
+  return (
+    <View>
+      <FlatList
+        data={status ? orderFilter : order}
+        renderItem={orderItem}
+        ListEmptyComponent={listEmptyComponent}
+        keyExtractor={item => item.id}
+        ListFooterComponent={listFooter}
       />
     </View>
   );

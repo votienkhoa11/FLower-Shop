@@ -8,7 +8,7 @@ export default StyleSheet.create({
         marginTop: StatusBar.currentHeight,
         flexDirection: 'row',
         paddingHorizontal: 16,
-        paddingVertical: 8,
+        marginVertical: 8,
         alignItems: 'center',
     },
 
@@ -27,6 +27,29 @@ export default StyleSheet.create({
     buttonName: {
         fontSize: 14,
         color: color.gray,
+    },
+
+    //tab view styles
+    tabBarNavigation: {
+        flexDirection: 'row',
+        backgroundColor: color.bgWhite,
+        shadowColor: color.black,
+        shadowOffset: {
+            width: 0,
+            height: 5,
+        },
+        shadowOpacity: 0.36,
+        shadowRadius: 6.68,
+        elevation: 11,
+    },
+
+    tabViewButton: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 85,
+        height: 48,
+        borderBottomColor: color.green,
     },
 
     //flatlist orders styles
@@ -92,8 +115,10 @@ export default StyleSheet.create({
     },
 
     orderButton: {
-        padding: 7,
-        paddingHorizontal: 14,
+        width: 65,
+        paddingVertical: 7,
+        alignItems: 'center',
+        justifyContent: 'center',
         backgroundColor: color.greenLight,
         borderRadius: 40,
     },

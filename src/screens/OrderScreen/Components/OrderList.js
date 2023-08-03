@@ -66,11 +66,26 @@ const OrderList = () => {
                             </Text>
                             <Text style={styles.price}>{formatDate(item.datePurchase)}</Text>
                         </View>
-                        <TouchableOpacity>
-                            <View style={styles.orderButton}>
-                                <Text style={styles.orderAgain}>{label.orderAgain}</Text>
-                            </View>
-                        </TouchableOpacity>
+                        {
+                            item.orderStatus === 'delivered' || item.orderStatus === 'canceled' ?
+                                <TouchableOpacity
+                                    onPress={() => console.log('Order again')}
+                                >
+                                    <View style={styles.orderButton}>
+                                        <Text style={styles.orderAgain}>{label.orderAgain}</Text>
+                                    </View>
+                                </TouchableOpacity>
+                            :
+                                <TouchableOpacity
+                                    onPress={() => console.log('Open chat box')}
+                                >
+                                    <View style={[styles.orderButton, {backgroundColor: color.greenDark}]}>
+                                        <Text
+                                            style={[styles.orderAgain, {color: color.bgWhite, fontWeight: '500'}]}
+                                        >{label.chat}</Text>
+                                    </View>
+                                </TouchableOpacity>
+                        }
                     </View>
                 </View>
             </View>

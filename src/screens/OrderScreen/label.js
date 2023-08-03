@@ -7,4 +7,5 @@ export default {
     canceled: 'Đã hủy',
     product: 'sản phẩm',
     orderAgain: 'Đặt lại',
+    chat: 'Chat',
 };

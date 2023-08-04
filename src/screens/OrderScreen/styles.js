@@ -6,7 +6,7 @@ export default StyleSheet.create({
         marginTop: StatusBar.currentHeight,
         flexDirection: 'row',
         paddingHorizontal: 16,
-        marginVertical: 8,
+        marginBottom: 8,
         alignItems: 'center',
     },
 
@@ -14,6 +14,28 @@ export default StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
         paddingVertical: 8,
+    },
+
+    searchView: {
+        flex: 1,
+        alignItems: 'flex-end',
+    },
+
+    //search
+    searchBar: {
+        height: 40,
+        marginHorizontal: 16,
+        paddingHorizontal: 8,
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderRadius: 40,
+        borderWidth: 1,
+        borderColor: color.bgMedium,
+        backgroundColor: color.bgLight,
+    },
+
+    searchInput: {
+        flex: 1,
     },
 
     searchButton: {
@@ -25,6 +47,34 @@ export default StyleSheet.create({
     buttonName: {
         fontSize: 14,
         color: color.gray,
+    },
+
+    //search filter
+    historySearchListView: {
+        flex: 1,
+        width: '100%',
+        position: 'absolute',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: StatusBar.currentHeight + 92,
+    },
+
+    historySearchList: {
+        width: '86%',
+        backgroundColor: color.bgWhite,
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20,
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5,
+    },
+
+    textSearch: {
+        padding: 8,
     },
 
     //tab view styles

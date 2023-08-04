@@ -224,24 +224,23 @@ const SearchScreen = ({navigation}) => {
                                         onBlur={setOnBlur}
                                         style={styles.searchInput}
                                     />
-
-                                    <TouchableOpacity
-                                        onPress={() => getResults(search)}
-                                    >
-                                        <View style={styles.searchBarIcons}>
-                                            {showResult ? (
-                                                <TouchableOpacity onPress={() => onClose()}>
-                                                    <AntDesign
-                                                        name="closecircleo"
-                                                        size={18}
-                                                        color={color.lightDark}
-                                                        style={styles.closeIcon}
-                                                    />
-                                                </TouchableOpacity>
-                                            ) : null}
+                                    <View style={styles.searchBarIcons}>
+                                        {showResult ? (
+                                            <TouchableOpacity onPress={() => onClose()}>
+                                                <AntDesign
+                                                    name="closecircleo"
+                                                    size={18}
+                                                    color={color.lightDark}
+                                                    style={styles.closeIcon}
+                                                />
+                                            </TouchableOpacity>
+                                        ) : null}
+                                        <TouchableOpacity
+                                            onPress={() => getResults(search)}
+                                        >
                                             <AntDesign name="search1" size={24} color={color.lightDark} />
-                                        </View>
-                                    </TouchableOpacity>
+                                        </TouchableOpacity>
+                                    </View>
                                 </View>
                             </View>
                             {showResult ? (
@@ -327,7 +326,7 @@ const SearchScreen = ({navigation}) => {
                                 )
                             }
                         </View>
-                        {/*Searcch filter */}
+                        {/*Search filter */}
                         {
                             showFilter ? (
                                 <View style={styles.historySearchListView}>

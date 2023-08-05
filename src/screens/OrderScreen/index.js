@@ -1,5 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
-import { View, Text, TouchableOpacity, StatusBar, TextInput, Pressable, Keyboard } from 'react-native';
+import { View, Text, TouchableOpacity, StatusBar, TextInput, Pressable,
+    Keyboard, ScrollView } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -19,7 +20,6 @@ import { order } from '../../database/MockData';
 //import components
 import LoadingScreen from '../../Components/LoadingScreen';
 import Navigations from './Navigations';
-import OrderList from './Components/OrderList';
 import OrderItem from './Components/OrderItem';
 
 const OrderScreen = ({navigation}) => {
@@ -66,13 +66,21 @@ const OrderScreen = ({navigation}) => {
             return productData.name.toLowerCase().includes(keywordSearch.toLowerCase());
         });
 
-        const resultOrderList = order.filter((orderItem) => orderItem.productID === resultProductList.id);
+        const orderResultsList = [];
 
-        console.log(resultOrderList)
+        for (let resultProductIndex = 0; resultProductIndex < resultProductList.length; resultProductIndex++) {
+            for (let orderIndex = 0; orderIndex < order.length; orderIndex++) {
+                if (resultProductList[resultProductIndex].id === order[orderIndex].productID) {
+                    orderResultsList.push(order[orderIndex]);
+                }
+            }
+        }
+
+        console.log(orderResultsList);
 
         if (search) {
             setShowResult(true);
-            setResult(resultOrderList);
+            setResult(orderResultsList);
             setShowFilter(false);
             Keyboard.dismiss();
         }
@@ -121,6 +129,7 @@ const OrderScreen = ({navigation}) => {
         setShowResult(false);
         setSearch('');
         setLoading(false);
+        setResult([]);
     };
 
     useEffect(() => {
@@ -178,13 +187,13 @@ const OrderScreen = ({navigation}) => {
                 }
                 { showResult ?
                     (
-                        <View>
+                        <ScrollView>
                             {
                                (result || []).map(orderResultData => {
                                     return <OrderItem item={orderResultData} key={orderResultData.id} />;
                                })
                             }
-                        </View>
+                        </ScrollView>
                     )
                 :   <Navigations/>
                 }

@@ -12,6 +12,7 @@ import { data } from '../../../database/MockData';
 
 const OrderItem = ({item, index}) => {
 
+    //get product information to show name and get product ID
     const getProduct = (productID) => {
         for (let productIndex = 0; productIndex < data.length; productIndex++) {
             if (data[productIndex].id === productID) {
@@ -20,6 +21,7 @@ const OrderItem = ({item, index}) => {
         }
     };
 
+    //format date to hh:mm - dd/mm/yy
     const formatDate = (rawDate) => {
         let formatedDate = new Date(rawDate);
 
@@ -44,6 +46,7 @@ const OrderItem = ({item, index}) => {
 
     return (
         <View style={styles.itemContainer}>
+            {/*Product information */}
             <Image source={productData.image} style={styles.imageProduct} />
             <View style={styles.orderInformation}>
                 <View style={styles.productInformation}>
@@ -52,6 +55,7 @@ const OrderItem = ({item, index}) => {
                 </View>
                 <Text style={styles.price}>{item.quantity < 10 ? '0' + item.quantity : item.quantity} {label.product}</Text>
                 <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+                    {/*Order status */}
                     <View>
                         <Text style={[styles.status, {color: item.orderStatus === 'canceled' ? color.red : color.gray}]}>
                             {
@@ -63,6 +67,9 @@ const OrderItem = ({item, index}) => {
                         </Text>
                         <Text style={styles.price}>{formatDate(item.datePurchase)}</Text>
                     </View>
+                    {/*render button based on the status
+                        when the status is deliverdd or canceled, the button is order again
+                        otherwise, it is a chat box button */}
                     {
                         item.orderStatus === 'delivered' || item.orderStatus === 'canceled' ?
                             <TouchableOpacity

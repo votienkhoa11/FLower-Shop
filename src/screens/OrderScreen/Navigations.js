@@ -18,7 +18,9 @@ import Canceled from './Components/Canceled';
 import LoadingScreen from '../../Components/LoadingScreen';
 
 const Navigations = () => {
-
+    //[bug] sometimes the app will be crashed when interacting with the tab views.
+    //I tested 2 devices [both are android], one works fine, one got crashed when touching the tab views a lot.
+    //If the app is still crashed when being tested in the future, I recommend change the screen to the main app navigator
     const [index, setIndex] = useState(0);
 
     const [routes] = useState([
@@ -67,8 +69,11 @@ const Navigations = () => {
         );
     };
 
+    //to reduce the chance of crashed, I add render lazy, a function of tab view.
+    //It will load the view more slowly only one time.
     const renderLazyHolder = () => <LoadingScreen style={{backgroundColor: color.opacity0Color}} />;
 
+    //create a navigation using SceneMap
     const renderScence = SceneMap({
         all: All,
         process: Processing,

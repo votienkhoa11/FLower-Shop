@@ -76,14 +76,10 @@ const OrderScreen = ({navigation}) => {
             }
         }
 
-        console.log(orderResultsList);
-
-        if (search) {
-            setShowResult(true);
-            setResult(orderResultsList);
-            setShowFilter(false);
-            Keyboard.dismiss();
-        }
+        setShowResult(true);
+        setResult(orderResultsList);
+        setShowFilter(false);
+        Keyboard.dismiss();
     };
 
     //set the search bar on focus or not

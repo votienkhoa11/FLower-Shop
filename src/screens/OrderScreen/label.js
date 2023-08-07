@@ -9,4 +9,5 @@ export default {
     orderAgain: 'Đặt lại',
     chat: 'Chat',
     empty: 'Bạn không có đơn hàng nào',
+    noResult: 'Không tìm thấy kết quả tìm kiếm!',
 };

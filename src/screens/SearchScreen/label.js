@@ -5,4 +5,5 @@ export default {
     mostPopularSearchLabel: 'Được tìm kiếm nhiều',
     suggestionLabel: 'Gợi ý cho bạn',
     ResultFound: 'Kết quả tìm kiếm',
+    noResult: 'Không tìm thấy kết quả tìm kiếm!',
 };

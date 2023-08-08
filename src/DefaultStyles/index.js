@@ -12,6 +12,7 @@ const color = {
   grayMedium: '#4d5358',
   blue: '#006bff',
   red: '#ff0033',
+  redSale: '#f20000',
   black: '#161616',
   mediumBlack: '#21272a',
   green: '#36a46d',

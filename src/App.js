@@ -15,6 +15,7 @@ import HomeScreen from './screens/HomeScreen/';
 import SearchScreen from './screens/SearchScreen';
 import VoucherScreen from './screens/VoucherScreen';
 import OrderScreen from './screens/OrderScreen';
+import ProdcuctScreen from './screens/ProductScreen';
 //user stack screen
 import UserScreen from './screens/UserScreen';
 import ChangeInformationScreen from './screens/UserScreen/ChangeInformationScreen';
@@ -162,11 +163,12 @@ function App() {
 }, []);
 
   return (
-      <NavigationContainer>
+    <NavigationContainer>
         <Stack.Navigator screenOptions={{headerShown: false}}>
-          <Stack.Screen name="tab" component = {TabNavigators} />
+            <Stack.Screen name="tab" component = {TabNavigators} />
+            <Stack.Screen name="product" component= {ProdcuctScreen} />
         </Stack.Navigator>
-      </NavigationContainer>
+    </NavigationContainer>
   );
 }
 

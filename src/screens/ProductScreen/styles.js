@@ -125,4 +125,58 @@ export default StyleSheet.create({
         borderColor: color.bgMedium,
     },
 
+    buySection: {
+        backgroundColor: color.bgWhite,
+        shadowColor: color.black,
+        shadowOffset: {
+            width: 0,
+            height: 12,
+        },
+        shadowOpacity: 0.58,
+        shadowRadius: 16.00,
+        
+        elevation: 24,
+    },
+
+    priceView: {
+        flexDirection: 'row',
+        padding: 16,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+
+    quantityChange: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+
+    changeQuantityButton: {
+        fontSize: 20,
+        color: color.green,
+        padding: 5,
+        paddingHorizontal: 10,
+    },
+
+    number: {
+        fontSize: 16,
+        fontWeight: '600',
+        color: color.black,
+    },
+
+    buyButton: {
+        height: 48,
+        marginHorizontal: 16,
+        marginBottom: 16,
+        backgroundColor: color.green,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 8,
+    },
+
+    buyText: {
+        fontSize: 16,
+        fontWeight: 600,
+        color: color.bgWhite,
+    },
 });

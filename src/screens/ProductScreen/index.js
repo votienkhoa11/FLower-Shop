@@ -1,5 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
-import { View, Text, StatusBar, ScrollView, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StatusBar, ScrollView, Image } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import React, { useEffect, useState } from 'react';
 import { callToast } from '../../Components/Toast';
 
@@ -30,8 +31,14 @@ const ProdcuctScreen = ({route, navigation}) => {
     const productFilter = data.filter((productItem) => productItem.id === productID);
     const productInformation = productFilter[0];
 
+    //set rating
+    //this rating can't be changed, used for show products rating in the comments
     const [rating, setRating] = useState(productInformation.rating);
+    //this rating can be changed, user can set their own rating for the product
     const [chooseRating, setChooseRating] = useState(productInformation.rating);
+
+    //set quantity
+    const [quantity, setQuantity] = useState(1);
 
     const salePriceCalculator = (price, sale) => {
         let offPrice = price / 100 * sale;
@@ -45,7 +52,7 @@ const ProdcuctScreen = ({route, navigation}) => {
         });
 
         return unsubscribe;
-    }, [navigation, rating, chooseRating]);
+    }, [navigation]);
   return (
     loading ? <LoadingScreen /> :
 
@@ -113,9 +120,43 @@ const ProdcuctScreen = ({route, navigation}) => {
                 </View>
             </View>
         </ScrollView>
-        <View>
+        {/*Buy section*/}
+        <View style={styles.buySection}>
+            {/*price and quantiy change */}
+            <View style={styles.priceView}>
+                <Text style={styles.number}>{productInformation.price * quantity}đ</Text>
+                {/*quantiy change */}
+                <View style={styles.quantityChange}>
+                    <TouchableOpacity activeOpacity={1}
+                        onPress={() => setQuantity(quantity - 1)}
+                        disabled = {quantity === 1 ? true : false}
+                    >
+                        <AntDesign
+                            name="minuscircleo"
+                            style={[styles.changeQuantityButton, {
+                                color: quantity === 1 ? color.bgMedium : color.green,
+                            }]}
+                            />
+                    </TouchableOpacity>
+                    <Text
+                        style={styles.number}
+                    >
+                        {quantity < 10 ? `0${quantity}` : quantity}
+                    </Text>
+                    <TouchableOpacity activeOpacity={1}
+                            onPress={() => setQuantity(quantity + 1)}
+                    >
+                        <AntDesign name="pluscircleo" style={styles.changeQuantityButton} />
+                    </TouchableOpacity>
+                </View>
+            </View>
+            <TouchableOpacity
+            >
+                <View style={styles.buyButton}>
+                    <Text style={styles.buyText}>{label.buy}</Text>
+                </View>
+            </TouchableOpacity>
         </View>
-        <CartButton />
     </View>
   );
 };

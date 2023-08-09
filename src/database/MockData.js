@@ -7,6 +7,8 @@ export const data = [
         isSale: true,
         salePercentage: 15,
         like: 347,
+        sold: 22,
+        rating: 2.8,
         image: require('../DefaultStyles/imgs/products/whiterosebracket.jpg'),
     },
 
@@ -18,6 +20,8 @@ export const data = [
         isSale: true,
         salePercentage: 15,
         like: 106,
+        sold: 49,
+        rating: 3.4,
         image: require('../DefaultStyles/imgs/products/flowerbracket.jpg'),
     },
 
@@ -29,6 +33,8 @@ export const data = [
         isSale: false,
         salePercentage: 0,
         like: 63,
+        sold: 47,
+        rating: 3.5,
         image: require('../DefaultStyles/imgs/products/flowerbox.jpg'),
     },
 
@@ -40,6 +46,8 @@ export const data = [
         isSale: false,
         salePercentage: 0,
         like: 246,
+        sold: 47,
+        rating: 3.4,
         image: require('../DefaultStyles/imgs/products/bohoahong.png'),
     },
 
@@ -51,6 +59,8 @@ export const data = [
         isSale: true,
         salePercentage: 10,
         like: 286,
+        sold: 31,
+        rating: 4.2,
         image: require('../DefaultStyles/imgs/products/flowerJar.jpg'),
     },
 
@@ -62,6 +72,8 @@ export const data = [
         isSale: false,
         salePercentage: 0,
         like: 422,
+        sold: 39,
+        rating: 3.5,
         image: require('../DefaultStyles/imgs/products/sunflowerbracket.jpg'),
     },
 
@@ -73,6 +85,8 @@ export const data = [
         isSale: true,
         salePercentage: 10,
         like: 126,
+        sold: 47,
+        rating: 5.0,
         image: require('../DefaultStyles/imgs/products/chauhoalan.jpg'),
     },
 ];
@@ -132,17 +146,6 @@ export const categories = [
         id: 5,
         name: 'Hoa Lan',
         image: require('../DefaultStyles/imgs/categories/hoalan.jpg'),
-    },
-    {
-        id: 6,
-        name: 'Giỏ Hoa',
-        image: require('../DefaultStyles/imgs/categories/giohoa.jpg'),
-    },
-
-    {
-        id: 7,
-        name: 'Bó Hoa',
-        image: require('../DefaultStyles/imgs/categories/bohoa.png'),
     },
 ];
 

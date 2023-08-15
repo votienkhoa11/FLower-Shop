@@ -1,15 +1,15 @@
 /* eslint-disable react-native/no-inline-styles */
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import React from 'react';
-import style from './styles';
+import style from '../../styles';
 
 //import icon
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import SaleComponent from './saleComponent';
+import SaleComponent from '../../saleComponent';
 
 const BroughtAgainCard = ({data = {}}) => {
   return (
-    data !== {} ? (
+    data ? (
         <View style={{padding: 8}}>
             <View style={style.broughtCard}>
                 <TouchableOpacity activeOpacity={1}>

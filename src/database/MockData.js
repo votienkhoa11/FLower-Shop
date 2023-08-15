@@ -9,7 +9,7 @@ export const data = [
         like: 347,
         sold: 22,
         rating: 2.8,
-        image: require('../DefaultStyles/imgs/products/whiterosebracket.jpg'),
+        image: require('../assets/imgs/products/whiterosebracket.jpg'),
     },
 
     {
@@ -22,7 +22,7 @@ export const data = [
         like: 106,
         sold: 49,
         rating: 3.4,
-        image: require('../DefaultStyles/imgs/products/flowerbracket.jpg'),
+        image: require('../assets/imgs/products/flowerbracket.jpg'),
     },
 
     {
@@ -35,7 +35,7 @@ export const data = [
         like: 63,
         sold: 47,
         rating: 3.5,
-        image: require('../DefaultStyles/imgs/products/flowerbox.jpg'),
+        image: require('../assets/imgs/products/flowerbox.jpg'),
     },
 
     {
@@ -48,7 +48,7 @@ export const data = [
         like: 246,
         sold: 47,
         rating: 3.4,
-        image: require('../DefaultStyles/imgs/products/bohoahong.png'),
+        image: require('../assets/imgs/products/bohoahong.png'),
     },
 
     {
@@ -61,7 +61,7 @@ export const data = [
         like: 286,
         sold: 31,
         rating: 4.2,
-        image: require('../DefaultStyles/imgs/products/flowerJar.jpg'),
+        image: require('../assets/imgs/products/flowerJar.jpg'),
     },
 
     {
@@ -74,7 +74,7 @@ export const data = [
         like: 422,
         sold: 39,
         rating: 3.5,
-        image: require('../DefaultStyles/imgs/products/sunflowerbracket.jpg'),
+        image: require('../assets/imgs/products/sunflowerbracket.jpg'),
     },
 
     {
@@ -87,7 +87,7 @@ export const data = [
         like: 126,
         sold: 47,
         rating: 5.0,
-        image: require('../DefaultStyles/imgs/products/chauhoalan.jpg'),
+        image: require('../assets/imgs/products/chauhoalan.jpg'),
     },
 ];
 
@@ -110,13 +110,13 @@ export const events = [
     {
         id: 1,
         event: 'spring sale',
-        image: require('../DefaultStyles/imgs/events/saleSpring.png'),
+        image: require('../assets/imgs/events/saleSpring.png'),
     },
 
     {
         id: 2,
         event: 'summer sale',
-        image: require('../DefaultStyles/imgs/events/salesummer.png'),
+        image: require('../assets/imgs/events/salesummer.png'),
     },
 ];
 
@@ -124,28 +124,28 @@ export const categories = [
     {
         id: 1,
         name: 'Hoa Hồng',
-        image: require('../DefaultStyles/imgs/categories/rose.png'),
+        image: require('../assets/imgs/categories/rose.png'),
     },
 
     {
         id: 2,
         name: 'Hoa Hồng Trắng',
-        image: require('../DefaultStyles/imgs/categories/whiterose.jpg'),
+        image: require('../assets/imgs/categories/whiterose.jpg'),
     },
     {
         id: 3,
         name: 'Hoa Cúc',
-        image: require('../DefaultStyles/imgs/categories/hoacuc.jpg'),
+        image: require('../assets/imgs/categories/hoacuc.jpg'),
     },
     {
         id: 4,
         name: 'Hoa Hướng Dương',
-        image: require('../DefaultStyles/imgs/categories/sunflower.jpg'),
+        image: require('../assets/imgs/categories/sunflower.jpg'),
     },
     {
         id: 5,
         name: 'Hoa Lan',
-        image: require('../DefaultStyles/imgs/categories/hoalan.jpg'),
+        image: require('../assets/imgs/categories/hoalan.jpg'),
     },
 ];
 

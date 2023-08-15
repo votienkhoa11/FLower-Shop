@@ -100,6 +100,14 @@ export default StyleSheet.create({
         borderBottomColor: color.green,
     },
 
+    animatedText: {
+        fontSize: 14,
+        position: 'absolute',
+        color: color.green,
+        borderBottomWidth: 2,
+        borderColor: color.green,
+    },
+
     //flatlist orders styles
     itemContainer: {
         marginHorizontal: 16,

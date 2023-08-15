@@ -4,13 +4,13 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 //import styles
-import style from './styles';
+import style from '../../styles';
 
 //import components
-import SaleComponent from './saleComponent';
+import SaleComponent from '../../saleComponent';
 
 //import user
-import { user } from '../../database/MockData';
+import { user } from '../../../../database/MockData';
 
 const ProductCard = ({data = {}}) => {
     const navigation = useNavigation();

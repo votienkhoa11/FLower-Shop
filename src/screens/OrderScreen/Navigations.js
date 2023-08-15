@@ -1,5 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
-import { View, TouchableOpacity, Animated, ScrollView, Text } from 'react-native';
+import { View, Animated, ScrollView, Text } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import React, {useState} from 'react';
 import { TabView, SceneMap } from 'react-native-tab-view';
 
@@ -18,9 +19,7 @@ import Canceled from './Components/Canceled';
 import LoadingScreen from '../../Components/LoadingScreen';
 
 const Navigations = () => {
-    //[bug] sometimes the app will be crashed when interacting with the tab views.
-    //I tested 2 devices [both are android], one works fine, one got crashed when touching the tab views a lot.
-    //If the app is still crashed when being tested in the future, I recommend change the screen to the main app navigator
+    //[bug] sometimes the app will be crashed when interacting with the tab views. (fixed)
     const [index, setIndex] = useState(0);
 
     const [routes] = useState([
@@ -48,7 +47,7 @@ const Navigations = () => {
 
                         return (
                             <View
-                                style={[styles.tabViewButton]}
+                                style={styles.tabViewButton}
                                 key={routeIndex}
                             >
                                 <TouchableOpacity
@@ -56,7 +55,7 @@ const Navigations = () => {
                                 >
                                     <Text style={{fontSize: 14}}>{route.title}</Text>
                                     <Animated.Text
-                                        style={{fontSize: 14, position: 'absolute', color: color.green, opacity: textOpacity}}
+                                        style={[styles.animatedText, {opacity: textOpacity}]}
                                     >
                                         {route.title}
                                     </Animated.Text>

@@ -1,14 +1,14 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import React from 'react';
-import style from './styles';
+import styles from '../../styles';
 
 const CategoryCard = ({data = {}}) => {
   return (
     data !== {} ? (
       <TouchableOpacity>
-          <View style={style.categoryCard}>
-              <Image source={data.image} style={style.categoryImage}/>
-              <Text style={style.categoryName}>{data.name}</Text>
+          <View style={styles.categoryCard}>
+              <Image source={data.image} style={styles.categoryImage}/>
+              <Text style={styles.categoryName}>{data.name}</Text>
           </View>
       </TouchableOpacity>
       ) : null

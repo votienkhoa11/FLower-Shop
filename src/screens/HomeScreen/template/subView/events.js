@@ -3,10 +3,10 @@ import { View, FlatList, Image, Animated } from 'react-native';
 import React, { useRef } from 'react';
 
 //import styles
-import style from './styles';
-import { width } from '../../DefaultStyles';
+import styles from '../../styles';
+import { width } from '../../../../DefaultStyles';
 
-import { events } from '../../database/MockData';
+import { events } from '../../../../database/MockData';
 
 const FlatListEvents = () => {
 
@@ -19,8 +19,8 @@ const FlatListEvents = () => {
     //render events
     const renderEvents = ({item, index}) => {
         return (
-            <View style={style.eventView}>
-                <Image source={item.image} style={style.imageEvent} />
+            <View style={styles.eventView}>
+                <Image source={item.image} style={styles.imageEvent} />
             </View>
         );
     };
@@ -48,13 +48,14 @@ const FlatListEvents = () => {
             return (
                 <Animated.View
                     key={dotIndicatorsIndex}
-                    style={[style.dotIndicators, {width: dotWidth, opacity}]}
+                    style={[styles.dotIndicators, {width: dotWidth, opacity}]}
                 />
             );
         });
     };
 
     return (
+        events ?
         <View style={{paddingLeft: 16}}>
             {/*Event page*/}
             <FlatList
@@ -68,10 +69,11 @@ const FlatListEvents = () => {
                 pagingEnabled={true}
                 onScroll={handleScroll}
             />
-            <View style={style.dotView}>
+            <View style={styles.dotView}>
                 {renderDotsIndicators()}
             </View>
         </View>
+        : null
     );
 };
 

@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
-import style from './styles';
+import style from '../../styles';
 import { useNavigation } from '@react-navigation/native';
 
 const PopularCard = ({data = {}}) => {

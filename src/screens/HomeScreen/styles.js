@@ -218,27 +218,6 @@ export default StyleSheet.create({
         height: 25,
     },
 
-    saleIcon: {
-        resizeMode: 'stretch',
-        width: 70,
-        height: 25,
-    },
-
-    sale2: {
-        flex: 1,
-        position: 'absolute',
-        paddingTop: 2,
-        paddingRight: 6,
-        alignItems: 'center',
-        alignContent: 'center',
-    },
-
-    saleText: {
-        fontSize: 10,
-        fontWeight: '500',
-        color: color.bgWhite,
-    },
-
     broughtTitle: {
         width: 130,
         paddingVertical: 12,

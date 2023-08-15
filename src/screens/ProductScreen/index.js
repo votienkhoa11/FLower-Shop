@@ -20,7 +20,7 @@ import label from './label';
 
 //import components
 import LoadingScreen from '../../Components/LoadingScreen';
-import CartButton from '../../Components/CartButton';
+import CartButton from '../../Components/Buttons/CartButton';
 import StarRate from './StarRate';
 
 const ProdcuctScreen = ({route, navigation}) => {

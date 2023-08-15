@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import style from '../../styles';
 
 //import components
-import SaleComponent from '../../saleComponent';
+import SaleComponent from '../../../../Components/Sale';
 
 //import user
 import { user } from '../../../../database/MockData';

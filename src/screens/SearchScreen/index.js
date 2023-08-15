@@ -20,7 +20,7 @@ import { searchResult } from '../../database/MockData';
 
 //import components
 import LoadingScreen from '../../Components/LoadingScreen';
-import CartButton from '../../Components/CartButton';
+import CartButton from '../../Components/Buttons/CartButton';
 import SearchCard from './SearchCard';
 import SuggestionCard from './SuggestionCard';
 import ResultSearch from './ResultSearch';

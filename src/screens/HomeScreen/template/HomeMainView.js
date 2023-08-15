@@ -23,7 +23,7 @@ import CategoryCard from './subView/CategoryCard';
 import PopularCard from './subView/PopularCard';
 import BroughtAgainCard from './subView/BroughtAgainCard';
 import ProductCard from './subView/ProductCard';
-import CartButton from '../../../Components/CartButton';
+import CartButton from '../../../Components/Buttons/CartButton';
 
 const HomeMainView = (props) => {
     const {

@@ -1,27 +1,27 @@
 /* eslint-disable react-native/no-inline-styles */
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import React from 'react';
-import style from '../../styles';
+import styles from '../../styles';
 
 //import icon
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import SaleComponent from '../../saleComponent';
+import SaleComponent from '../../../../Components/Sale';
 
 const BroughtAgainCard = ({data = {}}) => {
   return (
     data ? (
         <View style={{padding: 8}}>
-            <View style={style.broughtCard}>
+            <View style={styles.broughtCard}>
                 <TouchableOpacity activeOpacity={1}>
-                        <Image source={data.image} style={style.broughtImage} />
+                        <Image source={data.image} style={styles.broughtImage} />
                 </TouchableOpacity>
                 <View style={{flexDirection: 'row', paddingHorizontal: 8}}>
-                    <View style={style.broughtTitle}>
-                        <Text style={style.titleText}>{data.name}</Text>
-                        <Text style={style.price}>{data.price}</Text>
+                    <View style={styles.broughtTitle}>
+                        <Text style={styles.titleText}>{data.name}</Text>
+                        <Text style={styles.price}>{data.price}</Text>
                     </View>
                     <TouchableOpacity>
-                        <View style={style.addIcon}>
+                        <View style={styles.addIcon}>
                             <AntDesign name="pluscircleo" size={16} />
                         </View>
                     </TouchableOpacity>
@@ -29,7 +29,7 @@ const BroughtAgainCard = ({data = {}}) => {
             </View>
             {
                 data.salePercentage > 0 ? (
-                    <SaleComponent data={data} saleStyle={style.sale} />
+                    <SaleComponent data={data} saleStyle={styles.sale} />
                 ) : null
             }
         </View>

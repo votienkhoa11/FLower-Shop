@@ -18,7 +18,7 @@ import OrderScreen from './screens/OrderScreen';
 import ProdcuctScreen from './screens/ProductScreen';
 //user stack screen
 import UserScreen from './screens/UserScreen';
-import ChangeInformationScreen from './screens/UserScreen/ChangeInformationScreen';
+import ChangeInformationScreen from './screens/ChangeInformationScreen';
 import PaymentMethodScreen from './screens/PaymentMethodScreen';
 import NotificationScreen from './screens/NotificationScreen';
 import HelpCenterScreen from './screens/HelpCenterScreen';

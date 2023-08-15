@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
-import { color } from '../../../DefaultStyles';
+import { color } from '../../DefaultStyles';
 
-import { width } from '../../../DefaultStyles';
+import { width } from '../../DefaultStyles';
 
 export default StyleSheet.create({
     //header view

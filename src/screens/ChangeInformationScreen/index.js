@@ -5,14 +5,14 @@ import { View, Text, StatusBar, TouchableOpacity, ScrollView,
 import React, { useState, useEffect } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { callToast } from '../../../Components/Toast';
+import { callToast } from '../../Components/Toast';
 import { CountryPicker } from 'react-native-country-codes-picker';
 import * as ImagePicker from 'react-native-image-picker';
 
 //import styles
-import defaultStyles from '../../../DefaultStyles';
+import defaultStyles from '../../DefaultStyles';
 import styles from './styles';
-import { color } from '../../../DefaultStyles';
+import { color } from '../../DefaultStyles';
 
 //import icons
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -20,14 +20,14 @@ import Entypo from 'react-native-vector-icons/Entypo';
 
 //import data
 import label from './label';
-import { userData } from '../../../api/userData';
+import { userData } from '../../api/userData';
 
 //import components
-import Avatar from '../Avatar';
-import { uriHeader } from '../Avatar';
+import Avatar from '../UserScreen/template/subView/Avatar';
+import { uriHeader } from '../UserScreen/template/subView/Avatar';
 import Input from './Input';
 import DropDownInput from './DropDownInput';
-import LoadingScreen from '../../../Components/LoadingScreen';
+import LoadingScreen from '../../Components/LoadingScreen';
 
 const ChangeInformationScreen = ({navigation}) => {
     const [loading, setLoading] = useState(true);

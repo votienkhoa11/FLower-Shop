@@ -5,7 +5,7 @@ import SelectDropdown from 'react-native-select-dropdown';
 
 //import styles
 import styles from './styles';
-import { color } from '../../../DefaultStyles';
+import { color } from '../../DefaultStyles';
 
 //import icon
 import AntDesign from 'react-native-vector-icons/AntDesign';

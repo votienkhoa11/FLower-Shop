@@ -4,7 +4,7 @@ import React from 'react';
 
 //import styles
 import styles from './styles';
-import { color } from '../../../DefaultStyles';
+import { color } from '../../DefaultStyles';
 
 //import icon
 import Entypo from 'react-native-vector-icons/Entypo';

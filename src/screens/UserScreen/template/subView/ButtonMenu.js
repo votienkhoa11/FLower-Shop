@@ -1,10 +1,11 @@
 import { View, Text, Pressable } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { handleOnPress } from '../../UserContainer';
 
 //import style
-import styles from './styles';
-import { color } from '../../DefaultStyles';
+import styles from '../../styles';
+import { color } from '../../../../DefaultStyles';
 
 //import icons
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -12,49 +13,10 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 
-import label from './label';
+import label from '../../label';
 
 const ButtonMenu = ({name}) => {
     const navigation = useNavigation();
-
-    const getNavigationRoute = (buttonName) => {
-        switch (buttonName) {
-            case label.order:
-                return 'order';
-
-            case label.deal:
-                return 'vouncher';
-
-            case label.paymentMethod:
-                return 'payment';
-
-            case label.notification:
-                return 'notification';
-
-            case label.helpCenter:
-                return 'support';
-
-            case label.accountSecurity:
-                return 'security';
-
-            default:
-                return '';
-        }
-    };
-
-    const handleOnPress = () => {
-        const routeName = getNavigationRoute(name);
-
-        if (routeName === '') {
-            if (name === label.logOut) {
-                console.log('Log out button pressed');
-            } else {
-                console.log('delete account button pressed');
-            }
-        } else {
-            navigation.navigate(routeName);
-        }
-    };
 
     return (
     <Pressable
@@ -65,7 +27,7 @@ const ButtonMenu = ({name}) => {
                     color.bgWhite,
             },
         ]}
-        onPress={() => handleOnPress()}
+        onPress={() => handleOnPress({name, navigation})}
     >
         <View style={styles.buttonView}>
                 {

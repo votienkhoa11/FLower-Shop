@@ -1,13 +1,21 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 //import style
-import styles from './styles';
+import styles from '../../styles';
 
 const ResultSearch = ({data = []}) => {
+    const navigation = useNavigation();
+
     return (
-        data !== [] ? (
-            <TouchableOpacity activeOpacity={1}>
+        data ? (
+            <TouchableOpacity
+                activeOpacity={1}
+                onPress={() => navigation.navigate('product', {
+                    productID: data.id,
+                })}
+            >
                 <View style={styles.resultCard}>
                     <Image source={data.image} style={styles.productImage} />
                     <View style={styles.information}>

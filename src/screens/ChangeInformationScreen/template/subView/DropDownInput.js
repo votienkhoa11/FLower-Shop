@@ -4,8 +4,8 @@ import React from 'react';
 import SelectDropdown from 'react-native-select-dropdown';
 
 //import styles
-import styles from './styles';
-import { color } from '../../DefaultStyles';
+import styles from '../../styles';
+import { color } from '../../../../DefaultStyles';
 
 //import icon
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -26,7 +26,7 @@ const DropDownInput = ({
                 defaultButtonText={placeholder}
                 onSelect={onSelectedText}
                 //styles
-                dropdownOverlayColor="rgba(0,0,0,0)"
+                dropdownOverlayColor={color.opacity0Color}
                 buttonStyle={[
                     styles.input,
                     {borderColor: error ? color.red : color.lightDark},

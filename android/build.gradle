@@ -40,3 +40,17 @@ buildscript {
         classpath("com.facebook.react:react-native-gradle-plugin")
     }
 }
+plugins {
+    id 'org.sonarqube' version '3.3'
+}
+
+sonarqube {
+    properties {
+        property 'sonar.projectKey', {$SONAR_PROJECT_KEY}
+        property 'sonar.sources', 'android/app/src/main/java' // Đường dẫn tới mã nguồn
+        property 'sonar.tests', 'android/app/src/debug/java'   // Đường dẫn tới kiểm thử
+        property 'sonar.language', 'java'
+        property 'sonar.host.url', {$SONAR_HOST_URL} // URL của SonarQube hoặc SonarCloud
+        property 'sonar.login', {$SONAR_TOKEN}
+    }
+}

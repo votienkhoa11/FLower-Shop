@@ -10,8 +10,13 @@ RUN apk update && apk add --no-cache gradle
 RUN apk add --update nodejs npm 
 RUN npm install -g react-native-cli
 
-# Thư mục làm việc mặc định
-WORKDIR /usr/src/android
+COPY build.gradle /usr/src/app/build.gradle
 
-# Lệnh chạy SonarScanner CLI với Gradle
-CMD ["gradlew", "sonarqube"]
+# Sao chép tệp cấu hình React Native vào hình ảnh
+COPY sonar-project.properties /usr/src/app/sonar-project.properties
+
+# Thư mục làm việc mặc định
+WORKDIR /usr/src/app
+
+# Lệnh chạy SonarScanner
+CMD ["sonar-scanner"]

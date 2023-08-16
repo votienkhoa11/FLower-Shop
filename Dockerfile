@@ -14,4 +14,4 @@ RUN npm install -g react-native-cli
 WORKDIR /usr/src/android
 
 # Lệnh chạy SonarScanner CLI với Gradle
-CMD ["gradle", "sonarqube"]
+CMD ["gradlew", "sonarqube"]

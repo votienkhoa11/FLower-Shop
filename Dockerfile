@@ -16,7 +16,8 @@ COPY android/build.gradle /usr/src/app/android/build.gradle
 COPY sonar-project.properties /usr/src/app/sonar-project.properties
 
 # Thư mục làm việc mặc định
-WORKDIR /usr/src/app
+WORKDIR /usr/src/
 
 # Lệnh chạy SonarScanner
 CMD ["sonar-scanner"]
+CMD []

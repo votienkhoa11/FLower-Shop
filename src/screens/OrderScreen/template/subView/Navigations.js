@@ -5,18 +5,18 @@ import React, {useState} from 'react';
 import { TabView, SceneMap } from 'react-native-tab-view';
 
 //import style
-import styles from './styles';
-import { color } from '../../DefaultStyles';
+import styles from '../../styles';
+import { color } from '../../../../DefaultStyles';
 
-import label from './label';
+import label from '../../label';
 
 //import components
-import All from './Components/All';
-import Processing from './Components/Processing';
-import Delivering from './Components/Delivering';
-import Delivered from './Components/Delivered';
-import Canceled from './Components/Canceled';
-import LoadingScreen from '../../Components/LoadingScreen';
+import All from './All';
+import Processing from './Processing';
+import Delivering from './Delivering';
+import Delivered from './Delivered';
+import Canceled from './Canceled';
+import LoadingScreen from '../../../../Components/LoadingScreen';
 
 const Navigations = () => {
     //[bug] sometimes the app will be crashed when interacting with the tab views. (fixed)
@@ -51,6 +51,7 @@ const Navigations = () => {
                                 key={routeIndex}
                             >
                                 <TouchableOpacity
+                                    activeOpacity={1}
                                     onPress={() => setIndex(routeIndex)}
                                 >
                                     <Text style={{fontSize: 14}}>{route.title}</Text>

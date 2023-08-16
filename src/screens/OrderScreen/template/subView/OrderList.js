@@ -2,11 +2,11 @@ import { View, Text, FlatList } from 'react-native';
 import React from 'react';
 
 //import styles
-import styles from '../styles';
+import styles from '../../styles';
 
 //import data
-import label from '../label';
-import { order } from '../../../database/MockData';
+import label from '../../label';
+import { order } from '../../../../database/MockData';
 
 //import components
 import OrderItem from './OrderItem';

@@ -3,12 +3,12 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 
 //import styles
-import styles from '../styles';
-import { color } from '../../../DefaultStyles';
+import styles from '../../styles';
+import { color } from '../../../../DefaultStyles';
 
 //import data
-import label from '../label';
-import { data } from '../../../database/MockData';
+import label from '../../label';
+import { data } from '../../../../database/MockData';
 import { ListEmptyComponent } from './OrderList';
 
 const OrderItem = ({item = {}, index}) => {

@@ -6,7 +6,7 @@ COPY .sonarcloud.properties /root/.sonarcloud.properties
 
 # Cài đặt Gradle và Node.js
 USER root
-RUN apt-get update && apt-get install -y gradle nodejs
+RUN apt update && apt install -y gradle nodejs
 
 # Thư mục làm việc mặc định
 WORKDIR /usr/src/app

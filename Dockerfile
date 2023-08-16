@@ -7,7 +7,7 @@ SHELL ["/bin/bash", "-c"]
 
 # Cài đặt Gradle và Node.js
 USER root
-RUN apk update && apk install -y gradle nodejs
+RUN apk update && apk add --no-cache gradle nodejs
 
 # Thư mục làm việc mặc định
 WORKDIR /usr/src/app

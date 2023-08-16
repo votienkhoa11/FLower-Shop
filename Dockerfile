@@ -10,7 +10,7 @@ USER root
 RUN apk update && apk add --no-cache gradle nodejs
 
 # Thư mục làm việc mặc định
-WORKDIR /usr/src/app
+WORKDIR /usr/android
 
 # Lệnh chạy SonarScanner CLI với Gradle
 CMD ["gradle", "sonarqube"]

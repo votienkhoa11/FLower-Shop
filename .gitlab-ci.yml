@@ -11,7 +11,6 @@ sonarqube-check:
     paths:
       - .sonar/cache
   script: 
-    - npm install
     - sudo docker build -t sonar-scanner-image .
     - sudo docker run --rm -e SONAR_HOST_URL=${SONAR_HOST_URL} -e SONAR_SCANNER_OPTS="-Dsonar.projectKey=${SONAR_PROJECT_KEY}" -e SONAR_TOKEN=${SONAR_TOKEN} -v ".:/usr/src"   sonar-scanner-image
     - sudo rm -rf .scannerwork

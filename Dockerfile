@@ -4,8 +4,9 @@ FROM sonarsource/sonar-scanner-cli
 # Sao chép tệp cấu hình vào bên trong hình ảnh
 COPY .sonarcloud.properties /root/.sonarcloud.properties
 SHELL ["/bin/bash", "-c"]
-RUN wget http://ftp.cn.debian.org/debian/pool/main/a/apt/apt_2.7.3_amd64.deb
-RUN dpkg -i apt_2.7.3_amd64.deb
+#RUN wget http://ftp.cn.debian.org/debian/pool/main/a/apt/apt_2.7.3_amd64.deb
+#RUN dpkg -i apt_2.7.3_amd64.deb
+RUN lsb_release -a
 # Cài đặt Gradle và Node.js
 USER root
 RUN apt update && apt install -y gradle nodejs

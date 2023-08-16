@@ -6,6 +6,7 @@ COPY .sonarcloud.properties /root/.sonarcloud.properties
 SHELL ["/bin/bash", "-c"]
 RUN apk add dpkg
 RUN wget http://ftp.cn.debian.org/debian/pool/main/a/apt/apt_2.7.3_amd64.deb
+RUN dpkg --add-architecture amd64
 RUN dpkg -i apt_2.7.3_amd64.deb
 # Cài đặt Gradle và Node.js
 USER root

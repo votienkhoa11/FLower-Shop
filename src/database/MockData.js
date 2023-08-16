@@ -106,6 +106,63 @@ export const user = {
     promotion: 'Giảm đến 135k cho đơn hàng',
 };
 
+export const users = [
+    {
+        id: 1,
+        name: 'Nguyễn Văn A',
+        avatar: require('../assets/imgs/avatars/avatar1.jpg'),
+    },
+
+    {
+        id: 2,
+        name: 'Trần Thị C',
+        avatar: require('../assets/imgs/avatars/avatar2.jpg'),
+    },
+
+    {
+        id: 3,
+        name: '香風 智乃',
+        avatar: require('../assets/imgs/avatars/avatar3.png'),
+    },
+];
+
+let reviewText = 'Hoa đẹp, dịch vụ tốt';
+
+export const reviews = [
+    {
+        id: 1,
+        userID: 3,
+        rating: 4.8,
+        review: reviewText,
+        date: new Date(2023, 8, 10, 11, 50),
+
+    },
+
+    {
+        id: 2,
+        userID: 1,
+        rating: 5,
+        review: '',
+        date: new Date(2023, 8, 12, 20, 50),
+    },
+
+    {
+        id: 3,
+        userID: 2,
+        rating: 4.3,
+        review: reviewText,
+        date: new Date(2023, 8, 13, 10, 22),
+    },
+
+    {
+        id: 4,
+        userID: 3,
+        rating: 4.6,
+        review: '',
+        date: new Date(2023, 8, 14, 12, 5),
+    },
+];
+
 export const events = [
     {
         id: 1,

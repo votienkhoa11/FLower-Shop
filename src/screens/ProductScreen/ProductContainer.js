@@ -4,6 +4,8 @@ import ProductMainView from './template/ProductMainView';
 
 //import data
 import { data } from '../../database/MockData';
+import { users } from '../../database/MockData';
+import { reviews } from '../../database/MockData';
 
 const ProductContainer = (props) => {
     const {
@@ -49,6 +51,7 @@ const ProductContainer = (props) => {
         chooseRating,
         quantity,
         rating,
+        reviews,
         //functions
         salePriceCalculator,
         setRating,
@@ -60,3 +63,9 @@ const ProductContainer = (props) => {
 };
 
 export default ProductContainer;
+
+export const getUserInfo = (userid) => {
+    const userFilter = users.filter((userInfomation) => userInfomation.id === userid);
+    return userFilter[0];
+};
+

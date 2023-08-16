@@ -1,6 +1,5 @@
 import { StyleSheet, StatusBar } from 'react-native';
 import { color } from '../../DefaultStyles';
-import { blue } from 'react-native-reanimated';
 
 export default StyleSheet.create({
     header: {
@@ -136,6 +135,37 @@ export default StyleSheet.create({
     reviewText: {
         fontSize: 12,
         color: color.lightDark,
+    },
+
+    reviewSection: {
+        flexDirection: 'row',
+        paddingTop: 16,
+        paddingBottom: 24,
+    },
+
+    userAvatar: {
+        width: 40,
+        height: 40,
+        resizeMode: 'cover',
+        borderRadius: 20,
+        marginRight: 6,
+    },
+
+    userName: {
+        fontSize: 14,
+        fontWeight: '500',
+        color: color.mediumDark,
+    },
+
+    classify: {
+        fontSize: 10,
+        fontWeight: '500',
+        color: color.lightDark,
+    },
+
+    review: {
+        fontSize: 14,
+        color: color.mediumBlack,
     },
 
     //similar product view

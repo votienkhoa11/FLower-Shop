@@ -21,6 +21,7 @@ import label from '../label';
 import LoadingScreen from '../../../Components/LoadingScreen';
 import CartButton from '../../../Components/Buttons/CartButton';
 import StarRate from './subView/StarRate';
+import Review from './subView/Review';
 
 const ProductMainView = (props) => {
     const {
@@ -31,6 +32,7 @@ const ProductMainView = (props) => {
         rating,
         chooseRating,
         quantity,
+        reviews,
         //functions
         salePriceCalculator,
         setRating,
@@ -120,6 +122,13 @@ const ProductMainView = (props) => {
                         />
                         <Text style={styles.reviewText}>(10 {label.review})</Text>
                     </View>
+                </View>
+                <View style={{paddingHorizontal: 16}}>
+                    {
+                        (reviews || []).map(reviewsData => {
+                            return <Review reviewData={reviewsData} key={reviewsData.id} />;
+                        })
+                    }
                 </View>
             </View>
             <View style={styles.similarProductTitle}>

@@ -8,6 +8,7 @@ const color = {
   bgLight: '#f2f4f8',
   lightDark: '#a8a8a8',
   mediumDark: '#525252',
+  grayLight: '#d9d9d9',
   gray: '#343a3f',
   grayMedium: '#4d5358',
   blue: '#006bff',

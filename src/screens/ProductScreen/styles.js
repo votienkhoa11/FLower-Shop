@@ -1,5 +1,6 @@
 import { StyleSheet, StatusBar } from 'react-native';
 import { color } from '../../DefaultStyles';
+import { blue } from 'react-native-reanimated';
 
 export default StyleSheet.create({
     header: {
@@ -110,7 +111,7 @@ export default StyleSheet.create({
     ratingView: {
         flexDirection: 'row',
         alignItems: 'center',
-        gap: 2,
+        gap: 4,
     },
 
     icon15: {
@@ -125,6 +126,36 @@ export default StyleSheet.create({
         borderColor: color.bgMedium,
     },
 
+    //review view
+    reviewView: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 8,
+    },
+
+    reviewText: {
+        fontSize: 12,
+        color: color.lightDark,
+    },
+
+    //similar product view
+    similarProductTitle: {
+        paddingTop: 32,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: 31,
+        gap: 11,
+    },
+
+    line1Height: {
+        marginTop: 1,
+        width: '100%',
+        height: 1,
+        backgroundColor: color.grayLight,
+    },
+
+    //buy view
     buySection: {
         backgroundColor: color.bgWhite,
         shadowColor: color.black,
@@ -134,7 +165,6 @@ export default StyleSheet.create({
         },
         shadowOpacity: 0.58,
         shadowRadius: 16.00,
-        
         elevation: 24,
     },
 

@@ -4,19 +4,26 @@ import React from 'react';
 import StarRating from 'react-native-star-rating-widget';
 
 //import styles
-import styles from './styles';
+import styles from '../../styles';
 
-const StarRate = ({rating, onChange, styleText, showNumber = true}) => {
+const StarRate = ({
+    rating,
+    onChange,
+    styleText,
+    enableSwiping,
+    showNumber,
+    showMaxStar,
+}) => {
   return (
     <View style={styles.ratingView}>
         <StarRating
             rating={rating}
             onChange={onChange}
-            maxStars={5}
             starSize={16}
             starStyle={{marginHorizontal: 0}}
+            enableSwiping={enableSwiping}
         />
-        {showNumber ? <Text style={styleText}>{rating}</Text> : null}
+        {showNumber ? <Text style={styleText}>{rating}{showMaxStar ? '/5' : null}</Text> : null}
     </View>
   );
 };

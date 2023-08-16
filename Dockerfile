@@ -5,6 +5,7 @@ FROM sonarsource/sonar-scanner-cli
 COPY .sonarcloud.properties /root/.sonarcloud.properties
 
 # Cài đặt Gradle và Node.js
+USER root
 RUN apt-get update && apt-get install -y gradle nodejs
 
 # Thư mục làm việc mặc định

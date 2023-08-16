@@ -6,7 +6,8 @@ COPY .sonarcloud.properties /root/.sonarcloud.properties
 
 # Cài đặt Gradle và Node.js
 USER root
-RUN apk update && apk add --no-cache gradle nodejs 
+RUN apk update && apk add --no-cache gradle
+RUN apk add --update nodejs npm 
 RUN npm install -g react-native-cli
 
 # Thư mục làm việc mặc định

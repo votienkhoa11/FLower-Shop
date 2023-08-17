@@ -10,7 +10,6 @@ RUN npm install -g react-native-cli
 
 # Sao chép tệp cấu hình React Native vào hình ảnh
 COPY sonar-project.properties /usr/src/sonar-project.properties
-USER gitlab-runner
 # Thư mục làm việc mặc định
 WORKDIR /usr/src
 # Lệnh chạy SonarScanner

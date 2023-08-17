@@ -121,7 +121,7 @@ export const users = [
 
     {
         id: 3,
-        name: '香風 智乃',
+        name: 'Kafuu Chino',
         avatar: require('../assets/imgs/avatars/avatar3.png'),
     },
 ];

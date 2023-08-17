@@ -123,6 +123,7 @@ const ProductMainView = (props) => {
                         <Text style={styles.reviewText}>(10 {label.review})</Text>
                     </View>
                 </View>
+                {/*Review section */}
                 <View style={{paddingHorizontal: 16}}>
                     {
                         (reviews || []).map(reviewsData => {

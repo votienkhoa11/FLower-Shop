@@ -8,4 +8,4 @@ const UserScreen = ({navigation}) => {
     return <UserContainer {...userContainerProps} />;
 };
 
-export default UserScreen
+export default UserScreen;

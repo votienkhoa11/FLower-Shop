@@ -168,6 +168,23 @@ export default StyleSheet.create({
         color: color.mediumBlack,
     },
 
+    dateView: {
+        width: '80%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+
+    dateText: {
+        fontSize: 12,
+        color: color.lightDark,
+    },
+
+    shopResponseButton: {
+        flexDirection: 'row',
+        alignItems: 'flex-end',
+    },
+
     //similar product view
     similarProductTitle: {
         paddingTop: 32,

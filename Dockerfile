@@ -8,7 +8,7 @@ RUN apk update && apk add --no-cache gradle
 RUN apk add --update nodejs npm 
 RUN npm install -g react-native-cli
 
-COPY android/build.gradle /usr/src/app/android/build.gradle
+#COPY android/build.gradle /usr/src/app/android/build.gradle
 
 # Sao chép tệp cấu hình React Native vào hình ảnh
 COPY sonar-project.properties /usr/src/sonar-project.properties

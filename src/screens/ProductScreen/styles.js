@@ -81,6 +81,21 @@ export default StyleSheet.create({
         gap: 2,
     },
 
+    collapseButton: {
+        width: '100%',
+        height: 48,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: 0.3,
+        borderColor: color.bgMedium,
+    },
+
+    collapseText: {
+        fontSize: 16,
+        fontWeight: '500',
+        color: color.green,
+    },
+
     price: {
         fontSize: 16,
         fontWeight: 'bold',

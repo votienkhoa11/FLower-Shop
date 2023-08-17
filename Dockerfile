@@ -13,4 +13,4 @@ COPY sonar-project.properties /usr/src/sonar-project.properties
 # Thư mục làm việc mặc định
 WORKDIR /usr/src
 # Lệnh chạy SonarScanner
-#CMD ["sonar-scanner"]
+CMD ["sonar-scanner"]

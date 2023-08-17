@@ -13,4 +13,5 @@ COPY sonar-project.properties /usr/src/sonar-project.properties
 WORKDIR /usr/src
 # Lệnh chạy SonarScanner
 # RUN react-native start
+CMD ["react-native", "start"]
 CMD ["sonar-scanner"]

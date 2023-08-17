@@ -1,12 +1,12 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from 'react';
+import OrderContainer from './OrderContainer';
 
-const OrderScreen = () => {
-  return (
-    <View>
-      <Text>OrderScreen</Text>
-    </View>
-  )
-}
+const OrderScreen = ({navigation}) => {
+    const orderContainer = {
+        navigation,
+    };
+
+    return <OrderContainer {...orderContainer} />;
+};
 
 export default OrderScreen

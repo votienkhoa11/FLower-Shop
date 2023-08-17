@@ -1,12 +1,12 @@
-import { View, Text } from 'react-native';
 import React from 'react';
+import HomeContainer from './HomeContainer';
 
-const HomeScreen = () => {
-  return (
-    <View>
-      <Text>HomeScreen</Text>
-    </View>
-  );
+const HomeScreen = ({navigation}) => {
+    const HomeContainerProps = {
+        navigation,
+    };
+
+  return <HomeContainer {...HomeContainerProps} />;
 };
 
 export default HomeScreen;

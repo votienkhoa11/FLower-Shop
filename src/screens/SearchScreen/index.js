@@ -1,12 +1,11 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from 'react';
+import SearchContainer from './SearchContainer';
 
-const SearchScreen = () => {
-  return (
-    <View>
-      <Text>SearchScreen</Text>
-    </View>
-  )
-}
+const SearchScreen = ({navigation}) => {
+    const searchContainerProps = {
+        navigation,
+    };
+    return <SearchContainer {...searchContainerProps} />;
+};
 
-export default SearchScreen
+export default SearchScreen;

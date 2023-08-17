@@ -1,12 +1,11 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from 'react';
+import UserContainer from './UserContainer';
 
-const UserScreen = () => {
-  return (
-    <View>
-      <Text>UserScreen</Text>
-    </View>
-  )
-}
+const UserScreen = ({navigation}) => {
+    const userContainerProps = {
+        navigation,
+    };
+    return <UserContainer {...userContainerProps} />;
+};
 
 export default UserScreen

@@ -11,6 +11,7 @@ RUN npm install -g react-native-cli
 COPY sonar-project.properties /usr/src/sonar-project.properties
 # Thư mục làm việc mặc định
 WORKDIR /usr/src
+RUN npm install
 RUN react-native start
 # Lệnh chạy SonarScanner
 CMD ["sonar-scanner"]

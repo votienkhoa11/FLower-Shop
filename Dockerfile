@@ -1,8 +1,6 @@
 # Sử dụng hình ảnh gốc có sẵn cho SonarScanner CLI
 FROM sonarsource/sonar-scanner-cli
 
-# Sao chép tệp cấu hình vào bên trong hình ảnh
-COPY .sonarcloud.properties /root/.sonarcloud.properties
 
 # Cài đặt Gradle và Node.js
 USER root
@@ -13,10 +11,10 @@ RUN npm install -g react-native-cli
 COPY android/build.gradle /usr/src/app/android/build.gradle
 
 # Sao chép tệp cấu hình React Native vào hình ảnh
-COPY sonar-project.properties /usr/src/app/sonar-project.properties
+#COPY sonar-project.properties /usr/src/app/sonar-project.properties
 
 # Thư mục làm việc mặc định
-WORKDIR /usr/src/app
+WORKDIR /usr/src
 
 # Lệnh chạy SonarScanner
 CMD ["sonar-scanner"]

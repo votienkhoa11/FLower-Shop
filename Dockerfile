@@ -11,6 +11,6 @@ RUN npm install -g eslint
 # Sao chép tệp cấu hình React Native vào hình ảnh
 COPY sonar-project.properties /usr/src/sonar-project.properties
 # Thư mục làm việc mặc định
-WORKDIR /usr/src
+WORKDIR /usr/
 # Lệnh chạy SonarScanner
 #CMD ["sonar-scanner"]

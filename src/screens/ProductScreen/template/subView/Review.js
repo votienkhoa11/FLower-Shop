@@ -15,6 +15,8 @@ const Review = ({reviewData = {}}) => {
     const userInformation = reviewData ? getUserInfo(reviewData.userID) : null;
 
   return (
+    Object.keys(reviewData).length > 0 ?
+
     <View style={styles.reviewSection}>
         <Image style={styles.userAvatar} source={userInformation.avatar} />
         <View style={{gap: 8}}>
@@ -34,6 +36,7 @@ const Review = ({reviewData = {}}) => {
             </View>
         </View>
     </View>
+    : null
   );
 };
 

@@ -1,4 +1,3 @@
-import { Animated, Button, Easing, View, Text } from 'react-native';
 import React, { useEffect, useState } from 'react';
 
 //import template
@@ -19,9 +18,6 @@ const ProductContainer = (props) => {
     //get product information
     const {productID} = route.params;
 
-    const [isCollapseInformation, setIsCollapseInformation] = useState(false);
-    const [isCollapseReview, setIsCollapseReview] = useState(true);
-
     const productFilter = data.filter((productItem) => productItem.id === productID);
     const productInformation = productFilter[0];
 
@@ -41,10 +37,7 @@ const ProductContainer = (props) => {
    //     const {x, y, height, width} = event.nativeEvent.layout;
    // };
 
-    //on press functions
-    const onPressCollapse = (isCollapseStatus, setIsCollapse) => {
-        setIsCollapse(!isCollapseStatus);
-    };
+
 
     //set quantity
     const [quantity, setQuantity] = useState(1);
@@ -67,8 +60,6 @@ const ProductContainer = (props) => {
         navigation,
         //values
         loading,
-        isCollapseInformation,
-        isCollapseReview,
         productInformation,
         chooseRating,
         quantity,
@@ -79,9 +70,6 @@ const ProductContainer = (props) => {
         setRating,
         setChooseRating,
         setQuantity,
-        setIsCollapseInformation,
-        setIsCollapseReview,
-        onPressCollapse,
     };
 
   return <ProductMainView {...productProps} />;

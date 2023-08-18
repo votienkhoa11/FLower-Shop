@@ -5,6 +5,8 @@ import Collapsible from 'react-native-collapsible';
 import React from 'react';
 import { callToast } from '../../../utils/Toast';
 
+import CollapseView from './subView/CollapseView';
+
 //import styles
 import styles from '../styles';
 import defaultStyles, { color } from '../../../DefaultStyles';
@@ -28,8 +30,6 @@ const ProductMainView = (props) => {
         navigation,
         //values
         loading,
-        isCollapseInformation,
-        isCollapseReview,
         productInformation,
         rating,
         chooseRating,
@@ -40,9 +40,6 @@ const ProductMainView = (props) => {
         setRating,
         setChooseRating,
         setQuantity,
-        setIsCollapseInformation,
-        setIsCollapseReview,
-        onPressCollapse,
     } = props;
 
   return (
@@ -112,25 +109,9 @@ const ProductMainView = (props) => {
                 <View style={styles.detailHeader}>
                     <Text style={styles.label}>{label.productDetail}</Text>
                 </View>
-                <Collapsible
-                    collapsed={isCollapseInformation}
-                    collapsedHeight={0}
-                    style={{width: '100%', paddingHorizontal: 16}}
-                >
+                <CollapseView>
                     <Text>Bó hoa Hồng đỏ đầy lãng mạn là món quà hoàn hảo thay lời muốn nói gửi đến người thương của bạn vào Valentine hoặc ngày kỷ niệm, sinh nhật.</Text>
-                </Collapsible>
-                <TouchableOpacity
-                    activeOpacity={1}
-                    onPress={() => onPressCollapse(isCollapseInformation, setIsCollapseInformation)}
-                >
-                    <View style={styles.collapseButton}>
-                        {isCollapseInformation ?
-                            <Text style={styles.collapseText}>{label.viewMore}</Text>
-                            :
-                            <Text style={styles.collapseText}>{label.collapse}</Text>
-                        }
-                    </View>
-                </TouchableOpacity>
+                </CollapseView>
             </View>
             {/*Review section */}
             <View style={[styles.header, {marginTop: 16, paddingTop: 0}]}>
@@ -148,30 +129,14 @@ const ProductMainView = (props) => {
                         <Text style={styles.reviewText}>(10 {label.review})</Text>
                     </View>
                 </View>
-                <Collapsible
-                    collapsed={isCollapseReview}
-                    collapsedHeight={400}
-                    align="top"
-                    style={{width: '100%', paddingHorizontal: 16}}
+                <CollapseView
                 >
                     {
                         (reviews || []).map(reviewsData => {
                             return <Review reviewData={reviewsData} key={reviewsData.id} />;
                         })
                     }
-                </Collapsible>
-                <TouchableOpacity
-                    activeOpacity={1}
-                    onPress={() => onPressCollapse(isCollapseReview, setIsCollapseReview)}
-                >
-                    <View style={styles.collapseButton}>
-                        {isCollapseReview ?
-                            <Text style={styles.collapseText}>{label.viewMore}</Text>
-                            :
-                            <Text style={styles.collapseText}>{label.collapse}</Text>
-                        }
-                    </View>
-                </TouchableOpacity>
+                </CollapseView>
             </View>
             <View style={styles.similarProductTitle}>
                 <View style={styles.line1Height} />

@@ -1,4 +1,4 @@
-import { Animated, Button, Easing, View, Text, StyleSheet } from 'react-native';
+import { Animated, Button, Easing, View, Text } from 'react-native';
 import React, { useEffect, useState } from 'react';
 
 //import template

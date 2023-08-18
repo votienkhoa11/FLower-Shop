@@ -1,19 +1,19 @@
 export const formatDate = (rawDate, formatType) => {
-    let formatedDate = new Date(rawDate);
+    const formatedDate = new Date(rawDate);
 
-    let year = formatedDate.getFullYear();
+    const year = formatedDate.getFullYear();
 
-    let month = formatedDate.getMonth() + 1;
-    month = month < 10 ? `0${month}` : month;
+    const month = formatedDate.getMonth() + 1;
+    month < 10 ? `0${month}` : month;
 
-    let day = formatedDate.getDate();
-    day = day < 10 ? `0${day}` : day;
+    const day = formatedDate.getDate();
+    day < 10 ? `0${day}` : day;
 
-    let hour = formatedDate.getHours() + 1;
-    hour = hour < 10 ? `0${hour}` : hour;
+    const hour = formatedDate.getHours() + 1;
+    hour < 10 ? `0${hour}` : hour;
 
-    let minute = formatedDate.getMinutes();
-    minute = minute < 10 ? `0${minute}` : minute;
+    const minute = formatedDate.getMinutes();
+    minute < 10 ? `0${minute}` : minute;
 
     return formatType === 'review' ?
         `${day}/${month}/${year} ${hour}:${minute}` :

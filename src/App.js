@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/no-unstable-nested-components */
 import { View, Text } from 'react-native';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -155,11 +155,18 @@ function App() {
 
         if (userJSON === null) {
           await AsyncStorage.setItem('user', JSON.stringify(user));
+        } else {
+            return null;
         }
     };
 
   useEffect(() => {
-    saveUser();
+    try {
+        saveUser();
+    } catch (e) {
+        console.log(e);
+    }
+
 }, []);
 
   return (

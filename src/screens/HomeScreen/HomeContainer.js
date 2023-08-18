@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { callToast } from '../../Components/Toast';
+import { callToast } from '../../utils/Toast';
 
 //import data
 import { user } from '../../database/MockData';

@@ -1,9 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
-import { View, Text, StatusBar, ScrollView, Image, LogBox } from 'react-native';
+import { View, Text, StatusBar, ScrollView, Image } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Collapsible from 'react-native-collapsible';
 import React from 'react';
-import { callToast } from '../../../Components/Toast';
+import { callToast } from '../../../utils/Toast';
 
 //import styles
 import styles from '../styles';
@@ -20,7 +20,6 @@ import label from '../label';
 
 //import components
 import LoadingScreen from '../../../Components/LoadingScreen';
-import CartButton from '../../../Components/Buttons/CartButton';
 import StarRate from './subView/StarRate';
 import Review from './subView/Review';
 
@@ -116,6 +115,7 @@ const ProductMainView = (props) => {
                 <Collapsible
                     collapsed={isCollapseInformation}
                     collapsedHeight={0}
+                    style={{width: '100%', paddingHorizontal: 16}}
                 >
                     <Text>Bó hoa Hồng đỏ đầy lãng mạn là món quà hoàn hảo thay lời muốn nói gửi đến người thương của bạn vào Valentine hoặc ngày kỷ niệm, sinh nhật.</Text>
                 </Collapsible>
@@ -148,19 +148,18 @@ const ProductMainView = (props) => {
                         <Text style={styles.reviewText}>(10 {label.review})</Text>
                     </View>
                 </View>
-                <View style={{paddingHorizontal: 16}}>
-                    <Collapsible
-                        collapsed={isCollapseReview}
-                        collapsedHeight={400}
-                        onAnimationEnd={() => {return null;}}
-                    >
-                        {
-                            (reviews || []).map(reviewsData => {
-                                return <Review reviewData={reviewsData} key={reviewsData.id} />;
-                            })
-                        }
-                    </Collapsible>
-                </View>
+                <Collapsible
+                    collapsed={isCollapseReview}
+                    collapsedHeight={400}
+                    align="top"
+                    style={{width: '100%', paddingHorizontal: 16}}
+                >
+                    {
+                        (reviews || []).map(reviewsData => {
+                            return <Review reviewData={reviewsData} key={reviewsData.id} />;
+                        })
+                    }
+                </Collapsible>
                 <TouchableOpacity
                     activeOpacity={1}
                     onPress={() => onPressCollapse(isCollapseReview, setIsCollapseReview)}

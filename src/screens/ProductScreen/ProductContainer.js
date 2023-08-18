@@ -1,3 +1,4 @@
+import { Animated, Button, Easing, View, Text, StyleSheet } from 'react-native';
 import React, { useEffect, useState } from 'react';
 
 //import template
@@ -19,7 +20,7 @@ const ProductContainer = (props) => {
     const {productID} = route.params;
 
     const [isCollapseInformation, setIsCollapseInformation] = useState(false);
-    const [isCollapseReview, setIsCollapseReview] = useState(false);
+    const [isCollapseReview, setIsCollapseReview] = useState(true);
 
     const productFilter = data.filter((productItem) => productItem.id === productID);
     const productInformation = productFilter[0];
@@ -29,6 +30,16 @@ const ProductContainer = (props) => {
     const [rating, setRating] = useState(productInformation.rating);
     //this rating can be changed, user can set their own rating for the product
     const [chooseRating, setChooseRating] = useState(productInformation.rating);
+
+    //collaspible has bug that the height of view after expanding is lower than expected
+    //to avoid this, I use the onLayOut function to get the original height and recaculate the height of the view
+    //in order to avoid the issue.
+
+    const [reviewHeight, setReviewHeight] = useState(0);
+
+    const onLayOut = (event) => {
+        const {x, y, height, width} = event.nativeEvent.layout;
+    };
 
     //on press functions
     const onPressCollapse = (isCollapse, setIsCollapse) => {

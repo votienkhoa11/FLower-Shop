@@ -151,13 +151,14 @@ const ProductMainView = (props) => {
                 <View style={{paddingHorizontal: 16}}>
                     <Collapsible
                         collapsed={isCollapseReview}
-                        collapsedHeight={0}
+                        collapsedHeight={400}
+                        onAnimationEnd={() => {return null;}}
                     >
-                    {
-                        (reviews || []).map(reviewsData => {
-                            return <Review reviewData={reviewsData} key={reviewsData.id} />;
-                        })
-                    }
+                        {
+                            (reviews || []).map(reviewsData => {
+                                return <Review reviewData={reviewsData} key={reviewsData.id} />;
+                            })
+                        }
                     </Collapsible>
                 </View>
                 <TouchableOpacity

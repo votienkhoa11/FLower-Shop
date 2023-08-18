@@ -57,7 +57,7 @@ const HomeMainView = (props) => {
                                     <View style={styles.avt}>
                                         <Octicons name="location" style={styles.icon24px}/>
                                     </View>
-                                    <Text style={styles.address}>{userInfo.address}</Text>
+                                    {userInfo ? <Text style={styles.address}>{userInfo.address}</Text> : null}
                                 </View>
                             </View>
                             {/*Favorite icon View*/}

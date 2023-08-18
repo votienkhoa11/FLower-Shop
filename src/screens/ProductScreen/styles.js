@@ -84,6 +84,7 @@ export default StyleSheet.create({
     collapseButton: {
         width: '100%',
         height: 48,
+        flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         borderWidth: 0.3,

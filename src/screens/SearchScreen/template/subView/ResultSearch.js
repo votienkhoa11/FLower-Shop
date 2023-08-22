@@ -17,7 +17,7 @@ const ResultSearch = ({data = []}) => {
                 })}
             >
                 <View style={styles.resultCard}>
-                    <Image source={data.image} style={styles.productImage} />
+                    <Image source={data.image[0]} style={styles.productImage} />
                     <View style={styles.information}>
                         <View style={styles.nameCard}>
                             <Text style={styles.resultName}>{data.name}</Text>

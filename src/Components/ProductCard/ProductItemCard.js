@@ -13,7 +13,7 @@ const ProductItemCard = ({data = {}}) => {
         <View style={{padding: 8}}>
             <View style={styles.itemCard}>
                 <TouchableOpacity activeOpacity={1}>
-                        <Image source={data.image} style={styles.itemImage} />
+                        <Image source={data.image[0]} style={styles.itemImage} />
                 </TouchableOpacity>
                 <View style={{flexDirection: 'row', paddingHorizontal: 8}}>
                     <View style={styles.itemTitle}>

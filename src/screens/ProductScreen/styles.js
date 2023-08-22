@@ -15,15 +15,23 @@ export default StyleSheet.create({
         elevation: 4,
     },
 
+    //image view
     imageView: {
-        padding: 16,
+        paddingTop: 16,
     },
 
     productImage: {
-        width: 358,
         height: 330,
-        resizeMode: 'cover',
         borderRadius: 12,
+    },
+
+    dotView: {
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
+        justifyContent: 'center',
+        alignItems: 'flex-end',
+        paddingBottom: 16,
     },
 
     viewInsideImage: {
@@ -41,20 +49,6 @@ export default StyleSheet.create({
         color: color.bgWhite,
         marginTop: 16,
         padding: 5,
-    },
-
-    dotView: {
-        flex: 1,
-        width: '100%',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-    },
-
-    dot: {
-        width: 8,
-        height: 8,
-        borderRadius: 10,
-        backgroundColor: color.green,
     },
 
     productNameView: {

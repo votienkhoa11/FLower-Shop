@@ -24,7 +24,7 @@ const ProductCard = ({data = {}}) => {
         })}
     >
         <View style={style.productCard}>
-          <Image source={data.image} style={style.productImage} />
+          <Image source={data.image[0]} style={style.productImage} />
           <View style={style.information} >
               <View style={style.informationCard}>
                   <Text style={style.productName} >{data.name}</Text>

@@ -9,7 +9,7 @@ export const data = [
         like: 347,
         sold: 22,
         rating: 2.8,
-        image: require('../assets/imgs/products/whiterosebracket.jpg'),
+        image: [require('../assets/imgs/products/whiterosebracket.jpg')],
     },
 
     {
@@ -22,7 +22,7 @@ export const data = [
         like: 106,
         sold: 49,
         rating: 3.4,
-        image: require('../assets/imgs/products/flowerbracket.jpg'),
+        image: [require('../assets/imgs/products/flowerbracket.jpg')],
     },
 
     {
@@ -35,7 +35,7 @@ export const data = [
         like: 63,
         sold: 47,
         rating: 3.5,
-        image: require('../assets/imgs/products/flowerbox.jpg'),
+        image: [require('../assets/imgs/products/flowerbox.jpg')],
     },
 
     {
@@ -48,7 +48,7 @@ export const data = [
         like: 246,
         sold: 47,
         rating: 3.4,
-        image: require('../assets/imgs/products/bohoahong.png'),
+        image: [require('../assets/imgs/products/bohoahong.png')],
     },
 
     {
@@ -61,7 +61,7 @@ export const data = [
         like: 286,
         sold: 31,
         rating: 4.2,
-        image: require('../assets/imgs/products/flowerJar.jpg'),
+        image: [require('../assets/imgs/products/flowerJar.jpg')],
     },
 
     {
@@ -74,7 +74,11 @@ export const data = [
         like: 422,
         sold: 39,
         rating: 3.5,
-        image: require('../assets/imgs/products/sunflowerbracket.jpg'),
+        image: [
+            require('../assets/imgs/products/sunflowerbracket.jpg'),
+            require('../assets/imgs/products/sunflowerbracket2.jpg'),
+            require('../assets/imgs/products/sunflowerbracket3.jpg'),
+        ],
     },
 
     {
@@ -87,7 +91,7 @@ export const data = [
         like: 126,
         sold: 47,
         rating: 5.0,
-        image: require('../assets/imgs/products/chauhoalan.jpg'),
+        image: [require('../assets/imgs/products/chauhoalan.jpg')],
     },
 ];
 

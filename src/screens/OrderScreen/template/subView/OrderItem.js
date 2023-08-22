@@ -29,7 +29,7 @@ const OrderItem = ({item = {}, index}) => {
         item ?
             <View style={styles.itemContainer}>
                 {/*Product information */}
-                <Image source={productData.image} style={styles.imageProduct} />
+                <Image source={productData.image[0]} style={styles.imageProduct} />
                 <View style={styles.orderInformation}>
                     <View style={styles.productInformation}>
                         <Text style={styles.productName}>{productData.name}</Text>

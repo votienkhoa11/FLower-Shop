@@ -1,5 +1,4 @@
 import { StyleSheet, StatusBar } from 'react-native';
-import { width } from '../../DefaultStyles';
 
 //color
 import { color } from '../../DefaultStyles';
@@ -69,36 +68,6 @@ export default StyleSheet.create({
 
     searchIcon: {
         paddingRight: 4,
-    },
-
-    //event page view
-    eventView: {
-        width: width,
-        height: 210,
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingRight: 32,
-    },
-
-    imageEvent: {
-        width: '100%',
-        height: '100%',
-        resizeMode: 'cover',
-        borderRadius: 12,
-        overflow: 'hidden',
-    },
-
-    dotView: {
-        marginTop: 8,
-        flexDirection: 'row',
-        justifyContent: 'center',
-    },
-
-    dotIndicators: {
-        backgroundColor: color.greenLight,
-        height: 8,
-        borderRadius: 5,
-        marginHorizontal: 2,
     },
 
     //categories view

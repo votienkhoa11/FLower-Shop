@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-escape */
 import React, { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { callToast } from '../../Components/Toast';
+import { callToast } from '../../utils/Toast';
 import * as ImagePicker from 'react-native-image-picker';
 
 //import data

@@ -15,15 +15,23 @@ export default StyleSheet.create({
         elevation: 4,
     },
 
+    //image view
     imageView: {
-        padding: 16,
+        paddingTop: 16,
     },
 
     productImage: {
-        width: 358,
         height: 330,
-        resizeMode: 'cover',
         borderRadius: 12,
+    },
+
+    dotView: {
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
+        justifyContent: 'center',
+        alignItems: 'flex-end',
+        paddingBottom: 16,
     },
 
     viewInsideImage: {
@@ -41,20 +49,6 @@ export default StyleSheet.create({
         color: color.bgWhite,
         marginTop: 16,
         padding: 5,
-    },
-
-    dotView: {
-        flex: 1,
-        width: '100%',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-    },
-
-    dot: {
-        width: 8,
-        height: 8,
-        borderRadius: 10,
-        backgroundColor: color.green,
     },
 
     productNameView: {
@@ -84,11 +78,13 @@ export default StyleSheet.create({
     collapseButton: {
         width: '100%',
         height: 48,
+        gap: 8,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         borderWidth: 0.3,
         borderColor: color.bgMedium,
+        padding: 2,
     },
 
     collapseText: {
@@ -207,7 +203,6 @@ export default StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        marginBottom: 31,
         gap: 11,
     },
 
@@ -216,6 +211,14 @@ export default StyleSheet.create({
         width: '100%',
         height: 1,
         backgroundColor: color.grayLight,
+    },
+
+    similarProductView: {
+        paddingVertical: 16,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 
     //buy view

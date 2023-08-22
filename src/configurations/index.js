@@ -1,12 +1,8 @@
-import {View, Text} from 'react-native';
-import React from 'react';
-
-const index = () => {
-  return (
-    <View>
-      <Text>index</Text>
-    </View>
-  );
+const envConfig = {
+    devEndPoint: 'gateway.dev.meu-solutions.com/meu-shop-pr-be/api/v1.0',
+    prodEndPoint: 'gateway.dev.meu-solutions.com/meu-shop-pr-be/api/v1.0',
 };
 
-export default index;
+export const config = {
+    envConfig,
+};

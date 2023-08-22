@@ -1,5 +1,4 @@
 import { StyleSheet, StatusBar } from 'react-native';
-import { width } from '../../DefaultStyles';
 
 //color
 import { color } from '../../DefaultStyles';
@@ -69,36 +68,6 @@ export default StyleSheet.create({
 
     searchIcon: {
         paddingRight: 4,
-    },
-
-    //event page view
-    eventView: {
-        width: width,
-        height: 210,
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingRight: 32,
-    },
-
-    imageEvent: {
-        width: '100%',
-        height: '100%',
-        resizeMode: 'cover',
-        borderRadius: 12,
-        overflow: 'hidden',
-    },
-
-    dotView: {
-        marginTop: 8,
-        flexDirection: 'row',
-        justifyContent: 'center',
-    },
-
-    dotIndicators: {
-        backgroundColor: color.greenLight,
-        height: 8,
-        borderRadius: 5,
-        marginHorizontal: 2,
     },
 
     //categories view
@@ -185,56 +154,6 @@ export default StyleSheet.create({
         fontWeight: '500',
         flexWrap: 'wrap',
         color: color.black,
-    },
-
-    //brought items view
-    broughtCard: {
-        backgroundColor: color.bgWhite,
-        borderRadius: 10,
-        shadowColor: color.black,
-        shadowOffset: {
-            width: 20,
-            height: 24,
-        },
-        shadowOpacity: 0.2,
-        shadowRadius: 8,
-        elevation: 4,
-    },
-
-    broughtImage: {
-        width: 164,
-        height: 122,
-        resizeMode: 'cover',
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
-    },
-
-    sale: {
-        position: 'absolute',
-        alignItems: 'center',
-        marginVertical: 15,
-        marginLeft: 4,
-        width: 70,
-        height: 25,
-    },
-
-    broughtTitle: {
-        width: 130,
-        paddingVertical: 12,
-        flexWrap: 'wrap',
-    },
-
-    price: {
-        paddingTop: 2,
-        fontSize: 10,
-        fontWeight: '500',
-        color: color.mediumDark,
-    },
-
-    addIcon: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
     },
 
     //recommendation view

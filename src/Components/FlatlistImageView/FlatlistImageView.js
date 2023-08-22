@@ -1,14 +1,11 @@
-/* eslint-disable react-native/no-inline-styles */
 import { View, FlatList, Image, Animated } from 'react-native';
 import React, { useRef } from 'react';
 
 //import styles
-import styles from '../../styles';
-import { width } from '../../../../DefaultStyles';
+import { styles } from './FlatlistImageView.styles';
+import { color, width } from '../../DefaultStyles';
 
-import { events } from '../../../../database/MockData';
-
-const FlatListEvents = () => {
+const FlatlistImageView = ({imageData, imageStyle, dotStyle, isInside}) => {
 
     //animated values
     const scrollX = useRef(new Animated.Value(0)).current;
@@ -17,10 +14,10 @@ const FlatListEvents = () => {
     //flatlist value
 
     //render events
-    const renderEvents = ({item, index}) => {
+    const renderImage = ({item, index}) => {
         return (
-            <View style={styles.eventView}>
-                <Image source={item.image} style={styles.imageEvent} />
+            <View style={[styles.imageView, imageStyle]}>
+                <Image source={item.image ? item.image : item} style={styles.image} />
             </View>
         );
     };
@@ -34,34 +31,50 @@ const FlatListEvents = () => {
 
      //render dots Indicators
      const renderDotsIndicators = () => {
-        return events.map((dot, dotIndicatorsIndex) => {
+        return imageData.map((dot, dotIndicatorsIndex) => {
             const dotWidth = position.interpolate({
                 inputRange: [dotIndicatorsIndex - 1, dotIndicatorsIndex, dotIndicatorsIndex + 1],
                 outputRange: [8, 16, 8],
                 extrapolate: 'clamp',
             });
-            const opacity = position.interpolate({
+
+            const opacity = isInside ? 1 : (
+                position.interpolate({
                 inputRange: [dotIndicatorsIndex - 1, dotIndicatorsIndex, dotIndicatorsIndex + 1],
                 outputRange: [0.2, 1, 0.2],
+                extrapolate: 'clamp',
+            }));
+
+            const inactiveColor = isInside ? color.lightDark : color.green;
+            const dotColor = position.interpolate({
+                inputRange: [dotIndicatorsIndex - 1, dotIndicatorsIndex, dotIndicatorsIndex + 1],
+                outputRange: [inactiveColor, color.green, inactiveColor],
                 extrapolate: 'clamp',
             });
             return (
                 <Animated.View
                     key={dotIndicatorsIndex}
-                    style={[styles.dotIndicators, {width: dotWidth, opacity}]}
+                    style={[
+                        styles.dotIndicators,
+                        {
+                            width: dotWidth,
+                            opacity,
+                            backgroundColor: dotColor,
+                        },
+                    ]}
                 />
             );
         });
     };
 
     return (
-        events ?
-        <View style={{paddingLeft: 16}}>
+        imageData ?
+        <View>
             {/*Event page*/}
             <FlatList
-                data={events}
+                data={imageData}
                 horizontal
-                renderItem={renderEvents}
+                renderItem={renderImage}
                 showsHorizontalScrollIndicator={false}
                 decelerationRate={0.5}
                 snapToInterval={width}
@@ -69,7 +82,7 @@ const FlatListEvents = () => {
                 pagingEnabled={true}
                 onScroll={handleScroll}
             />
-            <View style={styles.dotView}>
+            <View style={[styles.dotView, dotStyle]}>
                 {renderDotsIndicators()}
             </View>
         </View>
@@ -77,4 +90,4 @@ const FlatListEvents = () => {
     );
 };
 
-export default FlatListEvents;
+export default FlatlistImageView;

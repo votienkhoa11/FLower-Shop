@@ -1,12 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/no-unstable-nested-components */
 import { View, Text } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { RecoilRoot, atom, selector, useRecoilState, useRecoilSelector } from 'recoil';
 
 //import {Provider} from 'react-redux';
 
@@ -47,12 +48,12 @@ function UserNavigators () {
 
   return (
     <UserStack.Navigator screenOptions={{headerShown: false}}>
-      <UserStack.Screen name="usermenu" component={UserScreen} />
-      <UserStack.Screen name="payment" component={PaymentMethodScreen} />
-      <UserStack.Screen name="notification" component={NotificationScreen} />
-      <UserStack.Screen name="support" component={HelpCenterScreen} />
-      <UserStack.Screen name="security" component={AccountSecurityScreen} />
-      <UserStack.Screen name="change" component={ChangeInformationScreen} />
+        <UserStack.Screen name="usermenu" component={UserScreen} />
+        <UserStack.Screen name="payment" component={PaymentMethodScreen} />
+        <UserStack.Screen name="notification" component={NotificationScreen} />
+        <UserStack.Screen name="support" component={HelpCenterScreen} />
+        <UserStack.Screen name="security" component={AccountSecurityScreen} />
+        <UserStack.Screen name="change" component={ChangeInformationScreen} />
     </UserStack.Navigator>
   );
 }

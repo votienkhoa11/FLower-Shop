@@ -1,9 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
-import { View, Text, StatusBar, ScrollView, Image, LogBox } from 'react-native';
+import { View, Text, StatusBar, ScrollView } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import Collapsible from 'react-native-collapsible';
 import React from 'react';
-import { callToast } from '../../../Components/Toast';
+import { callToast } from '../../../utils/Toast';
+
+import CollapseView from './subView/CollapseView';
 
 //import styles
 import styles from '../styles';
@@ -20,30 +21,28 @@ import label from '../label';
 
 //import components
 import LoadingScreen from '../../../Components/LoadingScreen';
-import CartButton from '../../../Components/Buttons/CartButton';
+import FlatlistImageView from '../../../Components/FlatlistImageView/FlatlistImageView';
 import StarRate from './subView/StarRate';
 import Review from './subView/Review';
+import CartButton from '../../../Components/Buttons/CartButton';
+import ProductItemCard from '../../../Components/ProductCard/ProductItemCard';
 
 const ProductMainView = (props) => {
     const {
         navigation,
         //values
         loading,
-        isCollapseInformation,
-        isCollapseReview,
         productInformation,
         rating,
         chooseRating,
         quantity,
         reviews,
+        data,
         //functions
         salePriceCalculator,
         setRating,
         setChooseRating,
         setQuantity,
-        setIsCollapseInformation,
-        setIsCollapseReview,
-        onPressCollapse,
     } = props;
 
   return (
@@ -55,14 +54,16 @@ const ProductMainView = (props) => {
             <View style={styles.header}>
                 {/*Image */}
                 <View style={styles.imageView}>
-                    <Image source={productInformation.image} style={styles.productImage}/>
+                    <FlatlistImageView
+                        imageData={productInformation.image}
+                        imageStyle={styles.productImage}
+                        dotStyle={styles.dotView}
+                        isInside={true}
+                    />
                     <View style={styles.viewInsideImage}>
                         <TouchableOpacity onPress={() => navigation.goBack(null)}>
                             <AntDesign name="left" style={styles.backButton} />
                         </TouchableOpacity>
-                        <View style={styles.dotView}>
-                            <View style={styles.dot} />
-                        </View>
                     </View>
                 </View>
                 {/*Product information */}
@@ -113,24 +114,11 @@ const ProductMainView = (props) => {
                 <View style={styles.detailHeader}>
                     <Text style={styles.label}>{label.productDetail}</Text>
                 </View>
-                <Collapsible
-                    collapsed={isCollapseInformation}
-                    collapsedHeight={0}
+                <CollapseView
+                    collapsedHeight={100}
                 >
                     <Text>Bó hoa Hồng đỏ đầy lãng mạn là món quà hoàn hảo thay lời muốn nói gửi đến người thương của bạn vào Valentine hoặc ngày kỷ niệm, sinh nhật.</Text>
-                </Collapsible>
-                <TouchableOpacity
-                    activeOpacity={1}
-                    onPress={() => onPressCollapse(isCollapseInformation, setIsCollapseInformation)}
-                >
-                    <View style={styles.collapseButton}>
-                        {isCollapseInformation ?
-                            <Text style={styles.collapseText}>{label.viewMore}</Text>
-                            :
-                            <Text style={styles.collapseText}>{label.collapse}</Text>
-                        }
-                    </View>
-                </TouchableOpacity>
+                </CollapseView>
             </View>
             {/*Review section */}
             <View style={[styles.header, {marginTop: 16, paddingTop: 0}]}>
@@ -148,36 +136,36 @@ const ProductMainView = (props) => {
                         <Text style={styles.reviewText}>(10 {label.review})</Text>
                     </View>
                 </View>
-                <View style={{paddingHorizontal: 16}}>
-                    <Collapsible
-                        collapsed={isCollapseReview}
-                        collapsedHeight={400}
-                        onAnimationEnd={() => {return null;}}
-                    >
-                        {
-                            (reviews || []).map(reviewsData => {
-                                return <Review reviewData={reviewsData} key={reviewsData.id} />;
-                            })
-                        }
-                    </Collapsible>
-                </View>
-                <TouchableOpacity
-                    activeOpacity={1}
-                    onPress={() => onPressCollapse(isCollapseReview, setIsCollapseReview)}
+                <CollapseView
+                    collapsedHeight = {400}
                 >
-                    <View style={styles.collapseButton}>
-                        {isCollapseReview ?
-                            <Text style={styles.collapseText}>{label.viewMore}</Text>
-                            :
-                            <Text style={styles.collapseText}>{label.collapse}</Text>
-                        }
-                    </View>
-                </TouchableOpacity>
+                    {
+                        (reviews || []).map(reviewsData => {
+                            return <Review reviewData={reviewsData} key={reviewsData.id} />;
+                        })
+                    }
+                </CollapseView>
             </View>
+            {/*Similar product section */}
             <View style={styles.similarProductTitle}>
                 <View style={styles.line1Height} />
                 <Text style={styles.label}>{label.similarProduct}</Text>
                 <View style={styles.line1Height} />
+            </View>
+            <View style={styles.similarProductView}>
+                {
+                    (data.slice(0, 6) || []).map(productItem => {
+                        return (
+                            <TouchableOpacity
+                                activeOpacity={1}
+                                onPress={() => console.log(productItem.id)}
+                                key={productItem.id}
+                            >
+                                <ProductItemCard data={productItem} />
+                            </TouchableOpacity>
+                        );
+                    })
+                }
             </View>
         </ScrollView>
         {/*Buy section*/}
@@ -217,6 +205,9 @@ const ProductMainView = (props) => {
                 </View>
             </TouchableOpacity>
         </View>
+        <CartButton
+            style={{marginBottom: 100}}
+        />
     </View>
   );
 };

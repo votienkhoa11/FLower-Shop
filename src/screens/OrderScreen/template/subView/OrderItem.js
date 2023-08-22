@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
+import { formatDate } from '../../../../utils/fomatDate';
 
 //import styles
 import styles from '../../styles';
@@ -22,34 +23,13 @@ const OrderItem = ({item = {}, index}) => {
         }
     };
 
-    //format date to hh:mm - dd/mm/yy
-    const formatDate = (rawDate) => {
-        let formatedDate = new Date(rawDate);
-
-        let year = formatedDate.getFullYear();
-
-        let month = formatedDate.getMonth() + 1;
-        month = month < 10 ? `0${month}` : month;
-
-        let day = formatedDate.getDate();
-        day = day < 10 ? `0${day}` : day;
-
-        let hour = formatedDate.getHours() + 1;
-        hour = hour < 10 ? `0${hour}` : hour;
-
-        let minute = formatedDate.getMinutes();
-        minute = minute < 10 ? `0${minute}` : minute;
-
-        return `${hour}:${minute} - ${day}/${month}/${year}`;
-    };
-
     const productData = getProduct(item.productID);
 
     return (
         item ?
             <View style={styles.itemContainer}>
                 {/*Product information */}
-                <Image source={productData.image} style={styles.imageProduct} />
+                <Image source={productData.image[0]} style={styles.imageProduct} />
                 <View style={styles.orderInformation}>
                     <View style={styles.productInformation}>
                         <Text style={styles.productName}>{productData.name}</Text>
@@ -67,7 +47,7 @@ const OrderItem = ({item = {}, index}) => {
                                     label.canceled
                                 }
                             </Text>
-                            <Text style={styles.price}>{formatDate(item.datePurchase)}</Text>
+                            <Text style={styles.price}>{formatDate(item.datePurchase, 'order')}</Text>
                         </View>
                         {/*render button based on the status
                             when the status is deliverdd or canceled, the button is order again

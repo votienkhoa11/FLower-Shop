@@ -7,7 +7,7 @@ import { data } from '../../database/MockData';
 import { searchResult } from '../../database/MockData';
 
 //import components
-import { callToast } from '../../Components/Toast';
+import { callToast } from '../../utils/Toast';
 
 //import template
 import SearchMainView from './template/SearchMainView';

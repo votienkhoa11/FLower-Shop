@@ -17,7 +17,7 @@ const PopularCard = ({data = {}}) => {
       >
           <View style={{padding: 8}}>
               <View style={style.popularCard}>
-                  <Image source={data.image} style={style.popularImage} resizeMode="stretch" />
+                  <Image source={data.image[0]} style={style.popularImage} resizeMode="stretch" />
                   <View style={style.title}>
                       <Text style={style.titleText}>{data.name}</Text>
                   </View>

@@ -1,22 +1,22 @@
 /* eslint-disable react-native/no-inline-styles */
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import React from 'react';
-import styles from '../../styles';
+import { styles } from './ProductItemCard.styles';
 
 //import icon
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import SaleComponent from '../../../../Components/Sale';
+import SaleComponent from '../Sale';
 
-const BroughtAgainCard = ({data = {}}) => {
+const ProductItemCard = ({data = {}}) => {
   return (
     data ? (
         <View style={{padding: 8}}>
-            <View style={styles.broughtCard}>
+            <View style={styles.itemCard}>
                 <TouchableOpacity activeOpacity={1}>
-                        <Image source={data.image} style={styles.broughtImage} />
+                        <Image source={data.image[0]} style={styles.itemImage} />
                 </TouchableOpacity>
                 <View style={{flexDirection: 'row', paddingHorizontal: 8}}>
-                    <View style={styles.broughtTitle}>
+                    <View style={styles.itemTitle}>
                         <Text style={styles.titleText}>{data.name}</Text>
                         <Text style={styles.price}>{data.price}</Text>
                     </View>
@@ -37,4 +37,4 @@ const BroughtAgainCard = ({data = {}}) => {
   );
 };
 
-export default BroughtAgainCard;
+export default ProductItemCard;

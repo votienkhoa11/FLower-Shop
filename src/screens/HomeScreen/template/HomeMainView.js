@@ -17,11 +17,11 @@ import label from '../label';
 import { categories } from '../../../database/MockData';
 
 //import components
+import ProductItemCard from '../../../Components/ProductCard/ProductItemCard';
 import LoadingScreen from '../../../Components/LoadingScreen';
 import FlatListEvents from './subView/events';
 import CategoryCard from './subView/CategoryCard';
 import PopularCard from './subView/PopularCard';
-import BroughtAgainCard from './subView/BroughtAgainCard';
 import ProductCard from './subView/ProductCard';
 import CartButton from '../../../Components/Buttons/CartButton';
 
@@ -130,7 +130,7 @@ const HomeMainView = (props) => {
                         <View style={styles.horizonalView}>
                             {
                                 (broughtProducts || []).map(broughtProductData => {
-                                    return <BroughtAgainCard data={broughtProductData} key={broughtProductData.id} />;
+                                    return <ProductItemCard data={broughtProductData} key={broughtProductData.id} />;
                                 })
                             }
                         </View>

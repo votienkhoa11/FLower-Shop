@@ -24,6 +24,7 @@ import LoadingScreen from '../../../Components/LoadingScreen';
 import StarRate from './subView/StarRate';
 import Review from './subView/Review';
 import CartButton from '../../../Components/Buttons/CartButton';
+import ProductItemCard from '../../../Components/ProductCard/ProductItemCard';
 
 const ProductMainView = (props) => {
     const {
@@ -35,6 +36,7 @@ const ProductMainView = (props) => {
         chooseRating,
         quantity,
         reviews,
+        data,
         //functions
         salePriceCalculator,
         setRating,
@@ -139,10 +141,26 @@ const ProductMainView = (props) => {
                     }
                 </CollapseView>
             </View>
+            {/*Similar product section */}
             <View style={styles.similarProductTitle}>
                 <View style={styles.line1Height} />
                 <Text style={styles.label}>{label.similarProduct}</Text>
                 <View style={styles.line1Height} />
+            </View>
+            <View style={styles.similarProductView}>
+                {
+                    (data.slice(0, 6) || []).map(productItem => {
+                        return (
+                            <TouchableOpacity
+                                activeOpacity={1}
+                                onPress={() => console.log(productItem.id)}
+                                key={productItem.id}
+                            >
+                                <ProductItemCard data={productItem} />
+                            </TouchableOpacity>
+                        );
+                    })
+                }
             </View>
         </ScrollView>
         {/*Buy section*/}

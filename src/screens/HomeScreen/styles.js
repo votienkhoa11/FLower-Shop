@@ -187,56 +187,6 @@ export default StyleSheet.create({
         color: color.black,
     },
 
-    //brought items view
-    broughtCard: {
-        backgroundColor: color.bgWhite,
-        borderRadius: 10,
-        shadowColor: color.black,
-        shadowOffset: {
-            width: 20,
-            height: 24,
-        },
-        shadowOpacity: 0.2,
-        shadowRadius: 8,
-        elevation: 4,
-    },
-
-    broughtImage: {
-        width: 164,
-        height: 122,
-        resizeMode: 'cover',
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
-    },
-
-    sale: {
-        position: 'absolute',
-        alignItems: 'center',
-        marginVertical: 15,
-        marginLeft: 4,
-        width: 70,
-        height: 25,
-    },
-
-    broughtTitle: {
-        width: 130,
-        paddingVertical: 12,
-        flexWrap: 'wrap',
-    },
-
-    price: {
-        paddingTop: 2,
-        fontSize: 10,
-        fontWeight: '500',
-        color: color.mediumDark,
-    },
-
-    addIcon: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-
     //recommendation view
     recommendContainer: {
         margin: 16,

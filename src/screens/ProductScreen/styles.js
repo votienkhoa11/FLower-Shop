@@ -209,7 +209,6 @@ export default StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        marginBottom: 31,
         gap: 11,
     },
 
@@ -218,6 +217,14 @@ export default StyleSheet.create({
         width: '100%',
         height: 1,
         backgroundColor: color.grayLight,
+    },
+
+    similarProductView: {
+        paddingVertical: 16,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 
     //buy view

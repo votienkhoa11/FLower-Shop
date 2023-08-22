@@ -6,9 +6,9 @@ import defaultStyles from '../../DefaultStyles';
 //import icon
 import Entypo from 'react-native-vector-icons/Entypo';
 
-const CartButton = () => {
+const CartButton = ({style}) => {
   return (
-    <View style={defaultStyles.buttonCart}>
+    <View style={[defaultStyles.buttonCart, style]}>
         <TouchableOpacity>
             <Entypo name="shopping-cart" style={defaultStyles.cartIcon} />
             <View style={defaultStyles.numberCart}>

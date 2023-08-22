@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-native/no-inline-styles */
 import { View, Text } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -5,25 +6,20 @@ import React, {useState} from 'react';
 import Collapsible from 'react-native-collapsible';
 
 import styles from '../../styles';
+import { color } from '../../../../DefaultStyles';
+
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import label from '../../label';
 
-const CollapseView = ({ children }) => {
+const CollapseView = ({ children, collapsedHeight }) => {
     const [collapsed, setCollapsed] = useState(true);
     const [currentHeight, setCurrentHeight] = useState(0);
 
-    const collapsedHeight = 400;
+    const onLayOut = (event) => {
+        const {x, y, height, width} = event.nativeEvent.layout;
 
-    const onLayOut = event => {
-        const newHeight = event.nativeEvent.layout.height;
-
-        // Don't do anything for height = 400 (collapsed state)
-        if (newHeight === collapsedHeight) {return;}
-
-        // Only toggle key if the height has changed
-        if (newHeight !== currentHeight) {
-            setCurrentHeight(newHeight);
-        }
+        setCurrentHeight(height + 20);
     };
 
   return (
@@ -31,8 +27,7 @@ const CollapseView = ({ children }) => {
         <Collapsible
             collapsed={collapsed}
             collapsedHeight={collapsedHeight}
-            key={currentHeight}
-            style={{width: '100%', paddingHorizontal: 16}}
+            style={{width: '100%', paddingHorizontal: 16, height: currentHeight}}
         >
             <View onLayout={onLayOut}>
                 {children}
@@ -48,6 +43,7 @@ const CollapseView = ({ children }) => {
                     :
                     <Text style={styles.collapseText}>{label.collapse}</Text>
                 }
+                <AntDesign name={collapsed ? 'caretdown' : 'caretup'} size={8} color={color.green} />
             </View>
         </TouchableOpacity>
     </>

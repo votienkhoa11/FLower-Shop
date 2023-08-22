@@ -84,11 +84,13 @@ export default StyleSheet.create({
     collapseButton: {
         width: '100%',
         height: 48,
+        gap: 8,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         borderWidth: 0.3,
         borderColor: color.bgMedium,
+        padding: 2,
     },
 
     collapseText: {

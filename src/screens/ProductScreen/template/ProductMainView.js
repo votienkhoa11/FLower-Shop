@@ -23,6 +23,7 @@ import label from '../label';
 import LoadingScreen from '../../../Components/LoadingScreen';
 import StarRate from './subView/StarRate';
 import Review from './subView/Review';
+import CartButton from '../../../Components/Buttons/CartButton';
 
 const ProductMainView = (props) => {
     const {
@@ -129,6 +130,7 @@ const ProductMainView = (props) => {
                     </View>
                 </View>
                 <CollapseView
+                    collapsedHeight = {400}
                 >
                     {
                         (reviews || []).map(reviewsData => {
@@ -180,6 +182,9 @@ const ProductMainView = (props) => {
                 </View>
             </TouchableOpacity>
         </View>
+        <CartButton
+            style={{marginBottom: 100}}
+        />
     </View>
   );
 };

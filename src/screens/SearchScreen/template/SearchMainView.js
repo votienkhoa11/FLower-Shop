@@ -93,7 +93,10 @@ const SearchMainView = (props) => {
                     {showResult ? (
                         <View style={defaultStyles.padding16}>
                             <View>
-                                <Text style={styles.label}>{label.ResultFound}</Text>
+                                <View style={styles.resultLabelView}>
+                                    <Text style={styles.label}>{label.ResultFound} "{search}"</Text>
+                                    <Text style={styles.numberResults}>{results.length} {label.result}</Text>
+                                </View>
                                 {
                                     (results || []).map(resultData => {
                                         return <ResultSearch data={resultData} key={resultData.id} />;

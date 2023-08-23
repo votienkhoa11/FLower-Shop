@@ -84,17 +84,17 @@ export default StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         gap: 8,
+        paddingBottom: 8,
     },
 
     label: {
-        paddingBottom: 8,
         fontSize: 16,
         fontWeight: 'bold',
         color: color.black,
     },
 
     clearText: {
-        marginBottom: 5,
+        paddingTop: 3,
         opacity: 0.8,
         fontSize: 12,
     },
@@ -159,6 +159,19 @@ export default StyleSheet.create({
     },
 
     //result list view
+    resultLabelView: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingBottom: 16,
+    },
+
+    numberResults: {
+        fontSize: 12,
+        letterSpacing: 0.32,
+        color: color.mediumDark,
+    },
+
     resultCard: {
         flexDirection: 'row',
         backgroundColor: color.bgWhite,
@@ -176,9 +189,9 @@ export default StyleSheet.create({
     },
 
     productImage: {
-        width: 107,
-        height: 107,
-        margin: 4,
+        width: 87,
+        height: 87,
+        margin: 8,
         resizeMode: 'cover',
         borderRadius: 8,
     },
@@ -186,7 +199,7 @@ export default StyleSheet.create({
     resultName: {
         fontSize: 16,
         fontWeight: '600',
-        color: color.black,
+        color: color.mediumBlack,
         flexWrap: 'wrap',
     },
 
@@ -194,19 +207,7 @@ export default StyleSheet.create({
         flex: 1,
         margin: 8,
         gap: 8,
-    },
-
-    nameCard: {
-        width: '100%',
-        paddingBottom: 8,
-        borderBottomColor: color.bgLight,
-        borderBottomWidth: 1,
-    },
-
-    descriptionCard: {
-        width: '100%',
-        flex: 1,
-        gap: 4,
+        justifyContent: 'center',
     },
 
     description: {
@@ -216,11 +217,21 @@ export default StyleSheet.create({
         flexWrap: 'wrap',
     },
 
+    priceView: {
+        flexDirection: 'row',
+        gap: 8,
+        alignItems: 'center',
+    },
+
     price: {
-        paddingVertical: 4,
         fontSize: 12,
         fontWeight: '600',
-        letterSpacing: 0.32,
         color: color.mediumBlack,
+    },
+
+    oldPrice: {
+        fontSize: 10,
+        color: color.gray,
+        textDecorationLine: 'line-through',
     },
 });

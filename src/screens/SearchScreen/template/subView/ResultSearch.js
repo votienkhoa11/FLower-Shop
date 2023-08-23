@@ -5,11 +5,11 @@ import { useNavigation } from '@react-navigation/native';
 //import style
 import styles from '../../styles';
 
-const ResultSearch = ({data = []}) => {
+const ResultSearch = ({data = {}}) => {
     const navigation = useNavigation();
 
     return (
-        data ? (
+        data !== {} ? (
             <TouchableOpacity
                 activeOpacity={1}
                 onPress={() => navigation.navigate('product', {
@@ -19,12 +19,11 @@ const ResultSearch = ({data = []}) => {
                 <View style={styles.resultCard}>
                     <Image source={data.image[0]} style={styles.productImage} />
                     <View style={styles.information}>
-                        <View style={styles.nameCard}>
-                            <Text style={styles.resultName}>{data.name}</Text>
-                        </View>
-                        <View style={styles.descriptionCard}>
-                            <Text style={styles.description}>{data.description}</Text>
-                            <Text style={styles.price}>{data.price} VND</Text>
+                        <Text style={styles.resultName}>{data.name}</Text>
+                        <Text style={styles.description}>{data.description}</Text>
+                        <View style={styles.priceView}>
+                            <Text style={styles.price}>{data.price}</Text>
+                            <Text style={styles.oldPrice}>{data.price}</Text>
                         </View>
                     </View>
                 </View>

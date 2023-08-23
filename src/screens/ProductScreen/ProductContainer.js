@@ -30,12 +30,6 @@ const ProductContainer = (props) => {
     //set quantity
     const [quantity, setQuantity] = useState(1);
 
-    const salePriceCalculator = (price, sale) => {
-        let offPrice = price / 100 * sale;
-
-        return price - offPrice;
-    };
-
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
             setLoading(false);
@@ -55,7 +49,6 @@ const ProductContainer = (props) => {
         reviews,
         data,
         //functions
-        salePriceCalculator,
         setRating,
         setChooseRating,
         setQuantity,

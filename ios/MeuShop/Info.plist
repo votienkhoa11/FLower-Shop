@@ -4,6 +4,10 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Allow access to the photo library for selecting images</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Allow access to the camera for taking photos</string>
 	<key>CFBundleDisplayName</key>
 	<string>meushop</string>
 	<key>CFBundleExecutable</key>

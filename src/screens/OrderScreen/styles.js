@@ -1,9 +1,9 @@
 import { StyleSheet, StatusBar } from 'react-native';
-import { color } from '../../DefaultStyles';
+import { color, marginTop } from '../../DefaultStyles';
 
 export default StyleSheet.create({
     header: {
-        marginTop: StatusBar.currentHeight,
+        marginTop: marginTop,
         flexDirection: 'row',
         paddingHorizontal: 16,
         marginBottom: 8,

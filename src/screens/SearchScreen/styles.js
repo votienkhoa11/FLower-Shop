@@ -1,9 +1,10 @@
 import { StyleSheet, StatusBar } from 'react-native';
-import { color } from '../../DefaultStyles';
+import { color, marginTop } from '../../DefaultStyles';
 
 export default StyleSheet.create({
     //search bar
     header: {
+        marginTop: marginTop,
         padding: 16,
     },
 

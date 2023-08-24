@@ -28,8 +28,8 @@ const UserMainView = (props) => {
 
   return (
     loading ? <LoadingScreen /> :
-    <View style={[defaultStyles.container, {backgroundColor: color.greenWhite}]}>
-        <View style={defaultStyles.safeView}>
+    <View style={styles.header}>
+        <View>
             <StatusBar translucent backgroundColor="transparent" barstyles="dark-content" />
             <ScrollView>
                 {/*User profile */}

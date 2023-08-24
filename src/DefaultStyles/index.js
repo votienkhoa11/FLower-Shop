@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions, StatusBar } from 'react-native';
+import { StyleSheet, Dimensions, StatusBar, Platform } from 'react-native';
 
 export const width = Dimensions.get('window').width;
 
@@ -27,6 +27,8 @@ const color = {
 };
 
 export {color};
+
+export const marginTop = Platform.OS === 'ios' ? '10%' : StatusBar.currentHeight;
 
 export default StyleSheet.create({
   tabBarItemView: {
@@ -57,13 +59,8 @@ export default StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: StatusBar.currentHeight,
+    padding: marginTop,
     backgroundColor: color.greenWhite,
-  },
-
-  safeView: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight,
   },
 
   padding16: {

@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import { View, Text, StatusBar, ScrollView,
-    KeyboardAvoidingView } from 'react-native';
+    KeyboardAvoidingView, 
+    Platform} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import React from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -149,7 +150,7 @@ const ChangeInformationMainView = (props) => {
                             { showDatePicker ? (
                                 <DateTimePicker
                                     mode="date"
-                                    display="calendar"
+                                    display = {Platform.OS === "ios" ? "spinner" : "calendar"}
                                     value={date}
                                     onChange={onChangeDate}
                                 />

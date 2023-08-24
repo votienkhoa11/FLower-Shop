@@ -1,5 +1,5 @@
 export default {
-    searchLabel: 'Tìm kiếm',
+    search: 'Tìm kiếm',
     clear: 'Xóa lịch sử',
     historysearchLabel: 'Lịch sử tìm kiếm của bạn',
     mostPopularSearchLabel: 'Được tìm kiếm nhiều',

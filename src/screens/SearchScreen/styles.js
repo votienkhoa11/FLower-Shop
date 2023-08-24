@@ -234,4 +234,16 @@ export default StyleSheet.create({
         color: color.gray,
         textDecorationLine: 'line-through',
     },
+
+    addIconView: {
+        justifyContent: 'flex-end',
+    },
+
+    addIcon: {
+        paddingHorizontal: 10,
+        paddingVertical: 14,
+        fontSize: 17,
+        color: color.green,
+    },
+
 });

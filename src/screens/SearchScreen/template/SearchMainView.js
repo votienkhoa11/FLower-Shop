@@ -55,13 +55,13 @@ const SearchMainView = (props) => {
                 <View>
                     {/*Search View */}
                     <View style={styles.header}>
-                        <Text style={styles.searchLabel}>{label.searchLabel}</Text>
+                        <Text style={styles.searchLabel}>{label.search}</Text>
                         {/*Search bar */}
                         <View style={[
                             styles.searchBar, (onFocus ?
                                 {borderColor: color.black} : {borderColor: color.bgMedium})]}>
                             <TextInput
-                                placeholder="Tìm kiếm                                                                   "
+                                placeholder={label.search}
                                 autoCapitalize="none"
                                 onChangeText={onChangeText}
                                 value={search}
@@ -75,8 +75,8 @@ const SearchMainView = (props) => {
                                 {showResult ? (
                                     <TouchableOpacity onPress={() => onClose()}>
                                         <AntDesign
-                                            name="closecircleo"
-                                            size={18}
+                                            name="close"
+                                            size={24}
                                             color={color.lightDark}
                                             style={styles.closeIcon}
                                         />

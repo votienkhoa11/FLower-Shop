@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/no-unstable-nested-components */
-import { View, Text } from 'react-native';
+import { View, Text, SafeAreaView } from 'react-native';
 import React, { useEffect } from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -8,6 +8,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { RecoilRoot, atom, selector, useRecoilState, useRecoilSelector } from 'recoil';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 //import {Provider} from 'react-redux';
 
@@ -171,14 +172,15 @@ function App() {
 }, []);
 
   return (
-    <NavigationContainer>
-        <Stack.Navigator screenOptions={{headerShown: false}}>
-            <Stack.Screen name="tab" component = {TabNavigators} />
-            <Stack.Screen name="product" component= {ProdcuctScreen} />
-        </Stack.Navigator>
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <NavigationContainer>
+          <Stack.Navigator screenOptions={{headerShown: false}}>
+              <Stack.Screen name="tab" component = {TabNavigators} />
+              <Stack.Screen name="product" component= {ProdcuctScreen} />
+          </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
 
 export default App;
-

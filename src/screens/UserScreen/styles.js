@@ -1,11 +1,17 @@
 import { StyleSheet } from 'react-native';
-import { color } from '../../DefaultStyles';
+import { color, marginTop } from '../../DefaultStyles';
 
 import { width } from '../../DefaultStyles';
 
 export default StyleSheet.create({
+    header: {
+        flex: 1,
+        backgroundColor: color.greenWhite,
+    },
+
     userProfile: {
-        marginTop: 16,
+        marginTop: marginTop,
+        paddingTop: 16,
         alignItems: 'center',
         gap: 6,
     },
@@ -17,14 +23,6 @@ export default StyleSheet.create({
         alignItems: 'center',
         borderRadius: 100 / 2,
         backgroundColor: color.bgWhite,
-        shadowColor: color.black,
-        shadowOffset: {
-            width: 0,
-            height: 12,
-        },
-        shadowOpacity: 0.58,
-        shadowRadius: 16.00,
-        elevation: 24,
     },
 
     avatar: {
@@ -59,17 +57,10 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         margin: 16,
-        marginLeft: width - 16 - 24,
-        borderRadius: 30 / 2,
+        marginTop: 55,
+        marginLeft: width - 16 - 32,
+        borderRadius: 15,
         backgroundColor: color.bgWhite,
-        shadowColor: color.black,
-        shadowOffset: {
-            width: 0,
-            height: 12,
-        },
-        shadowOpacity: 0.58,
-        shadowRadius: 16.00,
-        elevation: 24,
     },
 
     changeIcon: {

@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 
 //import styles
 import style from '../../styles';
+import defaultStyles from '../../../../DefaultStyles';
 
 //import components
 import SaleComponent from '../../../../Components/Sale';
@@ -23,7 +24,7 @@ const ProductCard = ({data = {}}) => {
             productID: data.id,
         })}
     >
-        <View style={style.productCard}>
+        <View style={[style.productCard, defaultStyles.shadow]}>
           <Image source={data.image[0]} style={style.productImage} />
           <View style={style.information} >
               <View style={style.informationCard}>

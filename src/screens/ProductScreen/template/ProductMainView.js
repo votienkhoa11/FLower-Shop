@@ -51,7 +51,7 @@ const ProductMainView = (props) => {
     <View style={defaultStyles.container}>
         <StatusBar translucent backgroundColor="transparent" barstyles="dark-content" />
         <ScrollView>
-            <View style={styles.header}>
+            <View style={[styles.header, defaultStyles.shadow]}>
                 {/*Image */}
                 <View style={styles.imageView}>
                     <FlatlistImageView
@@ -110,7 +110,15 @@ const ProductMainView = (props) => {
                     </View>
                 </View>
             </View>
-            <View style={[styles.header, {marginTop: 16, paddingTop: 0}]}>
+            <View style={[
+                styles.header,
+                {
+                    marginTop: 16,
+                    paddingTop: 0,
+                },
+                defaultStyles.shadow,
+                ]}
+            >
                 <View style={styles.detailHeader}>
                     <Text style={styles.label}>{label.productDetail}</Text>
                 </View>
@@ -121,7 +129,15 @@ const ProductMainView = (props) => {
                 </CollapseView>
             </View>
             {/*Review section */}
-            <View style={[styles.header, {marginTop: 16, paddingTop: 0}]}>
+            <View style={[
+                styles.header,
+                    {
+                        marginTop: 16,
+                        paddingTop: 0,
+                    },
+                defaultStyles.shadow,
+                ]}
+            >
                 <View style={styles.detailHeader}>
                     <Text style={styles.label}>{label.reviewProduct}</Text>
                     <View style={styles.reviewView} pointerEvents= "none">
@@ -169,7 +185,7 @@ const ProductMainView = (props) => {
             </View>
         </ScrollView>
         {/*Buy section*/}
-        <View style={styles.buySection}>
+        <View style={[styles.buySection, defaultStyles.shadow]}>
             {/*price and quantiy change */}
             <View style={styles.priceView}>
                 <Text style={styles.number}>{productInformation.price * quantity}đ</Text>

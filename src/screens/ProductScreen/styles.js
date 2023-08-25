@@ -1,18 +1,10 @@
-import { StyleSheet, StatusBar } from 'react-native';
-import { color } from '../../DefaultStyles';
+import { StyleSheet } from 'react-native';
+import { color, marginTop } from '../../DefaultStyles';
 
 export default StyleSheet.create({
     header: {
-        paddingTop: StatusBar.currentHeight,
+        paddingTop: marginTop,
         backgroundColor: color.bgWhite,
-        shadowColor: color.black,
-        shadowOffset: {
-            width: 0,
-            height: 24,
-        },
-        shadowOpacity: 0.1,
-        shadowRadius: 10,
-        elevation: 4,
     },
 
     //image view
@@ -225,13 +217,6 @@ export default StyleSheet.create({
     buySection: {
         backgroundColor: color.bgWhite,
         shadowColor: color.black,
-        shadowOffset: {
-            width: 0,
-            height: 12,
-        },
-        shadowOpacity: 0.58,
-        shadowRadius: 16.00,
-        elevation: 24,
     },
 
     priceView: {

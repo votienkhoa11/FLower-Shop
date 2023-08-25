@@ -1,13 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/no-unstable-nested-components */
-import { View, Text } from 'react-native';
+import { View, Text, Platform } from 'react-native';
 import React, { useEffect } from 'react';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { RecoilRoot, atom, selector, useRecoilState, useRecoilSelector } from 'recoil';
+//import { RecoilRoot, atom, selector, useRecoilState, useRecoilSelector } from 'recoil';
 
 //import {Provider} from 'react-redux';
 
@@ -42,7 +42,7 @@ import {user} from './database/MockData';
 
 const Stack = createStackNavigator();
 const BottomTab = createBottomTabNavigator();
-const UserStack = createNativeStackNavigator();
+const UserStack = createStackNavigator();
 
 function UserNavigators () {
 
@@ -59,12 +59,14 @@ function UserNavigators () {
 }
 
 function TabNavigators () {
+  const insets = useSafeAreaInsets();
+
   return (
     <BottomTab.Navigator
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          height: 70,
+          height: Platform.OS === 'ios' ? 68 + insets.bottom : 70,
         },
         tabBarHideOnKeyboard: true,
         unmountOnBlur: true,
@@ -181,4 +183,3 @@ function App() {
 }
 
 export default App;
-

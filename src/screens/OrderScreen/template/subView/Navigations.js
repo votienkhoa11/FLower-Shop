@@ -6,7 +6,7 @@ import { TabView, SceneMap } from 'react-native-tab-view';
 
 //import style
 import styles from '../../styles';
-import { color } from '../../../../DefaultStyles';
+import defaultStyles, { color } from '../../../../DefaultStyles';
 
 import label from '../../label';
 
@@ -34,7 +34,7 @@ const Navigations = () => {
         const inputRange = props.navigationState.routes.map((x, i) => i);
 
         return (
-            <View style={styles.tabBarNavigation}>
+            <View style={[styles.tabBarNavigation, defaultStyles.shadow]}>
                 <ScrollView
                     horizontal
                     showsHorizontalScrollIndicator={false}

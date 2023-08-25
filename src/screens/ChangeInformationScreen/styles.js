@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native';
-import { color } from '../../DefaultStyles';
+import { Platform, StyleSheet } from 'react-native';
+import { color, marginTop } from '../../DefaultStyles';
 
 import { width } from '../../DefaultStyles';
 
@@ -8,6 +8,7 @@ export default StyleSheet.create({
     header: {
         width: '45%',
         padding: 16,
+        marginTop: marginTop,
         flexDirection: 'row',
         alignItems: 'center',
         gap: 8,
@@ -30,7 +31,7 @@ export default StyleSheet.create({
         position: 'absolute',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 58,
+        marginTop: 92,
         marginLeft: 216,
         borderRadius: 30 / 2,
         backgroundColor: color.bgWhite,

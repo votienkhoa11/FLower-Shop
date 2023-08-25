@@ -28,8 +28,8 @@ const UserMainView = (props) => {
 
   return (
     loading ? <LoadingScreen /> :
-    <View style={[defaultStyles.container, {backgroundColor: color.greenWhite}]}>
-        <View style={defaultStyles.safeView}>
+    <View style={styles.header}>
+        <View>
             <StatusBar translucent backgroundColor="transparent" barstyles="dark-content" />
             <ScrollView>
                 {/*User profile */}
@@ -57,7 +57,7 @@ const UserMainView = (props) => {
                     <Text>{userInfo.phone}</Text>
                 </View>
                 {/*Change button */}
-                <View style={styles.changeButtonContainer}>
+                <View style={[styles.changeButtonContainer, defaultStyles.shadow]}>
                     <TouchableOpacity
                         onPress={() => navigation.navigate('change')}>
                         <Entypo name="edit" style={styles.changeIcon} />

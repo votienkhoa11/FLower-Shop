@@ -1,9 +1,9 @@
 import { StyleSheet, StatusBar } from 'react-native';
-import { color } from '../../DefaultStyles';
+import { color, marginTop } from '../../DefaultStyles';
 
 export default StyleSheet.create({
     header: {
-        marginTop: StatusBar.currentHeight,
+        marginTop: marginTop,
         flexDirection: 'row',
         paddingHorizontal: 16,
         marginBottom: 8,
@@ -64,13 +64,6 @@ export default StyleSheet.create({
         backgroundColor: color.bgWhite,
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20,
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-        elevation: 5,
     },
 
     textSearch: {
@@ -82,13 +75,6 @@ export default StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: color.bgWhite,
         shadowColor: color.black,
-        shadowOffset: {
-            width: 0,
-            height: 5,
-        },
-        shadowOpacity: 0.36,
-        shadowRadius: 6.68,
-        elevation: 11,
     },
 
     tabViewButton: {
@@ -117,14 +103,6 @@ export default StyleSheet.create({
         flexDirection: 'row',
         gap: 8,
         borderRadius: 14,
-        shadowColor: color.black,
-        shadowOffset: {
-            width: 20,
-            height: 24,
-        },
-        shadowOpacity: 0.2,
-        shadowRadius: 8,
-        elevation: 4,
         backgroundColor: color.bgWhite,
     },
 

@@ -2,7 +2,6 @@ import { StyleSheet, StatusBar } from 'react-native';
 import { marginTop } from '../../DefaultStyles';
 //color
 import { color } from '../../DefaultStyles';
-import shadow from '../../DefaultStyles/shadow';
 
 export default StyleSheet.create({
     //address
@@ -126,7 +125,6 @@ export default StyleSheet.create({
         height: 170,
         backgroundColor: color.bgWhite,
         borderRadius: 10,
-        shadow ///neeed fix here
     },
 
     popularImage: {
@@ -161,14 +159,6 @@ export default StyleSheet.create({
         gap: 8,
         marginBottom: 16,
         borderRadius: 8,
-        shadowColor: color.black,
-        shadowOffset: {
-            width: 20,
-            height: 24,
-        },
-        shadowOpacity: 0.2,
-        shadowRadius: 8,
-        elevation: 4,
     },
 
     productImage: {

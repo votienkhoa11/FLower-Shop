@@ -5,7 +5,7 @@ import { formatDate } from '../../../../utils/fomatDate';
 
 //import styles
 import styles from '../../styles';
-import { color } from '../../../../DefaultStyles';
+import defaultStyles, { color } from '../../../../DefaultStyles';
 
 //import data
 import label from '../../label';
@@ -27,7 +27,7 @@ const OrderItem = ({item = {}, index}) => {
 
     return (
         item ?
-            <View style={styles.itemContainer}>
+            <View style={[styles.itemContainer, defaultStyles.shadow]}>
                 {/*Product information */}
                 <Image source={productData.image[0]} style={styles.imageProduct} />
                 <View style={styles.orderInformation}>

@@ -54,7 +54,7 @@ export default StyleSheet.create({
         position: 'absolute',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: StatusBar.currentHeight + 52,
+        marginTop: StatusBar.currentHeight + 88,
     },
 
     historySearchList: {
@@ -62,13 +62,6 @@ export default StyleSheet.create({
         backgroundColor: color.bgWhite,
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20,
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-        elevation: 5,
     },
 
     textSearch: {
@@ -134,14 +127,6 @@ export default StyleSheet.create({
         margin: 8,
         borderRadius: 10,
         backgroundColor: color.bgWhite,
-        shadowColor: color.black,
-        shadowOffset: {
-            width: 20,
-            height: 24,
-        },
-        shadowOpacity: 0.1,
-        shadowRadius: 8,
-        elevation: 4,
     },
 
     imageProduct: {

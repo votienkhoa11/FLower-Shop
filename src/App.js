@@ -1,14 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/no-unstable-nested-components */
-import { View, Text, SafeAreaView, Platform } from 'react-native';
+import { View, Text, Platform } from 'react-native';
 import React, { useEffect } from 'react';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { RecoilRoot, atom, selector, useRecoilState, useRecoilSelector } from 'recoil';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+//import { RecoilRoot, atom, selector, useRecoilState, useRecoilSelector } from 'recoil';
 
 //import {Provider} from 'react-redux';
 
@@ -67,7 +66,7 @@ function TabNavigators () {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          height: Platform.OS === 'ios' ? 66 + insets.bottom : 70,
+          height: Platform.OS === 'ios' ? 68 + insets.bottom : 70,
         },
         tabBarHideOnKeyboard: true,
         unmountOnBlur: true,
@@ -174,13 +173,12 @@ function App() {
 }, []);
 
   return (
-  
-      <NavigationContainer>
-          <Stack.Navigator screenOptions={{headerShown: false}}>
-              <Stack.Screen name="tab" component = {TabNavigators} />
-              <Stack.Screen name="product" component= {ProdcuctScreen} />
-          </Stack.Navigator>
-      </NavigationContainer>
+    <NavigationContainer>
+        <Stack.Navigator screenOptions={{headerShown: false}}>
+            <Stack.Screen name="tab" component = {TabNavigators} />
+            <Stack.Screen name="product" component= {ProdcuctScreen} />
+        </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 

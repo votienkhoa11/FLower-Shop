@@ -31,7 +31,7 @@ export default StyleSheet.create({
         position: 'absolute',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: Platform.OS === 'ios' ? 92 : 58,
+        marginTop: 92,
         marginLeft: 216,
         borderRadius: 30 / 2,
         backgroundColor: color.bgWhite,

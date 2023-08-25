@@ -6,12 +6,13 @@ import { styles } from './ProductItemCard.styles';
 //import icon
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import SaleComponent from '../Sale';
+import defaultStyles from '../../DefaultStyles';
 
 const ProductItemCard = ({data = {}}) => {
   return (
-    data ? (
+    data !== {} ? (
         <View style={{padding: 8}}>
-            <View style={styles.itemCard}>
+            <View style={[styles.itemCard, defaultStyles.shadow]}>
                 <TouchableOpacity activeOpacity={1}>
                         <Image source={data.image[0]} style={styles.itemImage} />
                 </TouchableOpacity>

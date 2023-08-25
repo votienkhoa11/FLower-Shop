@@ -57,7 +57,7 @@ const UserMainView = (props) => {
                     <Text>{userInfo.phone}</Text>
                 </View>
                 {/*Change button */}
-                <View style={styles.changeButtonContainer}>
+                <View style={[styles.changeButtonContainer, defaultStyles.shadow]}>
                     <TouchableOpacity
                         onPress={() => navigation.navigate('change')}>
                         <Entypo name="edit" style={styles.changeIcon} />

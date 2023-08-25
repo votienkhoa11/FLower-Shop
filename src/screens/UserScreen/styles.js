@@ -23,14 +23,6 @@ export default StyleSheet.create({
         alignItems: 'center',
         borderRadius: 100 / 2,
         backgroundColor: color.bgWhite,
-        shadowColor: color.black,
-        shadowOffset: {
-            width: 0,
-            height: 12,
-        },
-        shadowOpacity: 0.58,
-        shadowRadius: 16.00,
-        elevation: 24,
     },
 
     avatar: {
@@ -69,14 +61,6 @@ export default StyleSheet.create({
         marginLeft: width - 16 - 32,
         borderRadius: 15,
         backgroundColor: color.bgWhite,
-        shadowColor: color.black,
-        shadowOffset: {
-            width: 0,
-            height: 12,
-        },
-        shadowOpacity: 0.58,
-        shadowRadius: 16.00,
-        elevation: 24,
     },
 
     changeIcon: {

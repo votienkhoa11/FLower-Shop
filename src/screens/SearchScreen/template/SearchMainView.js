@@ -177,7 +177,7 @@ const SearchMainView = (props) => {
                 {
                     showFilter ? (
                         <View style={styles.historySearchListView}>
-                            <View style={styles.historySearchList}>
+                            <View style={[styles.historySearchList, defaultStyles.shadow]}>
                             {
                                 //show 3 search only
                                 (filterSearchList.slice(0, 3) || []).map((historySearchItem, searchIndex) => {

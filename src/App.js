@@ -4,10 +4,9 @@ import { View, Text } from 'react-native';
 import React, { useEffect } from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { RecoilRoot, atom, selector, useRecoilState, useRecoilSelector } from 'recoil';
+//import { RecoilRoot, atom, selector, useRecoilState, useRecoilSelector } from 'recoil';
 
 //import {Provider} from 'react-redux';
 
@@ -42,20 +41,25 @@ import {user} from './database/MockData';
 
 const Stack = createStackNavigator();
 const BottomTab = createBottomTabNavigator();
-const UserStack = createNativeStackNavigator();
+const UserStack = createStackNavigator();
+const SearchStack = createStackNavigator();
 
 function UserNavigators () {
-
   return (
     <UserStack.Navigator screenOptions={{headerShown: false}}>
-        <UserStack.Screen name="usermenu" component={UserScreen} />
-        <UserStack.Screen name="payment" component={PaymentMethodScreen} />
-        <UserStack.Screen name="notification" component={NotificationScreen} />
-        <UserStack.Screen name="support" component={HelpCenterScreen} />
-        <UserStack.Screen name="security" component={AccountSecurityScreen} />
-        <UserStack.Screen name="change" component={ChangeInformationScreen} />
+        <UserStack.Screen name = "usermenu" component={UserScreen} />
+        <UserStack.Screen name = "usermenu" component={UserScreen} />
     </UserStack.Navigator>
   );
+}
+
+function SearchNavigators () {
+    return (
+        <SearchStack.Navigator screenOptions={{headerShown: false}}>
+            <SearchStack.Screen name = "searchmenu" component={SearchScreen} />
+            {/*<SearchStack.Screen name = "searchresult" component={} /> */}
+        </SearchStack.Navigator>
+    );
 }
 
 function TabNavigators () {
@@ -86,7 +90,7 @@ function TabNavigators () {
           ),
         }}
       />
-      <BottomTab.Screen name = "search" component={SearchScreen}
+      <BottomTab.Screen name = "search" component={SearchNavigators}
         options={{
           tabBarIcon: ({focused}) => (
             <View
@@ -175,6 +179,11 @@ function App() {
         <Stack.Navigator screenOptions={{headerShown: false}}>
             <Stack.Screen name="tab" component = {TabNavigators} />
             <Stack.Screen name="product" component= {ProdcuctScreen} />
+            <Stack.Screen name="payment" component={PaymentMethodScreen} />
+            <Stack.Screen name="notification" component={NotificationScreen} />
+            <Stack.Screen name="support" component={HelpCenterScreen} />
+            <Stack.Screen name="security" component={AccountSecurityScreen} />
+            <Stack.Screen name="change" component={ChangeInformationScreen} />
         </Stack.Navigator>
     </NavigationContainer>
   );

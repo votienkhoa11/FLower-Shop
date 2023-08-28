@@ -55,7 +55,12 @@ const SearchMainView = (props) => {
                         <Text style={styles.searchLabel}>{label.search}</Text>
                         {/*Search bar */}
                         <TextInputComponent
-                            style={styles.searchBar}
+                            style={[
+                                styles.searchBar,
+                                (onFocus &&
+                                    {borderColor: color.green}
+                                ),
+                            ]}
                             placeholder={label.search}
                             value={search}
                             onChangeText={onChangeText}

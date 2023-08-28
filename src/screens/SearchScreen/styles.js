@@ -32,13 +32,6 @@ export default StyleSheet.create({
         paddingRight: 16,
     },
 
-    closeIcon: {
-        padding: 4,
-        marginRight: 4,
-        opacity: 0.6,
-        paddingLeft: 5,
-    },
-
     //search filter
     historySearchListView: {
         flex: 1,
@@ -150,93 +143,4 @@ export default StyleSheet.create({
         fontWeight: '600',
         color: color.mediumBlack,
     },
-
-    //result list view
-    resultLabelView: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        paddingBottom: 16,
-    },
-
-    numberResults: {
-        fontSize: 12,
-        letterSpacing: 0.32,
-        color: color.mediumDark,
-    },
-
-    resultCard: {
-        flexDirection: 'row',
-        backgroundColor: color.bgWhite,
-        gap: 8,
-        marginBottom: 16,
-        borderRadius: 8,
-        shadowColor: color.black,
-        shadowOffset: {
-            width: 20,
-            height: 24,
-        },
-        shadowOpacity: 0.2,
-        shadowRadius: 8,
-        elevation: 4,
-    },
-
-    productImage: {
-        width: 87,
-        height: 87,
-        margin: 8,
-        resizeMode: 'cover',
-        borderRadius: 8,
-    },
-
-    resultName: {
-        fontSize: 16,
-        fontWeight: '600',
-        color: color.mediumBlack,
-        flexWrap: 'wrap',
-    },
-
-    information: {
-        flex: 1,
-        margin: 8,
-        gap: 8,
-        justifyContent: 'center',
-    },
-
-    description: {
-        fontSize: 12,
-        letterSpacing: 0.32,
-        color: color.mediumBlack,
-        flexWrap: 'wrap',
-    },
-
-    priceView: {
-        flexDirection: 'row',
-        gap: 8,
-        alignItems: 'center',
-    },
-
-    price: {
-        fontSize: 12,
-        fontWeight: '600',
-        color: color.mediumBlack,
-    },
-
-    oldPrice: {
-        fontSize: 10,
-        color: color.gray,
-        textDecorationLine: 'line-through',
-    },
-
-    addIconView: {
-        justifyContent: 'flex-end',
-    },
-
-    addIcon: {
-        paddingHorizontal: 10,
-        paddingVertical: 14,
-        fontSize: 17,
-        color: color.green,
-    },
-
 });

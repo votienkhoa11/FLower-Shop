@@ -100,12 +100,15 @@ const SearchContainer = (props) => {
     //handle touch search items
     const onTouchSearchItem = (searchItem) => {
         setSearch(searchItem);
+        onSubmitSearch(searchItem);
     };
 
     const onSubmitSearch = (keyword) => {
-        navigation.navigate('searchresult', {
-            search: keyword,
-        });
+        if (keyword.length > 0) {
+            navigation.navigate('searchresult', {
+                keyword: keyword,
+            });
+        }
     };
 
     //remove all history

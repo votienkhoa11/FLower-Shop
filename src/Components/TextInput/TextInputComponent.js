@@ -45,7 +45,7 @@ const TextInputComponent = ({
             />
             {   rightIcon &&
                 <TouchableOpacity
-                    onPress={() => onPressRightIcon && onPressRightIcon}
+                    onPress={() => onPressRightIcon && onPressRightIcon()}
                 >
                     {rightIcon}
                 </TouchableOpacity>

@@ -69,6 +69,7 @@ const SearchMainView = (props) => {
                             onFocus={setOnFocus}
                             onBlur={setOnBlur}
                             rightIcon={<AntDesign name="search1" style={styles.searchIcon} />}
+                            onPressRightIcon={() => onSubmitSearch(search)}
                         />
                     </View>
                     <View>

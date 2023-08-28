@@ -10,18 +10,20 @@ import { searchResult } from '../../database/MockData';
 import { callToast } from '../../utils/Toast';
 
 //import template
-import SearchMainView from './template/SearchResultMainView';
+import SearchResultMainView from './template/SearchResultMainView';
 
 const SearchResultContainer = (props) => {
     const {
+        route,
         navigation,
     } = props;
+
+    const {keyword} = route.params;
 
     //set values
     const [products, setProduct] = useState([]);
     //set search
-    const [search, setSearch] = useState('');
-    const [popularSearch, setPopularSearch] = useState([]);
+    const [search, setSearch] = useState(keyword);
     const [historySearch, setHisorySearch] = useState([]);
     //set filter search
     const [filterSearchList, setFilterSearchList] = useState([]);
@@ -30,7 +32,6 @@ const SearchResultContainer = (props) => {
     //set view show
     const [loading, setLoading] = useState(true);
     const [showFilter, setShowFilter] = useState(false);
-    const [showResult, setShowResult] = useState(false);
 
     const getDatafromDB = async() => {
         //get params search
@@ -43,9 +44,6 @@ const SearchResultContainer = (props) => {
             const keyB = b.searchTime || 0;
             return keyB - keyA;
         });
-
-        //set popular search with top 12
-        setPopularSearch(popularSearchList.slice(0, 12));
 
         //set data suggestion
         const productList = [...data];
@@ -93,9 +91,8 @@ const SearchResultContainer = (props) => {
         setSearch(text);
         if (text.length > 0) {
             setShowFilter(true);
-        } else if (text.length === 0 && showResult) {
+        } else if (text.length === 0) {
             setShowFilter(false);
-            setShowResult(false);
         }
 
         //the filter function will filter everytime users enter a character
@@ -122,7 +119,6 @@ const SearchResultContainer = (props) => {
         setFocus(false);
         if (search === '') {
             setShowFilter(false);
-            setShowResult(false);
         }
     };
 
@@ -138,7 +134,6 @@ const SearchResultContainer = (props) => {
         if (resultList.length > 0) {
             saveSearch(keywordSearch);
             setResult(resultList);
-            setShowResult(true);
             setShowFilter(false);
         } else {
             callToast(label.noResult);
@@ -160,7 +155,6 @@ const SearchResultContainer = (props) => {
 
     //close result screen
     const onClose = () => {
-        setShowResult(false);
         setResult([]);
         setSearch('');
     };
@@ -175,20 +169,17 @@ const SearchResultContainer = (props) => {
     }, [navigation]);
 
     const searchProp = {
+        navigation,
         //values
         search,
         filterSearchList,
         results,
         historySearch,
-        popularSearch,
         products,
         loading,
         onFocus,
         showFilter,
-        showResult,
         //functions
-        setOnBlur,
-        setOnFocus,
         onChangeText,
         getResults,
         onClose,
@@ -196,7 +187,7 @@ const SearchResultContainer = (props) => {
         onTouchSearchItem,
     };
 
-  return <SearchMainView {...searchProp} />;
+  return <SearchResultMainView {...searchProp} />;
 };
 
 export default SearchResultContainer;

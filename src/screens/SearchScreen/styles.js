@@ -15,14 +15,8 @@ export default StyleSheet.create({
     },
 
     searchBar: {
-        height: 40,
         marginTop: 8,
-        flexDirection: 'row',
-        alignItems: 'center',
-        flex: 1,
         borderRadius: 40,
-        borderWidth: 1,
-        borderColor: color.bgMedium,
         backgroundColor: color.bgLight,
     },
 
@@ -31,12 +25,11 @@ export default StyleSheet.create({
         paddingLeft: 12,
     },
 
-    searchBarIcons: {
-        flexDirection: 'row',
-        alignItems: 'center',
+    searchIcon: {
+        fontSize: 24,
+        color: color.lightDark,
         gap: 10,
-        paddingVertical: 4,
-        paddingHorizontal: 12,
+        paddingRight: 16,
     },
 
     closeIcon: {

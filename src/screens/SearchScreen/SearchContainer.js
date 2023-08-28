@@ -2,12 +2,8 @@ import React, { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //import data
-import label from './label';
 import { data } from '../../database/MockData';
 import { searchResult } from '../../database/MockData';
-
-//import components
-import callToast from '../../utils/Toast';
 
 //import template
 import SearchMainView from './template/SearchMainView';
@@ -49,28 +45,6 @@ const SearchContainer = (props) => {
         const productList = [...data];
         productList.sort(() => 0.5 - Math.random());
         setProduct(productList.slice(0, 6));
-    };
-
-    //save search
-    const saveSearch = async (itemSearch) => {
-        if (itemSearch !== '') {
-            const searchListJSON = await AsyncStorage.getItem('search');
-            //if the app already saved any search, use concat to merge the new search
-            //if not, add new items
-            if (searchListJSON !== null) {
-                const searchList = JSON.parse(searchListJSON);
-
-                if (!searchList.includes(itemSearch)) {
-                    const newSearchList = searchList.concat(itemSearch);
-                    await AsyncStorage.setItem('search', JSON.stringify(newSearchList));
-                }
-
-            } else {
-                const newSearchList = [];
-                newSearchList.push(itemSearch);
-                await AsyncStorage.setItem('search', JSON.stringify(newSearchList));
-            }
-        }
     };
 
     //get user history search
@@ -123,32 +97,15 @@ const SearchContainer = (props) => {
     };
 
     //on press functions
-    //get search results
-    //turn off search result function is on line 98, on change text function
-    const getResults = (keywordSearch) => {
-        const resultList = data.filter(function(productData) {
-            return productData.name.toLowerCase().includes(keywordSearch.toLowerCase());
-        });
-
-        //if there are one or more results, save the keywords and get the results
-        if (resultList.length > 0) {
-            saveSearch(keywordSearch);
-
-            //to use it later
-            //navigation.navigate('searchresult', {
-          //      searchKeyword: search,
-          //  });
-
-            setShowFilter(false);
-        } else {
-            callToast(label.noResult);
-        }
-    };
-
     //handle touch search items
     const onTouchSearchItem = (searchItem) => {
         setSearch(searchItem);
-        getResults(searchItem);
+    };
+
+    const onSubmitSearch = (keyword) => {
+        navigation.navigate('searchresult', {
+            search: keyword,
+        });
     };
 
     //remove all history
@@ -181,7 +138,7 @@ const SearchContainer = (props) => {
         setOnBlur,
         setOnFocus,
         onChangeText,
-        getResults,
+        onSubmitSearch,
         removeSearch,
         onTouchSearchItem,
     };

@@ -16,6 +16,7 @@ import label from '../label';
 //import components
 import LoadingScreen from '../../../Components/LoadingScreen';
 import CartButton from '../../../Components/Buttons/CartButton';
+import TextInputComponent from '../../../Components/TextInput/TextInputComponent';
 import SearchCard from './subView/SearchCard';
 import SuggestionCard from './subView/SuggestionCard';
 
@@ -34,7 +35,7 @@ const SearchMainView = (props) => {
         setOnBlur,
         setOnFocus,
         onChangeText,
-        getResults,
+        onSubmitSearch,
         removeSearch,
         onTouchSearchItem,
     } = props;
@@ -53,28 +54,17 @@ const SearchMainView = (props) => {
                     <View style={styles.header}>
                         <Text style={styles.searchLabel}>{label.search}</Text>
                         {/*Search bar */}
-                        <View style={[
-                            styles.searchBar, (onFocus ?
-                                {borderColor: color.black} : {borderColor: color.bgMedium})]}>
-                            <TextInput
-                                placeholder={label.search}
-                                autoCapitalize="none"
-                                onChangeText={onChangeText}
-                                value={search}
-                                returnKeyType="go"
-                                onSubmitEditing={() => getResults(search)}
-                                onFocus={setOnFocus}
-                                onBlur={setOnBlur}
-                                style={styles.searchInput}
-                            />
-                            <View style={styles.searchBarIcons}>
-                                <TouchableOpacity
-                                    onPress={() => getResults(search)}
-                                >
-                                    <AntDesign name="search1" size={24} color={color.lightDark} />
-                                </TouchableOpacity>
-                            </View>
-                        </View>
+                        <TextInputComponent
+                            style={styles.searchBar}
+                            placeholder={label.search}
+                            value={search}
+                            onChangeText={onChangeText}
+                            returnKeyType="go"
+                            onSubmitEditing={() => onSubmitSearch(search)}
+                            onFocus={setOnFocus}
+                            onBlur={setOnBlur}
+                            rightIcon={<AntDesign name="search1" style={styles.searchIcon} />}
+                        />
                     </View>
                     <View>
                         {/*User history search */}

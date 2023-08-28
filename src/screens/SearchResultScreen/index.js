@@ -1,8 +1,9 @@
 import React from 'react';
 import SearchResultContainer from './SearchResultContainer';
 
-const SearchResultScreen = ({navigation}) => {
+const SearchResultScreen = ({route, navigation}) => {
     const searchResultContainerProps = {
+        route,
         navigation,
     };
     return <SearchResultContainer {...searchResultContainerProps} />;

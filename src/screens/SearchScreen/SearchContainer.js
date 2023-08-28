@@ -7,7 +7,7 @@ import { data } from '../../database/MockData';
 import { searchResult } from '../../database/MockData';
 
 //import components
-import { callToast } from '../../utils/Toast';
+import callToast from '../../utils/Toast';
 
 //import template
 import SearchMainView from './template/SearchMainView';
@@ -25,12 +25,10 @@ const SearchContainer = (props) => {
     const [historySearch, setHisorySearch] = useState([]);
     //set filter search
     const [filterSearchList, setFilterSearchList] = useState([]);
-    //set results
-    const [results, setResult] = useState([]);
+
     //set view show
     const [loading, setLoading] = useState(true);
     const [showFilter, setShowFilter] = useState(false);
-    const [showResult, setShowResult] = useState(false);
 
     const getDatafromDB = async() => {
         //get params search
@@ -93,9 +91,8 @@ const SearchContainer = (props) => {
         setSearch(text);
         if (text.length > 0) {
             setShowFilter(true);
-        } else if (text.length === 0 && showResult) {
+        } else if (text.length === 0 ) {
             setShowFilter(false);
-            setShowResult(false);
         }
 
         //the filter function will filter everytime users enter a character
@@ -122,7 +119,6 @@ const SearchContainer = (props) => {
         setFocus(false);
         if (search === '') {
             setShowFilter(false);
-            setShowResult(false);
         }
     };
 
@@ -137,8 +133,12 @@ const SearchContainer = (props) => {
         //if there are one or more results, save the keywords and get the results
         if (resultList.length > 0) {
             saveSearch(keywordSearch);
-            setResult(resultList);
-            setShowResult(true);
+
+            //to use it later
+            //navigation.navigate('searchresult', {
+          //      searchKeyword: search,
+          //  });
+
             setShowFilter(false);
         } else {
             callToast(label.noResult);
@@ -158,13 +158,6 @@ const SearchContainer = (props) => {
         setHisorySearch([]);
     };
 
-    //close result screen
-    const onClose = () => {
-        setShowResult(false);
-        setResult([]);
-        setSearch('');
-    };
-
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
             getDatafromDB();
@@ -178,20 +171,17 @@ const SearchContainer = (props) => {
         //values
         search,
         filterSearchList,
-        results,
         historySearch,
         popularSearch,
         products,
         loading,
         onFocus,
         showFilter,
-        showResult,
         //functions
         setOnBlur,
         setOnFocus,
         onChangeText,
         getResults,
-        onClose,
         removeSearch,
         onTouchSearchItem,
     };

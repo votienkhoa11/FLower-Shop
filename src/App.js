@@ -11,18 +11,23 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 //import {Provider} from 'react-redux';
 
 //import screens
-import HomeScreen from './screens/HomeScreen/';
-import SearchScreen from './screens/SearchScreen';
-import VoucherScreen from './screens/VoucherScreen';
-import OrderScreen from './screens/OrderScreen';
-import ProdcuctScreen from './screens/ProductScreen';
-//user stack screen
-import UserScreen from './screens/UserScreen';
-import ChangeInformationScreen from './screens/ChangeInformationScreen';
+//main stack screens
 import PaymentMethodScreen from './screens/PaymentMethodScreen';
 import NotificationScreen from './screens/NotificationScreen';
 import HelpCenterScreen from './screens/HelpCenterScreen';
 import AccountSecurityScreen from './screens/AccountSecurityScreen';
+import ProdcuctScreen from './screens/ProductScreen';
+//main tab screens
+import HomeScreen from './screens/HomeScreen/';
+import VoucherScreen from './screens/VoucherScreen';
+import OrderScreen from './screens/OrderScreen';
+// search stack screens
+import SearchScreen from './screens/SearchScreen';
+import SearchResultScreen from './screens/SearchResultScreen';
+//user stack screen
+import UserScreen from './screens/UserScreen';
+import ChangeInformationScreen from './screens/ChangeInformationScreen';
+
 
 //import label
 import label from './label';
@@ -48,7 +53,7 @@ function UserNavigators () {
   return (
     <UserStack.Navigator screenOptions={{headerShown: false}}>
         <UserStack.Screen name = "usermenu" component={UserScreen} />
-        <UserStack.Screen name = "usermenu" component={UserScreen} />
+        <UserStack.Screen name="change" component={ChangeInformationScreen} />
     </UserStack.Navigator>
   );
 }
@@ -57,7 +62,7 @@ function SearchNavigators () {
     return (
         <SearchStack.Navigator screenOptions={{headerShown: false}}>
             <SearchStack.Screen name = "searchmenu" component={SearchScreen} />
-            {/*<SearchStack.Screen name = "searchresult" component={} /> */}
+            <SearchStack.Screen name = "searchresult" component={SearchResultScreen} />
         </SearchStack.Navigator>
     );
 }
@@ -183,7 +188,6 @@ function App() {
             <Stack.Screen name="notification" component={NotificationScreen} />
             <Stack.Screen name="support" component={HelpCenterScreen} />
             <Stack.Screen name="security" component={AccountSecurityScreen} />
-            <Stack.Screen name="change" component={ChangeInformationScreen} />
         </Stack.Navigator>
     </NavigationContainer>
   );

@@ -18,27 +18,23 @@ import LoadingScreen from '../../../Components/LoadingScreen';
 import CartButton from '../../../Components/Buttons/CartButton';
 import SearchCard from './subView/SearchCard';
 import SuggestionCard from './subView/SuggestionCard';
-import ResultSearch from './subView/ResultSearch';
 
 const SearchMainView = (props) => {
     const {
         //values
         search,
         filterSearchList,
-        results,
         historySearch,
         popularSearch,
         products,
         loading,
         onFocus,
         showFilter,
-        showResult,
         //functions
         setOnBlur,
         setOnFocus,
         onChangeText,
         getResults,
-        onClose,
         removeSearch,
         onTouchSearchItem,
     } = props;
@@ -72,16 +68,6 @@ const SearchMainView = (props) => {
                                 style={styles.searchInput}
                             />
                             <View style={styles.searchBarIcons}>
-                                {showResult ? (
-                                    <TouchableOpacity onPress={() => onClose()}>
-                                        <AntDesign
-                                            name="close"
-                                            size={24}
-                                            color={color.lightDark}
-                                            style={styles.closeIcon}
-                                        />
-                                    </TouchableOpacity>
-                                ) : null}
                                 <TouchableOpacity
                                     onPress={() => getResults(search)}
                                 >
@@ -90,91 +76,74 @@ const SearchMainView = (props) => {
                             </View>
                         </View>
                     </View>
-                    {showResult ? (
-                        <View style={defaultStyles.padding16}>
-                            <View>
-                                <View style={styles.resultLabelView}>
-                                    <Text style={styles.label}>{label.ResultFound} "{search}"</Text>
-                                    <Text style={styles.numberResults}>{results.length} {label.result}</Text>
-                                </View>
+                    <View>
+                        {/*User history search */}
+                        <View style={styles.historySearchView}>
+                            <View style={styles.labelView}>
+                                <Text style={styles.label}>{label.historysearchLabel}</Text>
+                                {historySearch !== [] ?
+                                    <TouchableHighlight
+                                        activeOpacity={0.4}
+                                        underlayColor={color.greenWhite}
+                                        onPress={() => removeSearch()}
+                                    >
+                                        <Text style={styles.clearText}>{label.clear}</Text>
+                                    </TouchableHighlight> : null
+                                }
+                            </View>
+                            <View style={styles.searchResultView}>
                                 {
-                                    (results || []).map(resultData => {
-                                        return <ResultSearch data={resultData} key={resultData.id} />;
+                                    //show 5 searches on screen
+                                    (historySearch.slice(0, 5) || []).map((historySearchData, searchIndex) => {
+                                        return (
+                                            <TouchableOpacity
+                                                onPress={() => onTouchSearchItem(historySearchData)}
+                                                key={searchIndex}
+                                            >
+                                                <SearchCard searchItem={historySearchData} />
+                                            </TouchableOpacity>
+                                        );
                                     })
                                 }
                             </View>
                         </View>
-                    ) : (
-                        <View>
-                            {/*User history search */}
-                            <View style={styles.historySearchView}>
-                                <View style={styles.labelView}>
-                                    <Text style={styles.label}>{label.historysearchLabel}</Text>
-                                    {historySearch !== [] ?
-                                        <TouchableHighlight
-                                            activeOpacity={0.4}
-                                            underlayColor={color.greenWhite}
-                                            onPress={() => removeSearch()}
-                                        >
-                                            <Text style={styles.clearText}>{label.clear}</Text>
-                                        </TouchableHighlight> : null
-                                    }
-                                </View>
-                                <View style={styles.searchResultView}>
-                                    {
-                                        //show 5 searches on screen
-                                        (historySearch.slice(0, 5) || []).map((historySearchData, searchIndex) => {
-                                            return (
-                                                <TouchableOpacity
-                                                    onPress={() => onTouchSearchItem(historySearchData)}
-                                                    key={searchIndex}
-                                                >
-                                                    <SearchCard searchItem={historySearchData} />
-                                                </TouchableOpacity>
-                                            );
-                                        })
-                                    }
-                                </View>
-                            </View>
-                        { /*most popular search item*/}
-                            <View style={styles.historySearchView}>
-                                <Text style={styles.label}>{label.mostPopularSearchLabel}</Text>
-                                <View style={styles.searchResultView}>
-                                    {
-                                        (popularSearch || []).map(popularSearchData => {
-                                            return (
-                                                <TouchableOpacity
-                                                    onPress={() => onTouchSearchItem(popularSearchData.search)}
-                                                    key={popularSearchData.id}
-                                                >
-                                                    <SearchCard searchItem={popularSearchData.search} />
-                                                </TouchableOpacity>
-                                            );
-                                        })
-                                    }
-                                </View>
-                            </View>
-                            {/*suggestion search items*/}
-                            <View>
-                                <View style={{paddingHorizontal: 16}}>
-                                    <Text style={styles.label}>{label.suggestionLabel}</Text>
-                                </View>
-                                <ScrollView
-                                    horizontal
-                                    showsHorizontalScrollIndicator={false}
-                                >
-                                    <View style={styles.suggestProductsView}>
-                                        {
-                                            (products || []).map(suggestProductData => {
-                                                return <SuggestionCard data={suggestProductData} key={suggestProductData.id} />;
-                                            })
-                                        }
-                                    </View>
-                                </ScrollView>
+                    { /*most popular search item*/}
+                        <View style={styles.historySearchView}>
+                            <Text style={styles.label}>{label.mostPopularSearchLabel}</Text>
+                            <View style={styles.searchResultView}>
+                                {
+                                    (popularSearch || []).map(popularSearchData => {
+                                        return (
+                                            <TouchableOpacity
+                                                onPress={() => onTouchSearchItem(popularSearchData.search)}
+                                                key={popularSearchData.id}
+                                            >
+                                                <SearchCard searchItem={popularSearchData.search} />
+                                            </TouchableOpacity>
+                                        );
+                                    })
+                                }
                             </View>
                         </View>
-                        )
-                    }
+                        {/*suggestion search items*/}
+                        <View>
+                            <View style={{paddingHorizontal: 16}}>
+                                <Text style={styles.label}>{label.suggestionLabel}</Text>
+                            </View>
+                            <ScrollView
+                                horizontal
+                                showsHorizontalScrollIndicator={false}
+                            >
+                                <View style={styles.suggestProductsView}>
+                                    {
+                                        (products || []).map(suggestProductData => {
+                                            return <SuggestionCard data={suggestProductData} key={suggestProductData.id} />;
+                                        })
+                                    }
+                                </View>
+                            </ScrollView>
+                        </View>
+                    </View>
                 </View>
                 {/*Search filter */}
                 {

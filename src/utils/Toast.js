@@ -1,7 +1,7 @@
 import Toast from 'react-native-root-toast';
 import { color } from '../DefaultStyles';
 
-export const callToast = (msg) => {
+function callToast (msg) {
     Toast.show(msg, {
       duration: Toast.durations.SHORT,
       position: -70,
@@ -12,4 +12,6 @@ export const callToast = (msg) => {
       backgroundColor: color.black,
       textColor: color.bgWhite,
   });
-};
+}
+
+export default callToast;

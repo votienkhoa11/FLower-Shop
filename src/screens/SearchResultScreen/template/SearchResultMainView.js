@@ -17,8 +17,6 @@ import label from '../label';
 import LoadingScreen from '../../../Components/LoadingScreen';
 import CartButton from '../../../Components/Buttons/CartButton';
 import TextInputComponent from '../../../Components/TextInput/TextInputComponent';
-import SearchCard from './subView/SearchCard';
-import ResultSearch from './subView/ResultSearch';
 
 const SearchResultMainView = (props) => {
     const {
@@ -26,11 +24,9 @@ const SearchResultMainView = (props) => {
         //values
         search,
         loading,
-        onFocus,
-        showFilter,
-        showResult,
         //functions
         onChangeText,
+        onClose,
     } = props;
 
   return (
@@ -48,11 +44,9 @@ const SearchResultMainView = (props) => {
                     </View>
                 </TouchableOpacity>
             </View>
-            <View style={{paddingHorizontal: 16,}}>
+            <View style={styles.searchFilterBar}>
                 <TextInputComponent
-                    style={[
-                        styles.searchBar,
-                    ]}
+                    style={styles.searchBar}
                     placeholder={label.search}
                     value={search}
                     onChangeText={onChangeText}
@@ -60,9 +54,14 @@ const SearchResultMainView = (props) => {
                     onSubmitEditing={() => console.log(search)}
                     leftIcon={<AntDesign name="search1" style={styles.searchIcon} />}
 
-                    rightIcon={<AntDesign name="close" style={styles.xIcon} />}
+                    rightIcon={search && <AntDesign name="close" style={styles.xIcon} />}
+                    onPressRightIcon={() => onClose()}
                 />
+                <View style={styles.filterIconContainer}>
+                    <AntDesign name="filter" size={18} color={color.lightDark} />
+                </View>
             </View>
+        <CartButton />
     </View>
   );
 };

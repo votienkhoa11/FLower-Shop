@@ -12,7 +12,6 @@ export default StyleSheet.create({
     containerAreaInput: {
         width: '100%',
         height: 40,
-        marginTop: 8,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',

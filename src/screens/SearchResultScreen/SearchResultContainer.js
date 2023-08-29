@@ -108,20 +108,6 @@ const SearchResultContainer = (props) => {
         setFilterSearchList([...filterData]);
     };
 
-    //set the search bar on focus or not
-    const [onFocus, setFocus] = useState(false);
-
-    const setOnFocus = () => {
-        setFocus(true);
-    };
-
-    const setOnBlur = () => {
-        setFocus(false);
-        if (search === '') {
-            setShowFilter(false);
-        }
-    };
-
     //on press functions
     //get search results
     //turn off search result function is on line 98, on change text function
@@ -177,7 +163,6 @@ const SearchResultContainer = (props) => {
         historySearch,
         products,
         loading,
-        onFocus,
         showFilter,
         //functions
         onChangeText,

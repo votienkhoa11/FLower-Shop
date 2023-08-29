@@ -163,4 +163,9 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         color: color.lightDark,
     },
+
+    footer: {
+        height: 200,
+        opacity: 0,
+    },
 });

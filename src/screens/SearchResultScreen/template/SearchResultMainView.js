@@ -34,6 +34,15 @@ const SearchResultMainView = (props) => {
         saveSearch,
     } = props;
 
+    //render list
+    const listFooter = () => {
+        return (
+            <View style={styles.footer}>
+                <Text>------------------------------------------------</Text>
+            </View>
+        );
+    };
+
   return (
     loading ? <LoadingScreen /> :
 
@@ -84,6 +93,7 @@ const SearchResultMainView = (props) => {
                 }}
                 showsVerticalScrollIndicator={false}
                 ListEmptyComponent={<EmtyData />}
+                ListFooterComponent={listFooter}
             />
         </View>
         <CartButton />

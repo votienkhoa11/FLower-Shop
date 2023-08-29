@@ -6,7 +6,7 @@ import { color } from '../../DefaultStyles';
 export default StyleSheet.create({
     textInput: {
         flex: 1,
-        paddingLeft: 12,
+        paddingLeft: 16,
     },
 
     containerAreaInput: {

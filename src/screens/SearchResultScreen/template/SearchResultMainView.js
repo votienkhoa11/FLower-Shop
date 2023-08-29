@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import { Text, View, TextInput, Pressable, StatusBar } from 'react-native';
+import { Text, View, StatusBar, FlatList } from 'react-native';
 import React from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -17,16 +17,21 @@ import label from '../label';
 import LoadingScreen from '../../../Components/LoadingScreen';
 import CartButton from '../../../Components/Buttons/CartButton';
 import TextInputComponent from '../../../Components/TextInput/TextInputComponent';
+import ResultCard from './subView/ResultCard';
+import EmtyData from './subView/EmtyData';
 
 const SearchResultMainView = (props) => {
     const {
         navigation,
         //values
         search,
+        results,
         loading,
         //functions
         onChangeText,
         onClose,
+        onTouchSearchItem,
+        saveSearch,
     } = props;
 
   return (
@@ -34,33 +39,53 @@ const SearchResultMainView = (props) => {
 
     <View style={defaultStyles.container}>
         <StatusBar translucent backgroundColor="transparent" barstyles="dark-content" />
-            <View style={styles.header}>
-                <TouchableOpacity
-                    onPress={() => navigation.goBack(null)}
-                >
-                    <View style={styles.searchLabelContainer}>
-                        <AntDesign name="left" style={styles.backIcon} />
-                        <Text style={styles.label}>{label.search}</Text>
-                    </View>
-                </TouchableOpacity>
-            </View>
-            <View style={styles.searchFilterBar}>
-                <TextInputComponent
-                    style={styles.searchBar}
-                    placeholder={label.search}
-                    value={search}
-                    onChangeText={onChangeText}
-                    returnKeyType="go"
-                    onSubmitEditing={() => console.log(search)}
-                    leftIcon={<AntDesign name="search1" style={styles.searchIcon} />}
-
-                    rightIcon={search && <AntDesign name="close" style={styles.xIcon} />}
-                    onPressRightIcon={() => onClose()}
-                />
+        {/*Header */}
+        <View style={styles.header}>
+            <TouchableOpacity
+                onPress={() => navigation.goBack(null)}
+            >
+                <View style={styles.searchLabelContainer}>
+                    <AntDesign name="left" style={styles.backIcon} />
+                    <Text style={styles.label}>{label.search}</Text>
+                </View>
+            </TouchableOpacity>
+        </View>
+        <View style={styles.searchFilterBar}>
+            <TextInputComponent
+                style={styles.searchBar}
+                placeholder={label.search}
+                value={search}
+                onChangeText={onChangeText}
+                returnKeyType="go"
+                onSubmitEditing={() => onTouchSearchItem(search)}
+                leftIcon={<AntDesign name="search1" style={styles.searchIcon} />}
+                onPressleftIcon={() => onTouchSearchItem(search)}
+                rightIcon={search && <AntDesign name="close" style={styles.xIcon} />}
+                onPressRightIcon={() => onClose()}
+            />
+            <TouchableOpacity
+                onPress={() => console.log(results)}
+            >
                 <View style={styles.filterIconContainer}>
                     <AntDesign name="filter" size={18} color={color.lightDark} />
                 </View>
-            </View>
+            </TouchableOpacity>
+        </View>
+        <View style={styles.resultLabelView}>
+            <Text style={styles.label}>{label.ResultFound} "{search}"</Text>
+            <Text style={styles.numberResults}>{results.length} {label.result}</Text>
+        </View>
+        <View style={{marginHorizontal: 16}}>
+            <FlatList
+                data={search ? results : null}
+                keyExtractor={item => item.id}
+                renderItem={({item, index}) => {
+                    return <ResultCard data={item} />;
+                }}
+                showsVerticalScrollIndicator={false}
+                ListEmptyComponent={<EmtyData />}
+            />
+        </View>
         <CartButton />
     </View>
   );

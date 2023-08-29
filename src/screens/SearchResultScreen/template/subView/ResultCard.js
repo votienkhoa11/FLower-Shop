@@ -9,7 +9,7 @@ import styles from '../../styles';
 
 import salePriceCalculator from '../../../../utils/salePriceCalculator';
 
-const ResultSearch = ({data = {}}) => {
+const ResultCard = ({data = {}}) => {
     const navigation = useNavigation();
 
     return (
@@ -51,4 +51,4 @@ const ResultSearch = ({data = {}}) => {
     );
 };
 
-export default ResultSearch;
+export default ResultCard;

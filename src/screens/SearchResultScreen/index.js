@@ -2,10 +2,14 @@ import React from 'react';
 import SearchResultContainer from './SearchResultContainer';
 
 const SearchResultScreen = ({route, navigation}) => {
+    //get the keyword
+    const {keyword} = route.params;
+
     const searchResultContainerProps = {
-        route,
+        keyword,
         navigation,
     };
+
     return <SearchResultContainer {...searchResultContainerProps} />;
 };
 

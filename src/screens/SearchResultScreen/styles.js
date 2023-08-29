@@ -35,12 +35,12 @@ export default StyleSheet.create({
 
     searchIcon: {
         fontSize: 16,
-        padding: 8,
+        padding: 4,
     },
 
     xIcon: {
         fontSize: 18,
-        padding: 8,
+        padding: 4,
         color: color.lightDark,
         marginRight: 8,
     },
@@ -61,21 +61,35 @@ export default StyleSheet.create({
         borderRadius: 8,
     },
 
+    resultLabelView: {
+        paddingHorizontal: 16,
+        paddingVertical: 12,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+
+    numberResults: {
+        fontSize: 12,
+        letterSpacing: 0.32,
+        color: color.mediumDark,
+    },
+
     //result list view
     resultCard: {
         flexDirection: 'row',
-        backgroundColor: color.bgWhite,
         gap: 8,
         marginBottom: 16,
         borderRadius: 8,
         shadowColor: color.black,
         shadowOffset: {
-            width: 20,
-            height: 24,
+            width: 0,
+            height: 12,
         },
         shadowOpacity: 0.2,
         shadowRadius: 8,
         elevation: 4,
+        backgroundColor: color.bgWhite,
     },
 
     productImage: {
@@ -99,17 +113,22 @@ export default StyleSheet.create({
         gap: 8,
     },
 
-    nameCard: {
-        width: '100%',
-        paddingBottom: 8,
-        borderBottomColor: color.bgLight,
-        borderBottomWidth: 1,
+    priceView: {
+        flexDirection: 'row',
+        gap: 8,
+        alignItems: 'center',
     },
 
-    descriptionCard: {
-        width: '100%',
-        flex: 1,
-        gap: 4,
+    price: {
+        fontSize: 12,
+        fontWeight: '600',
+        color: color.mediumBlack,
+    },
+
+    oldPrice: {
+        fontSize: 10,
+        color: color.gray,
+        textDecorationLine: 'line-through',
     },
 
     description: {
@@ -119,11 +138,29 @@ export default StyleSheet.create({
         flexWrap: 'wrap',
     },
 
-    price: {
-        paddingVertical: 4,
-        fontSize: 12,
-        fontWeight: '600',
-        letterSpacing: 0.32,
-        color: color.mediumBlack,
+    addIconView: {
+        justifyContent: 'flex-end',
+    },
+
+    addIcon: {
+        paddingHorizontal: 10,
+        paddingVertical: 14,
+        fontSize: 17,
+        color: color.green,
+    },
+
+    //empty view
+    emptyView: {
+        flex: 1,
+        marginTop: 64,
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 28,
+    },
+
+    noResult: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: color.lightDark,
     },
 });

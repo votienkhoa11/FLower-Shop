@@ -4,7 +4,6 @@ export const userData = async () => {
     const userDataJSON = await AsyncStorage.getItem('user');
     const results = JSON.parse(userDataJSON);
 
-    
     return results;
 };
 

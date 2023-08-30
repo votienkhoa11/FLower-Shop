@@ -8,5 +8,7 @@ const isDevEnv = !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
 const endPoint = isDevEnv ? envConfig.devEndPoint : envConfig.prodEndPoint;
 
 export const config = {
+    isDevEnv,
     envConfig,
+    endPoint,
 };

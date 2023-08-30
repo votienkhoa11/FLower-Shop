@@ -2,6 +2,7 @@
 import { Text, View, StatusBar, FlatList } from 'react-native';
 import React from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
 
 //import style
 import defaultStyles, {color} from '../../../DefaultStyles';

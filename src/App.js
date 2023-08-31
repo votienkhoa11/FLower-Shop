@@ -7,9 +7,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-//import { RecoilRoot, atom, selector, useRecoilState, useRecoilSelector } from 'recoil';
-
-//import {Provider} from 'react-redux';
+import {Provider} from 'react-redux';
 
 //import screens
 import HomeScreen from './screens/HomeScreen/';
@@ -37,6 +35,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 //import user
 import {user} from './database/MockData';
+import store from './app/store';
 
 //import store from './app/store';
 
@@ -173,12 +172,14 @@ function App() {
 }, []);
 
   return (
-    <NavigationContainer>
-        <Stack.Navigator screenOptions={{headerShown: false}}>
-            <Stack.Screen name="tab" component = {TabNavigators} />
-            <Stack.Screen name="product" component= {ProdcuctScreen} />
-        </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+        <NavigationContainer>
+            <Stack.Navigator screenOptions={{headerShown: false}}>
+                <Stack.Screen name="tab" component = {TabNavigators} />
+                <Stack.Screen name="product" component= {ProdcuctScreen} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    </Provider>
   );
 }
 

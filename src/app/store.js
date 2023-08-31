@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import loaderReducer from './loaderSlice';
+import productReducer from '../screens/HomeScreen/homeSlice';
 
 const rootReducer = {
     loader: loaderReducer,
-    //product: productReducer;
+    product: productReducer,
 };
 
 export default configureStore({

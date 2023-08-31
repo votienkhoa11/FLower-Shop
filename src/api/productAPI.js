@@ -1,6 +1,6 @@
 import axiosClient from './axiosClient';
 
-const product = {
+const productAPI = {
     getAll: payload => {
         const {currentPage, pageSize} = payload;
         return axiosClient.get(`getAll?currentPage=${currentPage}&pageSize=${pageSize}`);
@@ -12,4 +12,4 @@ const product = {
     },
 };
 
-export default product;
+export default productAPI;

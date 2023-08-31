@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { callToast } from '../../utils/Toast';
+import { getAllProduct } from './homeSlice';
 
 //import data
 import { user } from '../../database/MockData';
@@ -11,6 +12,8 @@ import HomeMainView from './template/HomeMainView';
 
 const HomeContainer = (props) => {
     const {
+        dispatch,
+        isLoading,
         navigation,
     } = props;
 
@@ -19,8 +22,6 @@ const HomeContainer = (props) => {
     const [popularProduct, setPopularProduct] = useState([]);
     const [broughtProducts, setBroughtProduct] = useState([]);
     const [userInfo, setUser] = useState([]);
-
-    const [loading, setLoading] = useState(true);
     const [favorite, setFavorite] = useState(false);
 
     //get data from the database
@@ -53,7 +54,6 @@ const HomeContainer = (props) => {
         setBroughtProduct(broughtProductList.slice(0, 5));
 
         //set loading to false when the app finised loading data
-        setLoading(false);
     };
 
     //on press functions
@@ -77,7 +77,7 @@ const HomeContainer = (props) => {
 
     const homeProps = {
         navigation,
-        loading,
+        isLoading,
         userInfo,
         favorite,
         setFavoriteButton,

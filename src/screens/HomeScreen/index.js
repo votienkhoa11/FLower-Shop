@@ -7,13 +7,13 @@ import HomeContainer from './HomeContainer';
 const HomeScreen = (props) => {
     const dispatch = useDispatch();
     const isLoading = useSelector(loaderSelector);
-    const productsList = useSelector(productSelector);
+    const productData = useSelector(productSelector);
     const {navigation} = props;
 
     const HomeContainerProps = {
         dispatch,
         isLoading,
-        productsList,
+        productData,
         startLoading,
         finishLoading,
         navigation,

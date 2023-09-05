@@ -1,8 +1,6 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { callToast } from '../../utils/Toast';
-import { getAllProduct } from './homeSlice';
-import { productSelector } from '../../app/selector';
+import { getAll } from './homeSlice';
 
 //import data
 import { user } from '../../database/MockData';
@@ -16,9 +14,7 @@ const HomeContainer = (props) => {
     const {
         dispatch,
         isLoading,
-        productsList,
-        startLoading,
-        finishLoading,
+        productData,
         navigation,
     } = props;
 
@@ -31,11 +27,10 @@ const HomeContainer = (props) => {
 
     //get data from the database
     const getDatafromDB = async () => {
-        dispatch(startLoading());
         //get user
         setUser(await userData());
         //get product
-        const productList = [...data];
+        const productList = [...productData.productList];
 
         productList.sort(() => 0.5 - Math.random());
         setProduct(productList.slice(0, 5));
@@ -58,9 +53,7 @@ const HomeContainer = (props) => {
 
         //set 5 brought products
         setBroughtProduct(broughtProductList.slice(0, 5));
-        dispatch(getAllProduct());
-        console.log(productsList);
-        dispatch(finishLoading());
+        dispatch(getAll());
     };
 
     //on press functions

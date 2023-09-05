@@ -6,7 +6,7 @@ const initialState = {
     productList: [],
 };
 
-export const getAllProduct = createAsyncThunk(
+export const getAll = createAsyncThunk(
     'product/getAll',
     async (data, thunkAPI) => {
         return serviceRequest({
@@ -29,18 +29,12 @@ const postSlice = createSlice({
             }
         },
     },
-    extraReducers: builder => {
-        builder.addCase(getAllProduct.fulfilled, (state, action) => {
-            const {data, success} = action.payload;
+    extraReducers: (builder) => {
+        builder.addCase(getAll.fulfilled, (state, action) => {
+            const {data} = action.payload;
 
-            if (success) {
-                console.log('success')
-                data.pageIndex = 1
-                    ? (state.productList = data.collection)
-                    : (state.productList = [
-                        ...state.productList,
-                        ...data.collection,
-                    ]);
+            if (data) {
+                state.productList = data.responseData.rows;
             }
         });
     },

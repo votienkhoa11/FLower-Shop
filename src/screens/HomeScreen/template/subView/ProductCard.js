@@ -12,6 +12,7 @@ import SaleComponent from '../../../../Components/Sale';
 
 //import user
 import { user } from '../../../../database/MockData';
+import { config } from '../../../../configurations';
 
 const ProductCard = ({data = {}}) => {
     const navigation = useNavigation();
@@ -25,11 +26,11 @@ const ProductCard = ({data = {}}) => {
         })}
     >
         <View style={[style.productCard, defaultStyles.shadow]}>
-          <Image source={data.image[0]} style={style.productImage} />
+          <Image source={data.image ? data.image[0] : config.noImage} style={style.productImage} />
           <View style={style.information} >
               <View style={style.informationCard}>
                   <Text style={style.productName} >{data.name}</Text>
-                  <Text style={style.description}>{data.description}</Text>
+                  <Text style={style.description}>{data.product_main_raw_list}</Text>
               </View>
               <View style={[style.informationCard, {borderBottomWidth: 0}]}>
                   <Text style={style.description}>{user.delivery}</Text>

@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
+import { config } from '../../../../configurations';
 
 import styles from '../../styles';
 import defaultStyles from '../../../../DefaultStyles';
@@ -20,7 +21,7 @@ const PopularCard = ({data = {}}) => {
       >
           <View style={{padding: 8}}>
               <View style={[styles.popularCard, defaultStyles.shadow]}>
-                  <Image source={data.image[0]} style={styles.popularImage} resizeMode="stretch" />
+                  <Image source={data.image ? data.image[0] : config.noImage} style={styles.popularImage} resizeMode="stretch" />
                   <View style={styles.title}>
                       <Text style={styles.titleText}>{data.name}</Text>
                   </View>

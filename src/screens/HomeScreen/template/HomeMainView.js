@@ -28,7 +28,7 @@ import CartButton from '../../../Components/Buttons/CartButton';
 const HomeMainView = (props) => {
     const {
         navigation,
-        loading,
+        isLoading,
         userInfo,
         favorite,
         setFavoriteButton,
@@ -38,7 +38,7 @@ const HomeMainView = (props) => {
     } = props;
 
   return (
-    loading ? <LoadingScreen /> :
+    isLoading ? <LoadingScreen /> :
 
     <View style={defaultStyles.container}>
         <StatusBar translucent backgroundColor="transparent" barstyles="dark-content" />

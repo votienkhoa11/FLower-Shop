@@ -1,7 +1,7 @@
 import axiosClient from './axiosClient';
 
 const productAPI = {
-    getAll: payload => {
+    getAll: (payload) => {
         const {currentPage, pageSize} = payload;
         return axiosClient.get(`getAll?currentPage=${currentPage}&pageSize=${pageSize}`);
     },

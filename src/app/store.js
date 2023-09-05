@@ -9,10 +9,9 @@ const rootReducer = {
 
 export default configureStore({
     reducer: rootReducer,
-    middleware: getDefaultMiddleware => {
-        getDefaultMiddleware({
-            immutableCheck: false,
-            serializableCheck: false,
-        });
-    },
+    middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+        immutableCheck: false,
+        serializableCheck: false,
+    }),
 });

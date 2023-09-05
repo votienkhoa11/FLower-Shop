@@ -29,8 +29,22 @@ const postSlice = createSlice({
             }
         },
     },
+    extraReducers: builder => {
+        builder.addCase(getAllProduct.fulfilled, (state, action) => {
+            const {data, success} = action.payload;
+
+            if (success) {
+                data.pageIndex = 1
+                    ? (state.rows = data.collection)
+                    : (state.rows = [
+                        ...state.rows,
+                        ...data.collection,
+                    ]);
+            }
+        });
+    },
 });
 
-const {reducer, actions} = postSlice;
+const {actions, reducer} = postSlice;
 export const {handleRefreshLstPost} = actions;
 export default reducer;

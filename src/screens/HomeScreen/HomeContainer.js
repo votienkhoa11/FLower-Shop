@@ -14,6 +14,8 @@ const HomeContainer = (props) => {
     const {
         dispatch,
         isLoading,
+        startLoading,
+        finishLoading,
         navigation,
     } = props;
 
@@ -26,6 +28,9 @@ const HomeContainer = (props) => {
 
     //get data from the database
     const getDatafromDB = async () => {
+        dispatch(startLoading());
+
+        dispatch(getAllProduct());
         //get user
         setUser(await userData());
         //get product
@@ -52,8 +57,7 @@ const HomeContainer = (props) => {
 
         //set 5 brought products
         setBroughtProduct(broughtProductList.slice(0, 5));
-
-        //set loading to false when the app finised loading data
+        dispatch(finishLoading());
     };
 
     //on press functions
@@ -68,12 +72,8 @@ const HomeContainer = (props) => {
     };
 
     useEffect(() => {
-        const unsubscribe = navigation.addListener('focus', () => {
-            getDatafromDB();
-        });
-
-        return unsubscribe;
-    }, [navigation]);
+        getDatafromDB();
+    }, []);
 
     const homeProps = {
         navigation,

@@ -25,7 +25,7 @@ const postSlice = createSlice({
             const {postLstLength} = action.payload;
 
             if (postLstLength > 10) {
-                state.postList = state.postList.slice(0, 10);
+                state.productList = state.productList.slice(0, 10);
             }
         },
     },
@@ -34,10 +34,11 @@ const postSlice = createSlice({
             const {data, success} = action.payload;
 
             if (success) {
+                console.log('success')
                 data.pageIndex = 1
-                    ? (state.rows = data.collection)
-                    : (state.rows = [
-                        ...state.rows,
+                    ? (state.productList = data.collection)
+                    : (state.productList = [
+                        ...state.productList,
                         ...data.collection,
                     ]);
             }

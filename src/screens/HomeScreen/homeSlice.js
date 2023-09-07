@@ -15,16 +15,8 @@ export const getAll = createAsyncThunk(
 
 const postSlice = createSlice({
     name: 'product',
-    initialState: [],
-    reducers: {
-        handleRefreshLstPost: (state, action) => {
-            const {postLstLength} = action.payload;
-
-            if (postLstLength > 10) {
-                state.productList = state.productList.slice(0, 10);
-            }
-        },
-    },
+    initialState: {},
+    reducers: {},
     extraReducers: (builder) => {},
 });
 

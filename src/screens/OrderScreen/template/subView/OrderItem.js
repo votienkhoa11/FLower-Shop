@@ -9,16 +9,16 @@ import defaultStyles, { color } from '../../../../DefaultStyles';
 
 //import data
 import label from '../../label';
-import { data } from '../../../../database/MockData';
+import { products } from '../../../../database/MockData';
 import { ListEmptyComponent } from './OrderList';
 
 const OrderItem = ({item = {}, index}) => {
 
     //get product information to show name and get product ID
     const getProduct = (productID) => {
-        for (let productIndex = 0; productIndex < data.length; productIndex++) {
-            if (data[productIndex].id === productID) {
-                return data[productIndex];
+        for (let productIndex = 0; productIndex < products.length; productIndex++) {
+            if (products[productIndex].id === productID) {
+                return products[productIndex];
             }
         }
     };

@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //import data
 import label from './label';
-import { data } from '../../database/MockData';
+import { products } from '../../database/MockData';
 import { searchResult } from '../../database/MockData';
 
 //import components
@@ -18,7 +18,7 @@ const SearchContainer = (props) => {
     } = props;
 
     //set values
-    const [products, setProduct] = useState([]);
+    const [product, setProduct] = useState([]);
     //set search
     const [search, setSearch] = useState('');
     const [popularSearch, setPopularSearch] = useState([]);
@@ -48,7 +48,7 @@ const SearchContainer = (props) => {
         setPopularSearch(popularSearchList.slice(0, 12));
 
         //set data suggestion
-        const productList = [...data];
+        const productList = [...products];
         productList.sort(() => 0.5 - Math.random());
         setProduct(productList.slice(0, 6));
     };
@@ -130,7 +130,7 @@ const SearchContainer = (props) => {
     //get search results
     //turn off search result function is on line 98, on change text function
     const getResults = (keywordSearch) => {
-        const resultList = data.filter(function(productData) {
+        const resultList = products.filter(function(productData) {
             return productData.name.toLowerCase().includes(keywordSearch.toLowerCase());
         });
 
@@ -181,7 +181,7 @@ const SearchContainer = (props) => {
         results,
         historySearch,
         popularSearch,
-        products,
+        product,
         loading,
         onFocus,
         showFilter,

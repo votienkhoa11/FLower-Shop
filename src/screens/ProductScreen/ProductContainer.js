@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import ProductMainView from './template/ProductMainView';
 
 //import data
-import { data } from '../../database/MockData';
+import { products } from '../../database/MockData';
 import { users } from '../../database/MockData';
 import { reviews } from '../../database/MockData';
 
@@ -18,7 +18,7 @@ const ProductContainer = (props) => {
     //get product information
     const {productID} = route.params;
 
-    const productFilter = data.filter((productItem) => productItem.id === productID);
+    const productFilter = products.filter((productItem) => productItem.id === productID);
     const productInformation = productFilter[0];
 
     //set rating
@@ -53,7 +53,7 @@ const ProductContainer = (props) => {
         quantity,
         rating,
         reviews,
-        data,
+        products,
         //functions
         salePriceCalculator,
         setRating,

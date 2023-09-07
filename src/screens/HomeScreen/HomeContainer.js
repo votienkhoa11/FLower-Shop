@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { Alert } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import NetInfo from '@react-native-community/netinfo';
 import { callToast } from '../../utils/Toast';
 import { getAll } from './homeSlice';
 
 //import data
 import { user } from '../../database/MockData';
 import { userData } from '../../api/userData';
-import { data } from '../../database/MockData';
+import { products } from '../../database/MockData';
+import string from '../../values/string';
 
 //import template
 import HomeMainView from './template/HomeMainView';
@@ -14,7 +18,6 @@ const HomeContainer = (props) => {
     const {
         dispatch,
         isLoading,
-        productData,
         navigation,
     } = props;
 
@@ -27,11 +30,14 @@ const HomeContainer = (props) => {
 
     //get data from the database
     const getDatafromDB = async () => {
+        const res = await dispatch(getAll());
+
+        const {data} = res.payload;
+        const productList = [...data.responseData.rows];
         //get user
         setUser(await userData());
-        //get product
-        const productList = [...productData.productList];
 
+        //get product
         productList.sort(() => 0.5 - Math.random());
         setProduct(productList.slice(0, 5));
 
@@ -48,12 +54,11 @@ const HomeContainer = (props) => {
         setPopularProduct(popularProductList.slice(0, 5));
 
         //get products that the users has brought before to ask them to buy again
-        const broughtProductList = data.filter((productItem) =>
+        const broughtProductList = products.filter((productItem) =>
             user.broughtProducts.includes(productItem.id));
 
         //set 5 brought products
         setBroughtProduct(broughtProductList.slice(0, 5));
-        dispatch(getAll());
     };
 
     //on press functions
@@ -67,9 +72,33 @@ const HomeContainer = (props) => {
         }
     };
 
+    //checking connection
+    const [connectionStatus, setConnectionStatus] = useState(true);
+    const prevConnection = useRef(true);
+
     useEffect(() => {
-        getDatafromDB();
+        const unsubscribe = NetInfo.addEventListener(state => {
+            setConnectionStatus(state.isConnected);
+        });
+
+        return () => {
+            unsubscribe();
+        };
     }, []);
+
+    useEffect(() => {
+        if (!connectionStatus) {
+            Alert.alert(
+                string.NO_CONNECTION_TEXT,
+                string.NO_CONNECTION_SUB_TEXT,
+            );
+        } else if (prevConnection.current && connectionStatus) {
+            getDatafromDB();
+            callToast(string.INTERNET_CONNECTED);
+        }
+
+        prevConnection.current = connectionStatus;
+    }, [connectionStatus]);
 
     const homeProps = {
         navigation,

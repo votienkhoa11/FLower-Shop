@@ -2,10 +2,6 @@ import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import productAPI from '../../api/productAPI';
 import serviceRequest from '../../app/serviceRequest';
 
-const initialState = {
-    productList: [],
-};
-
 export const getAll = createAsyncThunk(
     'product/getAll',
     async (data, thunkAPI) => {
@@ -19,7 +15,7 @@ export const getAll = createAsyncThunk(
 
 const postSlice = createSlice({
     name: 'product',
-    initialState: initialState,
+    initialState: [],
     reducers: {
         handleRefreshLstPost: (state, action) => {
             const {postLstLength} = action.payload;
@@ -29,15 +25,7 @@ const postSlice = createSlice({
             }
         },
     },
-    extraReducers: (builder) => {
-        builder.addCase(getAll.fulfilled, (state, action) => {
-            const {data} = action.payload;
-
-            if (data) {
-                state.productList = data.responseData.rows;
-            }
-        });
-    },
+    extraReducers: (builder) => {},
 });
 
 const {actions, reducer} = postSlice;

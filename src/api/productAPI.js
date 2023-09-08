@@ -1,9 +1,11 @@
 import axiosClient from './axiosClient';
 
 const productAPI = {
-    getAll: () => {
-        return axiosClient.get('product/getAll');
+    getAll: payload => {
+        const {currentPage, pageSize} = payload;
+        return axiosClient.get(`product/getAll?currentPage=${currentPage}&pageSize=${pageSize}`);
     },
+
 };
 
 export default productAPI;

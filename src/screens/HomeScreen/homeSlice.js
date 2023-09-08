@@ -13,13 +13,13 @@ export const getAll = createAsyncThunk(
     }
 );
 
-const postSlice = createSlice({
+const productSlice = createSlice({
     name: 'product',
     initialState: {},
     reducers: {},
     extraReducers: (builder) => {},
 });
 
-const {actions, reducer} = postSlice;
+const {actions, reducer} = productSlice;
 export const {handleRefreshLstPost} = actions;
 export default reducer;

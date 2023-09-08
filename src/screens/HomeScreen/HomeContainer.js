@@ -38,8 +38,8 @@ const HomeContainer = (props) => {
         setUser(await userData());
 
         //get product
-        productList.sort(() => 0.5 - Math.random());
-        setProduct(productList.slice(0, 5));
+        productList.reverse();
+        setProduct(productList.slice(0, 5));//.slice(0, 5))
 
         //get popular products by sorting productList's like
         //the idea is use the sort function to sort based on comapring like products from (from highest to lowest)

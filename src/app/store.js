@@ -1,10 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import loaderReducer from './loaderSlice';
-import productReducer from '../screens/HomeScreen/homeSlice';
+import homeReducer from '../screens/HomeScreen/homeSlice';
+import productReducer from '../screens/ProductScreen/productSlice';
 
 const rootReducer = {
     loader: loaderReducer,
-    product: productReducer,
+    product: homeReducer,
 };
 
 export default configureStore({

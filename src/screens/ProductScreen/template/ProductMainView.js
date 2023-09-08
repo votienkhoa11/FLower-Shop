@@ -31,22 +31,21 @@ const ProductMainView = (props) => {
     const {
         navigation,
         //values
-        loading,
+        isLoading,
         productInformation,
         rating,
         chooseRating,
         quantity,
         reviews,
-        data,
+        products,
         //functions
-        salePriceCalculator,
         setRating,
         setChooseRating,
         setQuantity,
     } = props;
 
   return (
-    loading ? <LoadingScreen /> :
+    isLoading ? <LoadingScreen /> :
 
     <View style={defaultStyles.container}>
         <StatusBar translucent backgroundColor="transparent" barstyles="dark-content" />
@@ -55,7 +54,7 @@ const ProductMainView = (props) => {
                 {/*Image */}
                 <View style={styles.imageView}>
                     <FlatlistImageView
-                        imageData={productInformation.image}
+                        imageData={null}
                         imageStyle={styles.productImage}
                         dotStyle={styles.dotView}
                         isInside={true}
@@ -69,16 +68,16 @@ const ProductMainView = (props) => {
                 {/*Product information */}
                 <View style={styles.productNameView}>
                     <Text style={styles.label}>{productInformation.name}</Text>
-                    <Text style={styles.otherNames}>{productInformation.name}</Text>
+                    <Text style={styles.otherNames}>{productInformation.product_main_raw_list}</Text>
                 </View>
                 <View style={styles.pricesView}>
                     <Text
                         style={[
                             styles.price,
-                            {color: productInformation.salePercentage > 0 ? color.redSale : null},
+                            {color: productInformation.promotion_price > 0 ? color.redSale : null},
                         ]}
                     >
-                        {salePriceCalculator(productInformation.price, productInformation.salePercentage)}
+                        {productInformation.original_price}
                     </Text>
                     {
                         productInformation.salePercentage > 0 ?
@@ -97,7 +96,7 @@ const ProductMainView = (props) => {
                             showMaxStar={false}
                         />
                         <Entypo name="dot-single" size={20} />
-                        <Text>{label.sold} {productInformation.sold}</Text>
+                        <Text>{label.sold} {productInformation.quantity_sold}</Text>
                     </View>
                     {/*Favorite and share */}
                     <View style={styles.subRowView}>
@@ -170,7 +169,7 @@ const ProductMainView = (props) => {
             </View>
             <View style={styles.similarProductView}>
                 {
-                    (data.slice(0, 6) || []).map(productItem => {
+                    (products.slice(0, 6) || []).map(productItem => {
                         return (
                             <TouchableOpacity
                                 activeOpacity={1}

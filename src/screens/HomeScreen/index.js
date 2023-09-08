@@ -1,7 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { loaderSelector } from '../../app/selector';
-import { startLoading, finishLoading } from '../../app/loaderSlice';
 import HomeContainer from './HomeContainer';
 
 const HomeScreen = (props) => {
@@ -12,8 +11,6 @@ const HomeScreen = (props) => {
     const HomeContainerProps = {
         dispatch,
         isLoading,
-        startLoading,
-        finishLoading,
         navigation,
     };
 

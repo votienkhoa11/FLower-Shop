@@ -3,7 +3,9 @@ import { Alert } from 'react-native';
 import React, { useEffect, useRef, useState } from 'react';
 import NetInfo from '@react-native-community/netinfo';
 import { callToast } from '../../utils/Toast';
-import { getAll } from './homeSlice';
+
+//get slices
+import { getAllProduct } from '../ProductScreen/productSlice';
 
 //import data
 import { user } from '../../database/MockData';
@@ -30,16 +32,17 @@ const HomeContainer = (props) => {
 
     //get data from the database
     const getDatafromDB = async () => {
-        const res = await dispatch(getAll());
+        const res = await dispatch(getAllProduct({
+            currentPage: 1,
+            pageSize: 10,
+        }));
 
         const {data} = res.payload;
         const productList = [...data.responseData.rows];
+
+        setProduct(productList.slice(0, 5));
         //get user
         setUser(await userData());
-
-        //get product
-        productList.reverse();
-        setProduct(productList.slice(0, 5));//.slice(0, 5))
 
         //get popular products by sorting productList's like
         //the idea is use the sort function to sort based on comapring like products from (from highest to lowest)

@@ -54,7 +54,6 @@ const SearchResultContainer = (props) => {
     };
 
     //on press functions
-    //get search results
     const handleFilter = (keywordSearch) => {
         const filteredList = data.filter(function(productData) {
             return productData.name.toLowerCase().includes(keywordSearch.toLowerCase());
@@ -70,10 +69,14 @@ const SearchResultContainer = (props) => {
         handleFilter(searchItem);
     };
 
-    //close result screen
     const onClose = () => {
         setResult([]);
         setSearch('');
+    };
+
+    const [modalVisible, setModalVisible] = useState(false);
+    const onPressFilter = () => {
+        setModalVisible(!modalVisible);
     };
 
     useEffect(() => {
@@ -93,11 +96,13 @@ const SearchResultContainer = (props) => {
         search,
         results,
         loading,
+        modalVisible,
         //functions
         onChangeText,
         onClose,
         onTouchSearchItem,
-        saveSearch,
+        onPressFilter,
+        setModalVisible,
     };
 
   return <SearchResultMainView {...searchProp} />;

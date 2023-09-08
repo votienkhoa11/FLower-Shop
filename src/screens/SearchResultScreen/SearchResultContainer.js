@@ -102,7 +102,6 @@ const SearchResultContainer = (props) => {
         onClose,
         onTouchSearchItem,
         onPressFilter,
-        setModalVisible,
     };
 
   return <SearchResultMainView {...searchProp} />;

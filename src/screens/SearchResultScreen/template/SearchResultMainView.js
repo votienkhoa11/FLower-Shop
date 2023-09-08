@@ -20,6 +20,7 @@ import CartButton from '../../../Components/Buttons/CartButton';
 import TextInputComponent from '../../../Components/TextInput/TextInputComponent';
 import ResultCard from './subView/ResultCard';
 import EmtyData from './subView/EmtyData';
+import Filter from './subView/Filter';
 
 const SearchResultMainView = (props) => {
     const {
@@ -34,7 +35,6 @@ const SearchResultMainView = (props) => {
         onClose,
         onTouchSearchItem,
         onPressFilter,
-        setModalVisible,
     } = props;
 
     //render list
@@ -104,16 +104,14 @@ const SearchResultMainView = (props) => {
         <Modal
             isVisible={modalVisible}
             hasBackdrop={true}
-            backdropOpacity={0}
+            backdropOpacity={0.3}
             swipeDirection={['down']}
             onSwipeComplete={() => onPressFilter()}
             onBackButtonPress={() => onPressFilter()}
             onBackdropPress={() => onPressFilter()}
-            style={{justifyContent: 'flex-end', height: 100}}
+            style={styles.modalStyle}
         >
-            <View style={{ height: 100, backgroundColor: color.green }}>
-            <Text>I am the modal content!</Text>
-            </View>
+            <Filter />
         </Modal>
         <CartButton />
     </View>

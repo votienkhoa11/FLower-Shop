@@ -168,4 +168,45 @@ export default StyleSheet.create({
         height: 200,
         opacity: 0,
     },
+
+    modalStyle: {
+        justifyContent: 'flex-end',
+        margin: 0,
+    },
+
+    filterView: {
+        height: 600,
+        paddingHorizontal: 16,
+        paddingBottom: 24,
+        backgroundColor: color.bgWhite,
+        borderRadius: 20,
+        gap: 30,
+    },
+
+    homeIndicatorView: {
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    homeIndicator: {
+        marginVertical: 8,
+        height: 5,
+        width: 42,
+        backgroundColor: color.black,
+        borderRadius: 3,
+    },
+
+    doneButton: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: color.green,
+    },
+
+    doneText: {
+        paddingVertical: 12,
+        fontSize: 16,
+        fontWeight: '500',
+        color: color.bgWhite,
+    },
 });

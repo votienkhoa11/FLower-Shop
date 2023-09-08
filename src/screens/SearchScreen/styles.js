@@ -16,14 +16,8 @@ export default StyleSheet.create({
     },
 
     searchBar: {
-        height: 40,
         marginTop: 8,
-        flexDirection: 'row',
-        alignItems: 'center',
-        flex: 1,
         borderRadius: 40,
-        borderWidth: 1,
-        borderColor: color.bgMedium,
         backgroundColor: color.bgLight,
     },
 
@@ -32,19 +26,11 @@ export default StyleSheet.create({
         paddingLeft: 12,
     },
 
-    searchBarIcons: {
-        flexDirection: 'row',
-        alignItems: 'center',
+    searchIcon: {
+        fontSize: 24,
+        color: color.lightDark,
         gap: 10,
-        paddingVertical: 4,
-        paddingHorizontal: 12,
-    },
-
-    closeIcon: {
-        padding: 4,
-        marginRight: 4,
-        opacity: 0.6,
-        paddingLeft: 5,
+        paddingRight: 16,
     },
 
     //search filter
@@ -78,17 +64,17 @@ export default StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         gap: 8,
+        paddingBottom: 8,
     },
 
     label: {
-        paddingBottom: 8,
         fontSize: 16,
         fontWeight: 'bold',
         color: color.black,
     },
 
     clearText: {
-        marginBottom: 5,
+        paddingTop: 3,
         opacity: 0.8,
         fontSize: 12,
     },
@@ -141,72 +127,6 @@ export default StyleSheet.create({
         padding: 8,
         fontSize: 12,
         fontWeight: '600',
-        color: color.mediumBlack,
-    },
-
-    //result list view
-    resultCard: {
-        flexDirection: 'row',
-        backgroundColor: color.bgWhite,
-        gap: 8,
-        marginBottom: 16,
-        borderRadius: 8,
-        shadowColor: color.black,
-        shadowOffset: {
-            width: 20,
-            height: 24,
-        },
-        shadowOpacity: 0.2,
-        shadowRadius: 8,
-        elevation: 4,
-    },
-
-    productImage: {
-        width: 107,
-        height: 107,
-        margin: 4,
-        resizeMode: 'cover',
-        borderRadius: 8,
-    },
-
-    resultName: {
-        fontSize: 16,
-        fontWeight: '600',
-        color: color.black,
-        flexWrap: 'wrap',
-    },
-
-    information: {
-        flex: 1,
-        margin: 8,
-        gap: 8,
-    },
-
-    nameCard: {
-        width: '100%',
-        paddingBottom: 8,
-        borderBottomColor: color.bgLight,
-        borderBottomWidth: 1,
-    },
-
-    descriptionCard: {
-        width: '100%',
-        flex: 1,
-        gap: 4,
-    },
-
-    description: {
-        fontSize: 12,
-        letterSpacing: 0.32,
-        color: color.mediumBlack,
-        flexWrap: 'wrap',
-    },
-
-    price: {
-        paddingVertical: 4,
-        fontSize: 12,
-        fontWeight: '600',
-        letterSpacing: 0.32,
         color: color.mediumBlack,
     },
 });

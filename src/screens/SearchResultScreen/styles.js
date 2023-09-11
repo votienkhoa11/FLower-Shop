@@ -179,7 +179,8 @@ export default StyleSheet.create({
         paddingHorizontal: 16,
         paddingBottom: 24,
         backgroundColor: color.bgWhite,
-        borderRadius: 20,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
         gap: 30,
     },
 
@@ -195,6 +196,25 @@ export default StyleSheet.create({
         width: 42,
         backgroundColor: color.black,
         borderRadius: 3,
+    },
+
+    classifyList: {
+        paddingVertical: 2,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+    },
+
+    itemCard: {
+        marginHorizontal: 4,
+        borderRadius: 50,
+        marginVertical: 4,
+    },
+
+    itemText: {
+        fontSize: 14,
+        letterSpacing: 0.16,
+        paddingVertical: 8,
+        paddingHorizontal: 12,
     },
 
     doneButton: {

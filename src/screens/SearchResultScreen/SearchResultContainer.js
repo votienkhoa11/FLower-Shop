@@ -8,7 +8,7 @@ import { data } from '../../database/MockData';
 //import template
 import SearchResultMainView from './template/SearchResultMainView';
 
-const SearchResultContainer = (props) => {
+export default function SearchResultContainer (props) {
     const {
         keyword,
         navigation,
@@ -20,6 +20,8 @@ const SearchResultContainer = (props) => {
     const [results, setResult] = useState([]);
     //set view show
     const [loading, setLoading] = useState(true);
+
+    const classifyItems = ['Hoa hồng', 'hoa baby', 'bó hoa', 'giỏ hoa', 'Quà tặng sinh nhật', 'Hoa tặng người yêu'];
 
     //save search
     const saveSearch = async (searchKeyWord) => {
@@ -63,6 +65,10 @@ const SearchResultContainer = (props) => {
         setResult(filteredList);
     };
 
+    const onPressClassifyItem = (item) => {
+        console.log(item);
+    };
+
     //handle touch search items
     const onTouchSearchItem = (searchItem) => {
         setSearch(searchItem);
@@ -97,14 +103,14 @@ const SearchResultContainer = (props) => {
         results,
         loading,
         modalVisible,
+        classifyItems,
         //functions
         onChangeText,
         onClose,
         onTouchSearchItem,
         onPressFilter,
+        onPressClassifyItem,
     };
 
   return <SearchResultMainView {...searchProp} />;
-};
-
-export default SearchResultContainer;
+}

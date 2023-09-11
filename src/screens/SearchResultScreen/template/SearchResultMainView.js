@@ -22,7 +22,7 @@ import ResultCard from './subView/ResultCard';
 import EmtyData from './subView/EmtyData';
 import Filter from './subView/Filter';
 
-const SearchResultMainView = (props) => {
+export default function SearchResultMainView (props) {
     const {
         navigation,
         //values
@@ -111,11 +111,9 @@ const SearchResultMainView = (props) => {
             onBackdropPress={() => onPressFilter()}
             style={styles.modalStyle}
         >
-            <Filter />
+            <Filter {...props} />
         </Modal>
         <CartButton />
     </View>
   );
-};
-
-export default SearchResultMainView;
+}

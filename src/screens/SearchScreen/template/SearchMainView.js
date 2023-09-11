@@ -77,7 +77,7 @@ const SearchMainView = (props) => {
                         <View style={styles.historySearchView}>
                             <View style={styles.labelView}>
                                 <Text style={styles.label}>{label.historysearchLabel}</Text>
-                                {historySearch !== [] ?
+                                {historySearch.length > 0 ?
                                     <TouchableHighlight
                                         activeOpacity={0.4}
                                         underlayColor={color.greenWhite}

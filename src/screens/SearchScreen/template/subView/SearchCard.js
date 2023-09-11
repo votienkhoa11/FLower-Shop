@@ -4,7 +4,7 @@ import React from 'react';
 //import style
 import styles from '../../styles';
 
-const SearchCard = ({searchItem = []}) => {
+const SearchCard = ({searchItem = {}}) => {
   return (
       searchItem ? (
       <View style={styles.searchItem}>

@@ -88,7 +88,7 @@ export default function SearchResultMainView (props) {
                 <Text style={styles.label}>{label.ResultFound} "{search}"</Text>
                 <Text style={styles.numberResults}>{results.length} {label.result}</Text>
             </View>
-            <View style={{marginHorizontal: 16}}>
+            <View style={{margin: 16}}>
                 <FlatList
                     data={search ? results : null}
                     keyExtractor={item => item.id}

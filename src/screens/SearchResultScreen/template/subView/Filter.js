@@ -6,11 +6,14 @@ import React, { useState } from 'react';
 import styles from '../../styles';
 import { color } from '../../../../DefaultStyles';
 
+//import icons
+import Entypo from 'react-native-vector-icons/Entypo';
+
 //import data
 import label from '../../label';
 
 
-const ItemCard = ({item, onPress}) => {
+const ItemCard = ({item, onPress, icon, style}) => {
     const [selected, SetSelected] = useState(false);
 
     return (
@@ -23,6 +26,7 @@ const ItemCard = ({item, onPress}) => {
             <View style={[
                     styles.itemCard,
                     {backgroundColor: selected ? color.green : color.bgLight},
+                    {borderColor: selected ? color.green : color.bgMedium},
                 ]}
             >
                 <Text
@@ -31,6 +35,16 @@ const ItemCard = ({item, onPress}) => {
                         {color: selected ? color.bgWhite : color.green},
                     ]}
                 >{item}</Text>
+                {
+                    icon &&
+                    <Entypo
+                        name="star"
+                        style={[
+                            styles.starIcon,
+                            {color: selected ? color.bgWhite : color.yellow},
+                        ]}
+                    />
+                }
             </View>
         </TouchableOpacity>
     );
@@ -41,8 +55,10 @@ export default function Filter(props) {
     const {
         //values
         classifyItems,
+        starRatingList,
         //functions
         onPressClassifyItem,
+        onPressFilter,
     } = props;
 
   return (
@@ -58,7 +74,7 @@ export default function Filter(props) {
                 showsHorizontalScrollIndicator={false}
                 scrollEnabled={false}
                 renderItem={({item, index}) => (
-                    <ItemCard item={item} key={index} onPress={() => onPressClassifyItem()} />
+                    <ItemCard item={item} key={index} onPress={() => onPressClassifyItem()} icon={false}/>
                 )
                 }
                 keyExtractor={({item, index}) => index}
@@ -73,9 +89,25 @@ export default function Filter(props) {
         </View>
         <View>
             <Text style={styles.label}>{label.rating}</Text>
+            <View style={[styles.classifyList, {gap: 4, paddingLeft: 8}]}>
+            {
+                (starRatingList || []).map((ratingData, ratingIndex) => {
+                    return (
+                        <ItemCard
+                            item={ratingData}
+                            key={ratingIndex}
+                            icon={true}
+                            style={styles.ratingItem}
+                        />
+                    );
+                })
+            }
+            </View>
         </View>
         <View style={{flex: 1, justifyContent: 'flex-end'}}>
-            <TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => onPressFilter()}
+            >
                 <View style={styles.doneButton}>
                     <Text style={styles.doneText}>{label.done}</Text>
                 </View>
@@ -84,5 +116,3 @@ export default function Filter(props) {
     </View>
   );
 }
-
-//export default Filter;

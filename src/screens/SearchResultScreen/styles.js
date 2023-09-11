@@ -63,7 +63,7 @@ export default StyleSheet.create({
 
     resultLabelView: {
         paddingHorizontal: 16,
-        paddingVertical: 12,
+        marginTop: 12,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -78,8 +78,7 @@ export default StyleSheet.create({
     //result list view
     resultCard: {
         flexDirection: 'row',
-        gap: 8,
-        marginBottom: 16,
+        marginVertical: 8,
         borderRadius: 8,
         shadowColor: color.black,
         shadowOffset: {
@@ -165,7 +164,7 @@ export default StyleSheet.create({
     },
 
     footer: {
-        height: 200,
+        height: 340,
         opacity: 0,
     },
 
@@ -181,7 +180,7 @@ export default StyleSheet.create({
         backgroundColor: color.bgWhite,
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20,
-        gap: 30,
+        gap: 28,
     },
 
     homeIndicatorView: {
@@ -199,22 +198,31 @@ export default StyleSheet.create({
     },
 
     classifyList: {
-        paddingVertical: 2,
+        paddingVertical: 4,
         flexDirection: 'row',
         flexWrap: 'wrap',
     },
 
     itemCard: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
         marginHorizontal: 4,
+        paddingVertical: 8,
+        paddingHorizontal: 12,
+        borderWidth: 0.3,
         borderRadius: 50,
         marginVertical: 4,
+        gap: 8,
     },
 
     itemText: {
         fontSize: 14,
         letterSpacing: 0.16,
-        paddingVertical: 8,
-        paddingHorizontal: 12,
+    },
+
+    starIcon: {
+        fontSize: 12,
     },
 
     doneButton: {

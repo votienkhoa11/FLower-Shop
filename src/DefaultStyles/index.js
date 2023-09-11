@@ -21,6 +21,7 @@ export const color = {
     greenDark: '#0e6027',
     greenWhite: '#edfff6',
     gold: '#CFCF00',
+    yellow: '#ead200',
     brown: '#D49162',
     diamond: '#D7FEFF',
     opacity0Color: 'rgba(0,0,0,0)',

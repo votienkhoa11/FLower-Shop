@@ -23,6 +23,7 @@ export default function SearchResultContainer (props) {
 
     const classifyItems = ['Hoa hồng', 'hoa baby', 'bó hoa', 'giỏ hoa', 'Quà tặng sinh nhật', 'Hoa tặng người yêu'];
 
+    const starRatingList = [1, 2, 3, 4, 5];
     //save search
     const saveSearch = async (searchKeyWord) => {
         const keywords = searchKeyWord ? searchKeyWord : keyword;
@@ -104,6 +105,7 @@ export default function SearchResultContainer (props) {
         loading,
         modalVisible,
         classifyItems,
+        starRatingList,
         //functions
         onChangeText,
         onClose,

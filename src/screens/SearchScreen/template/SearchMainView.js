@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import { Text, View, ScrollView, TouchableOpacity, TextInput, Pressable, StatusBar,
+import { Text, View, ScrollView, TouchableOpacity, Pressable, StatusBar,
     TouchableHighlight } from 'react-native';
 import React from 'react';
 

@@ -17,6 +17,7 @@ const ItemCard = ({item, onPress, icon, style}) => {
     const [selected, SetSelected] = useState(false);
 
     return (
+        item &&
         <TouchableOpacity
             activeOpacity={1}
             onPress={() => {
@@ -69,17 +70,18 @@ export default function Filter(props) {
         {/*classify view */}
         <View>
             <Text style={styles.label}>{label.classify}</Text>
-            <FlatList
-                data={classifyItems}
-                showsHorizontalScrollIndicator={false}
-                scrollEnabled={false}
-                renderItem={({item, index}) => (
-                    <ItemCard item={item} key={index} onPress={() => onPressClassifyItem()} icon={false}/>
-                )
-                }
-                keyExtractor={({item, index}) => index}
-                contentContainerStyle={styles.classifyList}
-            />
+            <View style={styles.classifyList}>
+            {
+                (classifyItems || []).map((classifyData, classifyIndex) => {
+                    return (
+                        <ItemCard
+                            item={classifyData}
+                            key={classifyIndex}
+                        />
+                    );
+                })
+            }
+            </View>
         </View>
         <View>
             <Text style={styles.label}>{label.priceRange}</Text>

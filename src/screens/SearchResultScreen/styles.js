@@ -213,7 +213,7 @@ export default StyleSheet.create({
         borderWidth: 0.3,
         borderRadius: 50,
         marginVertical: 4,
-        gap: 8,
+        gap: 6,
     },
 
     itemText: {
@@ -222,13 +222,14 @@ export default StyleSheet.create({
     },
 
     starIcon: {
-        fontSize: 12,
+        fontSize: 14,
     },
 
     doneButton: {
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: color.green,
+        borderRadius: 8,
     },
 
     doneText: {

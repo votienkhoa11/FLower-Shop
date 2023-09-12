@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
+import MultiSlider from '@ptomasroos/react-native-multi-slider';
 
 //import styles
 import styles from '../../styles';
@@ -12,8 +13,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 //import data
 import label from '../../label';
 
-
-const ItemCard = ({item, onPress, icon, style}) => {
+const ItemCard = ({item, onPress, icon, fontColor}) => {
     const [selected, SetSelected] = useState(false);
 
     return (
@@ -33,7 +33,7 @@ const ItemCard = ({item, onPress, icon, style}) => {
                 <Text
                     style={[
                         styles.itemText,
-                        {color: selected ? color.bgWhite : color.green},
+                        {color: selected ? color.bgWhite : fontColor},
                     ]}
                 >{item}</Text>
                 {
@@ -51,15 +51,53 @@ const ItemCard = ({item, onPress, icon, style}) => {
     );
 };
 
+const CustomMarker = () => {
+    return (
+        <View>
+            <View style={styles.circle} />
+        </View>
+    );
+};
+
+const CustomLabel = (props) => {
+    const {
+        oneMarkerValue,
+        twoMarkerValue,
+        oneMarkerLeftPosition,
+        twoMarkerLeftPosition,
+      } = props;
+
+    return (
+        <View style={{position: 'absolute'}}>
+            <View style={[
+                styles.labelPriceView,
+                {
+                    left: oneMarkerLeftPosition - 50 / 2,
+                    position: 'absolute',
+                },
+            ]}>
+                <Text>{oneMarkerValue}</Text>
+            </View>
+            <View style={[
+                styles.labelPriceView,
+                {left: twoMarkerLeftPosition - 50 / 2},
+            ]}>
+                <Text>{twoMarkerValue}</Text>
+            </View>
+        </View>
+    );
+};
 
 export default function Filter(props) {
     const {
         //values
         classifyItems,
         starRatingList,
+        priceRangeValue,
         //functions
         onPressClassifyItem,
         onPressFilter,
+        onChangePriceRange,
     } = props;
 
   return (
@@ -77,18 +115,41 @@ export default function Filter(props) {
                         <ItemCard
                             item={classifyData}
                             key={classifyIndex}
+                            fontColor={color.green}
                         />
                     );
                 })
             }
             </View>
         </View>
+        {/*Price range view */}
         <View>
             <Text style={styles.label}>{label.priceRange}</Text>
+            <View style={styles.sliderView}>
+                <View style={styles.sliderLabel}>
+                    <Text>0</Text>
+                    <Text>2.000.000</Text>
+                </View>
+                <MultiSlider
+                    values={[priceRangeValue[0], priceRangeValue[1]]}
+                    onValuesChange={onChangePriceRange}
+                    sliderLength={300}
+                    min={0}
+                    max={2000000}
+                    allowOverlap
+                    snapped
+                    enableLabel
+                    customLabel={CustomLabel}
+                    customMarker={CustomMarker}
+                    step={10000}
+                    markerSize={20}
+                />
+            </View>
         </View>
         <View>
             <Text style={styles.label}>{label.color}</Text>
         </View>
+        {/*Rating view*/}
         <View>
             <Text style={styles.label}>{label.rating}</Text>
             <View style={[styles.classifyList, {gap: 4, paddingLeft: 8}]}>
@@ -100,6 +161,7 @@ export default function Filter(props) {
                             key={ratingIndex}
                             icon={true}
                             style={styles.ratingItem}
+                            fontColor={color.mediumBlack}
                         />
                     );
                 })

@@ -20,6 +20,8 @@ export default function SearchResultContainer (props) {
     const [results, setResult] = useState([]);
     //set view show
     const [loading, setLoading] = useState(true);
+    //set price range
+    const [priceRangeValue, setPriceRangeValue] = useState([500000, 1500000]);
 
     const classifyItems = ['Hoa hồng', 'hoa baby', 'bó hoa', 'giỏ hoa', 'Quà tặng sinh nhật', 'Hoa tặng người yêu'];
 
@@ -54,6 +56,10 @@ export default function SearchResultContainer (props) {
     const onChangeText = (text) => {
         setSearch(text);
         handleFilter(text);
+    };
+
+    const onChangePriceRange = values => {
+        setPriceRangeValue(values);
     };
 
     //on press functions
@@ -106,12 +112,14 @@ export default function SearchResultContainer (props) {
         modalVisible,
         classifyItems,
         starRatingList,
+        priceRangeValue,
         //functions
         onChangeText,
         onClose,
         onTouchSearchItem,
         onPressFilter,
         onPressClassifyItem,
+        onChangePriceRange,
     };
 
   return <SearchResultMainView {...searchProp} />;

@@ -173,6 +173,7 @@ export default StyleSheet.create({
         margin: 0,
     },
 
+    //filter view
     filterView: {
         height: 600,
         paddingHorizontal: 16,
@@ -197,6 +198,7 @@ export default StyleSheet.create({
         borderRadius: 3,
     },
 
+    //classify and rating style
     classifyList: {
         paddingVertical: 4,
         flexDirection: 'row',
@@ -213,7 +215,7 @@ export default StyleSheet.create({
         borderWidth: 0.3,
         borderRadius: 50,
         marginVertical: 4,
-        gap: 6,
+        gap: 4,
     },
 
     itemText: {
@@ -225,6 +227,36 @@ export default StyleSheet.create({
         fontSize: 14,
     },
 
+    //price range style
+    sliderView: {
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    circle: {
+        width: 20,
+        height: 20,
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: color.bgWhite,
+        backgroundColor: color.green,
+    },
+
+    labelPriceView: {
+        marginTop: 34,
+        //position: 'absolute',
+    },
+
+    sliderLabel: {
+        marginTop: 12,
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'stretch',
+        paddingHorizontal: 26,
+    },
+
+    //done button
     doneButton: {
         justifyContent: 'center',
         alignItems: 'center',

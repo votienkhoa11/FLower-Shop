@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //import data
 import { data } from '../../database/MockData';
+import { colorProduct } from '../../values/color';
 
 //import template
 import SearchResultMainView from './template/SearchResultMainView';
@@ -24,6 +25,16 @@ export default function SearchResultContainer (props) {
     const [priceRangeValue, setPriceRangeValue] = useState([500000, 1500000]);
 
     const classifyItems = ['Hoa hồng', 'hoa baby', 'bó hoa', 'giỏ hoa', 'Quà tặng sinh nhật', 'Hoa tặng người yêu'];
+    const colorList = [
+        {name: 'Hồng', color: colorProduct.pink},
+        {name: 'Xanh dương', color: colorProduct.blue},
+        {name: 'Cam', color: colorProduct.orange},
+        {name: 'Tím', color: colorProduct.purple},
+        {name: 'Xanh biển', color: colorProduct.oceanBlue},
+        {name: 'Vàng', color: colorProduct.yellow},
+        {name: 'Xanh lá', color: colorProduct.green},
+        {name: 'Trắng', color: colorProduct.white},
+    ];
 
     const starRatingList = [1, 2, 3, 4, 5];
     //save search
@@ -113,6 +124,7 @@ export default function SearchResultContainer (props) {
         classifyItems,
         starRatingList,
         priceRangeValue,
+        colorList,
         //functions
         onChangeText,
         onClose,

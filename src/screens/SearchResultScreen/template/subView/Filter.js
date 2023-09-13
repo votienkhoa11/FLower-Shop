@@ -53,9 +53,7 @@ const ItemCard = ({item, onPress, icon, fontColor}) => {
 
 const CustomMarker = () => {
     return (
-        <View>
-            <View style={styles.circle} />
-        </View>
+        <View style={styles.circle} />
     );
 };
 
@@ -88,12 +86,25 @@ const CustomLabel = (props) => {
     );
 };
 
+const ColorCard = ({item}) => {
+    return (
+        <View style={styles.colorCard}>
+            <View style={[
+                styles.circleColor,
+                {backgroundColor: item.color}
+            ]}/>
+            <Text>{item.name}</Text>
+        </View>
+    );
+};
+
 export default function Filter(props) {
     const {
         //values
         classifyItems,
         starRatingList,
         priceRangeValue,
+        colorList,
         //functions
         onPressClassifyItem,
         onPressFilter,
@@ -126,10 +137,6 @@ export default function Filter(props) {
         <View>
             <Text style={styles.label}>{label.priceRange}</Text>
             <View style={styles.sliderView}>
-                <View style={styles.sliderLabel}>
-                    <Text>0</Text>
-                    <Text>2.000.000</Text>
-                </View>
                 <MultiSlider
                     values={[priceRangeValue[0], priceRangeValue[1]]}
                     onValuesChange={onChangePriceRange}
@@ -145,9 +152,27 @@ export default function Filter(props) {
                     markerSize={20}
                 />
             </View>
+            <View style={styles.sliderLabel}>
+                <Text>0</Text>
+                <Text style={styles.priceText}>2.000.000</Text>
+            </View>
         </View>
+        {/*Color choose view */}
         <View>
             <Text style={styles.label}>{label.color}</Text>
+            <FlatList
+                data={colorList}
+                scrollEnabled={false}
+                renderItem={({item, index}) => (
+                    <ColorCard
+                        item={item}
+                        key={index}
+                    />
+                )}
+                keyExtractor={(item, index) => String(index)}
+                numColumns={2}
+                style={styles.colorList}
+            />
         </View>
         {/*Rating view*/}
         <View>

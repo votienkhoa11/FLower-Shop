@@ -242,18 +242,46 @@ export default StyleSheet.create({
         backgroundColor: color.green,
     },
 
-    labelPriceView: {
-        marginTop: 34,
-        //position: 'absolute',
-    },
-
     sliderLabel: {
-        marginTop: 12,
+        position: 'absolute',
+        marginTop: 24,
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'stretch',
-        paddingHorizontal: 26,
+        paddingLeft: 28,
+    },
+
+    labelPriceView: {
+        marginTop: 34,
+    },
+
+    priceText: {
+        fontSize: 14,
+        letterSpacing: 0.16,
+        color: color.mediumBlack,
+    },
+
+    colorList: {
+        //flexDirection: 'column',
+    },
+
+    colorCard: {
+        width: 171,
+        flexDirection: 'row',
+        gap: 8,
+        marginVertical: 8,
+        marginHorizontal: 8,
+        //justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    circleColor: {
+        width: 24,
+        height: 24,
+        borderRadius: 12,
+        borderWidth: 1,
+        borderColor: 'rgba(0, 0, 0, 0.11)',
     },
 
     //done button

@@ -175,13 +175,13 @@ export default StyleSheet.create({
 
     //filter view
     filterView: {
-        height: 600,
+        height: 655,
         paddingHorizontal: 16,
         paddingBottom: 24,
         backgroundColor: color.bgWhite,
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20,
-        gap: 28,
+        gap: 20,
     },
 
     homeIndicatorView: {
@@ -210,7 +210,6 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginHorizontal: 4,
-        paddingVertical: 8,
         paddingHorizontal: 12,
         borderWidth: 0.3,
         borderRadius: 50,
@@ -262,17 +261,13 @@ export default StyleSheet.create({
         color: color.mediumBlack,
     },
 
-    colorList: {
-        //flexDirection: 'column',
-    },
-
+    //color view
     colorCard: {
         width: 171,
         flexDirection: 'row',
         gap: 8,
-        marginVertical: 8,
-        marginHorizontal: 8,
-        //justifyContent: 'center',
+        marginVertical: 6,
+        marginHorizontal: 4,
         alignItems: 'center',
     },
 
@@ -282,6 +277,20 @@ export default StyleSheet.create({
         borderRadius: 12,
         borderWidth: 1,
         borderColor: 'rgba(0, 0, 0, 0.11)',
+    },
+
+    checkView: {
+        padding: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: 1,
+        borderRadius: 20,
+    },
+
+    checkIcon: {
+        position: 'absolute',
+        fontSize: 12,
+        color: color.green,
     },
 
     //done button

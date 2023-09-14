@@ -21,8 +21,14 @@ export default function SearchResultContainer (props) {
     const [results, setResult] = useState([]);
     //set view show
     const [loading, setLoading] = useState(true);
-    //set price range
-    const [priceRangeValue, setPriceRangeValue] = useState([500000, 1500000]);
+
+    //set filter
+    const [filterValue, setFilterValue] = useState({
+        classify: [],
+        priceRange: priceRangeValue,
+        color: '',
+        starRating: 0,
+    });
 
     const classifyItems = ['Hoa hồng', 'hoa baby', 'bó hoa', 'giỏ hoa', 'Quà tặng sinh nhật', 'Hoa tặng người yêu'];
     const colorList = [
@@ -68,6 +74,9 @@ export default function SearchResultContainer (props) {
         setSearch(text);
         handleFilter(text);
     };
+
+    //set price range
+    const [priceRangeValue, setPriceRangeValue] = useState([500000, 1500000]);
 
     const onChangePriceRange = values => {
         setPriceRangeValue(values);

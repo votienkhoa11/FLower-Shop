@@ -9,6 +9,7 @@ import { color } from '../../../../DefaultStyles';
 
 //import icons
 import Entypo from 'react-native-vector-icons/Entypo';
+import Feather from 'react-native-vector-icons/Feather';
 
 //import data
 import label from '../../label';
@@ -26,8 +27,11 @@ const ItemCard = ({item, onPress, icon, fontColor}) => {
         >
             <View style={[
                     styles.itemCard,
-                    {backgroundColor: selected ? color.green : color.bgLight},
-                    {borderColor: selected ? color.green : color.bgMedium},
+                    {
+                        backgroundColor: selected ? color.green : color.bgLight,
+                        borderColor: selected ? color.green : color.bgMedium,
+                        paddingVertical: icon ? 4 : 8,
+                    },
                 ]}
             >
                 <Text
@@ -87,14 +91,28 @@ const CustomLabel = (props) => {
 };
 
 const ColorCard = ({item}) => {
+    const [selected, setSelected] = useState(false);
+
     return (
-        <View style={styles.colorCard}>
-            <View style={[
-                styles.circleColor,
-                {backgroundColor: item.color}
-            ]}/>
-            <Text>{item.name}</Text>
-        </View>
+        <TouchableOpacity
+            onPress={() => setSelected(!selected)}
+        >
+            <View style={styles.colorCard}>
+                <View style={[
+                    styles.checkView,
+                    {borderColor: selected ? color.green : color.bgWhite},
+                ]}>
+                    <View style={[
+                        styles.circleColor,
+                        {backgroundColor: item.color},
+                    ]}/>
+                    { selected &&
+                        <Feather name="check" style={styles.checkIcon} />
+                    }
+                </View>
+                <Text style={{color: color.mediumBlack}}>{item.name}</Text>
+            </View>
+        </TouchableOpacity>
     );
 };
 
@@ -117,7 +135,7 @@ export default function Filter(props) {
             <View style={styles.homeIndicator} />
         </View>
         {/*classify view */}
-        <View>
+        <View style={{marginBottom: 8}}>
             <Text style={styles.label}>{label.classify}</Text>
             <View style={styles.classifyList}>
             {
@@ -134,7 +152,7 @@ export default function Filter(props) {
             </View>
         </View>
         {/*Price range view */}
-        <View>
+        <View style={{marginBottom: 8}}>
             <Text style={styles.label}>{label.priceRange}</Text>
             <View style={styles.sliderView}>
                 <MultiSlider
@@ -171,11 +189,10 @@ export default function Filter(props) {
                 )}
                 keyExtractor={(item, index) => String(index)}
                 numColumns={2}
-                style={styles.colorList}
             />
         </View>
         {/*Rating view*/}
-        <View>
+        <View style={{marginBottom: 8}}>
             <Text style={styles.label}>{label.rating}</Text>
             <View style={[styles.classifyList, {gap: 4, paddingLeft: 8}]}>
             {
@@ -193,6 +210,7 @@ export default function Filter(props) {
             }
             </View>
         </View>
+        {/*Button view */}
         <View style={{flex: 1, justifyContent: 'flex-end'}}>
             <TouchableOpacity
                 onPress={() => onPressFilter()}

@@ -25,8 +25,8 @@ export default function SearchResultContainer (props) {
     //set filter
     const [filterValue, setFilterValue] = useState({
         classify: [],
-        priceRange: priceRangeValue,
-        color: '',
+        priceRange: [500000, 1500000],
+        color: [],
         starRating: 0,
     });
 
@@ -75,13 +75,6 @@ export default function SearchResultContainer (props) {
         handleFilter(text);
     };
 
-    //set price range
-    const [priceRangeValue, setPriceRangeValue] = useState([500000, 1500000]);
-
-    const onChangePriceRange = values => {
-        setPriceRangeValue(values);
-    };
-
     //on press functions
     const handleFilter = (keywordSearch) => {
         const filteredList = data.filter(function(productData) {
@@ -93,7 +86,57 @@ export default function SearchResultContainer (props) {
     };
 
     const onPressClassifyItem = (item) => {
-        console.log(item);
+        if (filterValue.classify.indexOf(item) > -1) {
+            const filteredArray = filterValue.classify.filter(classifyItem =>
+                classifyItem !== item
+            );
+
+            setFilterValue(previous => {
+                return {...previous, classify: filteredArray};
+            });
+        } else {
+            const newArray = [...filterValue.classify, item];
+
+            setFilterValue(previous => {
+                return {...previous, classify: newArray};
+            });
+        }
+    };
+
+    const onChangePriceRange = values => {
+        setFilterValue(previous => {
+            return {...previous, priceRange: values};
+        });
+    };
+
+    const onTouchColor = (item) => {
+        if (filterValue.color.indexOf(item) > -1) {
+            const filteredArray = filterValue.color.filter(colorItem =>
+                colorItem !== item
+            );
+
+            setFilterValue(previous => {
+                return {...previous, color: filteredArray};
+            });
+        } else {
+            const newArray = [...filterValue.color, item];
+
+            setFilterValue(previous => {
+                return {...previous, color: newArray};
+            });
+        }
+    };
+
+    const onTouchRating = (item) => {
+        if (filterValue.starRating === item) {
+            setFilterValue(previous => {
+                return {...previous, starRating: 0};
+            });
+        } else {
+            setFilterValue(previous => {
+                return {...previous, starRating: item};
+            });
+        }
     };
 
     //handle touch search items
@@ -109,7 +152,18 @@ export default function SearchResultContainer (props) {
 
     const [modalVisible, setModalVisible] = useState(false);
     const onPressFilter = () => {
+        setFilterValue({
+            classify: [],
+            priceRange: [500000, 1500000],
+            color: [],
+            starRating: 0,
+        });
+
         setModalVisible(!modalVisible);
+    };
+
+    const onPressSaveFilterValue = () => {
+        console.log(filterValue);
     };
 
     useEffect(() => {
@@ -132,8 +186,8 @@ export default function SearchResultContainer (props) {
         modalVisible,
         classifyItems,
         starRatingList,
-        priceRangeValue,
         colorList,
+        filterValue,
         //functions
         onChangeText,
         onClose,
@@ -141,6 +195,9 @@ export default function SearchResultContainer (props) {
         onPressFilter,
         onPressClassifyItem,
         onChangePriceRange,
+        onTouchColor,
+        onTouchRating,
+        onPressSaveFilterValue,
     };
 
   return <SearchResultMainView {...searchProp} />;

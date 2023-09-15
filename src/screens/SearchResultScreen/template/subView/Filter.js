@@ -14,43 +14,29 @@ import Feather from 'react-native-vector-icons/Feather';
 //import data
 import label from '../../label';
 
-const ItemCard = ({item, onPress, icon, fontColor}) => {
-    const [selected, SetSelected] = useState(false);
+//import components
+import ItemCard from './ItemCard';
 
+const ClassifyItem = ({item, onPress}) => {
+    const [selected, setSelected] = useState(false);
     return (
-        item &&
         <TouchableOpacity
             activeOpacity={1}
             onPress={() => {
-                SetSelected(!selected);
+                onPress && onPress();
+                setSelected(!selected);
             }}
         >
-            <View style={[
-                    styles.itemCard,
-                    {
-                        backgroundColor: selected ? color.green : color.bgLight,
-                        borderColor: selected ? color.green : color.bgMedium,
-                        paddingVertical: icon ? 4 : 8,
-                    },
-                ]}
-            >
-                <Text
-                    style={[
-                        styles.itemText,
-                        {color: selected ? color.bgWhite : fontColor},
-                    ]}
-                >{item}</Text>
-                {
-                    icon &&
-                    <Entypo
-                        name="star"
-                        style={[
-                            styles.starIcon,
-                            {color: selected ? color.bgWhite : color.yellow},
-                        ]}
-                    />
-                }
-            </View>
+            <ItemCard
+                item={item}
+                style={{
+                    backgroundColor: selected ? color.green : color.bgLight,
+                    borderColor: selected ? color.green : color.bgMedium,
+                }}
+                textStyle={{
+                    color: selected ? color.bgWhite : color.green,
+                }}
+            />
         </TouchableOpacity>
     );
 };
@@ -71,31 +57,40 @@ const CustomLabel = (props) => {
 
     return (
         <View style={{position: 'absolute'}}>
-            <View style={[
-                styles.labelPriceView,
-                {
-                    left: oneMarkerLeftPosition - 50 / 2,
-                    position: 'absolute',
-                },
-            ]}>
-                <Text>{oneMarkerValue}</Text>
-            </View>
-            <View style={[
-                styles.labelPriceView,
-                {left: twoMarkerLeftPosition - 50 / 2},
-            ]}>
-                <Text>{twoMarkerValue}</Text>
-            </View>
+            { oneMarkerValue !== 0 &&
+
+                <View style={[
+                    styles.labelPriceView,
+                    {
+                        left: oneMarkerLeftPosition - 50 / 2,
+                        position: 'absolute',
+                    },
+                ]}>
+                    <Text>{oneMarkerValue}</Text>
+                </View>
+            }
+
+            {   twoMarkerValue !== 2000000 &&
+                <View style={[
+                    styles.labelPriceView,
+                    {left: twoMarkerLeftPosition - 50 / 2},
+                ]}>
+                    <Text>{twoMarkerValue}</Text>
+                </View>
+            }
         </View>
     );
 };
 
-const ColorCard = ({item}) => {
+const ColorCard = ({item, onPress}) => {
     const [selected, setSelected] = useState(false);
 
     return (
         <TouchableOpacity
-            onPress={() => setSelected(!selected)}
+            onPress={() => {
+                onPress();
+                setSelected(!selected);
+            }}
         >
             <View style={styles.colorCard}>
                 <View style={[
@@ -116,17 +111,43 @@ const ColorCard = ({item}) => {
     );
 };
 
+const RatingItem = ({item, ratingFilter, onPress}) => {
+    return (
+        <TouchableOpacity
+            activeOpacity={1}
+            onPress={() => onPress && onPress()}
+        >
+            <ItemCard
+                item={item}
+                icon={true}
+                style={{
+                    backgroundColor: item === ratingFilter ? color.green : color.bgLight,
+                    borderColor: item === ratingFilter ? color.green : color.bgMedium,
+                }}
+                textStyle={{
+                    color: item === ratingFilter ? color.bgWhite : color.mediumBlack,
+                }}
+                iconStyle={{
+                    color: item === ratingFilter ? color.bgWhite : color.yellow,
+                }}
+            />
+        </TouchableOpacity>
+    );
+};
+
 export default function Filter(props) {
     const {
         //values
         classifyItems,
         starRatingList,
-        priceRangeValue,
         colorList,
+        filterValue,
         //functions
         onPressClassifyItem,
-        onPressFilter,
         onChangePriceRange,
+        onTouchColor,
+        onTouchRating,
+        onPressSaveFilterValue,
     } = props;
 
   return (
@@ -141,10 +162,10 @@ export default function Filter(props) {
             {
                 (classifyItems || []).map((classifyData, classifyIndex) => {
                     return (
-                        <ItemCard
+                        <ClassifyItem
                             item={classifyData}
                             key={classifyIndex}
-                            fontColor={color.green}
+                            onPress={() => onPressClassifyItem(classifyData)}
                         />
                     );
                 })
@@ -156,12 +177,11 @@ export default function Filter(props) {
             <Text style={styles.label}>{label.priceRange}</Text>
             <View style={styles.sliderView}>
                 <MultiSlider
-                    values={[priceRangeValue[0], priceRangeValue[1]]}
+                    values={[500000, 1500000]}
                     onValuesChange={onChangePriceRange}
                     sliderLength={300}
                     min={0}
                     max={2000000}
-                    allowOverlap
                     snapped
                     enableLabel
                     customLabel={CustomLabel}
@@ -185,6 +205,7 @@ export default function Filter(props) {
                     <ColorCard
                         item={item}
                         key={index}
+                        onPress={() => onTouchColor(item.name)}
                     />
                 )}
                 keyExtractor={(item, index) => String(index)}
@@ -198,12 +219,11 @@ export default function Filter(props) {
             {
                 (starRatingList || []).map((ratingData, ratingIndex) => {
                     return (
-                        <ItemCard
+                        <RatingItem
                             item={ratingData}
+                            ratingFilter={filterValue.starRating}
                             key={ratingIndex}
-                            icon={true}
-                            style={styles.ratingItem}
-                            fontColor={color.mediumBlack}
+                            onPress={() => onTouchRating(ratingData)}
                         />
                     );
                 })
@@ -213,7 +233,7 @@ export default function Filter(props) {
         {/*Button view */}
         <View style={{flex: 1, justifyContent: 'flex-end'}}>
             <TouchableOpacity
-                onPress={() => onPressFilter()}
+                onPress={() => onPressSaveFilterValue()}
             >
                 <View style={styles.doneButton}>
                     <Text style={styles.doneText}>{label.done}</Text>

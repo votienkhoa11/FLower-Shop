@@ -1,5 +1,5 @@
 import { StyleSheet, StatusBar } from 'react-native';
-import { color } from '../../DefaultStyles';
+import { color } from '../../values/color';
 
 export default StyleSheet.create({
     //search bar
@@ -63,7 +63,7 @@ export default StyleSheet.create({
 
     resultLabelView: {
         paddingHorizontal: 16,
-        paddingVertical: 12,
+        marginTop: 12,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -78,8 +78,7 @@ export default StyleSheet.create({
     //result list view
     resultCard: {
         flexDirection: 'row',
-        gap: 8,
-        marginBottom: 16,
+        marginVertical: 8,
         borderRadius: 8,
         shadowColor: color.black,
         shadowOffset: {
@@ -165,7 +164,147 @@ export default StyleSheet.create({
     },
 
     footer: {
-        height: 200,
+        height: 340,
         opacity: 0,
+    },
+
+    modalStyle: {
+        justifyContent: 'flex-end',
+        margin: 0,
+    },
+
+    //filter view
+    filterView: {
+        height: 655,
+        paddingHorizontal: 16,
+        paddingBottom: 24,
+        backgroundColor: color.bgWhite,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        gap: 20,
+    },
+
+    homeIndicatorView: {
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    homeIndicator: {
+        marginVertical: 8,
+        height: 5,
+        width: 42,
+        backgroundColor: color.black,
+        borderRadius: 3,
+    },
+
+    //classify and rating style
+    classifyList: {
+        paddingVertical: 4,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+    },
+
+    itemCard: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginHorizontal: 4,
+        paddingHorizontal: 12,
+        borderWidth: 0.3,
+        borderRadius: 50,
+        marginVertical: 4,
+        gap: 4,
+    },
+
+    itemText: {
+        fontSize: 14,
+        letterSpacing: 0.16,
+    },
+
+    starIcon: {
+        fontSize: 14,
+    },
+
+    //price range style
+    sliderView: {
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    circle: {
+        width: 20,
+        height: 20,
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: color.bgWhite,
+        backgroundColor: color.green,
+    },
+
+    sliderLabel: {
+        position: 'absolute',
+        marginTop: 24,
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'stretch',
+        paddingLeft: 28,
+    },
+
+    labelPriceView: {
+        marginTop: 34,
+    },
+
+    priceText: {
+        fontSize: 14,
+        letterSpacing: 0.16,
+        color: color.mediumBlack,
+    },
+
+    //color view
+    colorCard: {
+        width: 171,
+        flexDirection: 'row',
+        gap: 8,
+        marginVertical: 6,
+        marginHorizontal: 4,
+        alignItems: 'center',
+    },
+
+    circleColor: {
+        width: 24,
+        height: 24,
+        borderRadius: 12,
+        borderWidth: 1,
+        borderColor: 'rgba(0, 0, 0, 0.11)',
+    },
+
+    checkView: {
+        padding: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: 1,
+        borderRadius: 20,
+    },
+
+    checkIcon: {
+        position: 'absolute',
+        fontSize: 12,
+        color: color.green,
+    },
+
+    //done button
+    doneButton: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: color.green,
+        borderRadius: 8,
+    },
+
+    doneText: {
+        paddingVertical: 12,
+        fontSize: 16,
+        fontWeight: '500',
+        color: color.bgWhite,
     },
 });

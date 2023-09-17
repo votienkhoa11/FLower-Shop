@@ -3,7 +3,8 @@ import React, { useRef } from 'react';
 
 //import styles
 import { styles } from './FlatlistImageView.styles';
-import { color, width } from '../../DefaultStyles';
+import { width } from '../../DefaultStyles';
+import { color } from '../../values/color';
 
 const FlatlistImageView = ({imageData, imageStyle, dotStyle, isInside}) => {
 

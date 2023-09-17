@@ -3,8 +3,9 @@ import { Text, View, ScrollView, TouchableOpacity, StatusBar } from 'react-nativ
     import React from 'react';
 
 //import style
-import defaultStyles, { color } from '../../../DefaultStyles';
+import defaultStyles from '../../../DefaultStyles';
 import styles from '../styles';
+import { color } from '../../../values/color';
 
 //import icons
 import Entypo from 'react-native-vector-icons/Entypo';

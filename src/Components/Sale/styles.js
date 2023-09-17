@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 //color
-import { color } from '../../DefaultStyles';
+import { color } from '../../values/color';
 
 export default StyleSheet.create({
     salePNG: {

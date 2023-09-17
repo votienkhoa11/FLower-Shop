@@ -1,11 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
-import { Text, View, ScrollView, TouchableOpacity, TextInput, Pressable, StatusBar,
+import { Text, View, ScrollView, TouchableOpacity, Pressable, StatusBar,
     TouchableHighlight } from 'react-native';
 import React from 'react';
 
 //import style
-import defaultStyles, {color} from '../../../DefaultStyles';
+import defaultStyles from '../../../DefaultStyles';
 import styles from '../styles';
+import { color } from '../../../values/color';
 
 //import icons
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -77,7 +78,7 @@ const SearchMainView = (props) => {
                         <View style={styles.historySearchView}>
                             <View style={styles.labelView}>
                                 <Text style={styles.label}>{label.historysearchLabel}</Text>
-                                {historySearch !== [] ?
+                                {historySearch.length > 0 ?
                                     <TouchableHighlight
                                         activeOpacity={0.4}
                                         underlayColor={color.greenWhite}

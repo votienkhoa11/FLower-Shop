@@ -1,5 +1,6 @@
-import { Platform, StyleSheet } from 'react-native';
-import { color, marginTop } from '../../DefaultStyles';
+import { StyleSheet } from 'react-native';
+import { marginTop } from '../../DefaultStyles';
+import { color } from '../../values/color';
 
 import { width } from '../../DefaultStyles';
 

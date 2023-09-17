@@ -1,7 +1,7 @@
-import { StyleSheet, StatusBar } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { marginTop } from '../../DefaultStyles';
 //color
-import { color } from '../../DefaultStyles';
+import { color } from '../../values/color';
 
 export default StyleSheet.create({
     //address

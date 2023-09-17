@@ -4,11 +4,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //import data
 import { data } from '../../database/MockData';
+import { colorProduct } from '../../values/color';
 
 //import template
 import SearchResultMainView from './template/SearchResultMainView';
 
-const SearchResultContainer = (props) => {
+export default function SearchResultContainer (props) {
     const {
         keyword,
         navigation,
@@ -21,6 +22,27 @@ const SearchResultContainer = (props) => {
     //set view show
     const [loading, setLoading] = useState(true);
 
+    //set filter
+    const [filterValue, setFilterValue] = useState({
+        classify: [],
+        priceRange: [500000, 1500000],
+        color: [],
+        starRating: 0,
+    });
+
+    const classifyItems = ['Hoa hồng', 'hoa baby', 'bó hoa', 'giỏ hoa', 'Quà tặng sinh nhật', 'Hoa tặng người yêu'];
+    const colorList = [
+        {name: 'Hồng', color: colorProduct.pink},
+        {name: 'Xanh dương', color: colorProduct.blue},
+        {name: 'Cam', color: colorProduct.orange},
+        {name: 'Tím', color: colorProduct.purple},
+        {name: 'Xanh biển', color: colorProduct.oceanBlue},
+        {name: 'Vàng', color: colorProduct.yellow},
+        {name: 'Xanh lá', color: colorProduct.green},
+        {name: 'Trắng', color: colorProduct.white},
+    ];
+
+    const starRatingList = [1, 2, 3, 4, 5];
     //save search
     const saveSearch = async (searchKeyWord) => {
         const keywords = searchKeyWord ? searchKeyWord : keyword;
@@ -54,7 +76,6 @@ const SearchResultContainer = (props) => {
     };
 
     //on press functions
-    //get search results
     const handleFilter = (keywordSearch) => {
         const filteredList = data.filter(function(productData) {
             return productData.name.toLowerCase().includes(keywordSearch.toLowerCase());
@@ -64,16 +85,85 @@ const SearchResultContainer = (props) => {
         setResult(filteredList);
     };
 
+    const onPressClassifyItem = (item) => {
+        if (filterValue.classify.indexOf(item) > -1) {
+            const filteredArray = filterValue.classify.filter(classifyItem =>
+                classifyItem !== item
+            );
+
+            setFilterValue(previous => {
+                return {...previous, classify: filteredArray};
+            });
+        } else {
+            const newArray = [...filterValue.classify, item];
+
+            setFilterValue(previous => {
+                return {...previous, classify: newArray};
+            });
+        }
+    };
+
+    const onChangePriceRange = values => {
+        setFilterValue(previous => {
+            return {...previous, priceRange: values};
+        });
+    };
+
+    const onTouchColor = (item) => {
+        if (filterValue.color.indexOf(item) > -1) {
+            const filteredArray = filterValue.color.filter(colorItem =>
+                colorItem !== item
+            );
+
+            setFilterValue(previous => {
+                return {...previous, color: filteredArray};
+            });
+        } else {
+            const newArray = [...filterValue.color, item];
+
+            setFilterValue(previous => {
+                return {...previous, color: newArray};
+            });
+        }
+    };
+
+    const onTouchRating = (item) => {
+        if (filterValue.starRating === item) {
+            setFilterValue(previous => {
+                return {...previous, starRating: 0};
+            });
+        } else {
+            setFilterValue(previous => {
+                return {...previous, starRating: item};
+            });
+        }
+    };
+
     //handle touch search items
     const onTouchSearchItem = (searchItem) => {
         setSearch(searchItem);
         handleFilter(searchItem);
     };
 
-    //close result screen
     const onClose = () => {
         setResult([]);
         setSearch('');
+    };
+
+    const [modalVisible, setModalVisible] = useState(false);
+    const onPressFilter = () => {
+        setFilterValue({
+            classify: [],
+            priceRange: [500000, 1500000],
+            color: [],
+            starRating: 0,
+        });
+
+        setModalVisible(!modalVisible);
+    };
+
+    const onPressSaveFilterValue = () => {
+        console.log(filterValue);
     };
 
     useEffect(() => {
@@ -93,14 +183,22 @@ const SearchResultContainer = (props) => {
         search,
         results,
         loading,
+        modalVisible,
+        classifyItems,
+        starRatingList,
+        colorList,
+        filterValue,
         //functions
         onChangeText,
         onClose,
         onTouchSearchItem,
-        saveSearch,
+        onPressFilter,
+        onPressClassifyItem,
+        onChangePriceRange,
+        onTouchColor,
+        onTouchRating,
+        onPressSaveFilterValue,
     };
 
   return <SearchResultMainView {...searchProp} />;
-};
-
-export default SearchResultContainer;
+}

@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { width } from '../../DefaultStyles';
 //color
-import { color } from '../../DefaultStyles';
+import { color } from '../../values/color';
 
 export const styles = StyleSheet.create({
    //flat list imageview

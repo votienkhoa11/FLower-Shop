@@ -5,7 +5,8 @@ import { formatDate } from '../../../../utils/fomatDate';
 
 //import styles
 import styles from '../../styles';
-import defaultStyles, { color } from '../../../../DefaultStyles';
+import defaultStyles from '../../../../DefaultStyles';
+import { color } from '../../../../values/color';
 
 //import data
 import label from '../../label';

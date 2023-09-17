@@ -1,10 +1,10 @@
-/* eslint-disable react-native/no-inline-styles */
 import { View, Text, TouchableOpacity, StatusBar, TextInput, Pressable, ScrollView } from 'react-native';
 import React from 'react';
 
 //import style
-import defaultStyles, {color} from '../../../DefaultStyles';
+import defaultStyles from '../../../DefaultStyles';
 import styles from '../styles';
+import { color } from '../../../values/color';
 
 //import icons
 import Feather from 'react-native-vector-icons/Feather';

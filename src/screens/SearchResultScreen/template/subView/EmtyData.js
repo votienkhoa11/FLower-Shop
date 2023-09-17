@@ -6,7 +6,7 @@ import label from '../../label';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import styles from '../../styles';
-import { color } from '../../../../DefaultStyles';
+import { color } from '../../../../values/color';
 
 const EmtyData = () => {
   return (

@@ -5,7 +5,7 @@ import { handleOnPress } from '../../UserContainer';
 
 //import style
 import styles from '../../styles';
-import { color } from '../../../../DefaultStyles';
+import { color } from '../../../../values/color';
 
 //import icons
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';

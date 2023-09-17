@@ -6,7 +6,7 @@ import React, {useState} from 'react';
 import Collapsible from 'react-native-collapsible';
 
 import styles from '../../styles';
-import { color } from '../../../../DefaultStyles';
+import { color } from '../../../../values/color';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
 

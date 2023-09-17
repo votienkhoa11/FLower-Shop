@@ -7,8 +7,9 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { CountryPicker } from 'react-native-country-codes-picker';
 
 //import styles
-import defaultStyles, { color } from '../../../DefaultStyles';
+import defaultStyles from '../../../DefaultStyles';
 import styles from '../styles';
+import { color } from '../../../values/color';
 
 //import icons
 import Ionicons from 'react-native-vector-icons/Ionicons';

@@ -33,7 +33,8 @@ import ChangeInformationScreen from './screens/ChangeInformationScreen';
 //import label
 import label from './label';
 //import style
-import defaultStyles, { color } from './DefaultStyles';
+import defaultStyles from './DefaultStyles';
+import { color } from './values/color';
 
 //import icon
 import Ionicons from 'react-native-vector-icons/Ionicons';

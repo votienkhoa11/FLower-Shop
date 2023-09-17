@@ -1,31 +1,7 @@
 import { StyleSheet, Dimensions, StatusBar, Platform } from 'react-native';
+import { color } from '../values/color';
 
 export const width = Dimensions.get('window').width;
-
-export const color = {
-    bgWhite: '#fff',
-    bgMedium: '#dde1e6',
-    bgLight: '#f2f4f8',
-    lightDark: '#a8a8a8',
-    mediumDark: '#525252',
-    grayLight: '#d9d9d9',
-    gray: '#343a3f',
-    grayMedium: '#4d5358',
-    blue: '#006bff',
-    red: '#ff0033',
-    redSale: '#f20000',
-    black: '#161616',
-    mediumBlack: '#21272a',
-    green: '#36a46d',
-    greenLight: '#7fdbad',
-    greenDark: '#0e6027',
-    greenWhite: '#edfff6',
-    gold: '#CFCF00',
-    yellow: '#ead200',
-    brown: '#D49162',
-    diamond: '#D7FEFF',
-    opacity0Color: 'rgba(0,0,0,0)',
-};
 
 export const marginTop = Platform.OS === 'ios' ? '10%' : StatusBar.currentHeight;
 

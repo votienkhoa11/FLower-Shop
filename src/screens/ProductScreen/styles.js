@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
-import { color, marginTop } from '../../DefaultStyles';
+import { marginTop } from '../../DefaultStyles';
+import { color } from '../../values/color';
 
 export default StyleSheet.create({
     header: {

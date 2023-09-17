@@ -6,7 +6,8 @@ import { TabView, SceneMap } from 'react-native-tab-view';
 
 //import style
 import styles from '../../styles';
-import defaultStyles, { color } from '../../../../DefaultStyles';
+import defaultStyles from '../../../../DefaultStyles';
+import { color } from '../../../../values/color';
 
 import label from '../../label';
 

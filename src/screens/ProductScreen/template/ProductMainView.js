@@ -8,7 +8,8 @@ import CollapseView from './subView/CollapseView';
 
 //import styles
 import styles from '../styles';
-import defaultStyles, { color } from '../../../DefaultStyles';
+import defaultStyles from '../../../DefaultStyles';
+import { color } from '../../../values/color';
 
 //import icons
 import AntDesign from 'react-native-vector-icons/AntDesign';

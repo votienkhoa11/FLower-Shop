@@ -1,5 +1,5 @@
 import { StyleSheet, StatusBar } from 'react-native';
-import { color } from '../../DefaultStyles';
+import { color } from '../../values/color';
 
 export default StyleSheet.create({
     //search bar

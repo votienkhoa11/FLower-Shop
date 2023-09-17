@@ -4,8 +4,9 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import React from 'react';
 
 //import styless
-import defaultStyles, { color } from '../../../DefaultStyles';
+import defaultStyles from '../../../DefaultStyles';
 import styles from '../styles';
+import { color } from '../../../values/color';
 
 //import icon
 import Octicons from 'react-native-vector-icons/Octicons';

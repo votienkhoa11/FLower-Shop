@@ -3,7 +3,7 @@ import React from 'react';
 
 //import styles
 import defaultStyles from '../DefaultStyles';
-import { color } from '../DefaultStyles';
+import { color } from '../values/color';
 
 const LoadingScreen = ({style}) => {
   return (

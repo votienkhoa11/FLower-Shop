@@ -2,7 +2,6 @@
 import { View, Text, StatusBar, ScrollView } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import React from 'react';
-import { callToast } from '../../../utils/Toast';
 
 import CollapseView from './subView/CollapseView';
 

@@ -17,7 +17,7 @@ const FlatlistImageView = ({imageData, imageStyle, dotStyle, isInside}) => {
     const renderImage = ({item, index}) => {
         return (
             <View style={[styles.imageView, imageStyle]}>
-                <Image source={item.image ? item.image : item} style={styles.image} />
+                <Image source={{uri: item.image ? item.image : item}} style={styles.image} />
             </View>
         );
     };
@@ -68,7 +68,7 @@ const FlatlistImageView = ({imageData, imageStyle, dotStyle, isInside}) => {
     };
 
     return (
-        imageData ?
+        imageData &&
         <View>
             {/*Event page*/}
             <FlatList
@@ -86,7 +86,6 @@ const FlatlistImageView = ({imageData, imageStyle, dotStyle, isInside}) => {
                 {renderDotsIndicators()}
             </View>
         </View>
-        : null
     );
 };
 

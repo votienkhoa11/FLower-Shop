@@ -5,7 +5,8 @@ import productReducer from '../screens/ProductScreen/productSlice';
 
 const rootReducer = {
     loader: loaderReducer,
-    product: homeReducer,
+    home: homeReducer,
+    product: productReducer,
 };
 
 export default configureStore({

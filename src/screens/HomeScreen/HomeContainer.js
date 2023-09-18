@@ -6,6 +6,7 @@ import { callToast } from '../../utils/Toast';
 
 //get slices
 import { getAllProduct } from '../ProductScreen/productSlice';
+import { getHomePage } from './homeSlice';
 
 //import data
 import { user } from '../../database/MockData';
@@ -24,11 +25,21 @@ const HomeContainer = (props) => {
     } = props;
 
     //set data
+    const [events, setEvents] = useState([]);
     const [product, setProduct] = useState([]);
     const [popularProduct, setPopularProduct] = useState([]);
     const [broughtProducts, setBroughtProduct] = useState([]);
     const [userInfo, setUser] = useState([]);
     const [favorite, setFavorite] = useState(false);
+
+    const fetchHomePage = async () => {
+        const res = await dispatch(getHomePage());
+        const {responseData} = res.payload.data;
+
+        const eventSlide = responseData.banner_slide.split('|');
+
+        setEvents(eventSlide);
+    };
 
     //get data from the database
     const getDatafromDB = async () => {
@@ -79,6 +90,12 @@ const HomeContainer = (props) => {
     const [connectionStatus, setConnectionStatus] = useState(true);
     const prevConnection = useRef(true);
 
+    //fetch data when screen load
+    useEffect(() => {
+        getDatafromDB();
+        fetchHomePage();
+    }, []);
+
     useEffect(() => {
         const unsubscribe = NetInfo.addEventListener(state => {
             setConnectionStatus(state.isConnected);
@@ -96,7 +113,6 @@ const HomeContainer = (props) => {
                 string.NO_CONNECTION_SUB_TEXT,
             );
         } else if (prevConnection.current && connectionStatus) {
-            getDatafromDB();
             callToast(string.INTERNET_CONNECTED);
         }
 
@@ -108,6 +124,7 @@ const HomeContainer = (props) => {
         isLoading,
         userInfo,
         favorite,
+        events,
         setFavoriteButton,
         popularProduct,
         broughtProducts,

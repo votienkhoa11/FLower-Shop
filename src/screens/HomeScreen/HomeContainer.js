@@ -2,7 +2,7 @@
 import { Alert } from 'react-native';
 import React, { useEffect, useRef, useState } from 'react';
 import NetInfo from '@react-native-community/netinfo';
-import { callToast } from '../../utils/Toast';
+import callToast from '../../utils/Toast';
 
 //get slices
 import { getAllProduct } from '../ProductScreen/productSlice';
@@ -34,6 +34,7 @@ const HomeContainer = (props) => {
 
     const fetchHomePage = async () => {
         const res = await dispatch(getHomePage());
+
         const {responseData} = res.payload.data;
 
         const eventSlide = responseData.banner_slide.split('|');
@@ -45,7 +46,7 @@ const HomeContainer = (props) => {
     const getDatafromDB = async () => {
         const res = await dispatch(getAllProduct({
             currentPage: 1,
-            pageSize: 10,
+            pageSize: 5,
         }));
 
         const {data} = res.payload;

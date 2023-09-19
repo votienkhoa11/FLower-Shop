@@ -151,7 +151,6 @@ const HomeMainView = (props) => {
                     </TouchableOpacity>
                 </View>
             </ScrollView>
-            {/*Button View*/}
             <CartButton />
         </View>
     </View>

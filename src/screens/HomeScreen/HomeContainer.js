@@ -121,14 +121,16 @@ const HomeContainer = (props) => {
 
     const homeProps = {
         navigation,
+        //values
         isLoading,
         userInfo,
         favorite,
         events,
-        setFavoriteButton,
         popularProduct,
         broughtProducts,
         product,
+        //functions
+        setFavoriteButton,
     };
 
   return <HomeMainView  {...homeProps} />;

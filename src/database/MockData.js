@@ -1,4 +1,4 @@
-export const data = [
+export const products = [
     {
         id: 1,
         name: 'Bó hoa hồng trắng',
@@ -407,9 +407,9 @@ export const order = [
 ];
 
 function priceCalculator(productID, quantity) {
-    for (let productIndex = 0; productIndex < data.length; productIndex++) {
-        if (data[productIndex].id === productID) {
-            return data[productIndex].price * quantity;
+    for (let productIndex = 0; productIndex < products.length; productIndex++) {
+        if (products[productIndex].id === productID) {
+            return products[productIndex].price * quantity;
         }
     }
 }

@@ -28,7 +28,7 @@ const SearchMainView = (props) => {
         filterSearchList,
         historySearch,
         popularSearch,
-        products,
+        productData,
         loading,
         onFocus,
         showFilter,
@@ -133,7 +133,7 @@ const SearchMainView = (props) => {
                             >
                                 <View style={styles.suggestProductsView}>
                                     {
-                                        (products || []).map(suggestProductData => {
+                                        (productData || []).map(suggestProductData => {
                                             return <SuggestionCard data={suggestProductData} key={suggestProductData.id} />;
                                         })
                                     }

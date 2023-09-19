@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //import data
-import { data } from '../../database/MockData';
+import { products } from '../../database/MockData';
 import { searchResult } from '../../database/MockData';
 
 //import template
@@ -14,7 +14,7 @@ const SearchContainer = (props) => {
     } = props;
 
     //set values
-    const [products, setProduct] = useState([]);
+    const [productData, setProductData] = useState([]);
     //set search
     const [search, setSearch] = useState('');
     const [popularSearch, setPopularSearch] = useState([]);
@@ -42,9 +42,9 @@ const SearchContainer = (props) => {
         setPopularSearch(popularSearchList.slice(0, 12));
 
         //set data suggestion
-        const productList = [...data];
+        const productList = [...products];
         productList.sort(() => 0.5 - Math.random());
-        setProduct(productList.slice(0, 6));
+        setProductData(productList.slice(0, 6));
     };
 
     //get user history search
@@ -133,7 +133,7 @@ const SearchContainer = (props) => {
         filterSearchList,
         historySearch,
         popularSearch,
-        products,
+        productData,
         loading,
         onFocus,
         showFilter,

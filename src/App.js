@@ -7,9 +7,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-//import { RecoilRoot, atom, selector, useRecoilState, useRecoilSelector } from 'recoil';
-
-//import {Provider} from 'react-redux';
+import {Provider} from 'react-redux';
 
 //import screens
 //main stack screens
@@ -43,6 +41,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 //import user
 import {user} from './database/MockData';
+import store from './app/store';
 
 //import store from './app/store';
 
@@ -184,16 +183,18 @@ function App() {
 }, []);
 
   return (
-    <NavigationContainer>
-        <Stack.Navigator screenOptions={{headerShown: false}}>
-            <Stack.Screen name="tab" component = {TabNavigators} />
-            <Stack.Screen name="product" component= {ProdcuctScreen} />
-            <Stack.Screen name="payment" component={PaymentMethodScreen} />
+    <Provider store={store}>
+        <NavigationContainer>
+            <Stack.Navigator screenOptions={{headerShown: false}}>
+                <Stack.Screen name="tab" component = {TabNavigators} />
+                <Stack.Screen name="product" component= {ProdcuctScreen} />
+                <Stack.Screen name="payment" component={PaymentMethodScreen} />
             <Stack.Screen name="notification" component={NotificationScreen} />
             <Stack.Screen name="support" component={HelpCenterScreen} />
             <Stack.Screen name="security" component={AccountSecurityScreen} />
         </Stack.Navigator>
-    </NavigationContainer>
+        </NavigationContainer>
+    </Provider>
   );
 }
 

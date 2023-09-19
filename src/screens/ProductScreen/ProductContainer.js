@@ -1,53 +1,63 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 
 //import template
 import ProductMainView from './template/ProductMainView';
 
+//import slices
+import { getProductDetailByID } from './productSlice';
+
 //import data
-import { data } from '../../database/MockData';
+import { products } from '../../database/MockData';
 import { users } from '../../database/MockData';
 import { reviews } from '../../database/MockData';
 
 const ProductContainer = (props) => {
     const {
+        dispatch,
+        isLoading,
+        params,
         navigation,
-        route,
     } = props;
 
-    const [loading, setLoading] = useState(true);
     //get product information
-    const {productID} = route.params;
+    const {productID} = params;
 
-    const productFilter = data.filter((productItem) => productItem.id === productID);
-    const productInformation = productFilter[0];
+    const [productInformation, setProductInformation] = useState({});
+    const fetchProductByID = async () => {
+        const res = await dispatch(getProductDetailByID({
+            id: productID,
+        }));
+
+        const {responseData} = res.payload.data;
+        console.log(responseData);
+
+        setProductInformation(responseData);
+    };
 
     //set rating
     //this rating can't be changed, used for show products rating in the comments
-    const [rating, setRating] = useState(productInformation.rating);
+    const [rating, setRating] = useState(productInformation.star_rating);
     //this rating can be changed, user can set their own rating for the product
-    const [chooseRating, setChooseRating] = useState(productInformation.rating);
+    const [chooseRating, setChooseRating] = useState(productInformation.star_rating);
 
     //set quantity
     const [quantity, setQuantity] = useState(1);
 
     useEffect(() => {
-        const unsubscribe = navigation.addListener('focus', () => {
-            setLoading(false);
-        });
-
-        return unsubscribe;
-    }, [navigation]);
+        fetchProductByID();
+    }, []);
 
     const productProps = {
         navigation,
         //values
-        loading,
+        isLoading,
         productInformation,
         chooseRating,
         quantity,
         rating,
         reviews,
-        data,
+        products,
         //functions
         setRating,
         setChooseRating,

@@ -72,9 +72,8 @@ export default StyleSheet.create({
 
     //categories view
     category: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        gap: 8,
+        alignItems: 'center',
+        padding: 8,
     },
 
     categoryCard: {
@@ -83,6 +82,7 @@ export default StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'center',
         paddingVertical: 8,
+        marginHorizontal: 2,
     },
 
     categoryImage: {

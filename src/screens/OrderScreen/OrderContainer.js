@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //import data
-import { data } from '../../database/MockData';
+import { products } from '../../database/MockData';
 import { order } from '../../database/MockData';
 
 //import template
@@ -53,7 +53,7 @@ const OrderContainer = (props) => {
     };
 
     const getResults = (keywordSearch) => {
-        const resultProductList = data.filter(function(productData) {
+        const resultProductList = products.filter(function(productData) {
             return productData.name.toLowerCase().includes(keywordSearch.toLowerCase());
         });
 

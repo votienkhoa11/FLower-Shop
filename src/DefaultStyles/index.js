@@ -12,11 +12,11 @@ export default StyleSheet.create({
         paddingTop: 2,
         justifyContent: 'center',
         alignItems: 'center',
-        gap: 8,
         borderColor: color.green,
     },
 
     tabLabel: {
+        marginTop: 8,
         fontSize: 10,
         fontWeight: '600',
     },

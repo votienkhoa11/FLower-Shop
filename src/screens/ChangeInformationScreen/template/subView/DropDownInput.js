@@ -19,22 +19,25 @@ const DropDownInput = ({
 }) => {
   return (
     <View style={{paddingVertical: 8}}>
-        <View style={{paddingHorizontal: 8, flexDirection: 'row'}}>
-
+        <View style={{flexDirection: 'row'}}>
             <SelectDropdown
                 data={data}
                 defaultButtonText={placeholder}
                 onSelect={onSelectedText}
                 //styles
-                dropdownOverlayColor={color.opacity0Color}
                 buttonStyle={[
                     styles.input,
-                    {borderColor: error ? color.red : color.lightDark},
+                    {borderColor: error ? color.red : color.bgMedium},
+                    {
+                        borderWidth: 1,
+                        width: '100%',
+                    },
                 ]}
                 dropdownStyle={styles.dropDown}
                 buttonTextStyle={styles.buttonText}
                 rowStyle={styles.row}
                 rowTextStyle={[styles.buttonText, {textAlign: 'center'}]}
+                statusBarTranslucent
             />
             <AntDesign name="down" style={styles.downIcon} />
         </View>

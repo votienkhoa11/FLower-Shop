@@ -38,39 +38,43 @@ export default StyleSheet.create({
         backgroundColor: color.bgWhite,
     },
     //inputs view
-    inputView: {
+    inputList: {
         padding: 8,
-        gap: 8,
+        paddingHorizontal: 16,
+        gap: 20,
+    },
+
+    inputView: {
+        paddingVertical: 8,
     },
 
     input: {
-        width: '100%',
-        flexDirection: 'row',
         height: 48,
-        borderWidth: 1,
         borderRadius: 4,
         alignItems: 'center',
-        paddingHorizontal: 12,
         backgroundColor: color.bgWhite,
     },
 
     labelInput: {
+        height: 21,
         flexDirection: 'row',
         position: 'absolute',
         backgroundColor: color.bgWhite,
         paddingHorizontal: 4,
-        marginLeft: 16,
+        marginLeft: 14,
+        marginBottom: 10,
         gap: 4,
     },
 
-    inputIcon: {
+    calendarIcon: {
         fontSize: 24,
         color: color.bgMedium,
+        paddingRight: 8,
     },
 
     labelText: {
         color: color.mediumBlack,
-        fontSize: 13,
+        fontSize: 12,
     },
 
     starText: {
@@ -86,10 +90,9 @@ export default StyleSheet.create({
     },
 
     codePhoneContainer: {
-        position: 'absolute',
-        marginTop: 21,
-        marginLeft: 20,
-        padding: 2,
+        height: 22,
+        marginLeft: 12,
+        paddingHorizontal: 4,
         borderWidth: 1,
         borderColor: color.bgMedium,
         borderRadius: 4,
@@ -117,16 +120,11 @@ export default StyleSheet.create({
 
     countryPickerModal: {
         modal: {
-            height: 500,
-            width: 300,
+            height: '80%',
+            width: '100%',
             justifyContent: 'center',
             alignSelf: 'center',
         },
-
-        backdrop: {
-            backgroundColor: color.opacity0Color,
-        },
-
         countryButtonStyles: {
             height: 40,
         },
@@ -154,7 +152,7 @@ export default StyleSheet.create({
         fontSize: 24,
         color: color.bgMedium,
         marginTop: 12,
-        marginLeft: width - 54,
+        marginLeft: width - 64,
     },
 
     //button

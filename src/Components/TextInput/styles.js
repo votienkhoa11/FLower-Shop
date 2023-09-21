@@ -17,7 +17,7 @@ export default StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         borderWidth: 1,
-        borderColor: color.bgMedium,
+        borderColor: color.mediumLight,
     },
 
     errorText: {

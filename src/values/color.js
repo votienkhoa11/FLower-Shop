@@ -15,6 +15,7 @@ export const color = {
     bgLight: '#f2f4f8',
     lightDark: '#a8a8a8',
     mediumDark: '#525252',
+    mediumLight: '#c3c9d0',
     grayLight: '#d9d9d9',
     gray: '#343a3f',
     grayMedium: '#4d5358',

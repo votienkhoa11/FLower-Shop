@@ -28,7 +28,7 @@ const TextInputComponent = ({
         <View style={[
             styles.containerAreaInput,
             style,
-            error && {borderColor: error ? color.red : color.lightDark},
+            error && {borderColor: color.red},
         ]}>
             {   leftIcon &&
                 <TouchableOpacity

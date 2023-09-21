@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-escape */
 import React, { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { callToast } from '../../utils/Toast';
+import callToast from '../../utils/Toast';
 import * as ImagePicker from 'react-native-image-picker';
 
 //import data
@@ -109,17 +109,23 @@ const ChangeInformationContainer = (props) => {
     //set genders
     const genders = [label.male, label.female, label.other];
     const [gender, setGender] = useState('');
+    const [modalVisible, setModalVisible] = useState(false);
+
+    const onPressGenderInput = () => {
+        setModalVisible(!modalVisible);
+    };
 
     //select gender
     const onSelectedGender = (selectedGender) => {
         const choiceGender = selectedGender;
-
         setGender(choiceGender);
         setForm({...form, ['gender']: formatDate(choiceGender)});
 
         setError((previous) => {
             return {...previous, gender: null};
         });
+
+        onPressGenderInput();
     };
 
     const onChange = ({key, value}) => {
@@ -218,7 +224,9 @@ const ChangeInformationContainer = (props) => {
     };
 
     const getUserData = async () => {
-        setUser(await userData());
+        const userRaw = await userData();
+        setUser(userRaw);
+        setGender(userRaw.gender);
         setLoading(false);
     };
 
@@ -241,7 +249,9 @@ const ChangeInformationContainer = (props) => {
         date,
         showDatePicker,
         dateString,
+        modalVisible,
         genders,
+        gender,
         //functions
         getAvatar,
         onChange,
@@ -250,6 +260,7 @@ const ChangeInformationContainer = (props) => {
         onChangeDate,
         toggleDatePicker,
         setDateString,
+        onPressGenderInput,
         onSelectedGender,
         onSubmit,
     };

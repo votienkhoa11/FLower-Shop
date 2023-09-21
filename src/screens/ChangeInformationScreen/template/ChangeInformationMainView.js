@@ -5,6 +5,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import React from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { CountryPicker } from 'react-native-country-codes-picker';
+import Modal  from 'react-native-modal';
 
 //import styles
 import defaultStyles from '../../../DefaultStyles';
@@ -14,6 +15,7 @@ import { color } from '../../../values/color';
 //import icons
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 //import data
 import label from '../label';
@@ -21,7 +23,7 @@ import label from '../label';
 //import components
 import Avatar from '../../UserScreen/template/subView/Avatar';
 import TextInputComponent from '../../../Components/TextInput/TextInputComponent';
-import DropDownInput from './subView/DropDownInput';
+import ModalGender from './subView/ModalGender';
 import LoadingScreen from '../../../Components/LoadingScreen';
 
 const LabelTextInput = ({labelText}) => {
@@ -56,7 +58,8 @@ const ChangeInformationMainView = (props) => {
         date,
         showDatePicker,
         dateString,
-        genders,
+        modalVisible,
+        gender,
         //functions
         getAvatar,
         onChange,
@@ -65,7 +68,7 @@ const ChangeInformationMainView = (props) => {
         onChangeDate,
         toggleDatePicker,
         setDateString,
-        onSelectedGender,
+        onPressGenderInput,
         onSubmit,
     } = props;
 
@@ -190,25 +193,35 @@ const ChangeInformationMainView = (props) => {
                         <LabelTextInput labelText={label.birthday} />
                     </TouchableOpacity>
                     {/*Gender input */}
-                    <DropDownInput
-                        labelName={label.gender}
-                        placeholder={' '}
-                        data={genders}
-                        onSelectedText={(selectedGender, genderIndex) => {
-                            onSelectedGender(selectedGender);
-                        }}
-                        error={error.gender ? error.gender : ''}
-                    />
+                    <TouchableOpacity
+                        activeOpacity={1}
+                        onPress={() => onPressGenderInput()}
+                        style={styles.inputView}
+                    >
+                        <TextInputComponent
+                            value={gender}
+                            editable={false}
+                            style={styles.input}
+                            textInputStyle={{paddingLeft: 12}}
+                            rightIcon={
+                                <AntDesign name="down" style={styles.downIcon} />
+                            }
+                            onPressRightIcon={() => onPressGenderInput()}
+                        />
+                        <LabelTextInput labelText={label.gender} />
+                    </TouchableOpacity>
+                    <Modal
+                        isVisible={modalVisible}
+                        hasBackdrop={true}
+                        backdropOpacity={0.3}
+                        swipeDirection={['down']}
+                        onBackButtonPress={() => onPressGenderInput()}
+                        onBackdropPress={() => onPressGenderInput()}
+                        style={styles.modalStyle}
+                    >
+                        <ModalGender {...props} />
+                    </Modal>
                     {/*Adress input */}
-                    {/*<Input
-                        onChangeText={(value) => {
-                            onChange({key: 'address', value});
-                        }}
-                        placeholder={user.address}
-                        keyboardType="url"
-                        labelName={label.address}
-                        error={error.address ? error.address : ''}
-                    />*/}
                     <View style={styles.inputView}>
                         <TextInputComponent
                              onChangeText={(value) => {

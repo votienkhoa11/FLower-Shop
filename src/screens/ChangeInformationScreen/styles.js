@@ -2,8 +2,6 @@ import { StyleSheet } from 'react-native';
 import { marginTop } from '../../DefaultStyles';
 import { color } from '../../values/color';
 
-import { width } from '../../DefaultStyles';
-
 export default StyleSheet.create({
     //header view
     header: {
@@ -68,7 +66,7 @@ export default StyleSheet.create({
 
     calendarIcon: {
         fontSize: 24,
-        color: color.bgMedium,
+        color: color.mediumLight,
         paddingRight: 8,
     },
 
@@ -83,12 +81,7 @@ export default StyleSheet.create({
         fontSize: 16,
     },
 
-    errorText: {
-        color: color.red,
-        fontSize: 10,
-        paddingLeft: 14,
-    },
-
+    //phone style
     codePhoneContainer: {
         height: 22,
         marginLeft: 12,
@@ -130,29 +123,32 @@ export default StyleSheet.create({
         },
     },
 
-    buttonText: {
-        fontSize: 14,
-        textAlign: 'left',
-        marginHorizontal: 0,
-        paddingHorizontal: 4,
-    },
-
-    dropDown: {
-        justifyContent: 'center',
-        backgroundColor: color.bgWhite,
-        paddingHorizontal: 0,
-    },
-
-    row: {
-        height: 40,
+    //gender modal style
+    modalStyle: {
+        justifyContent: 'flex-end',
+        margin: 0,
+        padding: 0,
     },
 
     downIcon: {
-        position: 'absolute',
         fontSize: 24,
-        color: color.bgMedium,
-        marginTop: 12,
-        marginLeft: width - 64,
+        color: color.mediumLight,
+        paddingRight: 6,
+    },
+
+    genderItem: {
+        width: '100%',
+        height: 40,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: color.bgWhite,
+        borderBottomWidth: 1,
+        borderColor: color.mediumLight,
+    },
+
+    genderText: {
+        fontSize: 16,
+        color: color.mediumBlack,
     },
 
     //button

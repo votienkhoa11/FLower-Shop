@@ -138,7 +138,7 @@ export default StyleSheet.create({
 
     genderItem: {
         width: '100%',
-        height: 40,
+        height: 50,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: color.bgWhite,
@@ -148,6 +148,7 @@ export default StyleSheet.create({
 
     genderText: {
         fontSize: 16,
+        fontWeight: '400',
         color: color.mediumBlack,
     },
 

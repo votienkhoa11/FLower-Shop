@@ -56,12 +56,6 @@ const SearchMainView = (props) => {
                         <Text style={styles.searchLabel}>{label.search}</Text>
                         {/*Search bar */}
                         <TextInputComponent
-                            style={[
-                                styles.searchBar,
-                                (onFocus &&
-                                    {borderColor: color.green}
-                                ),
-                            ]}
                             placeholder={label.search}
                             value={search}
                             onChangeText={onChangeText}
@@ -71,6 +65,13 @@ const SearchMainView = (props) => {
                             onBlur={setOnBlur}
                             rightIcon={<AntDesign name="search1" style={styles.searchIcon} />}
                             onPressRightIcon={() => onSubmitSearch(search)}
+                            style={[
+                                styles.searchBar,
+                                (onFocus &&
+                                    {borderColor: color.green}
+                                ),
+                            ]}
+                            textInputStyle={{fontSize: 14}}
                         />
                     </View>
                     <View>

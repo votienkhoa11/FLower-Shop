@@ -66,7 +66,6 @@ export default function SearchResultMainView (props) {
             </View>
             <View style={styles.searchFilterBar}>
                 <TextInputComponent
-                    style={styles.searchBar}
                     placeholder={label.search}
                     value={search}
                     onChangeText={onChangeText}
@@ -76,6 +75,8 @@ export default function SearchResultMainView (props) {
                     onPressleftIcon={() => onTouchSearchItem(search)}
                     rightIcon={search && <AntDesign name="close" style={styles.xIcon} />}
                     onPressRightIcon={() => onClose()}
+                    style={styles.searchBar}
+                    textInputStyle={{fontSize: 14}}
                 />
                 <TouchableOpacity
                     onPress={() => onPressFilter()}

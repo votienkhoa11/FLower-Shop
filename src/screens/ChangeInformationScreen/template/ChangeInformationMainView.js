@@ -168,20 +168,20 @@ const ChangeInformationMainView = (props) => {
                     <TouchableOpacity
                         activeOpacity={1}
                         onPress={() => toggleDatePicker()}
+                        style={styles.inputView}
                     >
-                        <View style={styles.inputView}>
-                            <TextInputComponent
-                                onChangeText={setDateString}
-                                value={dateString}
-                                editable={false}
-                                error={error.birthday ? error.birthday : ''}
-                                rightIcon={
-                                    <Entypo name="calendar" style={styles.calendarIcon}/>
-                                }
-                                style={styles.input}
-                                textInputStyle={{paddingLeft: 12}}
-                            />
-                        </View>
+                        <TextInputComponent
+                            onChangeText={setDateString}
+                            value={dateString}
+                            editable={false}
+                            error={error.birthday ? error.birthday : ''}
+                            rightIcon={
+                                <Entypo name="calendar" style={styles.calendarIcon}/>
+                            }
+                            onPressRightIcon={() => toggleDatePicker()}
+                            style={styles.input}
+                            textInputStyle={{paddingLeft: 12}}
+                        />
                         <LabelTextInput labelText={label.birthday} />
                     </TouchableOpacity>
                     {/*Gender input */}

@@ -25,15 +25,7 @@ import Avatar from '../../UserScreen/template/subView/Avatar';
 import TextInputComponent from '../../../Components/TextInput/TextInputComponent';
 import ModalGender from './subView/ModalGender';
 import LoadingScreen from '../../../Components/LoadingScreen';
-
-const LabelTextInput = ({labelText}) => {
-    return (
-        <View style={styles.labelInput}>
-            <Text style={styles.labelText}>{labelText}</Text>
-            <Text style={styles.starText}>*</Text>
-        </View>
-    );
-};
+import LabelTextInput from './subView/LabelTextInput';
 
 const CodePhoneButton = ({codePhone}) => {
     return (

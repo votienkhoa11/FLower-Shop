@@ -24,7 +24,7 @@ const Button = ({
     const container = {
         backgroundColor: backgroundColor,
         width: width,
-        height: height ? height : 40,
+        height: height,
         borderWidth: borderWidth,
         borderColor: borderWidth ? borderColor : null,
     };

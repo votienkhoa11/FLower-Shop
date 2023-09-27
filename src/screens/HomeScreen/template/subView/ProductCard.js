@@ -5,7 +5,6 @@ import { useNavigation } from '@react-navigation/native';
 
 //import styles
 import style from '../../styles';
-import defaultStyles from '../../../../DefaultStyles';
 
 //import components
 import SaleComponent from '../../../../Components/Sale';
@@ -18,14 +17,14 @@ const ProductCard = ({data = {}}) => {
     const navigation = useNavigation();
 
   return (
-    data !== {} ? (
+    data ? (
       <TouchableOpacity
         activeOpacity={1}
         onPress={() => navigation.navigate('product', {
             productID: data.id,
         })}
     >
-        <View style={[style.productCard, defaultStyles.shadow]}>
+        <View style={style.productCard}>
           <Image source={data.image ? data.image[0] : config.noImage} style={style.productImage} />
           <View style={style.information} >
               <View style={style.informationCard}>

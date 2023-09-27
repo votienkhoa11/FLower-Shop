@@ -4,7 +4,6 @@ import React from 'react';
 import { config } from '../../../../configurations';
 
 import styles from '../../styles';
-import defaultStyles from '../../../../DefaultStyles';
 
 import { useNavigation } from '@react-navigation/native';
 
@@ -12,7 +11,7 @@ const PopularCard = ({data = {}}) => {
     const navigation = useNavigation();
 
   return (
-    data !== {} ? (
+    data ? (
       <TouchableOpacity
         activeOpacity={1}
         onPress={() => navigation.navigate('product', {
@@ -20,7 +19,7 @@ const PopularCard = ({data = {}}) => {
         })}
       >
           <View style={{padding: 8}}>
-              <View style={[styles.popularCard, defaultStyles.shadow]}>
+              <View style={styles.popularCard}>
                   <Image source={data.image ? data.image[0] : config.noImage} style={styles.popularImage} resizeMode="stretch" />
                   <View style={styles.title}>
                       <Text style={styles.titleText}>{data.name}</Text>

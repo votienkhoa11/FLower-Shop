@@ -3,7 +3,7 @@ import { View, Text, ImageBackground, StatusBar, ScrollView, FlatList } from 're
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import React from 'react';
 
-//import styless
+//import styles
 import defaultStyles from '../../../DefaultStyles';
 import styles from '../styles';
 import { color } from '../../../values/color';
@@ -124,21 +124,24 @@ const HomeMainView = (props) => {
                     </View>
                 </ImageBackground>
                 {/*Buy again recommend View*/}
-                <View>
-                    <Text style={styles.label}>{label.buyAgainLabel}</Text>
-                    <FlatList
-                        data={broughtProducts}
-                        renderItem={({item, index}) => (
-                            <ProductItemCard data={item} key={item.id} />
-                        )}
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                        decelerationRate={0.5}
-                    />
-                </View>
+                <Text style={styles.label}>{label.buyAgainLabel}</Text>
+                <FlatList
+                    data={broughtProducts}
+                    renderItem={({item, index}) => (
+                        <ProductItemCard data={item} key={item.id} />
+                    )}
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    decelerationRate={0.5}
+                />
                 {/*recommend View*/}
                 <View style={styles.recommendContainer}>
-                    <Text style={[styles.label, {paddingHorizontal: 0}]}>{label.recommendLabel}</Text>
+                    <Text style={[styles.label,
+                        {
+                            paddingHorizontal: 16,
+                        },
+                    ]}>
+                    {label.recommendLabel}</Text>
                     <FlatList
                         data={product}
                         renderItem={({item, index}) => (

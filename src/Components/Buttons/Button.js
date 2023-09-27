@@ -18,14 +18,12 @@ const Button = ({
     backgroundColor,
     onPress,
     leftIcon,
-    leftIconStyle,
     rightIcon,
-    rightIconStyle,
 }) => {
 
     const container = {
         backgroundColor: backgroundColor,
-        width: width ? width : '100%',
+        width: width,
         height: height ? height : 40,
         borderWidth: borderWidth,
         borderColor: borderWidth ? borderColor : null,

@@ -45,7 +45,7 @@ const SearchMainView = (props) => {
     loading ? <LoadingScreen /> :
 
     <View style={defaultStyles.container}>
-        <View style={defaultStyles.safeView}>
+        <View style={{height: '100%'}}>
             <StatusBar translucent backgroundColor="transparent" barstyles="dark-content" />
             <ScrollView
                 keyboardShouldPersistTaps="handled"

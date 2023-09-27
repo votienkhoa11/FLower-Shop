@@ -1,11 +1,11 @@
 /* eslint-disable react-native/no-inline-styles */
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import React from 'react';
+import Button from '../../../../Components/Buttons/Button';
 import { formatDate } from '../../../../utils/fomatDate';
 
 //import styles
 import styles from '../../styles';
-import defaultStyles from '../../../../DefaultStyles';
 import { color } from '../../../../values/color';
 
 //import data
@@ -26,9 +26,35 @@ const OrderItem = ({item = {}, index}) => {
 
     const productData = getProduct(item.productID);
 
+    const buttonStyle = {
+        width: 65,
+        paddingVertical: 7,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: item.orderStatus === 'delivered' || item.orderStatus === 'canceled' ?
+            color.greenLight : color.greenDark,
+        borderRadius: 40,
+    };
+
+    const textButtonStyle = {
+        fontSize: 12,
+        fontWeight: item.orderStatus === 'delivered' || item.orderStatus === 'canceled' ?
+            'bold' : '500',
+        color: item.orderStatus === 'delivered' || item.orderStatus === 'canceled' ?
+            color.greenDark : color.bgWhite,
+    };
+
+    const onPressButton = () => {
+        if (item.orderStatus === 'delivered' || item.orderStatus === 'canceled') {
+            console.log('Order again');
+        } else {
+            console.log('Open chat box');
+        }
+    };
+
     return (
         item ?
-            <View style={[styles.itemContainer, defaultStyles.shadow]}>
+            <View style={styles.itemContainer}>
                 {/*Product information */}
                 <Image source={productData.image[0]} style={styles.imageProduct} />
                 <View style={styles.orderInformation}>
@@ -50,29 +76,15 @@ const OrderItem = ({item = {}, index}) => {
                             </Text>
                             <Text style={styles.price}>{formatDate(item.datePurchase, 'order')}</Text>
                         </View>
-                        {/*render button based on the status
-                            when the status is deliverdd or canceled, the button is order again
-                            otherwise, it is a chat box button */}
-                        {
-                            item.orderStatus === 'delivered' || item.orderStatus === 'canceled' ?
-                                <TouchableOpacity
-                                    onPress={() => console.log('Order again')}
-                                >
-                                    <View style={styles.orderButton}>
-                                        <Text style={styles.orderAgain}>{label.orderAgain}</Text>
-                                    </View>
-                                </TouchableOpacity>
-                            :
-                                <TouchableOpacity
-                                    onPress={() => console.log('Open chat box')}
-                                >
-                                    <View style={[styles.orderButton, {backgroundColor: color.greenDark}]}>
-                                        <Text
-                                            style={[styles.orderAgain, {color: color.bgWhite, fontWeight: '500'}]}
-                                        >{label.chat}</Text>
-                                    </View>
-                                </TouchableOpacity>
-                        }
+                        <Button
+                            onPress={() => onPressButton()}
+                            text={
+                                item.orderStatus === 'delivered' || item.orderStatus === 'canceled' ?
+                                    label.orderAgain : label.chat
+                            }
+                            textStyle={textButtonStyle}
+                            style={buttonStyle}
+                        />
                     </View>
                 </View>
             </View>

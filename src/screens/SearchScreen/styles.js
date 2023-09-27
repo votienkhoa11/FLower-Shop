@@ -50,6 +50,7 @@ export default StyleSheet.create({
         backgroundColor: color.bgWhite,
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20,
+        ...shadow,
     },
 
     textSearch: {

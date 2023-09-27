@@ -155,6 +155,7 @@ const HomeMainView = (props) => {
                         fontWeight="600"
                         textColor={color.green}
                         onPress={() => console.log(label.watchMore)}
+                        height={40}
                         borderWidth={1}
                         borderColor={color.green}
                         style={styles.watchMoreButton}

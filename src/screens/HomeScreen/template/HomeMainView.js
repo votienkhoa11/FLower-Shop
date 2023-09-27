@@ -25,6 +25,7 @@ import CategoryCard from './subView/CategoryCard';
 import PopularCard from './subView/PopularCard';
 import ProductCard from './subView/ProductCard';
 import CartButton from '../../../Components/Buttons/CartButton';
+import Button from '../../../Components/Buttons/Button';
 
 const HomeMainView = (props) => {
     const {
@@ -145,11 +146,16 @@ const HomeMainView = (props) => {
                         )}
                         scrollEnabled={false}
                     />
-                    <TouchableOpacity>
-                        <View style={styles.watchMoreButton}>
-                            <Text style={styles.watchMoreLabel}>{label.watchMore}</Text>
-                        </View>
-                    </TouchableOpacity>
+                    <Button
+                        text={label.watchMore}
+                        fontSize={16}
+                        fontWeight="600"
+                        textColor={color.green}
+                        onPress={() => console.log(label.watchMore)}
+                        borderWidth={1}
+                        borderColor={color.green}
+                        style={styles.watchMoreButton}
+                    />
                 </View>
             </ScrollView>
             <CartButton />

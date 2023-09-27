@@ -151,6 +151,7 @@ export default StyleSheet.create({
     //recommendation view
     recommendContainer: {
         margin: 16,
+        marginBottom: 32,
     },
 
     productCard: {
@@ -208,19 +209,7 @@ export default StyleSheet.create({
 
     //xem them button
     watchMoreButton: {
-        height: 40,
         marginVertical: 8,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderColor: color.green,
-        borderWidth: 1,
         borderRadius: 24,
-    },
-
-    watchMoreLabel: {
-        fontSize: 16,
-        color: color.green,
-        fontWeight: '600',
     },
 });

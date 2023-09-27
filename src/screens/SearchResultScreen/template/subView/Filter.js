@@ -15,6 +15,7 @@ import label from '../../label';
 
 //import components
 import ItemCard from './ItemCard';
+import Button from '../../../../Components/Buttons/Button';
 
 const ClassifyItem = ({item, onPress}) => {
     const [selected, setSelected] = useState(false);
@@ -229,16 +230,16 @@ export default function Filter(props) {
             }
             </View>
         </View>
-        {/*Button view */}
-        <View style={{flex: 1, justifyContent: 'flex-end'}}>
-            <TouchableOpacity
-                onPress={() => onPressSaveFilterValue()}
-            >
-                <View style={styles.doneButton}>
-                    <Text style={styles.doneText}>{label.done}</Text>
-                </View>
-            </TouchableOpacity>
-        </View>
+        <Button
+            onPress={() => onPressSaveFilterValue()}
+            text={label.done}
+            fontSize={16}
+            fontWeight="500"
+            textColor={color.bgWhite}
+            textStyle={{paddingVertical: 12}}
+            backgroundColor={color.green}
+            style={{borderRadius: 8}}
+        />
     </View>
   );
 }

@@ -1,5 +1,6 @@
 import { StyleSheet, StatusBar } from 'react-native';
 import { color } from '../../values/color';
+import shadow from '../../values/shadow';
 
 export default StyleSheet.create({
     //search bar
@@ -36,6 +37,8 @@ export default StyleSheet.create({
     searchIcon: {
         fontSize: 16,
         padding: 4,
+        marginVertical: 4,
+        marginLeft: 8,
     },
 
     xIcon: {
@@ -46,24 +49,16 @@ export default StyleSheet.create({
     },
 
     searchBar: {
-        width: 314,
+        width: 318,
         borderWidth: 0,
         borderRadius: 8,
         backgroundColor: color.bgLight,
     },
 
-    filterIconContainer: {
-        width: 40,
-        height: 40,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: color.bgLight,
-        borderRadius: 8,
-    },
-
     resultLabelView: {
         paddingHorizontal: 16,
         marginTop: 12,
+        marginBottom: 8,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -77,17 +72,11 @@ export default StyleSheet.create({
 
     //result list view
     resultCard: {
+        marginHorizontal: 16,
         flexDirection: 'row',
         marginVertical: 8,
         borderRadius: 8,
-        shadowColor: color.black,
-        shadowOffset: {
-            width: 0,
-            height: 12,
-        },
-        shadowOpacity: 0.2,
-        shadowRadius: 8,
-        elevation: 4,
+        ...shadow,
         backgroundColor: color.bgWhite,
     },
 
@@ -137,10 +126,6 @@ export default StyleSheet.create({
         flexWrap: 'wrap',
     },
 
-    addIconView: {
-        justifyContent: 'flex-end',
-    },
-
     addIcon: {
         paddingHorizontal: 10,
         paddingVertical: 14,
@@ -164,7 +149,7 @@ export default StyleSheet.create({
     },
 
     footer: {
-        height: 340,
+        height: 32,
         opacity: 0,
     },
 
@@ -291,20 +276,5 @@ export default StyleSheet.create({
         position: 'absolute',
         fontSize: 12,
         color: color.green,
-    },
-
-    //done button
-    doneButton: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: color.green,
-        borderRadius: 8,
-    },
-
-    doneText: {
-        paddingVertical: 12,
-        fontSize: 16,
-        fontWeight: '500',
-        color: color.bgWhite,
     },
 });

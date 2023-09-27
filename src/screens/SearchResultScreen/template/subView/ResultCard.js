@@ -1,6 +1,8 @@
+/* eslint-disable react-native/no-inline-styles */
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
+import Button from '../../../../Components/Buttons/Button';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
@@ -13,7 +15,7 @@ const ResultCard = ({data = {}}) => {
     const navigation = useNavigation();
 
     return (
-        data !== {} ? (
+        data ? (
             <View style={styles.resultCard}>
                 <TouchableOpacity
                     activeOpacity={1}
@@ -39,12 +41,18 @@ const ResultCard = ({data = {}}) => {
                         }
                     </View>
                 </View>
-                <View style={styles.addIconView}>
+                {/*<View style={styles.addIconView}>
                     <TouchableOpacity
                         onPress={() => console.log(data.id)}
                     >
                         <AntDesign name="pluscircle" style={styles.addIcon} />
                     </TouchableOpacity>
+                </View>*/}
+                <View style={{justifyContent: 'flex-end'}}>
+                    <Button
+                        leftIcon={<AntDesign name="pluscircle" style={styles.addIcon} />}
+                        activeOpacity={1}
+                    />
                 </View>
             </View>
             ) : null

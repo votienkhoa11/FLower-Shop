@@ -5,6 +5,7 @@ import styles from './styles';
 
 const Button = ({
     disabled,
+    activeOpacity = 0.7,
     text,
     textStyle,
     textColor,
@@ -39,7 +40,7 @@ const Button = ({
     <TouchableOpacity
         disabled={disabled}
         onPress={onPress}
-        activeOpacity={0.7}
+        activeOpacity={activeOpacity}
     >
         <View style={[styles.buttonContainer, container, style]}>
             {leftIcon && leftIcon}

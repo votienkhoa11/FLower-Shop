@@ -18,6 +18,7 @@ import label from '../label';
 //import components
 import LoadingScreen from '../../../Components/LoadingScreen';
 import CartButton from '../../../Components/Buttons/CartButton';
+import Button from '../../../Components/Buttons/Button';
 import TextInputComponent from '../../../Components/TextInput/TextInputComponent';
 import ResultCard from './subView/ResultCard';
 import EmtyData from './subView/EmtyData';
@@ -41,9 +42,7 @@ export default function SearchResultMainView (props) {
     //render list
     const listFooter = () => {
         return (
-            <View style={styles.footer}>
-                <Text>------------------------------------------------</Text>
-            </View>
+            <View style={styles.footer} />
         );
     };
 
@@ -53,7 +52,7 @@ export default function SearchResultMainView (props) {
     <View style={defaultStyles.container}>
         <StatusBar translucent backgroundColor="transparent" barstyles="dark-content" />
         {/*Header */}
-        <View>
+        <View style={{height: '100%'}}>
             <View style={styles.header}>
                 <TouchableOpacity
                     onPress={() => navigation.goBack(null)}
@@ -78,30 +77,30 @@ export default function SearchResultMainView (props) {
                     style={styles.searchBar}
                     textInputStyle={{fontSize: 14}}
                 />
-                <TouchableOpacity
+                <Button
                     onPress={() => onPressFilter()}
-                >
-                    <View style={styles.filterIconContainer}>
-                        <AntDesign name="filter" size={18} color={color.lightDark} />
-                    </View>
-                </TouchableOpacity>
+                    leftIcon={<AntDesign name="filter" size={18} color={color.lightDark} />}
+                    width={40}
+                    height={40}
+                    backgroundColor={color.bgLight}
+                    style={{borderRadius: 8}}
+                />
             </View>
+            {/*search title view */}
             <View style={styles.resultLabelView}>
                 <Text style={styles.label}>{label.ResultFound} "{search}"</Text>
                 <Text style={styles.numberResults}>{results.length} {label.result}</Text>
             </View>
-            <View style={{margin: 16}}>
-                <FlatList
-                    data={search ? results : null}
-                    keyExtractor={item => item.id}
-                    renderItem={({item, index}) => {
-                        return <ResultCard data={item} />;
-                    }}
-                    showsVerticalScrollIndicator={false}
-                    ListEmptyComponent={<EmtyData />}
-                    ListFooterComponent={listFooter}
-                />
-            </View>
+            <FlatList
+                data={search ? results : null}
+                keyExtractor={item => item.id}
+                renderItem={({item, index}) => {
+                    return <ResultCard data={item} />;
+                }}
+                showsVerticalScrollIndicator={false}
+                ListEmptyComponent={<EmtyData />}
+                ListFooterComponent={listFooter}
+            />
         </View>
         <Modal
             isVisible={modalVisible}

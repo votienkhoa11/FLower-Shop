@@ -1,8 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { marginTop } from '../../DefaultStyles';
 import { color } from '../../values/color';
-
-import { width } from '../../DefaultStyles';
+import shadow from '../../values/shadow';
 
 export default StyleSheet.create({
     header: {
@@ -24,6 +23,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         borderRadius: 100 / 2,
         backgroundColor: color.bgWhite,
+        ...shadow,
     },
 
     avatar: {
@@ -52,20 +52,20 @@ export default StyleSheet.create({
     },
 
     changeButtonContainer: {
-        width: 30,
-        height: 30,
         position: 'absolute',
-        justifyContent: 'center',
-        alignItems: 'center',
-        margin: 16,
-        marginTop: 55,
-        marginLeft: width - 16 - 32,
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        marginTop: marginTop + 16,
+        paddingRight: 16,
+    },
+
+    changeButton: {
         borderRadius: 15,
-        backgroundColor: color.bgWhite,
+        ...shadow,
     },
 
     changeIcon: {
-        fontSize: 14,
         padding: 8,
     },
 

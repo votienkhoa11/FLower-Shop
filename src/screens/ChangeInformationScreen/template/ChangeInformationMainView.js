@@ -22,7 +22,9 @@ import label from '../label';
 
 //import components
 import Avatar from '../../UserScreen/template/subView/Avatar';
+import ChangeButton from '../../UserScreen/template/subView/ChangeButton';
 import TextInputComponent from '../../../Components/TextInput/TextInputComponent';
+import Button from '../../../Components/Buttons/Button';
 import ModalGender from './subView/ModalGender';
 import LoadingScreen from '../../../Components/LoadingScreen';
 import LabelTextInput from './subView/LabelTextInput';
@@ -69,12 +71,12 @@ const ChangeInformationMainView = (props) => {
 
     <View style={defaultStyles.container}>
         <StatusBar translucent={true} backgroundColor="transparent" barstyles="dark-content" />
-        <ScrollView keyboardShouldPersistTaps="always" >
+        <ScrollView keyboardShouldPersistTaps="handled" >
             <KeyboardAvoidingView>
                 {/*Header bar */}
                 <TouchableOpacity
                     onPress={() =>{
-                        navigation.navigate('usermenu');
+                        navigation.goBack(null);
                     }}
                 >
                     <View style={styles.header}>
@@ -84,15 +86,13 @@ const ChangeInformationMainView = (props) => {
                 </TouchableOpacity>
                 <View style={styles.avatarView}>
                     <Avatar sourceImg={user.avatar} />
-                </View>
-                {/*Change ava button */}
-                <View style={styles.changeButtonContainer}>
-                    <TouchableOpacity
-                        onPress={ () => {
-                            getAvatar();
-                        }}>
-                        <Entypo name="edit"/>
-                    </TouchableOpacity>
+                    <View style={styles.changeButtonContainer}>
+                        <ChangeButton
+                            onPress={() => getAvatar()}
+                            iconSize={7}
+                            style={styles.changeButton}
+                        />
+                    </View>
                 </View>
                 <View style={styles.inputList}>
                     {/*Name input */}
@@ -228,13 +228,21 @@ const ChangeInformationMainView = (props) => {
                         <LabelTextInput labelText={label.address} />
                     </View>
                 </View>
-                <View>
-                    <TouchableOpacity onPress={() => onSubmit()}>
-                        <View style={styles.saveButton}>
-                            <Text style={styles.saveText}>{label.save}</Text>
-                        </View>
-                    </TouchableOpacity>
-                </View>
+               {/*<TouchableOpacity onPress={() => onSubmit()}>
+                    <View style={styles.saveButton}>
+                        <Text style={styles.saveText}>{label.save}</Text>
+                    </View>
+                </TouchableOpacity>*/}
+                <Button
+                    onPress={() => onSubmit()}
+                    text={label.save}
+                    fontSize={16}
+                    fontWeight="500"
+                    textColor={color.bgWhite}
+                    width={122}
+                    backgroundColor={color.green}
+                    style={styles.saveButton}
+                />
             </KeyboardAvoidingView>
         </ScrollView>
     </View>

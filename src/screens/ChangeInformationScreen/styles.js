@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { marginTop } from '../../DefaultStyles';
 import { color } from '../../values/color';
+import shadow from '../../values/shadow';
 
 export default StyleSheet.create({
     //header view
@@ -25,15 +26,20 @@ export default StyleSheet.create({
     },
 
     changeButtonContainer: {
-        width: 25,
-        height: 25,
+        flexDirection: 'row',
         position: 'absolute',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 92,
-        marginLeft: 216,
+        width: 120,
+        height: 120,
+        justifyContent: 'flex-end',
+        padding: 16,
+    },
+
+    changeButton: {
+        width: 24,
+        height: 24,
         borderRadius: 30 / 2,
         backgroundColor: color.bgWhite,
+        ...shadow,
     },
     //inputs view
     inputList: {
@@ -154,18 +160,9 @@ export default StyleSheet.create({
 
     //button
     saveButton: {
-        width: 122,
-        alignSelf: 'center',
-        alignItems: 'center',
         padding: 10,
         borderRadius: 8,
-        backgroundColor: color.green,
         marginBottom: 40,
-    },
-
-    saveText: {
-        fontSize: 16,
-        fontWeight: '500',
-        color: color.bgWhite,
+        alignSelf: 'center',
     },
 });

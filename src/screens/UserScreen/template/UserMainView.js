@@ -1,14 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
-import { Text, View, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
+import { Text, View, ScrollView, StatusBar } from 'react-native';
     import React from 'react';
 
 //import style
-import defaultStyles from '../../../DefaultStyles';
 import styles from '../styles';
 import { color } from '../../../values/color';
 
 //import icons
-import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 //import components
@@ -16,6 +14,7 @@ import LoadingScreen from '../../../Components/LoadingScreen';
 import label from '../label';
 import ButtonMenu from './subView/ButtonMenu';
 import Avatar from './subView/Avatar';
+import ChangeButton from './subView/ChangeButton';
 
 const UserMainView = (props) => {
     const {
@@ -57,14 +56,14 @@ const UserMainView = (props) => {
                     </View>
                     <Text>{userInfo.phone}</Text>
                 </View>
-                {/*Change button */}
-                <View style={[styles.changeButtonContainer, defaultStyles.shadow]}>
-                    <TouchableOpacity
-                        onPress={() => navigation.navigate('change')}>
-                        <Entypo name="edit" style={styles.changeIcon} />
-                    </TouchableOpacity>
+                <View style={styles.changeButtonContainer}>
+                    <ChangeButton
+                        onPress={() => navigation.navigate('change')}
+                        style={styles.changeButton}
+                        iconSize={14}
+                    />
                 </View>
-                {/*Account menu */}
+                {/*buttons menu */}
                 <View>
                     <Text style={styles.label}>{label.account}</Text>
                     <View style={{paddingVertical: 8}}>

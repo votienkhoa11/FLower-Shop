@@ -228,11 +228,6 @@ const ChangeInformationMainView = (props) => {
                         <LabelTextInput labelText={label.address} />
                     </View>
                 </View>
-               {/*<TouchableOpacity onPress={() => onSubmit()}>
-                    <View style={styles.saveButton}>
-                        <Text style={styles.saveText}>{label.save}</Text>
-                    </View>
-                </TouchableOpacity>*/}
                 <Button
                     onPress={() => onSubmit()}
                     text={label.save}

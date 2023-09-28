@@ -15,7 +15,6 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 //import data
 import label from '../label';
-import { categories } from '../../../database/MockData';
 
 //import components
 import ProductItemCard from '../../../Components/ProductCard/ProductItemCard';
@@ -34,6 +33,7 @@ const HomeMainView = (props) => {
         userInfo,
         favorite,
         events,
+        categories,
         setFavoriteButton,
         popularProduct,
         broughtProducts,

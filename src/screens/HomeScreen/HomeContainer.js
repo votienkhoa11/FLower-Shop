@@ -5,7 +5,6 @@ import NetInfo from '@react-native-community/netinfo';
 import callToast from '../../utils/Toast';
 
 //get slices
-import { getAllProduct } from '../ProductScreen/productSlice';
 import { getHomePage } from './homeSlice';
 
 //import data
@@ -26,6 +25,7 @@ const HomeContainer = (props) => {
 
     //set data
     const [events, setEvents] = useState([]);
+    const [categories, setCategories] = useState([]);
     const [product, setProduct] = useState([]);
     const [popularProduct, setPopularProduct] = useState([]);
     const [broughtProducts, setBroughtProduct] = useState([]);
@@ -36,37 +36,22 @@ const HomeContainer = (props) => {
         const res = await dispatch(getHomePage());
 
         const {responseData} = res.payload.data;
+        setCategories(responseData.categories);
+        setProduct(responseData.products);
 
         const eventSlide = responseData.banner_slide.split('|');
-
         setEvents(eventSlide);
     };
 
     //get data from the database
     const getDatafromDB = async () => {
-        const res = await dispatch(getAllProduct({
-            currentPage: 1,
-            pageSize: 5,
-        }));
-
-        const {data} = res.payload;
-        const productList = [...data.responseData.rows];
-
-        setProduct(productList.slice(0, 5));
         //get user
         setUser(await userData());
 
         //get popular products by sorting productList's like
         //the idea is use the sort function to sort based on comapring like products from (from highest to lowest)
-        const popularProductList = productList.sort(function(a, b) {
-            const keyA = a.like || 0;
-            const keyB = b.like || 0;
-            //compare the 2 like of the products
-            return keyB - keyA;
-        });
 
         //set the popular product with top 5 item
-        setPopularProduct(popularProductList.slice(0, 5));
 
         //get products that the users has brought before to ask them to buy again
         const broughtProductList = products.filter((productItem) =>
@@ -127,6 +112,7 @@ const HomeContainer = (props) => {
         userInfo,
         favorite,
         events,
+        categories,
         popularProduct,
         broughtProducts,
         product,

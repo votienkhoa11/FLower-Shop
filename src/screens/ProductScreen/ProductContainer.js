@@ -30,7 +30,6 @@ const ProductContainer = (props) => {
         }));
 
         const {responseData} = res.payload.data;
-        console.log(responseData);
 
         setProductInformation(responseData);
     };

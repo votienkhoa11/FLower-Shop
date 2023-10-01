@@ -1,11 +1,13 @@
 import { StyleSheet } from 'react-native';
 import { marginTop } from '../../DefaultStyles';
 import { color } from '../../values/color';
+import shadow from '../../values/shadow';
 
 export default StyleSheet.create({
     header: {
         paddingTop: marginTop,
         backgroundColor: color.bgWhite,
+        ...shadow,
     },
 
     //image view
@@ -68,22 +70,15 @@ export default StyleSheet.create({
         gap: 2,
     },
 
-    collapseButton: {
+    collapseView: {
+        position: 'absolute',
+        padding: 16,
         width: '100%',
-        height: 48,
-        gap: 8,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderWidth: 0.3,
-        borderColor: color.bgMedium,
-        padding: 2,
     },
 
-    collapseText: {
-        fontSize: 16,
-        fontWeight: '500',
-        color: color.green,
+    collapseButton: {
+        gap: 8,
+        padding: 2,
     },
 
     price: {
@@ -217,7 +212,7 @@ export default StyleSheet.create({
     //buy view
     buySection: {
         backgroundColor: color.bgWhite,
-        shadowColor: color.black,
+        ...shadow,
     },
 
     priceView: {
@@ -247,18 +242,8 @@ export default StyleSheet.create({
     },
 
     buyButton: {
-        height: 48,
         marginHorizontal: 16,
         marginBottom: 16,
-        backgroundColor: color.green,
-        alignItems: 'center',
-        justifyContent: 'center',
         borderRadius: 8,
-    },
-
-    buyText: {
-        fontSize: 16,
-        fontWeight: 600,
-        color: color.bgWhite,
     },
 });

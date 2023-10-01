@@ -20,14 +20,15 @@ const ButtonIcon = () => {
     );
 };
 
-const CartButton = () => {
+const CartButton = ({style}) => {
   return (
     <Button
         leftIcon={<ButtonIcon />}
         height={51}
         width={51}
         backgroundColor={color.bgWhite}
-        style={styles.buttonCart}
+        style={[styles.buttonCart, style]}
+        activeOpacity={1}
     />
   );
 };

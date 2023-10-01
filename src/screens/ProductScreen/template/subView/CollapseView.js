@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react-native/no-inline-styles */
-import { View, Text } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { View } from 'react-native';
+import Button from '../../../../Components/Buttons/Button';
 import React, {useState} from 'react';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
@@ -25,35 +24,35 @@ const CollapseView = ({ children }) => {
     };
 
     const animatedStyle = useAnimatedStyle(() => {
-        const animatedHeight = collapsed ? withTiming(height) : withTiming(300);
+        const animatedHeight = collapsed ? withTiming(100) : withTiming(height);
         return {
             height: animatedHeight,
         };
     });
-    //style={{width: '100%', paddingHorizontal: 16, height: currentHeight}}
   return (
     <>
         <Animated.View style={[animatedStyle, {overflow: 'hidden'}]}>
             <View
                 onLayout={onLayOut}
-                style={{position: 'absolute'}}
+                style={styles.collapseView}
             >
                 {children}
             </View>
         </Animated.View>
-        <TouchableOpacity
-            activeOpacity={1}
+        <Button
             onPress={() => setCollapsed(!collapsed)}
-        >
-            <View style={styles.collapseButton}>
-                {collapsed ?
-                    <Text style={styles.collapseText}>{label.viewMore}</Text>
-                    :
-                    <Text style={styles.collapseText}>{label.collapse}</Text>
-                }
-                <AntDesign name={collapsed ? 'caretdown' : 'caretup'} size={8} color={color.green} />
-            </View>
-        </TouchableOpacity>
+            text={collapsed ? label.viewMore : label.collapse}
+            fontSize={16}
+            fontWeight="500"
+            textColor={color.green}
+            rightIcon={<AntDesign name={collapsed ? 'caretdown' : 'caretup'} size={8} color={color.green} />}
+            height={48}
+            width="100%"
+            borderWidth={0.3}
+            borderColor={color.bgMedium}
+            style={styles.collapseButton}
+            activeOpacity={1}
+        />
     </>
   );
 };

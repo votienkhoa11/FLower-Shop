@@ -1,6 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import { View, Text, StatusBar, ScrollView } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { View, Text, StatusBar, ScrollView, TouchableOpacity } from 'react-native';
 import React from 'react';
 
 import CollapseView from './subView/CollapseView';
@@ -22,6 +21,7 @@ import label from '../label';
 //import components
 import LoadingScreen from '../../../Components/LoadingScreen';
 import FlatlistImageView from '../../../Components/FlatlistImageView/FlatlistImageView';
+import Button from '../../../Components/Buttons/Button';
 import StarRate from './subView/StarRate';
 import Review from './subView/Review';
 import CartButton from '../../../Components/Buttons/CartButton';
@@ -50,7 +50,7 @@ const ProductMainView = (props) => {
     <View style={defaultStyles.container}>
         <StatusBar translucent backgroundColor="transparent" barstyles="dark-content" />
         <ScrollView>
-            <View style={[styles.header, defaultStyles.shadow]}>
+            <View style={styles.header}>
                 {/*Image */}
                 <View style={styles.imageView}>
                     <FlatlistImageView
@@ -100,12 +100,16 @@ const ProductMainView = (props) => {
                     </View>
                     {/*Favorite and share */}
                     <View style={styles.subRowView}>
-                        <TouchableOpacity>
-                            <MaterialIcons name="favorite-border" style={styles.icon15} />
-                        </TouchableOpacity>
-                        <TouchableOpacity>
-                            <Feather name="share-2" style={styles.icon15} />
-                        </TouchableOpacity>
+                        <Button
+                            onPress={() => console.log('favoritve')}
+                            leftIcon={<MaterialIcons name="favorite-border" style={styles.icon15} />}
+                            activeOpacity={1}
+                        />
+                        <Button
+                            onPress={() => console.log('share')}
+                            leftIcon={<Feather name="share-2" style={styles.icon15} />}
+                            activeOpacity={1}
+                        />
                     </View>
                 </View>
             </View>
@@ -121,9 +125,7 @@ const ProductMainView = (props) => {
                 <View style={styles.detailHeader}>
                     <Text style={styles.label}>{label.productDetail}</Text>
                 </View>
-                <CollapseView
-                    collapsedHeight={100}
-                >
+                <CollapseView>
                     <Text>Bó hoa Hồng đỏ đầy lãng mạn là món quà hoàn hảo thay lời muốn nói gửi đến người thương của bạn vào Valentine hoặc ngày kỷ niệm, sinh nhật.</Text>
                 </CollapseView>
             </View>
@@ -151,9 +153,7 @@ const ProductMainView = (props) => {
                         <Text style={styles.reviewText}>(10 {label.review})</Text>
                     </View>
                 </View>
-                <CollapseView
-                    collapsedHeight = {400}
-                >
+                <CollapseView>
                     {
                         (reviews || []).map(reviewsData => {
                             return <Review reviewData={reviewsData} key={reviewsData.id} />;
@@ -184,45 +184,49 @@ const ProductMainView = (props) => {
             </View>
         </ScrollView>
         {/*Buy section*/}
-        <View style={[styles.buySection, defaultStyles.shadow]}>
+        <View style={styles.buySection}>
             {/*price and quantiy change */}
             <View style={styles.priceView}>
-                <Text style={styles.number}>{productInformation.price * quantity}đ</Text>
+                <Text style={styles.number}>{productInformation.original_price * quantity}đ</Text>
                 {/*quantiy change */}
                 <View style={styles.quantityChange}>
-                    <TouchableOpacity activeOpacity={1}
+                    <Button
+                        activeOpacity={1}
                         onPress={() => setQuantity(quantity - 1)}
                         disabled = {quantity === 1 ? true : false}
-                    >
-                        <AntDesign
-                            name="minuscircleo"
-                            style={[styles.changeQuantityButton, {
-                                color: quantity === 1 ? color.bgMedium : color.green,
-                            }]}
+                        leftIcon={
+                            <AntDesign
+                                name="minuscircleo"
+                                style={[styles.changeQuantityButton, {
+                                    color: quantity === 1 ? color.bgMedium : color.green,
+                                }]}
                             />
-                    </TouchableOpacity>
+                        }
+                    />
                     <Text
                         style={styles.number}
                     >
                         {quantity < 10 ? `0${quantity}` : quantity}
                     </Text>
-                    <TouchableOpacity activeOpacity={1}
-                            onPress={() => setQuantity(quantity + 1)}
-                    >
-                        <AntDesign name="pluscircleo" style={styles.changeQuantityButton} />
-                    </TouchableOpacity>
+                    <Button
+                        activeOpacity={1}
+                        onPress={() => setQuantity(quantity + 1)}
+                        leftIcon={<AntDesign name="pluscircleo" style={styles.changeQuantityButton} />}
+                    />
                 </View>
             </View>
-            <TouchableOpacity
-            >
-                <View style={styles.buyButton}>
-                    <Text style={styles.buyText}>{label.buy}</Text>
-                </View>
-            </TouchableOpacity>
+            <Button
+                onPress={() => console.log(label.buy)}
+                text={label.buy}
+                fontSize={16}
+                fontWeight="600"
+                textColor={color.bgWhite}
+                height={48}
+                backgroundColor={color.green}
+                style={styles.buyButton}
+            />
         </View>
-        <CartButton
-            style={{marginBottom: 100}}
-        />
+        <CartButton style={{marginBottom: 102}}/>
     </View>
   );
 };

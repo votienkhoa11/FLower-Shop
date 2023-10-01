@@ -19,8 +19,6 @@ import Feather from 'react-native-vector-icons/Feather';
 //import data
 import label from '../label';
 
-import salePriceCalculator from '../../../utils/salePriceCalculator';
-
 //import components
 import LoadingScreen from '../../../Components/LoadingScreen';
 import FlatlistImageView from '../../../Components/FlatlistImageView/FlatlistImageView';

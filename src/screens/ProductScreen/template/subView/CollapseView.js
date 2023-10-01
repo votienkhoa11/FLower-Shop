@@ -3,7 +3,7 @@
 import { View, Text } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import React, {useState} from 'react';
-import Collapsible from 'react-native-collapsible';
+import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
 import styles from '../../styles';
 import { color } from '../../../../values/color';
@@ -12,27 +12,35 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import label from '../../label';
 
-const CollapseView = ({ children, collapsedHeight }) => {
+const CollapseView = ({ children }) => {
     const [collapsed, setCollapsed] = useState(true);
-    const [currentHeight, setCurrentHeight] = useState(0);
+    const [height, setHeight] = useState(0);
 
     const onLayOut = (event) => {
-        const {x, y, height, width} = event.nativeEvent.layout;
+        const layoutHeight = event.nativeEvent.layout.height;
 
-        setCurrentHeight(height + 20);
+        if (layoutHeight > 0 && layoutHeight !== height) {
+            setHeight(layoutHeight);
+        }
     };
 
+    const animatedStyle = useAnimatedStyle(() => {
+        const animatedHeight = collapsed ? withTiming(height) : withTiming(300);
+        return {
+            height: animatedHeight,
+        };
+    });
+    //style={{width: '100%', paddingHorizontal: 16, height: currentHeight}}
   return (
     <>
-        <Collapsible
-            collapsed={collapsed}
-            collapsedHeight={collapsedHeight}
-            style={{width: '100%', paddingHorizontal: 16, height: currentHeight}}
-        >
-            <View onLayout={onLayOut}>
+        <Animated.View style={[animatedStyle, {overflow: 'hidden'}]}>
+            <View
+                onLayout={onLayOut}
+                style={{position: 'absolute'}}
+            >
                 {children}
             </View>
-        </Collapsible>
+        </Animated.View>
         <TouchableOpacity
             activeOpacity={1}
             onPress={() => setCollapsed(!collapsed)}

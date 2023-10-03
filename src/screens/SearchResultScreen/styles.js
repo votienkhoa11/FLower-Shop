@@ -15,14 +15,8 @@ export default StyleSheet.create({
         padding: 4,
     },
 
-    label: {
-        fontSize: 16,
-        fontWeight: '600',
-    },
-
     searchLabelContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
+        justifyContent: 'flex-start',
         gap: 8,
     },
 

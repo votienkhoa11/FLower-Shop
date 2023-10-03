@@ -71,6 +71,7 @@ export default StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: color.bgWhite,
         shadowColor: color.black,
+        ...shadow,
     },
 
     tabViewButton: {

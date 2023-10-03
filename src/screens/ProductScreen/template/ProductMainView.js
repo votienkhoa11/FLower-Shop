@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import { View, Text, StatusBar, ScrollView, TouchableOpacity } from 'react-native';
 import React from 'react';
+import RenderHTML from 'react-native-render-html';
 
 import CollapseView from './subView/CollapseView';
 

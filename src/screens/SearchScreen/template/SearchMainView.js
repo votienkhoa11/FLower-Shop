@@ -119,8 +119,9 @@ const SearchMainView = (props) => {
                                 (popularSearch || []).map(popularSearchData => {
                                     return (
                                         <Button
+                                            activeOpacity={1}
                                             onPress={() => {
-                                                onTouchSearchItem(popularSearchData);
+                                                onTouchSearchItem(popularSearchData.search);
                                             }}
                                             text={popularSearchData.search}
                                             key={popularSearchData.id}

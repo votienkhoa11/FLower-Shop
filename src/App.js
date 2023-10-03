@@ -8,6 +8,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Provider} from 'react-redux';
+import SplashScreen from 'react-native-splash-screen';
+import PushNotification from 'react-native-push-notification';
 
 //import screens
 //main stack screens
@@ -33,6 +35,7 @@ import label from './label';
 //import style
 import defaultStyles from './DefaultStyles';
 import { color } from './values/color';
+import shadow from './values/shadow';
 
 //import icon
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -77,6 +80,7 @@ function TabNavigators () {
         headerShown: false,
         tabBarStyle: {
           height: Platform.OS === 'ios' ? 68 + insets.bottom : 70,
+          ...shadow,
         },
         tabBarHideOnKeyboard: true,
         unmountOnBlur: true,
@@ -174,6 +178,18 @@ function App() {
     };
 
   useEffect(() => {
+    SplashScreen.hide(); //hide splash screen
+
+    PushNotification.configure({
+        permissions: {
+            alert:  true,
+            badge: true,
+            sound: true,
+        },
+        popInitialNotification: true,
+        requestPermissions: Platform.OS === 'ios',
+    });
+
     try {
         saveUser();
     } catch (e) {

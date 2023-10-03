@@ -24,7 +24,7 @@ const CollapseView = ({ children }) => {
     };
 
     const animatedStyle = useAnimatedStyle(() => {
-        const animatedHeight = collapsed ? withTiming(100) : withTiming(height);
+        const animatedHeight = collapsed ? withTiming(300) : withTiming(height);
         return {
             height: animatedHeight,
         };

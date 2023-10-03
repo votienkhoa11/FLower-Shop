@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import { View, Text, StatusBar, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StatusBar, ScrollView, TouchableOpacity, useWindowDimensions } from 'react-native';
 import React from 'react';
 import RenderHTML from 'react-native-render-html';
 
@@ -18,6 +18,7 @@ import Feather from 'react-native-vector-icons/Feather';
 
 //import data
 import label from '../label';
+import { html } from '../../../database/ProductDescription';
 
 //import components
 import LoadingScreen from '../../../Components/LoadingScreen';
@@ -44,6 +45,8 @@ const ProductMainView = (props) => {
         setChooseRating,
         setQuantity,
     } = props;
+
+    const {width} = useWindowDimensions();
 
   return (
     isLoading ? <LoadingScreen /> :
@@ -120,14 +123,16 @@ const ProductMainView = (props) => {
                     marginTop: 16,
                     paddingTop: 0,
                 },
-                defaultStyles.shadow,
                 ]}
             >
                 <View style={styles.detailHeader}>
                     <Text style={styles.label}>{label.productDetail}</Text>
                 </View>
                 <CollapseView>
-                    <Text>Bó hoa Hồng đỏ đầy lãng mạn là món quà hoàn hảo thay lời muốn nói gửi đến người thương của bạn vào Valentine hoặc ngày kỷ niệm, sinh nhật.</Text>
+                    <RenderHTML
+                        contentWidth={width}
+                        source={{html: html}}
+                    />
                 </CollapseView>
             </View>
             {/*Review section */}
@@ -137,7 +142,6 @@ const ProductMainView = (props) => {
                         marginTop: 16,
                         paddingTop: 0,
                     },
-                defaultStyles.shadow,
                 ]}
             >
                 <View style={styles.detailHeader}>

@@ -29,7 +29,6 @@ import SearchResultScreen from './screens/SearchResultScreen';
 import UserScreen from './screens/UserScreen';
 import ChangeInformationScreen from './screens/ChangeInformationScreen';
 
-
 //import label
 import label from './label';
 //import style
@@ -96,8 +95,8 @@ function TabNavigators () {
                 focused ? {borderTopWidth: 2, paddingTop: 0} : null,
               ]}
             >
-              <Ionicons name="compass" size={24} color={focused ? color.green : color.mediumBlack} />
-              <Text style={defaultStyles.tabLabel}>{label.home}</Text>
+                <Ionicons name="compass" size={24} color={focused ? color.green : color.mediumBlack} />
+                <Text style={defaultStyles.tabLabel}>{label.home}</Text>
             </View>
           ),
         }}

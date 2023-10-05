@@ -1,4 +1,5 @@
-import { View, Text, TouchableOpacity, StatusBar, TextInput, Pressable, ScrollView } from 'react-native';
+/* eslint-disable react-native/no-inline-styles */
+import { View, Text, TouchableOpacity, StatusBar, Pressable, ScrollView } from 'react-native';
 import React from 'react';
 
 //import style
@@ -15,9 +16,9 @@ import label from '../label';
 
 //import components
 import LoadingScreen from '../../../Components/LoadingScreen';
+import TextInputComponent from '../../../Components/TextInput/TextInputComponent';
 import Navigations from './subView/Navigations';
 import OrderItem from './subView/OrderItem';
-
 
 const OrderMainView = (props) => {
     const {
@@ -55,32 +56,31 @@ const OrderMainView = (props) => {
                         </TouchableOpacity>
                     </View>
             </View>
-            {   showsearch ?
-                <View style={[styles.searchBar, (onFocus ?
-                                {borderColor: color.black} : {borderColor: color.bgMedium})]}>
-                    <TextInput
-                        placeholder="Tìm kiếm"
-                        onChangeText={onChangeText}
-                        value={search}
-                        autoCapitalize="none"
-                        returnKeyType="go"
-                        onSubmitEditing={() => getResults(search)}
-                        onFocus={setOnFocus}
-                        onBlur={setOnBlur}
-                        style={styles.searchInput}
-                    />
-                    {showResult ? (
-                        <TouchableOpacity onPress={() => onClose()}>
-                            <AntDesign
-                                name="closecircleo"
-                                size={18}
-                                color={color.lightDark}
-                                style={styles.closeIcon}
-                            />
-                        </TouchableOpacity>
-                    ) : null}
-                </View>
-                : null
+            {   showsearch &&
+                <TextInputComponent
+                    placeholder={label.search}
+                    onChangeText={onChangeText}
+                    value={search}
+                    autoCapitalize="none"
+                    returnKeyType="go"
+                    onSubmitEditing={() => getResults(search)}
+                    onFocus={setOnFocus}
+                    onBlur={setOnBlur}
+                    style={[
+                        styles.searchBar,
+                        {borderColor: onFocus ? color.green : color.bgMedium},
+                    ]}
+                    rightIcon={
+                        showResult &&
+                        <AntDesign
+                            name="closecircleo"
+                            size={18}
+                            color={color.lightDark}
+                            style={{paddingRight: 8}}
+                        />
+                    }
+                    onPressRightIcon={() => onClose()}
+                />
             }
             { showResult ?
                 (
@@ -98,7 +98,7 @@ const OrderMainView = (props) => {
             {
                 showFilter ? (
                     <View style={styles.historySearchListView}>
-                        <View style={[styles.historySearchList, defaultStyles.shadow]}>
+                        <View style={styles.historySearchList}>
                         {
                             //show 3 search only
                             (filterSearchList.slice(0, 3) || []).map((historySearchItem, searchIndex) => {

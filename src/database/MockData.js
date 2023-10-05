@@ -161,20 +161,6 @@ export const reviews = [
     },
 ];
 
-export const events = [
-    {
-        id: 1,
-        event: 'spring sale',
-        image: require('../assets/imgs/events/saleSpring.png'),
-    },
-
-    {
-        id: 2,
-        event: 'summer sale',
-        image: require('../assets/imgs/events/salesummer.png'),
-    },
-];
-
 export const categories = [
     {
         id: 1,

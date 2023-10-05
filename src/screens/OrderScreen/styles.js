@@ -1,6 +1,7 @@
 import { StyleSheet, StatusBar } from 'react-native';
 import { marginTop } from '../../DefaultStyles';
 import { color } from '../../values/color';
+import shadow from '../../values/shadow';
 
 export default StyleSheet.create({
     header: {
@@ -24,19 +25,12 @@ export default StyleSheet.create({
 
     //search
     searchBar: {
-        height: 40,
         marginHorizontal: 16,
+        marginBottom: 16,
         paddingHorizontal: 8,
-        flexDirection: 'row',
-        alignItems: 'center',
         borderRadius: 40,
-        borderWidth: 1,
         borderColor: color.bgMedium,
         backgroundColor: color.bgLight,
-    },
-
-    searchInput: {
-        flex: 1,
     },
 
     searchButton: {
@@ -65,6 +59,7 @@ export default StyleSheet.create({
         backgroundColor: color.bgWhite,
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20,
+        ...shadow,
     },
 
     textSearch: {
@@ -76,6 +71,7 @@ export default StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: color.bgWhite,
         shadowColor: color.black,
+        ...shadow,
     },
 
     tabViewButton: {
@@ -105,6 +101,7 @@ export default StyleSheet.create({
         gap: 8,
         borderRadius: 14,
         backgroundColor: color.bgWhite,
+        ...shadow,
     },
 
     imageProduct: {
@@ -147,21 +144,6 @@ export default StyleSheet.create({
         paddingVertical: 4,
         fontSize: 12,
         fontWeight: 'bold',
-    },
-
-    orderButton: {
-        width: 65,
-        paddingVertical: 7,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: color.greenLight,
-        borderRadius: 40,
-    },
-
-    orderAgain: {
-        fontSize: 12,
-        fontWeight: 'bold',
-        color: color.greenDark,
     },
 
     emptyView: {

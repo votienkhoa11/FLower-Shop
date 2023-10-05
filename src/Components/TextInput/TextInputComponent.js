@@ -1,12 +1,14 @@
-import { View, TextInput } from 'react-native';
+import { View, TextInput, Text } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import React from 'react';
 import styles from './styles';
+import { color } from '../../values/color';
 
 const TextInputComponent = ({
     placeholder,
     style,
-    keyBoardType,
+    textInputStyle,
+    keyboardType,
     autoCapitalize,
     value,
     onChangeText,
@@ -20,22 +22,28 @@ const TextInputComponent = ({
     onPressleftIcon,
     rightIcon,
     onPressRightIcon,
+    error,
 }) => (
     <View>
-        <View style={[styles.containerAreaInput, style]}>
+        <View style={[
+            styles.containerAreaInput,
+            style,
+            error && {borderColor: color.red},
+        ]}>
             {   leftIcon &&
                 <TouchableOpacity
-                    onPress={() => onPressleftIcon && onPressleftIcon}
+                    activeOpacity={0}
+                    onPress={() => onPressleftIcon && onPressleftIcon()}
                 >
                     {leftIcon}
                 </TouchableOpacity>
             }
             <TextInput
-                style={styles.textInput}
+                style={[styles.textInput, textInputStyle]}
                 value={value}
                 onChangeText={onChangeText}
                 placeholder={placeholder}
-                keyboardType={keyBoardType}
+                keyboardType={keyboardType}
                 autoCapitalize={autoCapitalize ? autoCapitalize : 'none'}
                 onBlur={onBlur}
                 onFocus={onFocus}
@@ -52,6 +60,7 @@ const TextInputComponent = ({
                 </TouchableOpacity>
             }
         </View>
+        {error && <Text style={styles.errorText}>{error}</Text>}
     </View>
 );
 

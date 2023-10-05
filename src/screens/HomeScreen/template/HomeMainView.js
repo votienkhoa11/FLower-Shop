@@ -3,7 +3,7 @@ import { View, Text, ImageBackground, StatusBar, ScrollView, FlatList } from 're
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import React from 'react';
 
-//import styless
+//import styles
 import defaultStyles from '../../../DefaultStyles';
 import styles from '../styles';
 import { color } from '../../../values/color';
@@ -15,7 +15,6 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 //import data
 import label from '../label';
-import { categories } from '../../../database/MockData';
 
 //import components
 import ProductItemCard from '../../../Components/ProductCard/ProductItemCard';
@@ -25,6 +24,7 @@ import CategoryCard from './subView/CategoryCard';
 import PopularCard from './subView/PopularCard';
 import ProductCard from './subView/ProductCard';
 import CartButton from '../../../Components/Buttons/CartButton';
+import Button from '../../../Components/Buttons/Button';
 
 const HomeMainView = (props) => {
     const {
@@ -33,6 +33,7 @@ const HomeMainView = (props) => {
         userInfo,
         favorite,
         events,
+        categories,
         setFavoriteButton,
         popularProduct,
         broughtProducts,
@@ -123,21 +124,24 @@ const HomeMainView = (props) => {
                     </View>
                 </ImageBackground>
                 {/*Buy again recommend View*/}
-                <View>
-                    <Text style={styles.label}>{label.buyAgainLabel}</Text>
-                    <FlatList
-                        data={broughtProducts}
-                        renderItem={({item, index}) => (
-                            <ProductItemCard data={item} key={item.id} />
-                        )}
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                        decelerationRate={0.5}
-                    />
-                </View>
+                <Text style={styles.label}>{label.buyAgainLabel}</Text>
+                <FlatList
+                    data={broughtProducts}
+                    renderItem={({item, index}) => (
+                        <ProductItemCard data={item} key={item.id} />
+                    )}
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    decelerationRate={0.5}
+                />
                 {/*recommend View*/}
                 <View style={styles.recommendContainer}>
-                    <Text style={[styles.label, {paddingHorizontal: 0}]}>{label.recommendLabel}</Text>
+                    <Text style={[styles.label,
+                        {
+                            paddingHorizontal: 16,
+                        },
+                    ]}>
+                    {label.recommendLabel}</Text>
                     <FlatList
                         data={product}
                         renderItem={({item, index}) => (
@@ -145,11 +149,17 @@ const HomeMainView = (props) => {
                         )}
                         scrollEnabled={false}
                     />
-                    <TouchableOpacity>
-                        <View style={styles.watchMoreButton}>
-                            <Text style={styles.watchMoreLabel}>{label.watchMore}</Text>
-                        </View>
-                    </TouchableOpacity>
+                    <Button
+                        text={label.watchMore}
+                        fontSize={16}
+                        fontWeight="600"
+                        textColor={color.green}
+                        onPress={() => console.log(label.watchMore)}
+                        height={40}
+                        borderWidth={1}
+                        borderColor={color.green}
+                        style={styles.watchMoreButton}
+                    />
                 </View>
             </ScrollView>
             <CartButton />

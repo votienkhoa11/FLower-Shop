@@ -1,6 +1,7 @@
 import { StyleSheet, StatusBar } from 'react-native';
 import { marginTop } from '../../DefaultStyles';
 import { color } from '../../values/color';
+import shadow from '../../values/shadow';
 
 export default StyleSheet.create({
     //search bar
@@ -49,6 +50,7 @@ export default StyleSheet.create({
         backgroundColor: color.bgWhite,
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20,
+        ...shadow,
     },
 
     textSearch: {
@@ -89,16 +91,11 @@ export default StyleSheet.create({
         marginRight: 8,
         marginVertical: 8,
         borderRadius: 20,
-        backgroundColor: color.bgLight,
-        borderWidth: 0.3,
-        borderColor: color.bgMedium,
     },
 
     searchText: {
         paddingVertical: 4,
         paddingHorizontal: 8,
-        fontSize: 14,
-        color: color.green,
     },
 
     //suggest search view
@@ -114,6 +111,7 @@ export default StyleSheet.create({
         margin: 8,
         borderRadius: 10,
         backgroundColor: color.bgWhite,
+        ...shadow,
     },
 
     imageProduct: {

@@ -2,20 +2,14 @@ import { StyleSheet } from 'react-native';
 
 //color
 import { color } from '../../values/color';
+import shadow from '../../values/shadow';
 
 export const styles = StyleSheet.create({
     //brought items view
     itemCard: {
         backgroundColor: color.bgWhite,
         borderRadius: 10,
-        shadowColor: color.black,
-        shadowOffset: {
-            width: 20,
-            height: 24,
-        },
-        shadowOpacity: 0.2,
-        shadowRadius: 8,
-        elevation: 4,
+        ...shadow,
     },
 
     itemImage: {

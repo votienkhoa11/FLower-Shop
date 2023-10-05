@@ -10,4 +10,5 @@ export default {
     chat: 'Chat',
     empty: 'Bạn không có đơn hàng nào',
     noResult: 'Không tìm thấy kết quả tìm kiếm!',
+    search: 'Tìm kiếm',
 };

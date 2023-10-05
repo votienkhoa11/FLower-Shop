@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 import { marginTop } from '../../DefaultStyles';
 //color
 import { color } from '../../values/color';
+import shadow from '../../values/shadow';
 
 export default StyleSheet.create({
     //address
@@ -125,6 +126,7 @@ export default StyleSheet.create({
         height: 170,
         backgroundColor: color.bgWhite,
         borderRadius: 10,
+        ...shadow,
     },
 
     popularImage: {
@@ -150,15 +152,16 @@ export default StyleSheet.create({
 
     //recommendation view
     recommendContainer: {
-        margin: 16,
+        marginVertical: 24,
     },
 
     productCard: {
+        marginHorizontal: 16,
+        marginVertical: 8,
         flexDirection: 'row',
         backgroundColor: color.bgWhite,
-        gap: 8,
-        marginBottom: 16,
         borderRadius: 8,
+        ...shadow,
     },
 
     productImage: {
@@ -208,19 +211,7 @@ export default StyleSheet.create({
 
     //xem them button
     watchMoreButton: {
-        height: 40,
-        marginVertical: 8,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderColor: color.green,
-        borderWidth: 1,
+        margin: 16,
         borderRadius: 24,
-    },
-
-    watchMoreLabel: {
-        fontSize: 16,
-        color: color.green,
-        fontWeight: '600',
     },
 });

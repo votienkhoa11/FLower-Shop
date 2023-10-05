@@ -1,8 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { marginTop } from '../../DefaultStyles';
 import { color } from '../../values/color';
-
-import { width } from '../../DefaultStyles';
+import shadow from '../../values/shadow';
 
 export default StyleSheet.create({
     //header view
@@ -27,50 +26,59 @@ export default StyleSheet.create({
     },
 
     changeButtonContainer: {
-        width: 25,
-        height: 25,
+        flexDirection: 'row',
         position: 'absolute',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 92,
-        marginLeft: 216,
+        width: 120,
+        height: 120,
+        justifyContent: 'flex-end',
+        padding: 16,
+    },
+
+    changeButton: {
+        width: 24,
+        height: 24,
         borderRadius: 30 / 2,
         backgroundColor: color.bgWhite,
+        ...shadow,
     },
     //inputs view
-    inputView: {
+    inputList: {
         padding: 8,
-        gap: 8,
+        paddingHorizontal: 16,
+        gap: 20,
+    },
+
+    inputView: {
+        paddingVertical: 8,
     },
 
     input: {
-        width: '100%',
-        flexDirection: 'row',
         height: 48,
-        borderWidth: 1,
         borderRadius: 4,
         alignItems: 'center',
-        paddingHorizontal: 12,
         backgroundColor: color.bgWhite,
     },
 
     labelInput: {
+        height: 21,
         flexDirection: 'row',
         position: 'absolute',
         backgroundColor: color.bgWhite,
         paddingHorizontal: 4,
-        marginLeft: 16,
+        marginLeft: 14,
+        marginBottom: 10,
         gap: 4,
     },
 
-    inputIcon: {
+    calendarIcon: {
         fontSize: 24,
-        color: color.bgMedium,
+        color: color.mediumLight,
+        paddingRight: 8,
     },
 
     labelText: {
         color: color.mediumBlack,
-        fontSize: 13,
+        fontSize: 12,
     },
 
     starText: {
@@ -79,17 +87,11 @@ export default StyleSheet.create({
         fontSize: 16,
     },
 
-    errorText: {
-        color: color.red,
-        fontSize: 10,
-        paddingLeft: 14,
-    },
-
+    //phone style
     codePhoneContainer: {
-        position: 'absolute',
-        marginTop: 21,
-        marginLeft: 20,
-        padding: 2,
+        height: 22,
+        marginLeft: 12,
+        paddingHorizontal: 4,
         borderWidth: 1,
         borderColor: color.bgMedium,
         borderRadius: 4,
@@ -117,60 +119,50 @@ export default StyleSheet.create({
 
     countryPickerModal: {
         modal: {
-            height: 500,
-            width: 300,
+            height: '80%',
+            width: '100%',
             justifyContent: 'center',
             alignSelf: 'center',
         },
-
-        backdrop: {
-            backgroundColor: color.opacity0Color,
-        },
-
         countryButtonStyles: {
             height: 40,
         },
     },
 
-    buttonText: {
-        fontSize: 14,
-        textAlign: 'left',
-        marginHorizontal: 0,
-        paddingHorizontal: 4,
-    },
-
-    dropDown: {
-        justifyContent: 'center',
-        backgroundColor: color.bgWhite,
-        paddingHorizontal: 0,
-    },
-
-    row: {
-        height: 40,
+    //gender modal style
+    modalStyle: {
+        justifyContent: 'flex-end',
+        margin: 0,
+        padding: 0,
     },
 
     downIcon: {
-        position: 'absolute',
         fontSize: 24,
-        color: color.bgMedium,
-        marginTop: 12,
-        marginLeft: width - 54,
+        color: color.mediumLight,
+        paddingRight: 6,
+    },
+
+    genderItem: {
+        width: '100%',
+        height: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: color.bgWhite,
+        borderBottomWidth: 1,
+        borderColor: color.mediumLight,
+    },
+
+    genderText: {
+        fontSize: 16,
+        fontWeight: '400',
+        color: color.mediumBlack,
     },
 
     //button
     saveButton: {
-        width: 122,
-        alignSelf: 'center',
-        alignItems: 'center',
         padding: 10,
         borderRadius: 8,
-        backgroundColor: color.green,
         marginBottom: 40,
-    },
-
-    saveText: {
-        fontSize: 16,
-        fontWeight: '500',
-        color: color.bgWhite,
+        alignSelf: 'center',
     },
 });

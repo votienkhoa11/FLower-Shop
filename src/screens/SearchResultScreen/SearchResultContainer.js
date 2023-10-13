@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+//import slide
+import { searchKeyword } from './searchSlice';
 //import data
 import { products } from '../../database/MockData';
 import { colorProduct } from '../../values/color';
-
 //import template
 import SearchResultMainView from './template/SearchResultMainView';
 

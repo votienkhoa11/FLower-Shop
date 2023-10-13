@@ -1,15 +1,17 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+//import slide
+import { getPopularKeyword } from '../SearchResultScreen/searchSlice';
 //import data
 import { products } from '../../database/MockData';
-import { searchResult } from '../../database/MockData';
-
 //import template
 import SearchMainView from './template/SearchMainView';
 
 const SearchContainer = (props) => {
     const {
+        dispatch,
+        isLoading,
         navigation,
     } = props;
 
@@ -23,24 +25,23 @@ const SearchContainer = (props) => {
     const [filterSearchList, setFilterSearchList] = useState([]);
 
     //set view show
-    const [loading, setLoading] = useState(true);
     const [showFilter, setShowFilter] = useState(false);
 
-    const getDatafromDB = async() => {
-        //get params search
-        //get popular seach
-        const popularSearchList = [...searchResult];
+    const fetchPopularSearch = async () => {
+        const res = await dispatch(getPopularKeyword());
 
-        //sort the search based on searchTime(highest to lowest)
-        popularSearchList.sort(function(a, b) {
+        const {responseData} = res.payload.data;
+
+        responseData.sort(function(a, b) {
             const keyA = a.searchTime || 0;
             const keyB = b.searchTime || 0;
             return keyB - keyA;
         });
 
-        //set popular search with top 12
-        setPopularSearch(popularSearchList.slice(0, 12));
+        setPopularSearch(responseData.slice(0, 12));
+    };
 
+    const getDatafromDB = async() => {
         //set data suggestion
         const productList = [...products];
         productList.sort(() => 0.5 - Math.random());
@@ -57,7 +58,6 @@ const SearchContainer = (props) => {
         }
 
         //set loading to false when getting data is completed
-        setLoading(false);
     };
 
     //on change text function
@@ -119,13 +119,10 @@ const SearchContainer = (props) => {
     };
 
     useEffect(() => {
-        const unsubscribe = navigation.addListener('focus', () => {
-            getDatafromDB();
-            getHistory();
-        });
-
-        return unsubscribe;
-    }, [navigation]);
+        getDatafromDB();
+        getHistory();
+        fetchPopularSearch();
+    }, []);
 
     const searchProp = {
         //values
@@ -134,7 +131,7 @@ const SearchContainer = (props) => {
         historySearch,
         popularSearch,
         productData,
-        loading,
+        isLoading,
         onFocus,
         showFilter,
         //functions

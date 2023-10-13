@@ -28,7 +28,7 @@ const SearchMainView = (props) => {
         historySearch,
         popularSearch,
         productData,
-        loading,
+        isLoading,
         onFocus,
         showFilter,
         //functions
@@ -41,7 +41,7 @@ const SearchMainView = (props) => {
     } = props;
 
   return (
-    loading ? <LoadingScreen /> :
+    isLoading ? <LoadingScreen /> :
 
     <View style={defaultStyles.container}>
         <View style={{height: '100%'}}>
@@ -111,33 +111,35 @@ const SearchMainView = (props) => {
                             }
                         </View>
                     </View>
-                { /*most popular search item*/}
-                    <View style={styles.historySearchView}>
-                        <Text style={styles.label}>{label.mostPopularSearchLabel}</Text>
-                        <View style={styles.searchResultView}>
-                            {
-                                (popularSearch || []).map(popularSearchData => {
-                                    return (
-                                        <Button
-                                            activeOpacity={1}
-                                            onPress={() => {
-                                                onTouchSearchItem(popularSearchData.search);
-                                            }}
-                                            text={popularSearchData.search}
-                                            key={popularSearchData.id}
-                                            fontSize={14}
-                                            textColor={color.green}
-                                            textStyle={styles.searchText}
-                                            backgroundColor={color.bgLight}
-                                            borderWidth={0.3}
-                                            borderColor={color.bgMedium}
-                                            style={styles.searchItem}
-                                        />
-                                    );
-                                })
-                            }
+                    {/*most popular search item*/}
+                    {   popularSearch.length > 0 &&
+                        <View style={styles.historySearchView}>
+                            <Text style={styles.label}>{label.mostPopularSearchLabel}</Text>
+                            <View style={styles.searchResultView}>
+                                {
+                                    (popularSearch || []).map(popularSearchData => {
+                                        return (
+                                            <Button
+                                                activeOpacity={1}
+                                                onPress={() => {
+                                                    onTouchSearchItem(popularSearchData.search);
+                                                }}
+                                                text={popularSearchData.search}
+                                                key={popularSearchData.id}
+                                                fontSize={14}
+                                                textColor={color.green}
+                                                textStyle={styles.searchText}
+                                                backgroundColor={color.bgLight}
+                                                borderWidth={0.3}
+                                                borderColor={color.bgMedium}
+                                                style={styles.searchItem}
+                                            />
+                                        );
+                                    })
+                                }
+                            </View>
                         </View>
-                    </View>
+                    }
                     {/*suggestion search items*/}
                     <View>
                         <View style={{paddingHorizontal: 16}}>

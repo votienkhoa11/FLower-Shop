@@ -65,6 +65,12 @@ export default StyleSheet.create({
     },
 
     //result list view
+    label: {
+        fontSize: 16,
+        fontWeight: '600',
+        color: color.black,
+    },
+
     resultCard: {
         marginHorizontal: 16,
         flexDirection: 'row',

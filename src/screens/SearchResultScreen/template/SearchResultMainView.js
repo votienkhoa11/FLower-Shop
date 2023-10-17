@@ -30,8 +30,9 @@ export default function SearchResultMainView (props) {
         //values
         search,
         results,
-        loading,
+        isLoading,
         modalVisible,
+        keywordResult,
         //functions
         onChangeText,
         onClose,
@@ -47,7 +48,7 @@ export default function SearchResultMainView (props) {
     };
 
   return (
-    loading ? <LoadingScreen /> :
+    isLoading ? <LoadingScreen /> :
 
     <View style={defaultStyles.container}>
         <StatusBar translucent backgroundColor="transparent" barstyles="dark-content" />
@@ -88,11 +89,11 @@ export default function SearchResultMainView (props) {
             </View>
             {/*search title view */}
             <View style={styles.resultLabelView}>
-                <Text style={styles.label}>{label.ResultFound} "{search}"</Text>
+                <Text style={styles.label}>{label.ResultFound} "{keywordResult}"</Text>
                 <Text style={styles.numberResults}>{results.length} {label.result}</Text>
             </View>
             <FlatList
-                data={search ? results : null}
+                data={results}
                 keyExtractor={item => item.id}
                 renderItem={({item, index}) => {
                     return <ResultCard data={item} />;

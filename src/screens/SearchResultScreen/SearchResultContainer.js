@@ -4,31 +4,34 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 //import slide
 import { searchKeyword } from './searchSlice';
 //import data
-import { products } from '../../database/MockData';
 import { colorProduct } from '../../values/color';
 //import template
 import SearchResultMainView from './template/SearchResultMainView';
 
 export default function SearchResultContainer (props) {
     const {
+        dispatch,
+        isLoading,
         keyword,
         navigation,
     } = props;
 
     //set search
     const [search, setSearch] = useState(keyword);
+    const [keywordResult, setKeywordResult] = useState(keyword);
+
     //set results
     const [results, setResult] = useState([]);
-    //set view show
-    const [loading, setLoading] = useState(true);
 
     //set filter
-    const [filterValue, setFilterValue] = useState({
+    const defaultFilter = {
         classify: [],
         priceRange: [500000, 1500000],
         color: [],
         starRating: 0,
-    });
+    };
+
+    const [filterValue, setFilterValue] = useState(defaultFilter);
 
     const classifyItems = ['Hoa hồng', 'hoa baby', 'bó hoa', 'giỏ hoa', 'Quà tặng sinh nhật', 'Hoa tặng người yêu'];
     const colorList = [
@@ -65,26 +68,24 @@ export default function SearchResultContainer (props) {
                 await AsyncStorage.setItem('search', JSON.stringify(newSearchList));
             }
         }
+    };
 
-        setLoading(false);
+    const fetchResult = async (keywords) => {
+        const res = await dispatch(searchKeyword({
+            keyword: keywords,
+        }));
+
+        const {responseData} = res.payload.data;
+        setResult(responseData);
+
     };
 
     //on change text function
     const onChangeText = (text) => {
         setSearch(text);
-        handleFilter(text);
     };
 
     //on press functions
-    const handleFilter = (keywordSearch) => {
-        const filteredList = products.filter(function(productData) {
-            return productData.name.toLowerCase().includes(keywordSearch.toLowerCase());
-        });
-
-        //if there are one or more results, save the keywords and get the results
-        setResult(filteredList);
-    };
-
     const onPressClassifyItem = (item) => {
         if (filterValue.classify.indexOf(item) > -1) {
             const filteredArray = filterValue.classify.filter(classifyItem =>
@@ -141,8 +142,9 @@ export default function SearchResultContainer (props) {
 
     //handle touch search items
     const onTouchSearchItem = (searchItem) => {
+        fetchResult(searchItem);
+        setKeywordResult(searchItem);
         setSearch(searchItem);
-        handleFilter(searchItem);
     };
 
     const onClose = () => {
@@ -152,13 +154,7 @@ export default function SearchResultContainer (props) {
 
     const [modalVisible, setModalVisible] = useState(false);
     const onPressFilter = () => {
-        setFilterValue({
-            classify: [],
-            priceRange: [500000, 1500000],
-            color: [],
-            starRating: 0,
-        });
-
+        setFilterValue(defaultFilter);
         setModalVisible(!modalVisible);
     };
 
@@ -167,27 +163,23 @@ export default function SearchResultContainer (props) {
     };
 
     useEffect(() => {
-        const unsubscribe = navigation.addListener('focus', () => {
-            saveSearch(keyword);
-
-            handleFilter(keyword);
-        });
-
-        return unsubscribe;
-    }, [navigation]);
+        saveSearch(keyword);
+        fetchResult(keyword);
+    }, []);
 
 
     const searchProp = {
         navigation,
         //values
+        isLoading,
         search,
         results,
-        loading,
         modalVisible,
         classifyItems,
         starRatingList,
         colorList,
         filterValue,
+        keywordResult,
         //functions
         onChangeText,
         onClose,

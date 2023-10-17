@@ -17,7 +17,7 @@ export const searchKeyword = createAsyncThunk(
     async (data, thunkAPI) => {
         return serviceRequest({
             dispatch: thunkAPI.dispatch,
-            serviceMethod: searchAPI.getPopularKeyword,
+            serviceMethod: searchAPI.keyword,
             payload: data,
         });
     }
